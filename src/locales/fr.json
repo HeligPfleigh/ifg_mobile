@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "header": "HEADER",
+        "paragraph": "PARAGRAPH",
+        "signup": "SIGN UP",
+        "signin": "SIGN IN"
+    }
+ }
