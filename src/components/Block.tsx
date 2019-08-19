@@ -1,12 +1,12 @@
 import React, { Component, ReactNode, ReactChild } from 'react';
-import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
+import { StyleSheet, View, ViewStyle, StyleProp, SafeAreaView } from 'react-native';
 import Animated from "react-native-reanimated";
 
 import { theme } from '../constants';
 
 interface BlockProps {
   margin?: any,
-  padding?: number,
+  padding?: any,
   animated?: boolean,
   flex?: any,
   row?: boolean,
@@ -175,9 +175,9 @@ export default class Block extends Component<BlockProps> {
     }
 
     return (
-      <View style={blockStyles} {...props}>
+      <SafeAreaView style={blockStyles} {...props}>
         {children}
-      </View>
+      </SafeAreaView>
     )
   }
 }

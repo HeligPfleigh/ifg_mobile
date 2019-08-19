@@ -7,6 +7,7 @@ const colors = {
     white: "#FFFFFF",
     gray: "#9DA3B4",
     gray2: "#C5CCD6",
+    green: "#008000",
 };
 
 const sizes = {
@@ -16,6 +17,7 @@ const sizes = {
     radius: 6,
     padding: 25,
     icon: 25,
+    margin: 10,
 
     // font sizes
     h1: 26,

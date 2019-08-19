@@ -4,5 +4,14 @@
        "paragraph": "Find out what you need,\n and also what you don't",
        "signup": "SIGN UP",
        "signin": "I HAVE AN ACCOUNT"
+   },
+   "home": {
+       "relationships": "RELATIONSHIPS",
+       "activities": "ACTIVITIES",
+       "intakes": "INTAKES",
+       "other": "OTHER",
+       "overall": "OVERALL",
+       "view_details": "View details",
+       "global_scores": "Global scores"
    }
 }

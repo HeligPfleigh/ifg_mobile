@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { theme } from '../constants';
 
 interface ButtonProps extends React.Props<any> {
-    style: any,
+    style?: ViewStyle,
     opacity: any,
     gradient: any,
     color: any,
@@ -17,7 +17,7 @@ interface ButtonProps extends React.Props<any> {
 }
 
 class Button extends Component<ButtonProps> {
-    static defaultProps: any;
+    static defaultProps: ButtonProps;
     render() {
         const {
             style,
@@ -82,6 +82,9 @@ Button.defaultProps = {
     locations: [0.1, 0.9],
     opacity: 0.8,
     color: theme.colors.white,
+    style: {},
+    shadow: null,
+    gradient: false,
 }
 
 export default Button;
