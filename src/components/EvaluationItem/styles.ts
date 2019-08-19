@@ -1,12 +1,11 @@
 import { StyleSheet } from "react-native";
-import { theme } from '../../../../constants';
+import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
     container: {
         height: 100,
         marginTop: theme.sizes.margin,
         marginBottom: theme.sizes.margin,
-        padding: theme.sizes.margin,
         flexDirection: 'row',
         borderRadius: theme.sizes.base,
         alignItems: 'center',
@@ -26,6 +25,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 40,
+        marginLeft: theme.sizes.margin,
     },
     iconContainer: {
         width: 72,

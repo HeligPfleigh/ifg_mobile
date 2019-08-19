@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
         maxHeight: 60,
         marginTop: theme.sizes.margin,
         marginBottom: theme.sizes.margin,
-        padding: theme.sizes.margin,
         flexDirection: 'row',
         borderRadius: theme.sizes.base,
         alignItems: 'center',

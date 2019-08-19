@@ -7,6 +7,8 @@ enum NavigatorMap {
     Profile = "Profile",
     SignIn = "Sign In",
     Welcome = "Welcome",
+    HomeStack = "HomeStack",
+    GlobalScores = "GlobalScores",
 }
 
 export default NavigatorMap;
