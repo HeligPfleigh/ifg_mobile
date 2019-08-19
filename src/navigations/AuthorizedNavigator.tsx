@@ -10,6 +10,9 @@ import { theme } from "../constants";
 import NavigatorMap from './NavigatorMap';
 import HomeScreen from '../screens/Home';
 
+// https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
+MaterialCommunityIcons.loadFont();
+
 export default createMaterialTopTabNavigator({
     [NavigatorMap.Home]: {
         screen: HomeScreen,

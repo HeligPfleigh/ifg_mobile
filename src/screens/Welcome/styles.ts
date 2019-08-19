@@ -13,4 +13,4 @@ export const styles = StyleSheet.create({
     textBtn: {
         fontSize: theme.sizes.h2,
     }
-})
+});

@@ -54,4 +54,11 @@ const fonts = {
     }
 };
 
-export { colors, sizes, fonts };
+enum EvaluationType {
+    RELATIONSHIPS = 'Relationships',
+    ACTIVITIES = 'Activities',
+    INTAKES = 'Intakes',
+    OTHER = 'Other',
+};
+
+export { colors, sizes, fonts, EvaluationType };
