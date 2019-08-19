@@ -1,7 +1,5 @@
 import {
     createSwitchNavigator,
-    createStackNavigator,
-    createAppContainer
 } from 'react-navigation';
 import {
     createReduxContainer,
@@ -13,11 +11,7 @@ import { connect } from 'react-redux';
 import NavigatorMap from './NavigatorMap';
 import { AuthStack } from "./UnAuthorizedNavigator";
 import AuthLoadingScreen from "../screens/AuthLoading";
-import HomeScreen from '../screens/Home';
-
-const AppStack = createStackNavigator({
-    [NavigatorMap.Home]: HomeScreen
-});
+import AppStack from "./AuthorizedNavigator";
 
 const AppNavigator = createSwitchNavigator(
     {

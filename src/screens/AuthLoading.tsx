@@ -26,7 +26,7 @@ export default class AuthLoadingScreen extends PureComponent<AuthLoadingProps> {
         // This will switch to the App screen or Auth screen and this loading
         // screen will be unmounted and thrown away.
         this.props.navigation.navigate(
-            userToken ? NavigatorMap.App : NavigatorMap.Auth
+            true ? NavigatorMap.App : NavigatorMap.Auth
         );
     };
 

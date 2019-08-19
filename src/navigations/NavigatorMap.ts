@@ -3,6 +3,8 @@ enum NavigatorMap {
     Auth = "Auth",
     AuthLoading = "AuthLoading",
     Home = "Home",
+    FeelGoodTools = "Feel Good Tools",
+    Profile = "Profile",
     SignIn = "Sign In",
     Welcome = "Welcome",
 }
