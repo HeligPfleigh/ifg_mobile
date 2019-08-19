@@ -15,7 +15,7 @@ class Home extends Component {
   render() {
     return (
       <Block>
-        <View style={{ flex: 1, padding: theme.sizes.padding, backgroundColor: theme.colors.secondary, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={styles.headerContainer}>
           <Image
             source={DefaultAvatar}
             style={styles.avatar}
