@@ -2,24 +2,32 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { Chip } from "react-native-paper";
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import get from 'lodash/get';
 
 import { Block } from '../../components';
 import { FeelGoodLv4 } from '../../assets/images';
 import { styles } from "./styles";
 import SummaryHeader from './components/SummaryHeader';
 import { theme } from '../../constants';
+import { AppState, SummaryState } from '../../store/types';
+import { loadSummary } from "../../store/actions";
+
+
 
 interface SummaryProps {
+  dispatch: Dispatch<any>;
   navigation: NavigationScreenProp<NavigationState>;
+  summary: SummaryState;
 }
 
 class Summary extends Component<SummaryProps> {
   _renderSummaryHeader = () => {
-    const { navigation } = this.props;
-    
-    return (<SummaryHeader
-      type={navigation.getParam('evaluationType', theme.EvaluationType.OVERALL)}
-      score={4.5} />)
+    const { navigation, summary } = this.props;
+    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    const score = get(summary, `data.${type}.score`, 0);
+    return (<SummaryHeader type={type} score={score} />);
   }
 
   _renderSummaryItem = ({ item }: any) => {
@@ -38,6 +46,11 @@ class Summary extends Component<SummaryProps> {
     )
   }
 
+  componentDidMount() {
+    const { navigation, dispatch } = this.props;
+    dispatch(loadSummary(navigation.getParam('evaluationType', theme.EvaluationType.OVERALL)))
+  }
+
   render() {
     return (
       <FlatList
@@ -49,4 +62,8 @@ class Summary extends Component<SummaryProps> {
   }
 }
 
-export default Summary;
+const mapStateToProps = (state: AppState) => ({
+  summary: state.summary
+})
+
+export default connect(mapStateToProps, null)(Summary);

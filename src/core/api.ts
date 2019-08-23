@@ -14,26 +14,55 @@ const me = () => {
 };
 
 const getSummary = (type: theme.EvaluationType) => {
-    return Promise.resolve({
-        score: 4.5,
-        affections: [
-            {
-                factors: ["Johny", "Logan"],
-                tags: theme.tags.Family,
-                score: 4,
-            },
-            {
-                factors: ["Sam"],
-                tags: theme.tags.Lover,
-                score: 4,
-            },
-            {
-                factors: ["Reading", "Cooking", "Take naps"],
-                tags: [],
-                score: 3,
-            }
-        ]
-    })
+    switch(type) {
+        case theme.EvaluationType.RELATIONSHIPS:
+            return Promise.resolve({
+                score: 1.8,
+                affections: [
+                    {
+                        factors: ["Johny"],
+                        tags: theme.Tags.FAMILY,
+                        score: 5,
+                    },
+                    {
+                        factors: ["Sam"],
+                        tags: theme.Tags.LOVER,
+                        score: 3,
+                    },
+                    {
+                        factors: ["My neighbour"],
+                        tags: theme.Tags.OTHER,
+                        score: 1,
+                    },
+                    {
+                        factors: ["Jenny"],
+                        tags: theme.Tags.WORK,
+                        score: -1,
+                    },
+                    {
+                        factors: ["Boss"],
+                        tags: theme.Tags.WORK,
+                        score: -3,
+                    },
+                ]
+            });
+        default:
+            return Promise.resolve({
+                score: 4.5,
+                affections: [
+                    {
+                        factors: ["Reading", "Cooking", "My sister"],
+                        tags: null,
+                        score: 5,
+                    },
+                    {
+                        factors: ["Take naps"],
+                        tags: null,
+                        score: 3,
+                    }
+                ]
+            })
+    }
 }
 
 export default {
