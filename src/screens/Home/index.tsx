@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { connect } from 'react-redux';
+import { Dispatch } from "redux";
+import get from "lodash/get";
 
 import { Block, EvaluationItem } from '../../components';
 import { theme } from '../../constants';
@@ -8,12 +12,13 @@ import { SunImg, MoonImg, StormImg, DefaultAvatar } from '../../assets/images';
 import Summarize from './components/Summarize';
 import { styles } from "./styles";
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
-
-const username = "Test User";
+import { AppState, MeState } from "../../store/types";
+import { me } from "../../store/actions";
 
 interface HomeProps {
+  dispatch: Dispatch<any>;
   navigation: NavigationScreenProp<NavigationState>;
+  me: MeState;
 }
 
 class Home extends Component<HomeProps> {
@@ -21,7 +26,12 @@ class Home extends Component<HomeProps> {
 
   _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) => this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType })
 
+  componentDidMount(){
+    this.props.dispatch(me());
+  }
+
   render() {
+    const { me: { data: { name, score } } } = this.props;
     return (
       <Block>
         <View style={styles.headerContainer}>
@@ -30,9 +40,9 @@ class Home extends Component<HomeProps> {
             style={styles.avatar}
           />
           <Block flex={0.5} middle center>
-            <Text>{username}</Text>
+            <Text>{name}</Text>
           </Block>
-          <Summarize score={4.5} onPress={this._navigateToGlobalScoresScreen} />
+          <Summarize score={get(score, 'overall')} onPress={this._navigateToGlobalScoresScreen} />
         </View>
         <Block flex={2}>
           <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
@@ -75,4 +85,8 @@ class Home extends Component<HomeProps> {
   }
 }
 
-export default Home;
+const mapStateToProps = (state: AppState) => ({
+  me: state.me
+});
+
+export default connect(mapStateToProps)(Home);

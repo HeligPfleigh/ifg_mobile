@@ -77,4 +77,13 @@ enum EvaluationType {
     OVERALL = 'overall',
 };
 
-export { colors, sizes, fonts, gradients, EvaluationType };
+const tags = {
+    Family: 'Family',
+    Lover: 'Lover/Partner',
+    Friends: 'Friends',
+    Work: 'Work',
+    Social: 'Social',
+    Other: 'Other',
+}
+
+export { colors, sizes, fonts, gradients, tags, EvaluationType };

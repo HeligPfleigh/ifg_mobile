@@ -11,5 +11,3 @@ export const store = createStore(
   rootReducer,
   composeWithDevTools(middleWareEnhancer)
 );
-
-export type AppState = ReturnType<typeof rootReducer>;

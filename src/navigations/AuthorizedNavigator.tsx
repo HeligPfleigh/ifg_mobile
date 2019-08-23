@@ -5,7 +5,7 @@ import {
 } from 'react-navigation';
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import I18n from "../core/i18n";
 
 import { theme } from "../constants";
@@ -51,14 +51,14 @@ export default createMaterialTopTabNavigator({
         }
     },
     [NavigatorMap.FeelGoodTools]: {
-        screen: HomeScreen,
+        screen: () => <View />,
         navigationOptions: {
             tabBarLabel: () => <Text>{I18n.t('navigation.feel_good_tools')}</Text>,
             tabBarIcon: ({ tintColor }: TabBarIconProps) => <MaterialCommunityIcons size={theme.sizes.icon} name="lightbulb-on-outline" color={tintColor || theme.colors.black} />
         }
     },
     [NavigatorMap.Profile]: {
-        screen: HomeScreen,
+        screen: () => <View />,
         navigationOptions: {
             tabBarLabel: () => <Text>{I18n.t('navigation.profile')}</Text>,
             tabBarIcon: ({ tintColor }: TabBarIconProps) => <MaterialCommunityIcons size={theme.sizes.icon} name="account" color={tintColor || theme.colors.black} />
