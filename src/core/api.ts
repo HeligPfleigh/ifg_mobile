@@ -5,7 +5,7 @@ const me = () => {
         avatar: null,
         score: {
             relationships: 3.6,
-            activities: 2.5,
+            activities: -2.5,
             intakes: 1.8,
             other: 3.6,
             overall: 4.5,

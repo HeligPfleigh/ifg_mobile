@@ -8,7 +8,8 @@ import get from "lodash/get";
 import { Block, EvaluationItem } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
-import { SunImg, MoonImg, StormImg, DefaultAvatar } from '../../assets/images';
+import { showWeatherIcon } from "../../core/utils";
+import { DefaultAvatar } from '../../assets/images';
 import Summarize from './components/Summarize';
 import { styles } from "./styles";
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -31,18 +32,18 @@ class Home extends Component<HomeProps> {
   }
 
   render() {
-    const { me: { data: { name, score } } } = this.props;
+    const { me: { data: { name, score, avatar } } } = this.props;
     return (
       <Block>
         <View style={styles.headerContainer}>
           <Image
-            source={DefaultAvatar}
+            source={avatar || DefaultAvatar}
             style={styles.avatar}
           />
           <Block flex={0.5} middle center>
             <Text>{name}</Text>
           </Block>
-          <Summarize score={get(score, 'overall')} onPress={this._navigateToGlobalScoresScreen} />
+          <Summarize score={get(score, theme.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
         </View>
         <Block flex={2}>
           <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
@@ -51,7 +52,7 @@ class Home extends Component<HomeProps> {
               header={I18n.t('home.relationships')}
               text={I18n.t('home.view_details')}
               headerColor={theme.colors.pink}
-              icon={<SunImg />}
+              icon={showWeatherIcon(get(score, theme.EvaluationType.RELATIONSHIPS, 0))}
               onPressText={() => this._navigateToSummaryScreen(theme.EvaluationType.RELATIONSHIPS)}
             />
             <EvaluationItem
@@ -59,7 +60,7 @@ class Home extends Component<HomeProps> {
               header={I18n.t('home.activities')}
               text={I18n.t('home.view_details')}
               headerColor={theme.colors.blue}
-              icon={<StormImg />}
+              icon={showWeatherIcon(get(score, theme.EvaluationType.ACTIVITIES, 0))}
               onPressText={() => this._navigateToSummaryScreen(theme.EvaluationType.ACTIVITIES)}
             />
             <EvaluationItem
@@ -67,7 +68,7 @@ class Home extends Component<HomeProps> {
               header={I18n.t('home.intakes')}
               text={I18n.t('home.view_details')}
               headerColor={theme.colors.orange}
-              icon={<MoonImg />}
+              icon={showWeatherIcon(get(score, theme.EvaluationType.INTAKES, 0))}
               onPressText={() => this._navigateToSummaryScreen(theme.EvaluationType.INTAKES)}
             />
             <EvaluationItem
@@ -75,7 +76,7 @@ class Home extends Component<HomeProps> {
               text={I18n.t('home.view_details')}
               header={I18n.t('home.other')}
               headerColor={theme.colors.purple}
-              icon={<SunImg />}
+              icon={showWeatherIcon(get(score, theme.EvaluationType.OTHER, 0))}
               onPressText={() => this._navigateToSummaryScreen(theme.EvaluationType.OTHER)}
             />
           </ScrollView>
