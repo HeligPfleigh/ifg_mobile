@@ -8,7 +8,20 @@ const colors = {
     gray: "#9DA3B4",
     gray2: "#C5CCD6",
     green: "#008000",
+    pink: '#FF7CB6',
+    blue: '#02A4F7',
+    orange: '#FF955F',
+    purple: '#A0039D',
+    indigo: '#7F81FF',
 };
+
+const gradients = {
+    pink: ['#FFA7DE', '#FF7CB6'],
+    blue: ['#89C7FF', '#02A4F7'],
+    orange: ['#FFD063', '#FF955F'],
+    purple: ['#DFA5FF', '#A0039D'],
+    indigo: ['#B0BEFF', '#7F81FF'],
+}
 
 const sizes = {
     // global sizes
@@ -57,10 +70,11 @@ const fonts = {
 };
 
 enum EvaluationType {
-    RELATIONSHIPS = 'Relationships',
-    ACTIVITIES = 'Activities',
-    INTAKES = 'Intakes',
-    OTHER = 'Other',
+    RELATIONSHIPS = 'relationships',
+    ACTIVITIES = 'activities',
+    INTAKES = 'intakes',
+    OTHER = 'other',
+    OVERALL = 'overall',
 };
 
-export { colors, sizes, fonts, EvaluationType };
+export { colors, sizes, fonts, gradients, EvaluationType };

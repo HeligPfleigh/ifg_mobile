@@ -3,7 +3,8 @@
         "home": "Home",
         "feel_good_tools": "Feel Good Tools",
         "profile": "Profile",
-        "global_scores": "Global scores"
+        "global_scores": "Global scores",
+        "summary": "Summary"
     },
     "welcome": {
         "header": "I Feel Good",

@@ -34,10 +34,10 @@ export default class EvaluationItem extends Component<EvaluationItemProps> {
             textColor,
             onPressIcon } = this.props;
         return (
-            <Block flex={false} style={styles.container}>
+            <Block flex={false} row style={styles.container}>
                 {icon && <LinearGradient
                     colors={colors}
-                    start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
+                    start={{ x: 0.0, y: 0.0 }} end={{ x: 0.0, y: 1.0 }}
                     style={styles.roundContainer}
                 >
                     <Block flex={false} style={styles.iconContainer}>

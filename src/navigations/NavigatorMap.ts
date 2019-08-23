@@ -9,6 +9,7 @@ enum NavigatorMap {
     Welcome = "Welcome",
     HomeStack = "HomeStack",
     GlobalScores = "GlobalScores",
+    Summary = "Summary",
 }
 
 export default NavigatorMap;

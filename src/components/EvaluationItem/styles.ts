@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         height: 100,
         marginTop: theme.sizes.margin,
         marginBottom: theme.sizes.margin,
-        flexDirection: 'row',
+        padding: theme.sizes.margin,
         borderRadius: theme.sizes.base,
         alignItems: 'center',
         backgroundColor: theme.colors.white,
@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 40,
-        marginLeft: theme.sizes.margin,
     },
     iconContainer: {
         width: 72,
@@ -44,6 +43,6 @@ export const styles = StyleSheet.create({
     },
     detail: {
         fontSize: theme.sizes.font,
-        color: 'gray'
+        color: theme.colors.gray,
     }
 });
