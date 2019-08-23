@@ -21,6 +21,11 @@ const gradients = {
     orange: ['#FFD063', '#FF955F'],
     purple: ['#DFA5FF', '#A0039D'],
     indigo: ['#B0BEFF', '#7F81FF'],
+    lightpink: ['#FFF2F9', '#F2CFE1'],
+    lightblue: ['#E3F5FF', '#AEDDFD'],
+    lightorange: ['#FFF6EC', '#FFDEBD'],
+    lightpurple: ['#FCF3FF', '#C1AFEE'],
+    lightindigo: ['#F1F2FF', '#AFBAEE'],
 }
 
 const sizes = {

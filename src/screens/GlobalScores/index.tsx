@@ -4,7 +4,6 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import get from 'lodash/get';
 
 import { EvaluationItem } from '../../components';
-import { SunImg, StormImg, MoonImg } from '../../assets/images';
 import { theme } from '../../constants';
 import I18n from "../../core/i18n";
 import NavigatorMap from '../../navigations/NavigatorMap';

@@ -20,5 +20,14 @@
         "overall": "OVERALL",
         "view_details": "View details",
         "global_scores": "Global scores"
+    },
+    "summary": {
+        "relationships": "Relationships",
+        "activities": "Activities",
+        "intakes": "Intakes",
+        "other": "Other",
+        "overall": "Overall",
+        "legends": "Legends",
+        "detail_perceptions": "Details of your perceptions"
     }
 }

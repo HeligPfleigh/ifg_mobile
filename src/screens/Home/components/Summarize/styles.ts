@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         maxHeight: 60,
         marginTop: theme.sizes.margin,
         marginBottom: theme.sizes.margin,
-        flexDirection: 'row',
+        padding: theme.sizes.margin,
         borderRadius: theme.sizes.base,
         alignItems: 'center',
         backgroundColor: theme.colors.white,
@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         backgroundColor: theme.colors.primary,
-        marginRight: theme.sizes.margin,
     },
     label: {
         color: theme.colors.black,

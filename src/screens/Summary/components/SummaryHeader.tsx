@@ -1,40 +1,49 @@
-import React, { Component } from 'react'
-import { Block } from '../../../components';
-import { SunImg } from '../../../assets/images';
-import { Text, StyleSheet } from 'react-native';
-import { theme } from '../../../constants';
+import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default class SummaryHeader extends Component {
+import { Block } from '../../../components';
+import { Text, StyleSheet } from 'react-native';
+import { theme } from '../../../constants';
+import { showWeatherIcon, summaryDisplayProps } from '../../../core/utils';
+import I18n from '../../../core/i18n';
+
+interface SummaryHeaderProps {
+    score: number;
+    type: theme.EvaluationType;
+}
+
+export default class SummaryHeader extends Component<SummaryHeaderProps> {
     render() {
+        const { score, type } = this.props;
+        const { gradients, iconGradients, title } = summaryDisplayProps(type)
         return (
             <Block flex={false}>
                 <LinearGradient
-                    colors={['#00FFFF', '#8000FF']}
+                    colors={gradients}
                     start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
                     style={styles.linearGradientContainer}
                 >
                     <Block flex={2} row style={{ alignItems: 'center' }}>
                         <LinearGradient
-                            colors={['#00FFFF', '#8000FF']}
+                            colors={iconGradients}
                             start={{ x: 0.0, y: 0.0 }} end={{ x: 0.0, y: 1.0 }}
                             style={styles.roundContainer}
                         >
                             <Block flex={false} style={styles.iconContainer}>
-                                <SunImg />
+                                {showWeatherIcon(score)}
                             </Block>
                         </LinearGradient>
                         <Block flex={2} middle style={styles.summary}>
-                            <Text>Relationships</Text>
-                            <Text style={styles.score}>4.5</Text>
+                            <Text>{title}</Text>
+                            <Text style={styles.score}>{score}</Text>
                         </Block>
                     </Block>
                 </LinearGradient>
                 <Block flex={1} center middle>
-                    <Text style={styles.legendTxt}>Legends</Text>
+                    <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
                 </Block>
                 <Block flex={1} center middle>
-                    <Text style={styles.descTxt}>Details of your perceptions</Text>
+                    <Text style={styles.descTxt}>{I18n.t('summary.detail_perceptions')}</Text>
                 </Block>
             </Block>
         )

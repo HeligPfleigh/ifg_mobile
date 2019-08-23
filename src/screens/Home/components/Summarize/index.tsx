@@ -18,7 +18,7 @@ export default class Summarize extends Component<SummarizeProps> {
     render() {
         const { onPress, score } = this.props;
         return (
-            <Block style={styles.container}>
+            <Block row style={styles.container}>
                 <Block flex={1}>
                     <WelcomeImg width={60} height={40} />
                 </Block>
