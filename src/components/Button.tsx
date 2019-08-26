@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleSheet, TouchableOpacity, ViewStyle, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { theme } from '../constants';
 
 interface ButtonProps extends React.Props<any> {
-    style?: ViewStyle,
+    style?: any,
     opacity: any,
     gradient: any,
     color: any,
@@ -14,6 +14,7 @@ interface ButtonProps extends React.Props<any> {
     start: any,
     locations: any,
     shadow: any,
+    onPress: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 }
 
 class Button extends Component<ButtonProps> {
@@ -31,6 +32,7 @@ class Button extends Component<ButtonProps> {
             locations,
             shadow,
             children,
+            onPress,
             ...props
         } = this.props;
 
@@ -47,6 +49,7 @@ class Button extends Component<ButtonProps> {
                 <TouchableOpacity
                     style={buttonStyles}
                     activeOpacity={opacity}
+                    onPress={onPress}
                     {...props}
                 >
                     <LinearGradient
@@ -66,6 +69,7 @@ class Button extends Component<ButtonProps> {
             <TouchableOpacity
                 style={buttonStyles}
                 activeOpacity={opacity || 0.8}
+                onPress={onPress}
                 {...props}
             >
                 {children}
@@ -85,6 +89,7 @@ Button.defaultProps = {
     style: {},
     shadow: null,
     gradient: false,
+    onPress: () => {}
 }
 
 export default Button;

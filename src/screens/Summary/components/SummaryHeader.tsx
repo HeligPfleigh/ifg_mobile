@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import { withNavigation, NavigationInjectedProps } from "react-navigation";
 
-import { Block } from '../../../components';
+import { Block, Button } from '../../../components';
 import { Text, StyleSheet } from 'react-native';
 import { theme } from '../../../constants';
 import { showWeatherIcon, summaryDisplayProps } from '../../../core/utils';
 import I18n from '../../../core/i18n';
+import NavigatorMap from '../../../navigations/NavigatorMap';
 
-interface SummaryHeaderProps {
+interface SummaryHeaderProps extends NavigationInjectedProps {
     score: number;
     type: theme.EvaluationType;
 }
 
-export default class SummaryHeader extends Component<SummaryHeaderProps> {
+class SummaryHeader extends Component<SummaryHeaderProps> {
+    _navigateToLegend = () => this.props.navigation.navigate(NavigatorMap.Legend)
     render() {
         const { score, type } = this.props;
         const { gradients, iconGradients, title } = summaryDisplayProps(type)
@@ -40,7 +43,9 @@ export default class SummaryHeader extends Component<SummaryHeaderProps> {
                     </Block>
                 </LinearGradient>
                 <Block flex={1} center middle>
-                    <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
+                    <Button onPress={this._navigateToLegend}>
+                        <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
+                    </Button>
                 </Block>
                 <Block flex={1} center middle>
                     <Text style={styles.descTxt}>{I18n.t('summary.detail_perceptions')}</Text>
@@ -49,6 +54,8 @@ export default class SummaryHeader extends Component<SummaryHeaderProps> {
         )
     }
 }
+
+export default withNavigation(SummaryHeader);
 
 const styles = StyleSheet.create({
     linearGradientContainer: {

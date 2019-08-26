@@ -13,6 +13,8 @@ const colors = {
     orange: '#FF955F',
     purple: '#A0039D',
     indigo: '#7F81FF',
+    red: '#FF1E32',
+    yellow: '#FFEB0A',
 };
 
 const gradients = {

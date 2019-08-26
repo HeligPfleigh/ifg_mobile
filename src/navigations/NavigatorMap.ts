@@ -10,6 +10,7 @@ enum NavigatorMap {
     HomeStack = "HomeStack",
     GlobalScores = "GlobalScores",
     Summary = "Summary",
+    Legend = "Legend",
 }
 
 export default NavigatorMap;
