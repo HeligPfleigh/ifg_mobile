@@ -1,6 +1,15 @@
 import React from "react";
 
-import { StormImg, SunImg, MoonImg } from "../assets/images";
+import {
+    StormImg,
+    SunImg,
+    MoonImg,
+    FeelGoodLv0,
+    FeelGoodLv1,
+    FeelGoodLv2,
+    FeelGoodLv3,
+    FeelGoodLv4
+} from "../assets/images";
 import { theme } from "../constants";
 import I18n from './i18n';
 
@@ -13,8 +22,8 @@ export const showWeatherIcon = (score: number) => {
     return <MoonImg />
 };
 
-export const summaryDisplayProps = (type : theme.EvaluationType) => {
-    switch(type) {
+export const summaryDisplayProps = (type: theme.EvaluationType) => {
+    switch (type) {
         case theme.EvaluationType.RELATIONSHIPS:
             return {
                 title: I18n.t('summary.relationships'),
@@ -47,4 +56,17 @@ export const summaryDisplayProps = (type : theme.EvaluationType) => {
                 iconGradients: theme.gradients.indigo,
             };
     }
-}
+};
+
+export const summaryIcon = (score: number, size: number = 40) => {
+    if (-3 > score && score >= -5) {
+        return <FeelGoodLv0 width={size} height={size}/>
+    } else if (-1 > score && score >= -3) {
+        return <FeelGoodLv1 width={size} height={size}/>
+    } else if (1 > score && score >= -1) {
+        return <FeelGoodLv2 width={size} height={size}/>
+    } else if (3 > score && score >= 1) {
+        return <FeelGoodLv3 width={size} height={size}/>
+    }
+    return <FeelGoodLv4 width={size} height={size}/>
+};

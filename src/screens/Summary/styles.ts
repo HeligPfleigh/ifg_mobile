@@ -13,5 +13,10 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.white,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: theme.colors.gray2,
+        paddingHorizontal: theme.sizes.base,
+        borderRadius: theme.sizes.base,
+    },
+    factorTxt: {
+        marginBottom: 5,
     }
 });

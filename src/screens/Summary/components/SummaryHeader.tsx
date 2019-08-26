@@ -52,6 +52,7 @@ export default class SummaryHeader extends Component<SummaryHeaderProps> {
 
 const styles = StyleSheet.create({
     linearGradientContainer: {
+        backgroundColor: theme.colors.white,
         margin: theme.sizes.padding,
         marginBottom: theme.sizes.margin,
         borderRadius: theme.sizes.base,

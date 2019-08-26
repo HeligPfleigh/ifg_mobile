@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
-import { Chip } from "react-native-paper";
+import { Text, FlatList } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import get from 'lodash/get';
 
 import { Block } from '../../components';
-import { FeelGoodLv4 } from '../../assets/images';
 import { styles } from "./styles";
 import SummaryHeader from './components/SummaryHeader';
 import { theme } from '../../constants';
 import { AppState, SummaryState } from '../../store/types';
 import { loadSummary } from "../../store/actions";
+import { summaryIcon } from '../../core/utils';
 
 
 
@@ -31,16 +30,20 @@ class Summary extends Component<SummaryProps> {
   }
 
   _renderSummaryItem = ({ item }: any) => {
+    const factors = get(item, 'factors', []);
+    const { tags, score } = item;
     return (
       <Block flex={1} row style={styles.itemContainer}>
-        <Block middle center flex={1}>
-          <FeelGoodLv4 width={30} height={30} />
+        <Block top center flex={1}>
+          {summaryIcon(score || 0)}
         </Block>
         <Block middle flex={3}>
-          <Text>Sam</Text>
+          {factors.map((factor: string, index: number) => <Text key={`factor-${index}`} style={styles.factorTxt}>{factor}</Text>)}
         </Block>
         <Block flex={3} middle right row>
-          <Chip style={styles.chip}>Example Chip</Chip>
+          {tags && <Block flex={false} center middle style={styles.chip}>
+            <Text>{tags}</Text>
+          </Block>}
         </Block>
       </Block>
     )
@@ -48,15 +51,20 @@ class Summary extends Component<SummaryProps> {
 
   componentDidMount() {
     const { navigation, dispatch } = this.props;
-    dispatch(loadSummary(navigation.getParam('evaluationType', theme.EvaluationType.OVERALL)))
+    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    dispatch(loadSummary(type));
   }
 
   render() {
+    const { navigation, summary } = this.props;
+    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    const data = get(summary, `data.${type}.affections`, []);
     return (
       <FlatList
         ListHeaderComponent={this._renderSummaryHeader}
-        data={[{ key: 'a' }, { key: 'b' }]}
+        data={data}
         renderItem={this._renderSummaryItem}
+        keyExtractor={(_, index) => `summary-${index}`}
       />
     );
   }
@@ -64,6 +72,6 @@ class Summary extends Component<SummaryProps> {
 
 const mapStateToProps = (state: AppState) => ({
   summary: state.summary
-})
+});
 
 export default connect(mapStateToProps, null)(Summary);
