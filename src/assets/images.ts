@@ -7,17 +7,18 @@ import FeelGoodLv1 from './images/feel_good_1.svg';
 import FeelGoodLv2 from './images/feel_good_2.svg';
 import FeelGoodLv3 from './images/feel_good_3.svg';
 import FeelGoodLv4 from './images/feel_good_4.svg';
+
 const DefaultAvatar = require('./images/avatar.png');
 
 export {
-    WelcomeImg,
-    MoonImg,
-    StormImg,
-    SunImg,
-    DefaultAvatar,
-    FeelGoodLv0,
-    FeelGoodLv1,
-    FeelGoodLv2,
-    FeelGoodLv3,
-    FeelGoodLv4,
+  WelcomeImg,
+  MoonImg,
+  StormImg,
+  SunImg,
+  DefaultAvatar,
+  FeelGoodLv0,
+  FeelGoodLv1,
+  FeelGoodLv2,
+  FeelGoodLv3,
+  FeelGoodLv4,
 };

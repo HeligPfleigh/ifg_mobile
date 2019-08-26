@@ -1,17 +1,17 @@
 export enum SupportedLanguage {
-    en = "en",
-    fr = "fr"
+  en = 'en',
+  fr = 'fr',
 }
 
 export interface LanguageState {
-    locale: SupportedLanguage
+  locale: SupportedLanguage;
 }
 
-export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 
 interface UpdateLanguageAction {
-    type: typeof CHANGE_LANGUAGE;
-    payload: LanguageState;
+  type: typeof CHANGE_LANGUAGE;
+  payload: LanguageState;
 }
 
 export type LanguageActionTypes = UpdateLanguageAction;

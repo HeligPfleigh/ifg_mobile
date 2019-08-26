@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { connect } from 'react-redux';
-import { Dispatch } from "redux";
-import get from "lodash/get";
+import { Dispatch } from 'redux';
+import get from 'lodash/get';
 
 import { Block, EvaluationItem } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
-import { showWeatherIcon } from "../../core/utils";
+import { showWeatherIcon } from '../../core/utils';
 import { DefaultAvatar } from '../../assets/images';
 import Summarize from './components/Summarize';
-import { styles } from "./styles";
+import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, MeState } from "../../store/types";
-import { me } from "../../store/actions";
+import { AppState, MeState } from '../../store/types';
+import { me } from '../../store/actions';
 
 interface HomeProps {
   dispatch: Dispatch<any>;
@@ -23,23 +23,28 @@ interface HomeProps {
 }
 
 class Home extends Component<HomeProps> {
-  _navigateToGlobalScoresScreen = () => this.props.navigation.navigate(NavigatorMap.GlobalScores);
-
-  _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) => this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType })
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.dispatch(me());
   }
 
+  _navigateToGlobalScoresScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.GlobalScores);
+  };
+
+  _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) => {
+    return this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
+  };
+
   render() {
-    const { me: { data: { name, score, avatar } } } = this.props;
+    const {
+      me: {
+        data: { name, score, avatar },
+      },
+    } = this.props;
     return (
       <Block>
         <View style={styles.headerContainer}>
-          <Image
-            source={avatar || DefaultAvatar}
-            style={styles.avatar}
-          />
+          <Image source={avatar || DefaultAvatar} style={styles.avatar} />
           <Block flex={0.5} middle center>
             <Text>{name}</Text>
           </Block>
@@ -87,7 +92,7 @@ class Home extends Component<HomeProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  me: state.me
+  me: state.me,
 });
 
 export default connect(mapStateToProps)(Home);

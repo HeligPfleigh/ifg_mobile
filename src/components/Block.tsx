@@ -1,28 +1,76 @@
-import React, { Component, ReactNode, ReactChild } from 'react';
-import { StyleSheet, View, ViewStyle, StyleProp } from 'react-native';
-import Animated from "react-native-reanimated";
+import React, { Component, ReactNode } from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { theme } from '../constants';
 
+export const styles: any = StyleSheet.create({
+  block: {
+    flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
+  },
+  card: {
+    borderRadius: theme.sizes.radius,
+  },
+  center: {
+    alignItems: 'center',
+  },
+  middle: {
+    justifyContent: 'center',
+  },
+  left: {
+    justifyContent: 'flex-start',
+  },
+  right: {
+    justifyContent: 'flex-end',
+  },
+  top: {
+    justifyContent: 'flex-start',
+  },
+  bottom: {
+    justifyContent: 'flex-end',
+  },
+  shadow: {
+    shadowColor: theme.colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 13,
+    elevation: 2,
+  },
+  accent: { backgroundColor: theme.colors.accent },
+  primary: { backgroundColor: theme.colors.primary },
+  secondary: { backgroundColor: theme.colors.secondary },
+  tertiary: { backgroundColor: theme.colors.tertiary },
+  black: { backgroundColor: theme.colors.black },
+  white: { backgroundColor: theme.colors.white },
+  gray: { backgroundColor: theme.colors.gray },
+  gray2: { backgroundColor: theme.colors.gray2 },
+});
+
 interface BlockProps {
-  margin?: any,
-  padding?: any,
-  animated?: boolean,
-  flex?: any,
-  row?: boolean,
-  column?: boolean,
-  center?: boolean,
-  middle?: boolean,
-  left?: boolean,
-  right?: boolean,
-  top?: boolean,
-  bottom?: boolean,
-  card?: any,
-  shadow?: any,
-  color?: any,
-  space?: any,
-  wrap?: any,
-  style?: ViewStyle,
+  margin?: any;
+  padding?: any;
+  animated?: boolean;
+  flex?: any;
+  row?: boolean;
+  column?: boolean;
+  center?: boolean;
+  middle?: boolean;
+  left?: boolean;
+  right?: boolean;
+  top?: boolean;
+  bottom?: boolean;
+  card?: any;
+  shadow?: any;
+  color?: any;
+  space?: any;
+  wrap?: any;
+  style?: ViewStyle;
   children?: ReactNode;
 }
 
@@ -35,7 +83,7 @@ export default class Block extends Component<BlockProps> {
         marginRight: margin,
         marginBottom: margin,
         marginLeft: margin,
-      }
+      };
     }
 
     if (typeof margin === 'object') {
@@ -47,30 +95,32 @@ export default class Block extends Component<BlockProps> {
             marginRight: margin[0],
             marginBottom: margin[0],
             marginLeft: margin[0],
-          }
+          };
         case 2:
           return {
             marginTop: margin[0],
             marginRight: margin[1],
             marginBottom: margin[0],
             marginLeft: margin[1],
-          }
+          };
         case 3:
           return {
             marginTop: margin[0],
             marginRight: margin[1],
             marginBottom: margin[2],
             marginLeft: margin[1],
-          }
+          };
         default:
           return {
             marginTop: margin[0],
             marginRight: margin[1],
             marginBottom: margin[2],
             marginLeft: margin[3],
-          }
+          };
       }
     }
+
+    return {};
   }
 
   handlePaddings() {
@@ -81,7 +131,7 @@ export default class Block extends Component<BlockProps> {
         paddingRight: padding,
         paddingBottom: padding,
         paddingLeft: padding,
-      }
+      };
     }
 
     if (typeof padding === 'object') {
@@ -93,30 +143,32 @@ export default class Block extends Component<BlockProps> {
             paddingRight: padding[0],
             paddingBottom: padding[0],
             paddingLeft: padding[0],
-          }
+          };
         case 2:
           return {
             paddingTop: padding[0],
             paddingRight: padding[1],
             paddingBottom: padding[0],
             paddingLeft: padding[1],
-          }
+          };
         case 3:
           return {
             paddingTop: padding[0],
             paddingRight: padding[1],
             paddingBottom: padding[2],
             paddingLeft: padding[1],
-          }
+          };
         default:
           return {
             paddingTop: padding[0],
             paddingRight: padding[1],
             paddingBottom: padding[2],
             paddingLeft: padding[3],
-          }
+          };
       }
     }
+
+    return {};
   }
 
   render() {
@@ -171,61 +223,13 @@ export default class Block extends Component<BlockProps> {
         <Animated.View style={blockStyles} {...props}>
           {children}
         </Animated.View>
-      )
+      );
     }
 
     return (
       <View style={blockStyles} {...props}>
         {children}
       </View>
-    )
+    );
   }
 }
-
-export const styles: any = StyleSheet.create({
-  block: {
-    flex: 1,
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  column: {
-    flexDirection: 'column',
-  },
-  card: {
-    borderRadius: theme.sizes.radius,
-  },
-  center: {
-    alignItems: 'center',
-  },
-  middle: {
-    justifyContent: 'center',
-  },
-  left: {
-    justifyContent: 'flex-start',
-  },
-  right: {
-    justifyContent: 'flex-end',
-  },
-  top: {
-    justifyContent: 'flex-start',
-  },
-  bottom: {
-    justifyContent: 'flex-end',
-  },
-  shadow: {
-    shadowColor: theme.colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 13,
-    elevation: 2,
-  },
-  accent: { backgroundColor: theme.colors.accent, },
-  primary: { backgroundColor: theme.colors.primary, },
-  secondary: { backgroundColor: theme.colors.secondary, },
-  tertiary: { backgroundColor: theme.colors.tertiary, },
-  black: { backgroundColor: theme.colors.black, },
-  white: { backgroundColor: theme.colors.white, },
-  gray: { backgroundColor: theme.colors.gray, },
-  gray2: { backgroundColor: theme.colors.gray2, },
-});

@@ -1,45 +1,45 @@
 {
-    "navigation": {
-        "home": "Home",
-        "feel_good_tools": "Feel Good Tools",
-        "profile": "Profile",
-        "global_scores": "Global scores",
-        "summary": "Summary",
-        "legend": "Legend"
+  "navigation": {
+    "home": "Home",
+    "feel_good_tools": "Feel Good Tools",
+    "profile": "Profile",
+    "global_scores": "Global scores",
+    "summary": "Summary",
+    "legend": "Legend"
+  },
+  "welcome": {
+    "header": "I Feel Good",
+    "paragraph": "Find out what you need,\n and also what you don't",
+    "signup": "SIGN UP",
+    "signin": "I HAVE AN ACCOUNT"
+  },
+  "home": {
+    "relationships": "RELATIONSHIPS",
+    "activities": "ACTIVITIES",
+    "intakes": "INTAKES",
+    "other": "OTHER",
+    "overall": "OVERALL",
+    "view_details": "View details",
+    "global_scores": "Global scores"
+  },
+  "summary": {
+    "relationships": "Relationships",
+    "activities": "Activities",
+    "intakes": "Intakes",
+    "other": "Other",
+    "overall": "Overall",
+    "legends": "Legends",
+    "detail_perceptions": "Details of your perceptions"
+  },
+  "legend": {
+    "header": {
+      "title": "Your Feel Good Level",
+      "body": "The scores you gave during self-assesment are used to calculate an average fell good score."
     },
-    "welcome": {
-        "header": "I Feel Good",
-        "paragraph": "Find out what you need,\n and also what you don't",
-        "signup": "SIGN UP",
-        "signin": "I HAVE AN ACCOUNT"
-    },
-    "home": {
-        "relationships": "RELATIONSHIPS",
-        "activities": "ACTIVITIES",
-        "intakes": "INTAKES",
-        "other": "OTHER",
-        "overall": "OVERALL",
-        "view_details": "View details",
-        "global_scores": "Global scores"
-    },
-    "summary": {
-        "relationships": "Relationships",
-        "activities": "Activities",
-        "intakes": "Intakes",
-        "other": "Other",
-        "overall": "Overall",
-        "legends": "Legends",
-        "detail_perceptions": "Details of your perceptions"
-    },
-    "legend": {
-        "header": {
-            "title": "Your Feel Good Level",
-            "body": "The scores you gave during self-assesment are used to calculate an average fell good score."
-        },
-        "subtitle": {
-            "good": "Factors that are on good track, keep going in this direction!",
-            "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
-            "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
-        }
+    "subtitle": {
+      "good": "Factors that are on good track, keep going in this direction!",
+      "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
+      "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
     }
+  }
 }
