@@ -1,4 +1,4 @@
-import { theme } from '../constants';
+import { Enum } from '../constants';
 
 const me = () => {
   return Promise.resolve({
@@ -14,35 +14,35 @@ const me = () => {
   });
 };
 
-const getSummary = (type: theme.EvaluationType) => {
+const getSummary = (type: Enum.EvaluationType) => {
   switch (type) {
-    case theme.EvaluationType.RELATIONSHIPS:
+    case Enum.EvaluationType.RELATIONSHIPS:
       return Promise.resolve({
         score: 1.8,
         affections: [
           {
             factors: ['Johny'],
-            tags: theme.Tags.FAMILY,
+            tags: Enum.Tags.FAMILY,
             score: 5,
           },
           {
             factors: ['Sam'],
-            tags: theme.Tags.LOVER,
+            tags: Enum.Tags.LOVER,
             score: 3,
           },
           {
             factors: ['My neighbour'],
-            tags: theme.Tags.OTHER,
+            tags: Enum.Tags.OTHER,
             score: 1,
           },
           {
             factors: ['Jenny'],
-            tags: theme.Tags.WORK,
+            tags: Enum.Tags.WORK,
             score: -1,
           },
           {
             factors: ['Boss'],
-            tags: theme.Tags.WORK,
+            tags: Enum.Tags.WORK,
             score: -3,
           },
         ],

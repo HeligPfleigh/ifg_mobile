@@ -8,7 +8,7 @@ import get from 'lodash/get';
 import { Block } from '../../components';
 import { styles } from './styles';
 import SummaryHeader from './components/SummaryHeader';
-import { theme } from '../../constants';
+import { Enum } from '../../constants';
 import { AppState, SummaryState } from '../../store/types';
 import { loadSummary } from '../../store/actions';
 import { summaryIcon } from '../../core/utils';
@@ -22,13 +22,13 @@ interface SummaryProps {
 class Summary extends Component<SummaryProps> {
   componentDidMount() {
     const { navigation, dispatch } = this.props;
-    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
     dispatch(loadSummary(type));
   }
 
   _renderSummaryHeader = () => {
     const { navigation, summary } = this.props;
-    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
     const score = get(summary, `data.${type}.score`, 0);
     return <SummaryHeader type={type} score={score} />;
   };
@@ -61,7 +61,7 @@ class Summary extends Component<SummaryProps> {
 
   render() {
     const { navigation, summary } = this.props;
-    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
     const data = get(summary, `data.${type}.affections`, []);
     return (
       <FlatList

@@ -8,7 +8,6 @@ const styles: any = StyleSheet.create({
     borderRadius: theme.sizes.radius,
     height: theme.sizes.base * 3,
     justifyContent: 'center',
-    marginVertical: theme.sizes.padding / 3,
   },
   shadow: {
     shadowColor: theme.colors.black,

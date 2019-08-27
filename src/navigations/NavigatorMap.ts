@@ -11,6 +11,7 @@ enum NavigatorMap {
   GlobalScores = 'GlobalScores',
   Summary = 'Summary',
   Legend = 'Legend',
+  Evaluate = 'Evaluate',
 }
 
 export default NavigatorMap;

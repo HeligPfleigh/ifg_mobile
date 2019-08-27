@@ -1,4 +1,4 @@
-import { theme } from '../../constants';
+import { Enum } from '../../constants';
 
 export const REQUEST_SUMMARY = 'REQUEST_SUMMARY';
 export const LOAD_SUMMARY_SUCCESSFUL = 'LOAD_SUMMARY_SUCCESSFUL';
@@ -6,8 +6,8 @@ export const LOAD_SUMMARY_FAILURE = 'LOAD_SUMMARY_FAILURE';
 
 export interface SummaryState {
   isFetching: boolean;
-  currEvaluationType?: theme.EvaluationType;
-  data?: { [propName in theme.EvaluationType]: SummaryResponse };
+  currEvaluationType?: Enum.EvaluationType;
+  data?: { [propName in Enum.EvaluationType]: SummaryResponse };
   error?: SummaryError;
 }
 
@@ -18,7 +18,7 @@ export interface SummaryError {
 
 interface Factors {
   factors: string[];
-  tag?: theme.Tags | null;
+  tag?: Enum.Tags | null;
   score: number;
 }
 
@@ -29,7 +29,7 @@ export interface SummaryResponse {
 
 export interface SummaryRequestAction {
   type: typeof REQUEST_SUMMARY;
-  payload: theme.EvaluationType;
+  payload: Enum.EvaluationType;
 }
 
 export interface SummarySuccessfulAction {

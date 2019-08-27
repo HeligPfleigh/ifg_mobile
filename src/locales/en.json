@@ -5,7 +5,8 @@
     "profile": "Profile",
     "global_scores": "Global scores",
     "summary": "Summary",
-    "legend": "Legend"
+    "legend": "Legend",
+    "evaluate": "Evaluate"
   },
   "welcome": {
     "header": "I Feel Good",
@@ -40,6 +41,36 @@
       "good": "Factors that are on good track, keep going in this direction!",
       "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
       "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
+    }
+  },
+  "evaluate": {
+    "step1": {
+      "header": {
+        "name": "Who has brought joy to you, \nwho gave you negative waves?",
+        "label": "Add label",
+        "desc": "Add description"
+      },
+      "name": "Name",
+      "optional": "(Optional)"
+    },
+    "step2": {
+      "header": {
+        "feelling": "How does this relation\n influence you?",
+        "and": "And"
+      },
+      "feel": "I feel",
+      "energy": "The impact is on \nmy energy level",
+      "mood": "The impact is on \nmy moods"
+    },
+    "step3": {
+      "header": "How strong is this feeling?",
+      "slight": "Slight impact",
+      "huge": "Huge impact"
+    },
+    "footer": {
+      "next": "NEXT",
+      "draft": "SAVE AS DRAFT",
+      "finish": "FINISH"
     }
   }
 }

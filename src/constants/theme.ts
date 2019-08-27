@@ -7,6 +7,7 @@ const colors = {
   white: '#FFFFFF',
   gray: '#9DA3B4',
   gray2: '#C5CCD6',
+  gray3: '#E0E0E0',
   green: '#008000',
   pink: '#FF7CB6',
   blue: '#02A4F7',
@@ -15,6 +16,7 @@ const colors = {
   indigo: '#7F81FF',
   red: '#FF1E32',
   yellow: '#FFEB0A',
+  purple1: '#8E78E1',
 };
 
 const gradients = {
@@ -34,7 +36,7 @@ const sizes = {
   // global sizes
   base: 16,
   font: 14,
-  radius: 6,
+  radius: 8,
   padding: 25,
   icon: 25,
   margin: 10,
@@ -76,21 +78,4 @@ const fonts = {
   },
 };
 
-enum EvaluationType {
-  RELATIONSHIPS = 'relationships',
-  ACTIVITIES = 'activities',
-  INTAKES = 'intakes',
-  OTHER = 'other',
-  OVERALL = 'overall',
-}
-
-enum Tags {
-  FAMILY = 'Family',
-  LOVER = 'Lover/Partner',
-  FRIENDS = 'Friends',
-  WORK = 'Work',
-  SOCIAL = 'Social',
-  OTHER = 'Other',
-}
-
-export { colors, sizes, fonts, gradients, Tags, EvaluationType };
+export { colors, sizes, fonts, gradients };

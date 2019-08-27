@@ -10,6 +10,7 @@ import HomeScreen from '../screens/Home';
 import GlobalScoresScreen from '../screens/GlobalScores';
 import SummaryScreen from '../screens/Summary';
 import LegendScreen from '../screens/Legend';
+import EvaluateScreen from '../screens/Evaluate';
 
 // https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
 MaterialCommunityIcons.loadFont();
@@ -18,6 +19,9 @@ const HomeStack = createStackNavigator(
   {
     [NavigatorMap.Home]: {
       screen: HomeScreen,
+      navigationOptions: {
+        header: null,
+      },
     },
     [NavigatorMap.GlobalScores]: {
       screen: GlobalScoresScreen,
@@ -37,6 +41,9 @@ const HomeStack = createStackNavigator(
         title: I18n.t('navigation.legend'),
       },
     },
+    [NavigatorMap.Evaluate]: {
+      screen: EvaluateScreen,
+    },
   },
   {
     initialRouteName: NavigatorMap.Home,
@@ -44,6 +51,7 @@ const HomeStack = createStackNavigator(
       headerStyle: {
         backgroundColor: theme.colors.secondary,
       },
+      headerBackTitle: null,
     },
   },
 );
