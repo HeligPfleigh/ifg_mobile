@@ -105,5 +105,10 @@
     "tip": "FEEL GOOD TIPS",
     "draft": "FINISH MY DRAFTS",
     "action_list": "MY ACTION LIST"
+  },
+  "profile": {
+    "account_settings": "Account settings",
+    "account_parameters": "Parameters",
+    "account_contact_us": "Contact us"
   }
 }

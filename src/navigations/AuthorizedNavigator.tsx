@@ -1,9 +1,9 @@
-import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps } from 'react-navigation';
 import React from 'react';
+import { Text } from 'react-native';
+import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Text, View } from 'react-native';
-import I18n from '../core/i18n';
 
+import I18n from '../core/i18n';
 import { theme } from '../constants';
 import NavigatorMap from './NavigatorMap';
 import HomeScreen from '../screens/Home';
@@ -11,12 +11,9 @@ import GlobalScoresScreen from '../screens/GlobalScores';
 import SummaryScreen from '../screens/Summary';
 import LegendScreen from '../screens/Legend';
 import EvaluateScreen from '../screens/Evaluate';
-
 import FeelGoodToolsScreen from '../screens/FeelGoodTools';
 import DraftsScreen from '../screens/Drafts';
-
-// https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
-MaterialCommunityIcons.loadFont();
+import ProfileScreen from '../screens/Profile';
 
 const HomeStack = createStackNavigator(
   {
@@ -85,6 +82,23 @@ const FeelGoodToolsStack = createStackNavigator(
   },
 );
 
+const ProfileStack = createStackNavigator(
+  {
+    [NavigatorMap.Profile]: {
+      screen: ProfileScreen,
+    },
+  },
+  {
+    initialRouteName: NavigatorMap.Profile,
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: theme.colors.secondary,
+      },
+      headerBackTitle: null,
+    },
+  },
+);
+
 export default createMaterialTopTabNavigator(
   {
     [NavigatorMap.HomeStack]: {
@@ -110,7 +124,7 @@ export default createMaterialTopTabNavigator(
       },
     },
     [NavigatorMap.Profile]: {
-      screen: () => <View />,
+      screen: ProfileStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.profile')}</Text>,
         tabBarIcon: ({ tintColor }: TabBarIconProps) => (
@@ -120,6 +134,7 @@ export default createMaterialTopTabNavigator(
     },
   },
   {
+    initialRouteName: NavigatorMap.Profile,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,

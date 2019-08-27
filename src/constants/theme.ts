@@ -39,6 +39,8 @@ const sizes = {
   radius: 8,
   padding: 25,
   icon: 25,
+  innerIcon: 35,
+  bigIcon: 50,
   margin: 10,
 
   // font sizes
