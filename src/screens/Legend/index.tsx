@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import Chroma from 'chroma-js';
 
-import { Block } from '../../components';
+import { Block, ScoreText } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import { styles } from './styles';
 import { FeelGoodLv4, FeelGoodLv2, FeelGoodLv0 } from '../../assets/images';
 
-const COLOR_SPECTRUM = Chroma.scale([theme.colors.green, theme.colors.yellow, theme.colors.red]).colors(11);
-/* eslint-disable-next-line */
-const scores = Array.apply(null, Array(11))
-  .map((_, index) => index - 5)
-  .reverse();
+const scores = [...Array(11)].map((_, index) => index - 5).reverse();
 
 export default class Legend extends Component {
   render() {
@@ -25,9 +20,9 @@ export default class Legend extends Component {
           </Block>
           <Block flex={3} padding={theme.sizes.base} row>
             <Block flex={1} style={styles.leftContainer}>
-              {scores.map((item, index) => (
+              {scores.map(item => (
                 <Block flex={1} center middle key={`${item}`}>
-                  <Text style={{ color: COLOR_SPECTRUM[index] }}>{item}</Text>
+                  <ScoreText score={item} />
                 </Block>
               ))}
             </Block>
@@ -37,7 +32,7 @@ export default class Legend extends Component {
                   <FeelGoodLv4 width={100} height={100} />
                 </Block>
                 <Block flex={3} middle>
-                  <Text style={{ color: theme.colors.green }}>{I18n.t('legend.subtitle.good')}</Text>
+                  <Text style={{ color: theme.scoreSpectrum[10] }}>{I18n.t('legend.subtitle.good')}</Text>
                 </Block>
               </Block>
               <Block flex={1} row style={styles.rightMiddleContainer}>
@@ -53,7 +48,7 @@ export default class Legend extends Component {
                   <FeelGoodLv0 width={100} height={100} />
                 </Block>
                 <Block flex={3} middle>
-                  <Text style={{ color: theme.colors.red }}>{I18n.t('legend.subtitle.bad')}</Text>
+                  <Text style={{ color: theme.scoreSpectrum[0] }}>{I18n.t('legend.subtitle.bad')}</Text>
                 </Block>
               </Block>
             </Block>

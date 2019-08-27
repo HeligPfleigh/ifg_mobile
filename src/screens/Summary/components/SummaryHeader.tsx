@@ -3,7 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
 import { Text, StyleSheet } from 'react-native';
-import { Block, Button } from '../../../components';
+import { Block, Button, ScoreText } from '../../../components';
 import { theme, Enum } from '../../../constants';
 import { showWeatherIcon, summaryDisplayProps } from '../../../core/utils';
 import I18n from '../../../core/i18n';
@@ -46,10 +46,13 @@ const styles = StyleSheet.create({
     margin: theme.sizes.margin,
     padding: theme.sizes.margin * 2,
   },
+  title: {
+    fontSize: theme.sizes.h2,
+    marginBottom: theme.sizes.margin / 2,
+  },
   score: {
     fontSize: theme.sizes.h1,
     fontWeight: 'bold',
-    color: theme.colors.green,
   },
   legendTxt: {
     color: theme.colors.secondary,
@@ -94,8 +97,8 @@ class SummaryHeader extends Component<SummaryHeaderProps> {
               </Block>
             </LinearGradient>
             <Block flex={2} middle style={styles.summary}>
-              <Text>{title}</Text>
-              <Text style={styles.score}>{score}</Text>
+              <Text style={styles.title}>{title}</Text>
+              <ScoreText score={score} style={styles.score} />
             </Block>
           </Block>
         </LinearGradient>

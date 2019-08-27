@@ -31,9 +31,6 @@ export const styles = StyleSheet.create({
   label: {
     color: theme.colors.black,
   },
-  score: {
-    color: theme.colors.green,
-  },
   icon: {
     marginLeft: 1,
     marginTop: 1,

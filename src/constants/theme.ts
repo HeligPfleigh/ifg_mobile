@@ -78,4 +78,18 @@ const fonts = {
   },
 };
 
-export { colors, sizes, fonts, gradients };
+const scoreSpectrum = [
+  '#B10000',
+  '#D90606',
+  '#F41228',
+  '#FF9957',
+  '#FFB585',
+  '#FFEB0A',
+  '#FFDB6E',
+  '#FFC732',
+  '#54AF53',
+  '#219C20',
+  '#056404',
+];
+
+export { colors, sizes, fonts, gradients, scoreSpectrum };
