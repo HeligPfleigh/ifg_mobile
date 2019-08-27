@@ -70,7 +70,7 @@ interface BlockProps {
   color?: any;
   space?: any;
   wrap?: any;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   children?: ReactNode;
 }
 

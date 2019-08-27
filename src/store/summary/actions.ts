@@ -9,9 +9,9 @@ import {
   LOAD_SUMMARY_FAILURE,
   LOAD_SUMMARY_SUCCESSFUL,
 } from './types';
-import { theme } from '../../constants';
+import { Enum } from '../../constants';
 
-function summaryRequest(type: theme.EvaluationType): SummaryActionType {
+function summaryRequest(type: Enum.EvaluationType): SummaryActionType {
   return {
     type: REQUEST_SUMMARY,
     payload: type,
@@ -32,7 +32,7 @@ function summarySuccessfull(response: SummaryResponse): SummaryActionType {
   };
 }
 
-export function loadSummary(evaluationType: theme.EvaluationType) {
+export function loadSummary(evaluationType: Enum.EvaluationType) {
   return async function(dispatch: Dispatch<SummaryActionType>) {
     dispatch(summaryRequest(evaluationType));
     try {

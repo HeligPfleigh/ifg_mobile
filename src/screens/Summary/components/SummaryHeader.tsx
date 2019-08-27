@@ -4,7 +4,7 @@ import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
 import { Text, StyleSheet } from 'react-native';
 import { Block, Button } from '../../../components';
-import { theme } from '../../../constants';
+import { theme, Enum } from '../../../constants';
 import { showWeatherIcon, summaryDisplayProps } from '../../../core/utils';
 import I18n from '../../../core/i18n';
 import NavigatorMap from '../../../navigations/NavigatorMap';
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 
 interface SummaryHeaderProps extends NavigationInjectedProps {
   score: number;
-  type: theme.EvaluationType;
+  type: Enum.EvaluationType;
 }
 
 class SummaryHeader extends Component<SummaryHeaderProps> {
