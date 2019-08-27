@@ -18,4 +18,8 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     marginRight: theme.sizes.margin,
   },
+  detail: {
+    fontSize: theme.sizes.font,
+    color: theme.colors.gray,
+  },
 });

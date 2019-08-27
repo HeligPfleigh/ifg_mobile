@@ -4,7 +4,7 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import get from 'lodash/get';
 
 import { connect } from 'react-redux';
-import { EvaluationItem } from '../../components';
+import { EvaluationItem, ScoreText } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -32,42 +32,42 @@ class GlobalScores extends Component<HomeProps> {
           colors={theme.gradients.pink}
           header={I18n.t('home.relationships')}
           headerColor={theme.colors.pink}
-          text={get(score, Enum.EvaluationType.RELATIONSHIPS, 0)}
           icon={showWeatherIcon(get(score, Enum.EvaluationType.RELATIONSHIPS, 0))}
-          onPressIcon={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
+          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
+          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.RELATIONSHIPS, 0)} />}
         />
         <EvaluationItem
           colors={theme.gradients.blue}
           header={I18n.t('home.activities')}
           headerColor={theme.colors.blue}
-          text={get(score, Enum.EvaluationType.ACTIVITIES, 0)}
           icon={showWeatherIcon(get(score, Enum.EvaluationType.ACTIVITIES, 0))}
-          onPressIcon={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
+          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
+          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.ACTIVITIES, 0)} />}
         />
         <EvaluationItem
           colors={theme.gradients.orange}
           header={I18n.t('home.intakes')}
           headerColor={theme.colors.orange}
-          text={get(score, Enum.EvaluationType.INTAKES, 0)}
           icon={showWeatherIcon(get(score, Enum.EvaluationType.INTAKES, 0))}
-          onPressIcon={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
+          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
+          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.INTAKES, 0)} />}
         />
         <EvaluationItem
           colors={theme.gradients.purple}
-          text={get(score, Enum.EvaluationType.OTHER, 0)}
           header={I18n.t('home.other')}
           headerColor={theme.colors.purple}
           icon={showWeatherIcon(get(score, Enum.EvaluationType.OTHER, 0))}
-          onPressIcon={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
+          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
+          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.OTHER, 0)} />}
         />
 
         <EvaluationItem
           colors={theme.gradients.indigo}
           header={I18n.t('home.overall')}
           headerColor={theme.colors.indigo}
-          text={get(score, Enum.EvaluationType.OVERALL, 0)}
           icon={showWeatherIcon(get(score, Enum.EvaluationType.OVERALL, 0))}
-          onPressIcon={() => this._navigateToSummaryScreen(Enum.EvaluationType.OVERALL)}
+          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OVERALL)}
+          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.OVERALL, 0)} />}
         />
       </ScrollView>
     );

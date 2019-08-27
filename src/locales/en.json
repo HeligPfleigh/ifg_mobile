@@ -21,7 +21,13 @@
     "other": "OTHER",
     "overall": "OVERALL",
     "view_details": "View details",
-    "global_scores": "Global scores"
+    "global_scores": "Global scores",
+    "description": {
+      "relationships": "People who influence my energy\nlevel and moods.",
+      "activities": "Occupations that change my\nphysical and mental states.",
+      "intakes": "Absorptions that impact my\nbody and mind",
+      "other": "Any other aspect that modifies\nmy vitality and spirit"
+    }
   },
   "summary": {
     "relationships": "Relationships",

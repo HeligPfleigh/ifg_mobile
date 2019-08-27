@@ -31,10 +31,6 @@ class Home extends Component<HomeProps> {
     return this.props.navigation.navigate(NavigatorMap.GlobalScores);
   };
 
-  _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) => {
-    return this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
-  };
-
   _navigateToEvaluateScreen = (evaluationType: Enum.EvaluationType) => {
     return this.props.navigation.navigate(NavigatorMap.Evaluate, { evaluationType });
   };
@@ -59,38 +55,34 @@ class Home extends Component<HomeProps> {
             <EvaluationItem
               colors={theme.gradients.pink}
               header={I18n.t('home.relationships')}
-              text={I18n.t('home.view_details')}
               headerColor={theme.colors.pink}
               icon={showWeatherIcon(get(score, Enum.EvaluationType.RELATIONSHIPS, 0))}
-              onPressText={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
-              onPressIcon={() => this._navigateToEvaluateScreen(Enum.EvaluationType.RELATIONSHIPS)}
+              onPress={() => this._navigateToEvaluateScreen(Enum.EvaluationType.RELATIONSHIPS)}
+              detailComponent={<Text style={styles.detail}>{I18n.t('home.description.relationships')}</Text>}
             />
             <EvaluationItem
               colors={theme.gradients.blue}
               header={I18n.t('home.activities')}
-              text={I18n.t('home.view_details')}
               headerColor={theme.colors.blue}
               icon={showWeatherIcon(get(score, Enum.EvaluationType.ACTIVITIES, 0))}
-              onPressText={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
-              onPressIcon={() => this._navigateToEvaluateScreen(Enum.EvaluationType.ACTIVITIES)}
+              onPress={() => this._navigateToEvaluateScreen(Enum.EvaluationType.ACTIVITIES)}
+              detailComponent={<Text style={styles.detail}>{I18n.t('home.description.activities')}</Text>}
             />
             <EvaluationItem
               colors={theme.gradients.orange}
               header={I18n.t('home.intakes')}
-              text={I18n.t('home.view_details')}
               headerColor={theme.colors.orange}
               icon={showWeatherIcon(get(score, Enum.EvaluationType.INTAKES, 0))}
-              onPressText={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
-              onPressIcon={() => this._navigateToEvaluateScreen(Enum.EvaluationType.INTAKES)}
+              onPress={() => this._navigateToEvaluateScreen(Enum.EvaluationType.INTAKES)}
+              detailComponent={<Text style={styles.detail}>{I18n.t('home.description.intakes')}</Text>}
             />
             <EvaluationItem
               colors={theme.gradients.purple}
-              text={I18n.t('home.view_details')}
               header={I18n.t('home.other')}
               headerColor={theme.colors.purple}
               icon={showWeatherIcon(get(score, Enum.EvaluationType.OTHER, 0))}
-              onPressText={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
-              onPressIcon={() => this._navigateToEvaluateScreen(Enum.EvaluationType.OTHER)}
+              onPress={() => this._navigateToEvaluateScreen(Enum.EvaluationType.OTHER)}
+              detailComponent={<Text style={styles.detail}>{I18n.t('home.description.other')}</Text>}
             />
           </ScrollView>
         </Block>
