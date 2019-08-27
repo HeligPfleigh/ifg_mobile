@@ -6,14 +6,12 @@ import { Dispatch } from 'redux';
 import get from 'lodash/get';
 
 import { Block } from '../../components';
-import { styles } from "./styles";
+import { styles } from './styles';
 import SummaryHeader from './components/SummaryHeader';
 import { theme } from '../../constants';
 import { AppState, SummaryState } from '../../store/types';
-import { loadSummary } from "../../store/actions";
+import { loadSummary } from '../../store/actions';
 import { summaryIcon } from '../../core/utils';
-
-
 
 interface SummaryProps {
   dispatch: Dispatch<any>;
@@ -22,12 +20,18 @@ interface SummaryProps {
 }
 
 class Summary extends Component<SummaryProps> {
+  componentDidMount() {
+    const { navigation, dispatch } = this.props;
+    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
+    dispatch(loadSummary(type));
+  }
+
   _renderSummaryHeader = () => {
     const { navigation, summary } = this.props;
     const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
     const score = get(summary, `data.${type}.score`, 0);
-    return (<SummaryHeader type={type} score={score} />);
-  }
+    return <SummaryHeader type={type} score={score} />;
+  };
 
   _renderSummaryItem = ({ item }: any) => {
     const factors = get(item, 'factors', []);
@@ -38,22 +42,22 @@ class Summary extends Component<SummaryProps> {
           {summaryIcon(score || 0)}
         </Block>
         <Block middle flex={3}>
-          {factors.map((factor: string, index: number) => <Text key={`factor-${index}`} style={styles.factorTxt}>{factor}</Text>)}
+          {factors.map((factor: string, index: number) => (
+            <Text key={`factor-${index}`} style={styles.factorTxt}>
+              {factor}
+            </Text>
+          ))}
         </Block>
         <Block flex={3} middle right row>
-          {tags && <Block flex={false} center middle style={styles.chip}>
-            <Text>{tags}</Text>
-          </Block>}
+          {tags && (
+            <Block flex={false} center middle style={styles.chip}>
+              <Text>{tags}</Text>
+            </Block>
+          )}
         </Block>
       </Block>
-    )
-  }
-
-  componentDidMount() {
-    const { navigation, dispatch } = this.props;
-    const type = navigation.getParam('evaluationType', theme.EvaluationType.OVERALL);
-    dispatch(loadSummary(type));
-  }
+    );
+  };
 
   render() {
     const { navigation, summary } = this.props;
@@ -71,7 +75,10 @@ class Summary extends Component<SummaryProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  summary: state.summary
+  summary: state.summary,
 });
 
-export default connect(mapStateToProps, null)(Summary);
+export default connect(
+  mapStateToProps,
+  null,
+)(Summary);

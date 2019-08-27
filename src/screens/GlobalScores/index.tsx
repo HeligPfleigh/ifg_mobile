@@ -3,13 +3,13 @@ import { ScrollView } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import get from 'lodash/get';
 
+import { connect } from 'react-redux';
 import { EvaluationItem } from '../../components';
 import { theme } from '../../constants';
-import I18n from "../../core/i18n";
+import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { showWeatherIcon } from '../../core/utils';
 import { MeState, AppState } from '../../store/types';
-import { connect } from 'react-redux';
 
 interface HomeProps {
   navigation: NavigationScreenProp<NavigationState>;
@@ -17,10 +17,15 @@ interface HomeProps {
 }
 
 class GlobalScores extends Component<HomeProps> {
-  _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) => this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType })
+  _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) =>
+    this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
 
   render() {
-    const { me: { data: {score} } } = this.props;
+    const {
+      me: {
+        data: { score },
+      },
+    } = this.props;
     return (
       <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
         <EvaluationItem
@@ -70,7 +75,7 @@ class GlobalScores extends Component<HomeProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  me: state.me
-})
+  me: state.me,
+});
 
 export default connect(mapStateToProps)(GlobalScores);

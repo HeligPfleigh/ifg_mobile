@@ -32,13 +32,15 @@ local.properties
 
 # Visual Studio Code
 #
-.vscode/
+# .vscode/
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+yarn.lock
+package-lock.json
 
 # BUCK
 buck-out/
@@ -61,6 +63,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/ios/Podfile.lock
 
 # Mislanceous
 package-lock.json

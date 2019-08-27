@@ -1,8 +1,8 @@
 {
-    "welcome": {
-        "header": "HEADER",
-        "paragraph": "PARAGRAPH",
-        "signup": "SIGN UP",
-        "signin": "SIGN IN"
-    }
- }
+  "welcome": {
+    "header": "HEADER",
+    "paragraph": "PARAGRAPH",
+    "signup": "SIGN UP",
+    "signin": "SIGN IN"
+  }
+}

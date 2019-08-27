@@ -1,17 +1,18 @@
-import {
-    createStackNavigator,
-} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
 import NavigatorMap from './NavigatorMap';
 import SignInScreen from '../screens/SignIn';
 import WelcomeScreen from '../screens/Welcome';
 
-export const AuthStack = createStackNavigator({
+export const AuthStack = createStackNavigator(
+  {
     [NavigatorMap.Welcome]: WelcomeScreen,
-    [NavigatorMap.SignIn]: SignInScreen
-}, {
+    [NavigatorMap.SignIn]: SignInScreen,
+  },
+  {
     defaultNavigationOptions: {
-        header: null
+      header: null,
     },
-    initialRouteName: NavigatorMap.Welcome
-});
+    initialRouteName: NavigatorMap.Welcome,
+  },
+);
