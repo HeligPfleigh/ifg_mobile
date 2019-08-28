@@ -1,0 +1,93 @@
+import React, { Component } from 'react';
+import Modal from 'react-native-modal';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import noop from 'lodash/noop';
+
+import { hideModal } from '../../store/actions';
+import {
+  SelfEvaluationModal,
+  DeleteAccountModal,
+  SignUpSuccessModal,
+  EvaluationSavedModal,
+  DraftSavedModal,
+  DefaultModal,
+} from './NoticeModal';
+import { AppState } from '../../store/types';
+import { Enum } from '../../constants';
+
+interface ModalContainerProps {
+  isVisible: boolean;
+  modalType: Enum.ModalType;
+  onModalPress: () => void;
+  dispatch: Dispatch<any>;
+}
+
+interface ModalContainerState {
+  isVisible: boolean;
+}
+
+const defaultState = {
+  isVisible: false,
+};
+
+const MODAL_TYPES: any = {
+  [Enum.ModalType.DEFAULT]: DefaultModal,
+  [Enum.ModalType.SELF_EVALUATION]: SelfEvaluationModal,
+  [Enum.ModalType.DRAFT_SAVED]: DraftSavedModal,
+  [Enum.ModalType.EVALUATION_SAVED]: EvaluationSavedModal,
+  [Enum.ModalType.SIGNUP_SUCCESS]: SignUpSuccessModal,
+  [Enum.ModalType.DELETE_ACCOUNT]: DeleteAccountModal,
+};
+
+class ModalContainer extends Component<ModalContainerProps, ModalContainerState> {
+  static getDerivedStateFromProps(nextProps: ModalContainerProps, prevState: ModalContainerState) {
+    if (nextProps.isVisible !== prevState.isVisible) {
+      return {
+        isVisible: nextProps.isVisible,
+      };
+    }
+    return defaultState;
+  }
+
+  state = defaultState;
+
+  preModalPress = noop;
+
+  hide = () => this.props.dispatch(hideModal());
+
+  onModalPress = () => {
+    this.preModalPress = this.props.onModalPress;
+    this.hide();
+  };
+
+  onModalHide = () => {
+    this.preModalPress();
+    this.preModalPress = noop;
+  };
+
+  render() {
+    const { isVisible } = this.state;
+    const { modalType } = this.props;
+    const SpecifiedModal = MODAL_TYPES[modalType];
+    return (
+      <Modal
+        isVisible={isVisible}
+        onBackdropPress={this.hide}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        animationInTiming={600}
+        animationOutTiming={600}
+        onModalHide={this.onModalHide}
+      >
+        <SpecifiedModal onPress={this.onModalPress} />
+      </Modal>
+    );
+  }
+}
+
+const mapStateToProps = (state: AppState) => ({
+  ...state.modal,
+});
+
+export default connect(mapStateToProps)(ModalContainer);

@@ -8,6 +8,26 @@
     "legend": "Legend",
     "evaluate": "Evaluate"
   },
+  "modal": {
+    "self_evaluation": {
+      "header": "Please do self-evaluations \nin order to get feel good scores."
+    },
+    "draft_saved": {
+      "header": "Your draft has been saved.",
+      "body": "You can take time to think and finish it \nat any time in your Feel Good Tools."
+    },
+    "evaluation_saved": {
+      "header": "Your feel good scores \nhave been updated accordingly.",
+      "body": "You can go to the Scores page to \nsee the change."
+    },
+    "signup_success": {
+      "header": "Congratulation!",
+      "body": "Welcome to your space! \n\n You can now self-evaluate everything in your life. Satisfaction scores will be calculated and updated \n in real time following your evaluations."
+    },
+    "delete_account": {
+      "body": "We hope that you will be back soon."
+    }
+  },
   "welcome": {
     "header": "I Feel Good",
     "paragraph": "Find out what you need,\n and also what you don't",

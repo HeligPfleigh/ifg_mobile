@@ -13,7 +13,9 @@ import {
 import { theme, Enum } from '../constants';
 import I18n from './i18n';
 
-export const showWeatherIcon = (score: number) => {
+export const showWeatherIcon = (score?: number) => {
+  if (score === undefined) return null;
+
   if (score < -2 && score >= -5) {
     return <StormImg />;
   }

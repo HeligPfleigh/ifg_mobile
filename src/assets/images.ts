@@ -9,6 +9,11 @@ import FeelGoodLv3 from './images/feel_good_3.svg';
 import FeelGoodLv4 from './images/feel_good_4.svg';
 import EnergyImg from './images/energy.svg';
 import MoodImg from './images/mood.svg';
+import Rocket from './images/rocket.svg';
+import BrainStorm from './images/brainstorm.svg';
+import Folder from './images/folder.svg';
+import Congratulation from './images/congratulation.svg';
+import Finger from './images/finger.svg';
 
 const DefaultAvatar = require('./images/avatar.png');
 
@@ -25,4 +30,9 @@ export {
   FeelGoodLv4,
   EnergyImg,
   MoodImg,
+  Rocket,
+  BrainStorm,
+  Folder,
+  Congratulation,
+  Finger,
 };
