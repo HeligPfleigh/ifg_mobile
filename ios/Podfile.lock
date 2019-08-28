@@ -83,7 +83,7 @@ PODS:
     - React-Core (= 0.60.5)
   - RNCAsyncStorage (1.6.1):
     - React
-  - RNGestureHandler (1.3.0):
+  - RNGestureHandler (1.4.0):
     - React
   - RNLocalize (1.1.4):
     - React
@@ -211,7 +211,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 2105b2e0e2b66a6408fc69a46c8a7fb5b2fdade0
   React-RCTWebSocket: cd932a16b7214898b6b7f788c8bddb3637246ac4
   RNCAsyncStorage: 621bad7a889b5bf1583a52547f2dcd3a4d1ff15e
-  RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
+  RNGestureHandler: 71871d4792db2a73f70204483d30350ec9384cbd
   RNLocalize: a91e036a6abc46e656a989456701182e0e228c7a
   RNReanimated: 1b52415c4302f198cb581282a0166690bad62c43
   RNSVG: a53a5de0d90ec96a6502cc3a4534dfcc0c130622

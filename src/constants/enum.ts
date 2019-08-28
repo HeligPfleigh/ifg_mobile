@@ -25,4 +25,13 @@ enum ImpactType {
   MOOD = 'mood',
 }
 
-export { Tags, EvaluationType, Feeling, ImpactType };
+enum ModalType {
+  DEFAULT = 'default',
+  SELF_EVALUATION = 'self_evaluation',
+  DRAFT_SAVED = 'draft_saved',
+  EVALUATION_SAVED = 'evaluation_saved',
+  SIGNUP_SUCCESS = 'signup_success',
+  DELETE_ACCOUNT = 'delete_account',
+}
+
+export { Tags, EvaluationType, Feeling, ImpactType, ModalType };
