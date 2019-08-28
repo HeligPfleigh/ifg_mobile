@@ -24,9 +24,13 @@ export default class Summarize extends Component<SummarizeProps> {
         <Block flex={2}>
           <Text style={styles.label}>{I18n.t('home.global_scores')}</Text>
         </Block>
-        <Block row right flex={2}>
-          <ScoreText score={score} />
-        </Block>
+        {score !== undefined ? (
+          <Block row right flex={2}>
+            <ScoreText score={score} />
+          </Block>
+        ) : (
+          <Block />
+        )}
         <Block flex={1} right row>
           <TouchableOpacity style={styles.roundContainer} onPress={onPress}>
             <MaterialCommunityIcons
