@@ -16,6 +16,15 @@ import DraftsScreen from '../screens/Drafts';
 import ProfileScreen from '../screens/Profile';
 import AccountSettings from '../screens/AccountSettings';
 
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: theme.colors.secondary,
+  },
+  headerBackTitle: null,
+  headerTintColor: theme.colors.black,
+  headerTitleStyle: { fontSize: theme.sizes.title },
+};
+
 const HomeStack = createStackNavigator(
   {
     [NavigatorMap.Home]: {
@@ -47,15 +56,8 @@ const HomeStack = createStackNavigator(
     },
   },
   {
+    defaultNavigationOptions,
     initialRouteName: NavigatorMap.Home,
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.colors.secondary,
-      },
-      headerBackTitle: null,
-      headerTintColor: theme.colors.black,
-      headerTitleStyle: { fontSize: theme.sizes.title },
-    },
   },
 );
 
@@ -75,15 +77,8 @@ const FeelGoodToolsStack = createStackNavigator(
     },
   },
   {
+    defaultNavigationOptions,
     initialRouteName: NavigatorMap.FeelGoodTools,
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.colors.secondary,
-      },
-      headerBackTitle: null,
-      headerTintColor: theme.colors.black,
-      headerTitleStyle: { fontSize: theme.sizes.title },
-    },
   },
 );
 
@@ -100,15 +95,8 @@ const ProfileStack = createStackNavigator(
     },
   },
   {
+    defaultNavigationOptions,
     initialRouteName: NavigatorMap.Profile,
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.colors.secondary,
-      },
-      headerBackTitle: null,
-      headerTintColor: theme.colors.black,
-      headerTitleStyle: { fontSize: theme.sizes.title },
-    },
   },
 );
 
