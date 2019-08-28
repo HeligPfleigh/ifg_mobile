@@ -12,6 +12,8 @@ import SummaryScreen from '../screens/Summary';
 import LegendScreen from '../screens/Legend';
 import EvaluateScreen from '../screens/Evaluate';
 
+import FeelGoodToolsScreen from '../screens/FeelGoodTools';
+
 // https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
 MaterialCommunityIcons.loadFont();
 
@@ -56,6 +58,26 @@ const HomeStack = createStackNavigator(
   },
 );
 
+const FeelGoodToolsStack = createStackNavigator(
+  {
+    [NavigatorMap.FeelGoodTools]: {
+      screen: FeelGoodToolsScreen,
+      navigationOptions: {
+        title: I18n.t('navigation.feel_good_tools'),
+      },
+    },
+  },
+  {
+    initialRouteName: NavigatorMap.FeelGoodTools,
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: theme.colors.secondary,
+      },
+      headerBackTitle: null,
+    },
+  },
+);
+
 export default createMaterialTopTabNavigator(
   {
     [NavigatorMap.HomeStack]: {
@@ -68,7 +90,7 @@ export default createMaterialTopTabNavigator(
       },
     },
     [NavigatorMap.FeelGoodTools]: {
-      screen: () => <View />,
+      screen: FeelGoodToolsStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.feel_good_tools')}</Text>,
         tabBarIcon: ({ tintColor }: TabBarIconProps) => (

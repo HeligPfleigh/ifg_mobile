@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { theme } from '../constants';
-import { Block } from '.';
+import { Block, Button } from '.';
 
 interface EvaluationItemProps {
   colors: string[];
@@ -14,6 +14,20 @@ interface EvaluationItemProps {
   onPress?: (event: GestureResponderEvent) => void;
   textColor?: string;
   detailComponent: ReactElement;
+  round?: boolean;
+}
+
+interface RoundIconProps {
+  icon?: ReactNode;
+  colors: string[];
+  size: number;
+}
+
+interface RoundIconBtnProps {
+  icon: ReactNode;
+  colors: string[];
+  text: string;
+  onPress: () => void;
 }
 
 const styles = StyleSheet.create({
@@ -35,8 +49,6 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   roundContainer: {
-    height: 80,
-    width: 80,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 40,
@@ -54,30 +66,52 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: theme.sizes.header,
-    marginBottom: theme.sizes.margin,
+  },
+  roundBtnContainer: {
+    marginHorizontal: theme.sizes.margin,
+  },
+  roundBtnTxt: {
+    fontSize: theme.sizes.base / 2,
+    textAlign: 'center',
   },
 });
+
+const RoundIcon: React.FC<RoundIconProps> = ({ icon, colors, size }: RoundIconProps) => (
+  <LinearGradient
+    colors={colors}
+    start={{ x: 0.0, y: 0.0 }}
+    end={{ x: 0.0, y: 1.0 }}
+    style={[styles.roundContainer, { width: size, height: size }]}
+  >
+    <Block flex={false} style={[styles.iconContainer, { width: size * 0.9, height: size * 0.9 }]}>
+      {icon}
+    </Block>
+  </LinearGradient>
+);
+
+export const RoundIconButton: React.FC<RoundIconBtnProps> = ({ icon, colors, text, onPress }: RoundIconBtnProps) => (
+  <Button onPress={onPress} style={styles.roundBtnContainer}>
+    <RoundIcon icon={icon} colors={colors} size={40} />
+    <Text style={styles.roundBtnTxt}>{text}</Text>
+  </Button>
+);
 
 export default class EvaluationItem extends Component<EvaluationItemProps> {
   static defaultProps: EvaluationItemProps;
 
   render() {
-    const { colors, header, headerColor, icon, onPress, detailComponent } = this.props;
+    const { colors, header, headerColor, icon, onPress, detailComponent, round } = this.props;
     return (
       <TouchableOpacity onPress={onPress}>
         <Block flex={false} row style={styles.container}>
-          {icon && (
-            <LinearGradient
-              colors={colors}
-              start={{ x: 0.0, y: 0.0 }}
-              end={{ x: 0.0, y: 1.0 }}
-              style={styles.roundContainer}
-            >
+          {icon &&
+            (round ? (
+              <RoundIcon icon={icon} colors={colors} size={80} />
+            ) : (
               <Block flex={false} style={styles.iconContainer}>
                 {icon}
               </Block>
-            </LinearGradient>
-          )}
+            ))}
 
           <Block flex={5} style={styles.textContainer}>
             <Text style={[styles.header, { color: headerColor }]}>{header}</Text>
@@ -97,4 +131,5 @@ EvaluationItem.defaultProps = {
   headerColor: '#00FFFF',
   textColor: theme.colors.gray,
   detailComponent: <View />,
+  round: true,
 };

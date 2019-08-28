@@ -13,16 +13,16 @@ import {
 import { theme, Enum } from '../constants';
 import I18n from './i18n';
 
-export const showWeatherIcon = (score?: number) => {
+export const showWeatherIcon = (score?: number, size: number = 60) => {
   if (score === undefined) return null;
 
   if (score < -2 && score >= -5) {
-    return <StormImg />;
+    return <StormImg width={size} height={size} />;
   }
   if (score > 2 && score <= 5) {
-    return <SunImg />;
+    return <SunImg width={size} height={size} />;
   }
-  return <MoonImg />;
+  return <MoonImg width={size} height={size} />;
 };
 
 export const summaryDisplayProps = (type: Enum.EvaluationType) => {

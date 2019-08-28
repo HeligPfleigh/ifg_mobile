@@ -14,6 +14,9 @@ import BrainStorm from './images/brainstorm.svg';
 import Folder from './images/folder.svg';
 import Congratulation from './images/congratulation.svg';
 import Finger from './images/finger.svg';
+import ActionList from './images/action_list.svg';
+import Flag from './images/flag.svg';
+import LightBulb from './images/light_bulb.svg';
 
 const DefaultAvatar = require('./images/avatar.png');
 
@@ -35,4 +38,7 @@ export {
   Folder,
   Congratulation,
   Finger,
+  ActionList,
+  Flag,
+  LightBulb,
 };

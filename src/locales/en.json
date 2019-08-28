@@ -98,5 +98,11 @@
       "draft": "SAVE AS DRAFT",
       "finish": "FINISH"
     }
+  },
+  "feel_good_tools": {
+    "header": "Tools to manage me life to be \nhealthier and happier.",
+    "tip": "FEEL GOOD TIPS",
+    "draft": "FINISH MY DRAFTS",
+    "action_list": "MY ACTION LIST"
   }
 }
