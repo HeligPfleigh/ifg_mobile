@@ -13,6 +13,7 @@ enum NavigatorMap {
   Legend = 'Legend',
   Evaluate = 'Evaluate',
   Drafts = 'Drafts',
+  AccountSettings = 'Account Settings',
 }
 
 export default NavigatorMap;

@@ -7,7 +7,8 @@
     "summary": "Summary",
     "legend": "Legend",
     "evaluate": "Evaluate",
-    "drafts": "Finish my drafts"
+    "drafts": "Finish my drafts",
+    "account_settings": "Account Settings"
   },
   "modal": {
     "self_evaluation": {
@@ -107,7 +108,11 @@
     "action_list": "MY ACTION LIST"
   },
   "profile": {
-    "account_settings": "Account settings",
+    "account_settings": {
+      "title": "Account settings",
+      "change_password": "Change password",
+      "delete_account": "Delete account"
+    },
     "account_parameters": "Parameters",
     "account_contact_us": "Contact us"
   }

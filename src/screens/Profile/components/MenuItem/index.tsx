@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, GestureResponderEvent, View } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { styles } from './styles';
 import { theme } from '../../../../constants';
@@ -29,7 +28,7 @@ export default class MenuItem extends Component<MenuItemProps> {
         </Block>
         <Block flex={1} right row>
           <TouchableOpacity onPress={onPress}>
-            <MaterialCommunityIcons name="chevron-right" size={theme.sizes.innerIcon} />
+            <SimpleLineIcons name="arrow-right" size={theme.sizes.base} />
           </TouchableOpacity>
         </Block>
       </Block>

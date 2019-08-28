@@ -5,7 +5,6 @@ import { View, Text, Image } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import { Block } from '../../components';
-import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import MenuItem from './components/MenuItem';
 import { DefaultAvatar } from '../../assets/images';
@@ -25,12 +24,12 @@ class Home extends Component<HomeProps> {
     this.props.dispatch(me());
   }
 
-  _navigateToGlobalScoresScreen = () => {
-    return this.props.navigation.navigate(NavigatorMap.GlobalScores);
+  _navigateToAccSettingsScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.AccountSettings);
   };
 
-  _navigateToSummaryScreen = (evaluationType: theme.EvaluationType) => {
-    return this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
+  _navigateToGlobalScoresScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.GlobalScores);
   };
 
   render() {
@@ -40,7 +39,7 @@ class Home extends Component<HomeProps> {
       },
     } = this.props;
     return (
-      <Block style={{ backgroundColor: 'gray' }}>
+      <Block style={styles.container}>
         <View style={styles.header}>
           <Image source={avatar || DefaultAvatar} style={styles.avatar} />
           <Block middle center>
@@ -51,8 +50,8 @@ class Home extends Component<HomeProps> {
           <MenuItem
             iconSize={20}
             iconName="lock"
-            itemLabel={I18n.t('profile.account_settings')}
-            onPress={this._navigateToGlobalScoresScreen}
+            itemLabel={I18n.t('profile.account_settings.title')}
+            onPress={this._navigateToAccSettingsScreen}
           />
           <MenuItem
             iconSize={20}

@@ -14,6 +14,7 @@ import EvaluateScreen from '../screens/Evaluate';
 import FeelGoodToolsScreen from '../screens/FeelGoodTools';
 import DraftsScreen from '../screens/Drafts';
 import ProfileScreen from '../screens/Profile';
+import AccountSettings from '../screens/AccountSettings';
 
 const HomeStack = createStackNavigator(
   {
@@ -52,6 +53,8 @@ const HomeStack = createStackNavigator(
         backgroundColor: theme.colors.secondary,
       },
       headerBackTitle: null,
+      headerTintColor: theme.colors.black,
+      headerTitleStyle: { fontSize: theme.sizes.title },
     },
   },
 );
@@ -78,6 +81,8 @@ const FeelGoodToolsStack = createStackNavigator(
         backgroundColor: theme.colors.secondary,
       },
       headerBackTitle: null,
+      headerTintColor: theme.colors.black,
+      headerTitleStyle: { fontSize: theme.sizes.title },
     },
   },
 );
@@ -87,6 +92,12 @@ const ProfileStack = createStackNavigator(
     [NavigatorMap.Profile]: {
       screen: ProfileScreen,
     },
+    [NavigatorMap.AccountSettings]: {
+      screen: AccountSettings,
+      navigationOptions: {
+        title: I18n.t('navigation.account_settings'),
+      },
+    },
   },
   {
     initialRouteName: NavigatorMap.Profile,
@@ -95,6 +106,8 @@ const ProfileStack = createStackNavigator(
         backgroundColor: theme.colors.secondary,
       },
       headerBackTitle: null,
+      headerTintColor: theme.colors.black,
+      headerTitleStyle: { fontSize: theme.sizes.title },
     },
   },
 );
