@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { ScrollView, Text, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { connect } from 'react-redux';
 import { Block } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
+import { AppState, DraftsState } from '../../store/types';
 
 interface DraftProps {
   type: Enum.EvaluationType;
@@ -18,6 +20,7 @@ interface DraftProps {
 
 interface DraftsProps {
   navigation: NavigationScreenProp<NavigationState>;
+  drafts: DraftsState;
 }
 
 const styles = StyleSheet.create({
@@ -65,19 +68,33 @@ const Draft: React.FC<DraftProps> = ({ type, name, label, desc, score, onPress }
   </TouchableOpacity>
 );
 
-export default class Drafts extends Component<DraftsProps> {
+class Drafts extends Component<DraftsProps> {
   _navigateToEvaluate = () => this.props.navigation.navigate(NavigatorMap.Evaluate);
 
   render() {
+    const {
+      drafts: { data: draftList },
+    } = this.props;
     return (
       <ScrollView>
-        <Draft
-          type={Enum.EvaluationType.RELATIONSHIPS}
-          name="Sara"
-          label={Enum.Tags.FRIENDS}
-          onPress={this._navigateToEvaluate}
-        />
+        {draftList.map(draft => (
+          <Draft
+            key={draft.id}
+            type={draft.type}
+            name={draft.name}
+            label={draft.label}
+            score={draft.score}
+            desc={draft.desc}
+            onPress={this._navigateToEvaluate}
+          />
+        ))}
       </ScrollView>
     );
   }
 }
+
+const mapStateToProps = (state: AppState) => ({
+  drafts: state.drafts,
+});
+
+export default connect(mapStateToProps)(Drafts);

@@ -5,6 +5,7 @@ import { meReducer } from './me/reducers';
 import { summaryReducer } from './summary/reducers';
 import { navReducer } from '../navigations/AppNavigator';
 import { modalReducer } from './modal/reducers';
+import { draftsReducer } from './drafts/reducers';
 
 export const rootReducer = combineReducers({
   nav: navReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   summary: summaryReducer,
   language: languageReducer,
   modal: modalReducer,
+  drafts: draftsReducer,
 });
