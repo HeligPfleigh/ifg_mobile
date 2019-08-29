@@ -12,7 +12,8 @@
     "legend": "Legend",
     "evaluate": "Evaluate",
     "drafts": "Finish my drafts",
-    "account_settings": "Account Settings"
+    "account_settings": "Account Settings",
+    "user_info": "User Info"
   },
   "modal": {
     "self_evaluation": {
@@ -112,6 +113,16 @@
     "action_list": "MY ACTION LIST"
   },
   "profile": {
+    "user_info": {
+      "title": "User info",
+      "username": "Username",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "dob": "Date of birth",
+      "gender": "Gender",
+      "height": "Height",
+      "weight": "Weight"
+    },
     "account_settings": {
       "title": "Account settings",
       "change_user_email": "Change email",
@@ -124,6 +135,7 @@
       "confirm_with_password": "Confirm with password"
     },
     "account_parameters": "Parameters",
-    "account_contact_us": "Contact us"
+    "account_contact_us": "Contact us",
+    "logout": "Logout"
   }
 }

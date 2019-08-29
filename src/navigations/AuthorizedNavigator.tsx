@@ -14,6 +14,7 @@ import EvaluateScreen from '../screens/Evaluate';
 import FeelGoodToolsScreen from '../screens/FeelGoodTools';
 import DraftsScreen from '../screens/Drafts';
 import ProfileScreen from '../screens/Profile';
+import UserInfo from '../screens/UserInfo';
 import AccountSettings from '../screens/AccountSettings';
 
 const defaultNavigationOptions = {
@@ -86,6 +87,12 @@ const ProfileStack = createStackNavigator(
   {
     [NavigatorMap.Profile]: {
       screen: ProfileScreen,
+    },
+    [NavigatorMap.UserInfo]: {
+      screen: UserInfo,
+      navigationOptions: {
+        title: I18n.t('navigation.user_info'),
+      },
     },
     [NavigatorMap.AccountSettings]: {
       screen: AccountSettings,

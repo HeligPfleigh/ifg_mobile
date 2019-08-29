@@ -17,6 +17,7 @@ const colors = {
   red: '#FF1E32',
   yellow: '#FFEB0A',
   purple1: '#8E78E1',
+  transparent: 'transparent',
 };
 
 const gradients = {
@@ -34,6 +35,7 @@ const gradients = {
 
 const sizes = {
   // global sizes
+  zero: 0,
   base: 16,
   font: 14,
   radius: 8,

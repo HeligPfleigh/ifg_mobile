@@ -22,6 +22,16 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     marginRight: theme.sizes.margin,
   },
+  name: {
+    fontWeight: '600',
+    color: theme.colors.black,
+    fontSize: theme.sizes.base,
+  },
+  headerNav: {
+    position: 'absolute',
+    right: theme.sizes.zero,
+    bottom: theme.sizes.zero,
+  },
   content: {
     paddingTop: theme.sizes.padding,
     backgroundColor: theme.colors.gray2,

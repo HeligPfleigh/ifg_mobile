@@ -4,6 +4,10 @@ import { theme } from '../../../../constants';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    maxHeight: 65,
+  },
+  content: {
+    flex: 1,
     maxHeight: 55,
     marginTop: theme.sizes.margin,
     padding: theme.sizes.margin,
