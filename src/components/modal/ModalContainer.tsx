@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import noop from 'lodash/noop';
 
 import { hideModal } from '../../store/actions';
@@ -20,7 +19,7 @@ interface ModalContainerProps {
   isVisible: boolean;
   modalType: Enum.ModalType;
   onModalPress: () => void;
-  dispatch: Dispatch<any>;
+  dispatch: any;
 }
 
 interface ModalContainerState {
@@ -49,6 +48,8 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
     }
     return defaultState;
   }
+
+  static defaultProps: ModalContainerProps;
 
   state = defaultState;
 
@@ -85,6 +86,13 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
     );
   }
 }
+
+ModalContainer.defaultProps = {
+  isVisible: false,
+  modalType: Enum.ModalType.DEFAULT,
+  onModalPress: noop,
+  dispatch: null,
+};
 
 const mapStateToProps = (state: AppState) => ({
   ...state.modal,
