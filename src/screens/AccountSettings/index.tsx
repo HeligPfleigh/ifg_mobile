@@ -26,8 +26,8 @@ class AccountSettings extends Component<ScreenProps> {
       <ScrollView style={styles.container} contentContainerStyle={styles.container}>
         <Block flex={1}>
           <Accordion
+            childComponent={<ChangePassword />}
             itemLabel={I18n.t('profile.account_settings.change_password')}
-            childComponent={<ChangePassword itemLabel={I18n.t('profile.account_settings.change_password')} />}
           />
           <MenuItem itemLabel={I18n.t('profile.account_settings.delete_account')} />
         </Block>

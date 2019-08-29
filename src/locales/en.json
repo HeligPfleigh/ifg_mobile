@@ -1,4 +1,8 @@
 {
+  "messages": {
+    "required": "Field is required",
+    "pwd_confirm": "Confirm new password do not match"
+  },
   "navigation": {
     "home": "Home",
     "feel_good_tools": "Feel Good Tools",

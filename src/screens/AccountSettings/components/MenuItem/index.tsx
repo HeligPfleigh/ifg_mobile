@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import get from 'lodash/get';
+import isUndefined from 'lodash/isUndefined';
 import isFunction from 'lodash/isFunction';
 import { TouchableWithoutFeedback, Text, GestureResponderEvent } from 'react-native';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -9,6 +11,7 @@ import { Block } from '../../../../components';
 
 interface IProps {
   itemLabel: string;
+  isExpanded?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -20,8 +23,16 @@ class MenuItem extends Component<IProps, IStates> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isExpanded: false,
+      isExpanded: get(props, 'isExpanded', false),
     };
+  }
+
+  static getDerivedStateFromProps(nextProps: any, prevState: any) {
+    const isExpanded = get(nextProps, 'isExpanded');
+    if (!isUndefined(isExpanded) && isExpanded !== prevState.isExpanded) {
+      return { ...prevState, isExpanded }; // <- this is setState equivalent
+    }
+    return null;
   }
 
   toggleExpand = () => {

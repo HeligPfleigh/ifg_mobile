@@ -51,7 +51,7 @@ class Accordion extends Component<IProps, IStates> {
     };
     return (
       <React.Fragment>
-        <MenuItem {...menuItemProps} />
+        <MenuItem {...menuItemProps} isExpanded={isExpanded} />
         {isExpanded && this.renderChildComponent()}
       </React.Fragment>
     );
