@@ -13,6 +13,7 @@ import LegendScreen from '../screens/Legend';
 import EvaluateScreen from '../screens/Evaluate';
 
 import FeelGoodToolsScreen from '../screens/FeelGoodTools';
+import DraftsScreen from '../screens/Drafts';
 
 // https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
 MaterialCommunityIcons.loadFont();
@@ -64,6 +65,12 @@ const FeelGoodToolsStack = createStackNavigator(
       screen: FeelGoodToolsScreen,
       navigationOptions: {
         title: I18n.t('navigation.feel_good_tools'),
+      },
+    },
+    [NavigatorMap.Drafts]: {
+      screen: DraftsScreen,
+      navigationOptions: {
+        title: I18n.t('navigation.drafts'),
       },
     },
   },

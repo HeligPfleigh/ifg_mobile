@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { NavigationScreenProp, NavigationState, HeaderBackButton } from 'react-navigation';
 import noop from 'lodash/noop';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { Block, Button } from '../../components';
 import I18n from '../../core/i18n';
@@ -10,12 +12,15 @@ import { Step1 } from './Step1';
 import { Step2 } from './Step2';
 import { Step3 } from './Step3';
 import { Enum } from '../../constants';
+import { showModal, saveDraft } from '../../store/actions';
 
 interface EvaluateProps {
   navigation: NavigationScreenProp<NavigationState>;
+  dispatch: Dispatch<any>;
 }
 
 interface EvaluateState {
+  id: number;
   type: Enum.EvaluationType | null;
   step: number;
   name: string;
@@ -26,9 +31,9 @@ interface EvaluateState {
   score: number;
 }
 
-export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
+class Evaluate extends Component<EvaluateProps, EvaluateState> {
   static navigationOptions = ({ navigation }: any) => {
-    const evaluationType = navigation.getParam('evaluationType');
+    const evaluationType = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE);
     const title = evaluationType ? I18n.t(`summary.${evaluationType}`) : I18n.t('navigation.evaluate');
     return {
       title,
@@ -39,6 +44,7 @@ export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
+      id: new Date().valueOf(),
       type: Enum.EvaluationType.RELATIONSHIPS,
       label: null,
       step: 1,
@@ -52,9 +58,28 @@ export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   componentDidMount() {
     const { navigation } = this.props;
-    const type = navigation.getParam('evaluationType', null);
+    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, null);
+    const draftData = navigation.getParam(Enum.NavigationParamsName.EVALUATION_DATA, null);
     navigation.setParams({ handleBack: this._handleBack });
-    this.setState({ type });
+    if (!draftData) {
+      this.setState({ type });
+    } else {
+      const { score, impactType } = draftData;
+
+      if (!impactType) {
+        draftData.step = 1;
+      } else if (impactType && !score) {
+        draftData.step = 2;
+      } else if (score > 0) {
+        draftData.feeling = Enum.Feeling.GOOD;
+        draftData.step = 3;
+      } else {
+        draftData.feeling = Enum.Feeling.BAD;
+        draftData.step = 3;
+      }
+
+      this.setState({ ...draftData });
+    }
   }
 
   _handleBack = () => {
@@ -93,7 +118,9 @@ export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
   _handlePressScore = (score: number) => this.setState({ score });
 
   _handlePressSaveDraft = () => {
-    console.log(this.state.type);
+    const { dispatch, navigation } = this.props;
+    dispatch(saveDraft(this.state));
+    dispatch(showModal({ modalType: Enum.ModalType.DRAFT_SAVED, onModalPress: navigation.goBack }));
   };
 
   render() {
@@ -142,7 +169,7 @@ export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
               </Text>
             </Block>
           </Button>
-          <Button shadow style={styles.draftBtn}>
+          <Button shadow style={styles.draftBtn} onPress={this._handlePressSaveDraft}>
             <Block center middle>
               <Text>{I18n.t('evaluate.footer.draft')}</Text>
             </Block>
@@ -152,3 +179,5 @@ export default class Evaluate extends Component<EvaluateProps, EvaluateState> {
     );
   }
 }
+
+export default connect()(Evaluate);

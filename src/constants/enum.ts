@@ -34,4 +34,9 @@ enum ModalType {
   DELETE_ACCOUNT = 'delete_account',
 }
 
-export { Tags, EvaluationType, Feeling, ImpactType, ModalType };
+enum NavigationParamsName {
+  EVALUATION_TYPE = 'evaluationType',
+  EVALUATION_DATA = 'evaluation_data',
+}
+
+export { Tags, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName };

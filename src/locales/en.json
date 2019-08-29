@@ -6,7 +6,8 @@
     "global_scores": "Global scores",
     "summary": "Summary",
     "legend": "Legend",
-    "evaluate": "Evaluate"
+    "evaluate": "Evaluate",
+    "drafts": "Finish my drafts"
   },
   "modal": {
     "self_evaluation": {

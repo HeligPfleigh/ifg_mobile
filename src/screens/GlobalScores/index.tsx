@@ -18,7 +18,9 @@ interface HomeProps {
 
 class GlobalScores extends Component<HomeProps> {
   _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
-    this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
+    this.props.navigation.navigate(NavigatorMap.Summary, {
+      [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
+    });
 
   render() {
     const {
