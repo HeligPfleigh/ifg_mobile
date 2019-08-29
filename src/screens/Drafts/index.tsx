@@ -10,7 +10,7 @@ import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, DraftsState, DraftState } from '../../store/types';
 
 interface DraftProps {
-  type: Enum.EvaluationType;
+  type: Enum.EvaluationType | null;
   name?: string;
   label?: Enum.Tags | null;
   desc?: string;
@@ -49,24 +49,43 @@ const styles = StyleSheet.create({
   },
 });
 
-const Draft: React.FC<DraftProps> = ({ type, name, label, desc, score, onPress }: DraftProps) => (
-  <TouchableOpacity onPress={onPress}>
-    <Block style={styles.draftContainer}>
-      <LinearGradient
-        colors={theme.gradients.lightpink}
-        start={{ x: 0.0, y: 0.0 }}
-        end={{ x: 1.0, y: 0.0 }}
-        style={styles.draftGradient}
-      >
-        <Text style={styles.draftType}>{I18n.t(`home.${type}`)}</Text>
-        <Text style={styles.draftBody}>{name}</Text>
-        <Text style={styles.draftBody}>{label}</Text>
-        <Text style={styles.draftBody}>{desc}</Text>
-        <Text style={styles.draftBody}>{score}</Text>
-      </LinearGradient>
-    </Block>
-  </TouchableOpacity>
-);
+const Draft: React.FC<DraftProps> = ({ type, name, label, desc, score, onPress }: DraftProps) => {
+  let colors;
+  switch (type) {
+    case Enum.EvaluationType.RELATIONSHIPS:
+      colors = theme.gradients.lightpink;
+      break;
+    case Enum.EvaluationType.ACTIVITIES:
+      colors = theme.gradients.lightblue;
+      break;
+    case Enum.EvaluationType.INTAKES:
+      colors = theme.gradients.lightorange;
+      break;
+    case Enum.EvaluationType.OTHER:
+      colors = theme.gradients.lightpurple;
+      break;
+    default:
+      colors = theme.gradients.lightpink;
+  }
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Block style={styles.draftContainer}>
+        <LinearGradient
+          colors={colors}
+          start={{ x: 0.0, y: 0.0 }}
+          end={{ x: 1.0, y: 0.0 }}
+          style={styles.draftGradient}
+        >
+          <Text style={styles.draftType}>{I18n.t(`home.${type}`)}</Text>
+          <Text style={styles.draftBody}>{name}</Text>
+          <Text style={styles.draftBody}>{label}</Text>
+          <Text style={styles.draftBody}>{desc}</Text>
+          <Text style={styles.draftBody}>{score}</Text>
+        </LinearGradient>
+      </Block>
+    </TouchableOpacity>
+  );
+};
 
 class Drafts extends Component<DraftsProps> {
   _navigateToEvaluate = (draft: DraftState) => {

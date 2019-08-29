@@ -62,7 +62,6 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     const draftData = navigation.getParam(Enum.NavigationParamsName.EVALUATION_DATA, null);
     navigation.setParams({ handleBack: this._handleBack });
     if (!draftData) {
-      // eslint-disable-next-line react/no-unused-state
       this.setState({ type });
     } else {
       const { score, impactType } = draftData;
