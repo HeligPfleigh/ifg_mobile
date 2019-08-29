@@ -1,4 +1,5 @@
 import TextField from './TextField';
+import RadioGroup from './RadioGroup';
 import * as FormValidator from './form.validation';
 
-export { TextField, FormValidator };
+export { TextField, RadioGroup, FormValidator };
