@@ -9,6 +9,7 @@ export interface DraftState {
   label?: Enum.Tags | null;
   desc?: string;
   score?: number;
+  impactType?: Enum.ImpactType;
 }
 
 export interface DraftsState {

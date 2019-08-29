@@ -22,13 +22,13 @@ interface SummaryProps {
 class Summary extends Component<SummaryProps> {
   componentDidMount() {
     const { navigation, dispatch } = this.props;
-    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
+    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, Enum.EvaluationType.OVERALL);
     dispatch(loadSummary(type));
   }
 
   _renderSummaryHeader = () => {
     const { navigation, summary } = this.props;
-    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
+    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, Enum.EvaluationType.OVERALL);
     const score = get(summary, `data.${type}.score`, 0);
     return <SummaryHeader type={type} score={score} />;
   };

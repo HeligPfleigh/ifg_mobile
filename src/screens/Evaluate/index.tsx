@@ -20,6 +20,7 @@ interface EvaluateProps {
 }
 
 interface EvaluateState {
+  id: number;
   type: Enum.EvaluationType | null;
   step: number;
   name: string;
@@ -32,7 +33,7 @@ interface EvaluateState {
 
 class Evaluate extends Component<EvaluateProps, EvaluateState> {
   static navigationOptions = ({ navigation }: any) => {
-    const evaluationType = navigation.getParam('evaluationType');
+    const evaluationType = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE);
     const title = evaluationType ? I18n.t(`summary.${evaluationType}`) : I18n.t('navigation.evaluate');
     return {
       title,
@@ -43,6 +44,9 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
+      // eslint-disable-next-line react/no-unused-state
+      id: new Date().valueOf(),
+      // eslint-disable-next-line react/no-unused-state
       type: Enum.EvaluationType.RELATIONSHIPS,
       label: null,
       step: 1,
@@ -56,9 +60,29 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   componentDidMount() {
     const { navigation } = this.props;
-    const type = navigation.getParam('evaluationType', null);
+    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, null);
+    const draftData = navigation.getParam(Enum.NavigationParamsName.EVALUATION_DATA, null);
     navigation.setParams({ handleBack: this._handleBack });
-    this.setState({ type });
+    if (!draftData) {
+      // eslint-disable-next-line react/no-unused-state
+      this.setState({ type });
+    } else {
+      const { score, impactType } = draftData;
+
+      if (!impactType) {
+        draftData.step = 1;
+      } else if (impactType && !score) {
+        draftData.step = 2;
+      } else if (score > 0) {
+        draftData.feeling = Enum.Feeling.GOOD;
+        draftData.step = 3;
+      } else {
+        draftData.feeling = Enum.Feeling.BAD;
+        draftData.step = 3;
+      }
+
+      this.setState({ ...draftData });
+    }
   }
 
   _handleBack = () => {
@@ -97,7 +121,6 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   _handlePressScore = (score: number) => this.setState({ score });
 
   _handlePressSaveDraft = () => {
-    console.log(this.state.type);
     const { dispatch, navigation } = this.props;
     dispatch(showModal({ modalType: Enum.ModalType.DRAFT_SAVED, onModalPress: navigation.goBack }));
   };

@@ -7,7 +7,7 @@ import { Block } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, DraftsState } from '../../store/types';
+import { AppState, DraftsState, DraftState } from '../../store/types';
 
 interface DraftProps {
   type: Enum.EvaluationType;
@@ -15,7 +15,7 @@ interface DraftProps {
   label?: Enum.Tags | null;
   desc?: string;
   score?: number;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: (e: GestureResponderEvent) => void;
 }
 
 interface DraftsProps {
@@ -69,7 +69,12 @@ const Draft: React.FC<DraftProps> = ({ type, name, label, desc, score, onPress }
 );
 
 class Drafts extends Component<DraftsProps> {
-  _navigateToEvaluate = () => this.props.navigation.navigate(NavigatorMap.Evaluate);
+  _navigateToEvaluate = (draft: DraftState) => {
+    this.props.navigation.navigate(NavigatorMap.Evaluate, {
+      [Enum.NavigationParamsName.EVALUATION_TYPE]: draft.type,
+      [Enum.NavigationParamsName.EVALUATION_DATA]: draft,
+    });
+  };
 
   render() {
     const {
@@ -85,7 +90,7 @@ class Drafts extends Component<DraftsProps> {
             label={draft.label}
             score={draft.score}
             desc={draft.desc}
-            onPress={this._navigateToEvaluate}
+            onPress={() => this._navigateToEvaluate(draft)}
           />
         ))}
       </ScrollView>

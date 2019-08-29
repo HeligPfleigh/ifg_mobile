@@ -34,7 +34,9 @@ interface FeelGoodToolsProps {
 
 class FeelGoodTools extends Component<FeelGoodToolsProps> {
   _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
-    this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
+    this.props.navigation.navigate(NavigatorMap.Summary, {
+      [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
+    });
 
   _navigateToDrafts = () => this.props.navigation.navigate(NavigatorMap.Drafts);
 

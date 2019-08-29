@@ -45,7 +45,9 @@ class Home extends Component<HomeProps> {
   };
 
   _navigateToEvaluateScreen = (evaluationType: Enum.EvaluationType) => {
-    this.props.navigation.navigate(NavigatorMap.Evaluate, { evaluationType });
+    this.props.navigation.navigate(NavigatorMap.Evaluate, {
+      [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
+    });
   };
 
   render() {

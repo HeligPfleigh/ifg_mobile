@@ -11,6 +11,7 @@ const initialState: DraftsState = {
       label: Enum.Tags.SOCIAL,
       desc: 'this is an description',
       score: 5,
+      impactType: Enum.ImpactType.ENERGY,
     },
   ],
 };
