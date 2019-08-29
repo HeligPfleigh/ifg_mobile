@@ -36,6 +36,8 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
   _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
     this.props.navigation.navigate(NavigatorMap.Summary, { evaluationType });
 
+  _navigateToDrafts = () => this.props.navigation.navigate(NavigatorMap.Drafts);
+
   render() {
     const {
       me: {
@@ -98,6 +100,7 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
           icon={<Flag />}
           headerColor={theme.colors.black}
           round={false}
+          onPress={this._navigateToDrafts}
         />
         <EvaluationItem
           colors={theme.gradients.pink}
