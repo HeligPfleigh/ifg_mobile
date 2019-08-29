@@ -12,7 +12,7 @@ import { Step1 } from './Step1';
 import { Step2 } from './Step2';
 import { Step3 } from './Step3';
 import { Enum } from '../../constants';
-import { showModal } from '../../store/actions';
+import { showModal, saveDraft } from '../../store/actions';
 
 interface EvaluateProps {
   navigation: NavigationScreenProp<NavigationState>;
@@ -44,9 +44,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       id: new Date().valueOf(),
-      // eslint-disable-next-line react/no-unused-state
       type: Enum.EvaluationType.RELATIONSHIPS,
       label: null,
       step: 1,
@@ -122,6 +120,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   _handlePressSaveDraft = () => {
     const { dispatch, navigation } = this.props;
+    dispatch(saveDraft(this.state));
     dispatch(showModal({ modalType: Enum.ModalType.DRAFT_SAVED, onModalPress: navigation.goBack }));
   };
 

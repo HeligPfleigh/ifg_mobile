@@ -4,12 +4,12 @@ export const SAVE_DRAFT = 'SAVE_DRAFT';
 
 export interface DraftState {
   id: number;
-  type: Enum.EvaluationType;
+  type: Enum.EvaluationType | null;
   name?: string;
   label?: Enum.Tags | null;
   desc?: string;
   score?: number;
-  impactType?: Enum.ImpactType;
+  impactType?: Enum.ImpactType | null;
 }
 
 export interface DraftsState {
