@@ -13,7 +13,8 @@
     "evaluate": "Evaluate",
     "drafts": "Finish my drafts",
     "account_settings": "Account Settings",
-    "user_info": "User Info"
+    "user_info": "User Info",
+    "action_list": "My action list"
   },
   "modal": {
     "self_evaluation": {

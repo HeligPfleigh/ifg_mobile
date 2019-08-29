@@ -40,6 +40,8 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
 
   _navigateToDrafts = () => this.props.navigation.navigate(NavigatorMap.Drafts);
 
+  _navigateToActionList = () => this.props.navigation.navigate(NavigatorMap.ActionList);
+
   render() {
     const {
       me: {
@@ -110,6 +112,7 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
           icon={<ActionList />}
           headerColor={theme.colors.black}
           round={false}
+          onPress={this._navigateToActionList}
         />
       </ScrollView>
     );
