@@ -142,7 +142,6 @@ export default createMaterialTopTabNavigator(
     },
   },
   {
-    initialRouteName: NavigatorMap.Profile,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,
