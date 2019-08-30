@@ -4,5 +4,6 @@ import * as FormFields from './FormFields';
 import EvaluationItem, { RoundIconButton } from './EvaluationItem';
 import ScoreText from './ScoreText';
 import ModalContainer from './modal/ModalContainer';
+import Checkbox from './Checkbox';
 
-export { Block, Button, FormFields, EvaluationItem, ScoreText, ModalContainer, RoundIconButton };
+export { Block, Button, FormFields, EvaluationItem, ScoreText, ModalContainer, RoundIconButton, Checkbox };

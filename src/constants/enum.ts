@@ -32,6 +32,8 @@ enum ModalType {
   EVALUATION_SAVED = 'evaluation_saved',
   SIGNUP_SUCCESS = 'signup_success',
   DELETE_ACCOUNT = 'delete_account',
+  SMART = 'smart',
+  FEATURE_NOT_AVAILABLE = 'feature_not_available',
 }
 
 enum NavigationParamsName {

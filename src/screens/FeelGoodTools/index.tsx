@@ -3,6 +3,7 @@ import { ScrollView, Text, StyleSheet } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
+import noop from 'lodash/noop';
 
 import I18n from '../../core/i18n';
 import { EvaluationItem, Block, RoundIconButton } from '../../components';
@@ -11,6 +12,7 @@ import { LightBulb, Flag, ActionList } from '../../assets/images';
 import { showWeatherIcon } from '../../core/utils';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, MeState } from '../../store/types';
+import { showModal } from '../../store/actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
 interface FeelGoodToolsProps {
   navigation: NavigationScreenProp<NavigationState>;
   me: MeState;
+  dispatch: any;
 }
 
 class FeelGoodTools extends Component<FeelGoodToolsProps> {
@@ -39,6 +42,8 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
     });
 
   _navigateToDrafts = () => this.props.navigation.navigate(NavigatorMap.Drafts);
+
+  _navigateToActionList = () => this.props.navigation.navigate(NavigatorMap.ActionList);
 
   render() {
     const {
@@ -95,6 +100,9 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
           icon={<LightBulb />}
           headerColor={theme.colors.black}
           round={false}
+          onPress={() =>
+            this.props.dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.FEATURE_NOT_AVAILABLE }))
+          }
         />
         <EvaluationItem
           colors={theme.gradients.pink}
@@ -110,6 +118,7 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
           icon={<ActionList />}
           headerColor={theme.colors.black}
           round={false}
+          onPress={this._navigateToActionList}
         />
       </ScrollView>
     );

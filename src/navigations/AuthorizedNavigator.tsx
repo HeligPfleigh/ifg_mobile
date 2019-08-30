@@ -1,6 +1,6 @@
+import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps, StackActions } from 'react-navigation';
 import React from 'react';
 import { Text } from 'react-native';
-import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import I18n from '../core/i18n';
@@ -16,6 +16,8 @@ import DraftsScreen from '../screens/Drafts';
 import ProfileScreen from '../screens/Profile';
 import UserInfo from '../screens/UserInfo';
 import AccountSettings from '../screens/AccountSettings';
+import ActionListScreen from '../screens/ActionList';
+import AchievedActionsScreen from '../screens/AchievedActions';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -74,6 +76,18 @@ const FeelGoodToolsStack = createStackNavigator(
       screen: DraftsScreen,
       navigationOptions: {
         title: I18n.t('navigation.drafts'),
+      },
+    },
+    [NavigatorMap.ActionList]: {
+      screen: ActionListScreen,
+      navigationOptions: {
+        title: I18n.t('navigation.action_list'),
+      },
+    },
+    [NavigatorMap.AchievedActions]: {
+      screen: AchievedActionsScreen,
+      navigationOptions: {
+        title: I18n.t('navigation.action_list'),
       },
     },
   },
@@ -153,6 +167,13 @@ export default createMaterialTopTabNavigator(
       },
       indicatorStyle: {
         backgroundColor: theme.colors.gray,
+      },
+    },
+    swipeEnabled: false,
+    defaultNavigationOptions: {
+      tabBarOnPress: ({ navigation }: any) => {
+        navigation.dispatch(StackActions.popToTop());
+        navigation.navigate(navigation.state.routeName);
       },
     },
   },

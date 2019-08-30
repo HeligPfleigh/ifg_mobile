@@ -13,7 +13,8 @@
     "evaluate": "Evaluate",
     "drafts": "Finish my drafts",
     "account_settings": "Account Settings",
-    "user_info": "User Info"
+    "user_info": "User Info",
+    "action_list": "My action list"
   },
   "modal": {
     "self_evaluation": {
@@ -33,6 +34,32 @@
     },
     "delete_account": {
       "body": "We hope that you will be back soon."
+    },
+    "smart": {
+      "specific": {
+        "header": "Specific",
+        "body": "Mention at least one of the answers to: who - what - when - where."
+      },
+      "measurable": {
+        "header": "Measurable",
+        "body": "Include a progress milestone (it's OK if it's a small one)."
+      },
+      "achievable": {
+        "header": "Achievable",
+        "body": "Set up a realistically doable action."
+      },
+      "relevant": {
+        "header": "Relevant",
+        "body": "The action should be in line with your priorities."
+      },
+      "time_based": {
+        "header": "Time-based",
+        "body": "Set a deadline to motivate you."
+      },
+      "footer": "And finally, begin your action with a verb!"
+    },
+    "feature_not_available": {
+      "header": "Sorry, this feature isn't available at this moment!"
     }
   },
   "welcome": {
@@ -137,5 +164,21 @@
     "account_parameters": "Parameters",
     "account_contact_us": "Contact us",
     "logout": "Logout"
+  },
+  "action_list": {
+    "tip_for_action": "Tip for action ",
+    "smart": "SMART",
+    "actions": "Actions ",
+    "done": "done",
+    "add_new": "Add new",
+    "select_reason": "Select the reason (optional)",
+    "footer": {
+      "new": "CREATE",
+      "achieve": "MARK AS ARCHIEVED",
+      "delete": "DELETE"
+    }
+  },
+  "achieved_actions": {
+    "header": "Congratulation, \nyou achieved these actions."
   }
 }
