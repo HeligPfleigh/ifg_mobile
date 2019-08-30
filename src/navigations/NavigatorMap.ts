@@ -17,6 +17,7 @@ enum NavigatorMap {
   UserInfo = 'User Info',
   ActionList = 'ActionList',
   AchievedActions = 'AchievedActions',
+  ContactUS = 'Contact US',
 }
 
 export default NavigatorMap;
