@@ -1,9 +1,9 @@
-import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps } from 'react-navigation';
 import React from 'react';
+import { Text } from 'react-native';
+import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Text, View } from 'react-native';
-import I18n from '../core/i18n';
 
+import I18n from '../core/i18n';
 import { theme } from '../constants';
 import NavigatorMap from './NavigatorMap';
 import HomeScreen from '../screens/Home';
@@ -11,12 +11,20 @@ import GlobalScoresScreen from '../screens/GlobalScores';
 import SummaryScreen from '../screens/Summary';
 import LegendScreen from '../screens/Legend';
 import EvaluateScreen from '../screens/Evaluate';
-
 import FeelGoodToolsScreen from '../screens/FeelGoodTools';
 import DraftsScreen from '../screens/Drafts';
+import ProfileScreen from '../screens/Profile';
+import UserInfo from '../screens/UserInfo';
+import AccountSettings from '../screens/AccountSettings';
 
-// https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
-MaterialCommunityIcons.loadFont();
+const defaultNavigationOptions = {
+  headerStyle: {
+    backgroundColor: theme.colors.secondary,
+  },
+  headerBackTitle: null,
+  headerTintColor: theme.colors.black,
+  headerTitleStyle: { fontSize: theme.sizes.title },
+};
 
 const HomeStack = createStackNavigator(
   {
@@ -49,13 +57,8 @@ const HomeStack = createStackNavigator(
     },
   },
   {
+    defaultNavigationOptions,
     initialRouteName: NavigatorMap.Home,
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.colors.secondary,
-      },
-      headerBackTitle: null,
-    },
   },
 );
 
@@ -75,13 +78,32 @@ const FeelGoodToolsStack = createStackNavigator(
     },
   },
   {
+    defaultNavigationOptions,
     initialRouteName: NavigatorMap.FeelGoodTools,
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: theme.colors.secondary,
-      },
-      headerBackTitle: null,
+  },
+);
+
+const ProfileStack = createStackNavigator(
+  {
+    [NavigatorMap.Profile]: {
+      screen: ProfileScreen,
     },
+    [NavigatorMap.UserInfo]: {
+      screen: UserInfo,
+      navigationOptions: {
+        title: I18n.t('navigation.user_info'),
+      },
+    },
+    [NavigatorMap.AccountSettings]: {
+      screen: AccountSettings,
+      navigationOptions: {
+        title: I18n.t('navigation.account_settings'),
+      },
+    },
+  },
+  {
+    defaultNavigationOptions,
+    initialRouteName: NavigatorMap.Profile,
   },
 );
 
@@ -110,7 +132,7 @@ export default createMaterialTopTabNavigator(
       },
     },
     [NavigatorMap.Profile]: {
-      screen: () => <View />,
+      screen: ProfileStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.profile')}</Text>,
         tabBarIcon: ({ tintColor }: TabBarIconProps) => (
@@ -120,6 +142,7 @@ export default createMaterialTopTabNavigator(
     },
   },
   {
+    initialRouteName: NavigatorMap.Profile,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,

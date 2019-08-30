@@ -18,5 +18,7 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react-native/no-inline-styles': 'off',
     'react/no-array-index-key': 'off',
+    'react/no-access-state-in-setstate': 'off',
+    'react/forbid-prop-types': 'off',
   },
 };

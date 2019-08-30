@@ -11,7 +11,7 @@ import { styles } from './styles';
 import { Step1 } from './Step1';
 import { Step2 } from './Step2';
 import { Step3 } from './Step3';
-import { Enum } from '../../constants';
+import { Enum, theme } from '../../constants';
 import { showModal, saveDraft } from '../../store/actions';
 
 interface EvaluateProps {
@@ -37,7 +37,9 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     const title = evaluationType ? I18n.t(`summary.${evaluationType}`) : I18n.t('navigation.evaluate');
     return {
       title,
-      headerLeft: () => <HeaderBackButton onPress={navigation.getParam('handleBack', noop)} />,
+      headerLeft: () => (
+        <HeaderBackButton tintColor={theme.colors.black} onPress={navigation.getParam('handleBack', noop)} />
+      ),
     };
   };
 
