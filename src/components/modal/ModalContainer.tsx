@@ -11,6 +11,7 @@ import {
   EvaluationSavedModal,
   DraftSavedModal,
   DefaultModal,
+  SMARTModal,
 } from './NoticeModal';
 import { AppState } from '../../store/types';
 import { Enum } from '../../constants';
@@ -37,6 +38,7 @@ const MODAL_TYPES: any = {
   [Enum.ModalType.EVALUATION_SAVED]: EvaluationSavedModal,
   [Enum.ModalType.SIGNUP_SUCCESS]: SignUpSuccessModal,
   [Enum.ModalType.DELETE_ACCOUNT]: DeleteAccountModal,
+  [Enum.ModalType.SMART]: SMARTModal,
 };
 
 class ModalContainer extends Component<ModalContainerProps, ModalContainerState> {

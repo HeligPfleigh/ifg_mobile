@@ -24,10 +24,32 @@ const styles = StyleSheet.create({
   contentTitle: {
     fontSize: theme.sizes.font,
   },
+  smartContainer: {
+    backgroundColor: theme.colors.white,
+    padding: 22,
+    borderRadius: theme.sizes.radius,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  smartHeader: {
+    fontSize: theme.sizes.h2,
+  },
+  smartBody: {
+    marginTop: theme.sizes.margin,
+    marginBottom: theme.sizes.padding,
+    fontSize: theme.sizes.font,
+  },
+  smartCharacter: {
+    color: theme.colors.blue,
+    fontWeight: 'bold',
+  },
 });
 
 interface NoticeModalProps {
   onPress: () => void;
+}
+
+interface IEmphasizeFirstCharacterText {
+  text: string;
 }
 
 export const DefaultModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => (
@@ -81,3 +103,29 @@ export const DeleteAccountModal: React.FC<NoticeModalProps> = ({ onPress }: Noti
     </TouchableOpacity>
   );
 };
+
+const EmphasizeFirstCharacterText = ({ text }: IEmphasizeFirstCharacterText) => {
+  const [firstCharacter, ...rest] = text;
+  return (
+    <Text style={styles.smartHeader}>
+      <Text style={styles.smartCharacter}>{firstCharacter}</Text>
+      {rest.join('')}
+    </Text>
+  );
+};
+
+export const SMARTModal: React.FC<NoticeModalProps> = () => (
+  <TouchableOpacity style={styles.smartContainer}>
+    <EmphasizeFirstCharacterText text={I18n.t('modal.smart.specific.header')} />
+    <Text style={styles.smartBody}>{I18n.t('modal.smart.specific.body')}</Text>
+    <EmphasizeFirstCharacterText text={I18n.t('modal.smart.measurable.header')} />
+    <Text style={styles.smartBody}>{I18n.t('modal.smart.measurable.body')}</Text>
+    <EmphasizeFirstCharacterText text={I18n.t('modal.smart.achievable.header')} />
+    <Text style={styles.smartBody}>{I18n.t('modal.smart.achievable.body')}</Text>
+    <EmphasizeFirstCharacterText text={I18n.t('modal.smart.relevant.header')} />
+    <Text style={styles.smartBody}>{I18n.t('modal.smart.relevant.body')}</Text>
+    <EmphasizeFirstCharacterText text={I18n.t('modal.smart.time_based.header')} />
+    <Text style={styles.smartBody}>{I18n.t('modal.smart.time_based.body')}</Text>
+    <Text style={[styles.smartHeader, styles.text]}>{I18n.t('modal.smart.footer')}</Text>
+  </TouchableOpacity>
+);

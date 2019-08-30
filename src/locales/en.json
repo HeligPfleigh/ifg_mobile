@@ -34,6 +34,29 @@
     },
     "delete_account": {
       "body": "We hope that you will be back soon."
+    },
+    "smart": {
+      "specific": {
+        "header": "Specific",
+        "body": "Mention at least one of the answers to: who - what - when - where."
+      },
+      "measurable": {
+        "header": "Measurable",
+        "body": "Include a progress milestone (it's OK if it's a small one)."
+      },
+      "achievable": {
+        "header": "Achievable",
+        "body": "Set up a realistically doable action."
+      },
+      "relevant": {
+        "header": "Relevant",
+        "body": "The action should be in line with your priorities."
+      },
+      "time_based": {
+        "header": "Time-based",
+        "body": "Set a deadline to motivate you."
+      },
+      "footer": "And finally, begin your action with a verb!"
     }
   },
   "welcome": {
