@@ -162,6 +162,7 @@ export default createMaterialTopTabNavigator(
         backgroundColor: theme.colors.gray,
       },
     },
+    swipeEnabled: false,
     defaultNavigationOptions: {
       tabBarOnPress: ({ navigation }: any) => {
         navigation.dispatch(StackActions.popToTop());

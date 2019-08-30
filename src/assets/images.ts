@@ -17,6 +17,8 @@ import Finger from './images/finger.svg';
 import ActionList from './images/action_list.svg';
 import Flag from './images/flag.svg';
 import LightBulb from './images/light_bulb.svg';
+import Edit from './images/edit.svg';
+import Delete from './images/trash.svg';
 
 const DefaultAvatar = require('./images/avatar.png');
 
@@ -41,4 +43,6 @@ export {
   ActionList,
   Flag,
   LightBulb,
+  Edit,
+  Delete,
 };

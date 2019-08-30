@@ -17,6 +17,7 @@ const colors = {
   red: '#FF1E32',
   yellow: '#FFEB0A',
   purple1: '#8E78E1',
+  darkindigo: '#1E53B3',
   transparent: 'transparent',
 };
 

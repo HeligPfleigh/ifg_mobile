@@ -164,5 +164,16 @@
     "account_parameters": "Parameters",
     "account_contact_us": "Contact us",
     "logout": "Logout"
+  },
+  "action_list": {
+    "tip_for_action": "Tip for action ",
+    "smart": "SMART",
+    "actions": "Actions ",
+    "done": "done",
+    "footer": {
+      "new": "CREATE",
+      "achieve": "MARK AS ARCHIEVED",
+      "delete": "DELETE"
+    }
   }
 }
