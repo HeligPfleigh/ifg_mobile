@@ -30,9 +30,9 @@ export const styles = StyleSheet.create({
 
   standaloneRowFront: {
     marginVertical: theme.sizes.margin / 2,
+    paddingVertical: theme.sizes.margin,
     backgroundColor: theme.colors.white,
     justifyContent: 'center',
-    height: 50,
     paddingLeft: theme.sizes.padding,
     shadowColor: theme.colors.black,
     shadowOffset: {

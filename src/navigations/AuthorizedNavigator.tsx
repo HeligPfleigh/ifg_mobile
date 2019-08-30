@@ -17,6 +17,7 @@ import ProfileScreen from '../screens/Profile';
 import UserInfo from '../screens/UserInfo';
 import AccountSettings from '../screens/AccountSettings';
 import ActionListScreen from '../screens/ActionList';
+import AchievedActionsScreen from '../screens/AchievedActions';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -79,6 +80,12 @@ const FeelGoodToolsStack = createStackNavigator(
     },
     [NavigatorMap.ActionList]: {
       screen: ActionListScreen,
+      navigationOptions: {
+        title: I18n.t('navigation.action_list'),
+      },
+    },
+    [NavigatorMap.AchievedActions]: {
+      screen: AchievedActionsScreen,
       navigationOptions: {
         title: I18n.t('navigation.action_list'),
       },

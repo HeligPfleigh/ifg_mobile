@@ -177,5 +177,8 @@
       "achieve": "MARK AS ARCHIEVED",
       "delete": "DELETE"
     }
+  },
+  "achieved_actions": {
+    "header": "Congratulation, \nyou achieved these actions."
   }
 }

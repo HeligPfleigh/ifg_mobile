@@ -5,6 +5,8 @@ import noop from 'lodash/noop';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Item, Label, Input } from 'native-base';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox } from '../../components';
 import { styles } from './styles';
 import I18n from '../../core/i18n';
@@ -14,10 +16,11 @@ import { Edit, Delete } from '../../assets/images';
 
 interface ActionListProps {
   dispatch: any;
+  navigation: NavigationScreenProp<NavigationState>;
 }
 
 class ActionList extends Component<ActionListProps> {
-  _navigateToArchivedActions = () => {};
+  _navigateToArchivedActions = () => this.props.navigation.navigate(NavigatorMap.AchievedActions);
 
   _showSMARTModal = () => {
     this.props.dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.SMART }));
@@ -65,7 +68,7 @@ class ActionList extends Component<ActionListProps> {
                 <Text style={styles.smart}>{I18n.t('action_list.smart')}</Text>
               </Text>
             </Button>
-            <Button>
+            <Button onPress={this._navigateToArchivedActions}>
               <Text style={styles.tip}>
                 {I18n.t('action_list.actions')}
                 <Text style={styles.smart}>{I18n.t('action_list.done')}</Text>
