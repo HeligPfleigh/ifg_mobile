@@ -64,4 +64,11 @@ export const styles = StyleSheet.create({
   indigo: {
     backgroundColor: theme.colors.darkindigo,
   },
+  addNewTxt: {
+    fontSize: 12,
+    color: theme.colors.gray,
+  },
+  addNewContainer: {
+    paddingHorizontal: theme.sizes.padding,
+  },
 });

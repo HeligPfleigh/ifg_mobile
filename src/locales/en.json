@@ -170,6 +170,8 @@
     "smart": "SMART",
     "actions": "Actions ",
     "done": "done",
+    "add_new": "Add new",
+    "select_reason": "Select the reason (optional)",
     "footer": {
       "new": "CREATE",
       "achieve": "MARK AS ARCHIEVED",

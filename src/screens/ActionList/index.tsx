@@ -3,6 +3,8 @@ import { Text, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import noop from 'lodash/noop';
 import { SwipeRow } from 'react-native-swipe-list-view';
+import { Dropdown } from 'react-native-material-dropdown';
+import { Item, Label, Input } from 'native-base';
 import { Block, Button, Checkbox } from '../../components';
 import { styles } from './styles';
 import I18n from '../../core/i18n';
@@ -49,6 +51,13 @@ class ActionList extends Component<ActionListProps> {
     return (
       <Block>
         <Block flex={5}>
+          <Block flex={false} style={styles.addNewContainer}>
+            <Item stackedLabel>
+              <Label style={styles.addNewTxt}>{I18n.t('action_list.add_new')}</Label>
+              <Input />
+            </Item>
+            <Dropdown label={I18n.t('action_list.select_reason')} data={[]} rippleColor={theme.colors.gray} />
+          </Block>
           <Block flex={false} row style={styles.tipSection}>
             <Button onPress={this._showSMARTModal}>
               <Text style={styles.tip}>
