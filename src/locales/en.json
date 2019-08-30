@@ -57,6 +57,9 @@
         "body": "Set a deadline to motivate you."
       },
       "footer": "And finally, begin your action with a verb!"
+    },
+    "feature_not_available": {
+      "header": "Sorry, this feature isn't available at this moment!"
     }
   },
   "welcome": {

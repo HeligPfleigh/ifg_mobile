@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Rocket, BrainStorm, Folder, Congratulation, Finger } from '../../assets/images';
+import { Rocket, BrainStorm, Folder, Congratulation, Finger, WelcomeImg } from '../../assets/images';
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
 
@@ -129,3 +129,12 @@ export const SMARTModal: React.FC<NoticeModalProps> = () => (
     <Text style={[styles.smartHeader, styles.text]}>{I18n.t('modal.smart.footer')}</Text>
   </TouchableOpacity>
 );
+
+export const FeatureNotAvailableModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => {
+  return (
+    <TouchableOpacity style={styles.content} onPress={onPress}>
+      <WelcomeImg />
+      <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.feature_not_available.header')}</Text>
+    </TouchableOpacity>
+  );
+};
