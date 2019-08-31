@@ -26,7 +26,7 @@ const defaultNavigationOptions = {
   },
   headerBackTitle: null,
   headerTintColor: theme.colors.black,
-  headerTitleStyle: { fontSize: theme.sizes.title },
+  headerTitleStyle: { fontSize: theme.sizes.h3 },
 };
 
 const HomeStack = createStackNavigator(
@@ -163,7 +163,6 @@ export default createMaterialTopTabNavigator(
     },
   },
   {
-    initialRouteName: NavigatorMap.Profile,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,

@@ -1,42 +1,96 @@
 import React, { Component } from 'react';
+import get from 'lodash/get';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { reduxForm, InjectedFormProps } from 'redux-form';
-import { Text, TextInput } from 'react-native';
+import { Dropdown } from 'react-native-material-dropdown';
+import { TextField } from 'react-native-material-textfield';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
-import styles from './styles';
 import I18n from '../../core/i18n';
-import { Block } from '../../components';
+import { theme } from '../../constants';
+import { Block, Button } from '../../components';
+import { styles } from './styles';
 
-const formName = 'update-user-info';
+const subjects = [
+  { label: 'Feedback', value: 'FEEDBACK' },
+  { label: 'Suggestions', value: 'SUGGESTIONS' },
+  { label: 'Technical question', value: 'TECHNICAL_QUESTION' },
+  { label: 'Other', value: 'OTHER' },
+];
 
-interface IProps extends InjectedFormProps {}
+interface IProps {
+  dispatch: any;
+  navigation: NavigationScreenProp<NavigationState>;
+}
 
-class UserInfo extends Component<IProps> {
-  onSubmitPassword = (values: any) => {
+interface IStates {
+  initValue: any;
+}
+
+class ActionList extends Component<IProps, IStates> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      initValue: get(subjects[0], 'value'),
+    };
+  }
+
+  onCancel = () => this.props.navigation.goBack();
+
+  onSubmit = () => {
     /* eslint-disable-next-line */
-    console.log('on submit form values: ', values);
-    // this.password.blur();
+    console.log('Submit form');
   };
 
   render() {
+    const { initValue } = this.state;
     return (
       <Block style={styles.container}>
-        <Block flex={1} middle>
+        <Block middle>
           <Block flex={false} center middle style={{ height: 65 }}>
             <Text style={styles.pageTitle}>{I18n.t('profile.account_contact_us.page_title')}</Text>
           </Block>
-          <Block flex={1}>
-            <Text style={styles.name}>{I18n.t('evaluate.step1.name')}</Text>
-            <TextInput style={styles.input} onChangeText={() => {}} />
+          <Block flex={false} style={[styles.fieldWrapper, { flex: 1 }]}>
+            <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.subject')}</Text>
+            <Dropdown
+              data={subjects}
+              value={initValue}
+              rippleColor={theme.colors.gray}
+              dropdownOffset={{ top: 5, left: 0 }}
+            />
           </Block>
+          <Block flex={false} style={[styles.fieldWrapper, { flex: 3 }]}>
+            <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.description')}</Text>
+            <TextField
+              multiline
+              labelHeight={0}
+              labelPadding={0}
+              height={200}
+              maxLength={200}
+              characterRestriction={200}
+              label=""
+              title="Maximum 200 characters"
+              bordered
+              activeLineWidth={1}
+              style={{ padding: 8, paddingTop: 8, paddingBottom: 8 }}
+            />
+          </Block>
+        </Block>
+        <Block middle>
+          <Button gradient style={styles.btnSend} onPress={this.onSubmit}>
+            <Block center middle>
+              <Text style={styles.labelSend}>{I18n.t('common.send')}</Text>
+            </Block>
+          </Button>
+          <Button shadow style={styles.btnCancel} onPress={this.onCancel}>
+            <Block center middle>
+              <Text>{I18n.t('common.cancel')}</Text>
+            </Block>
+          </Button>
         </Block>
       </Block>
     );
   }
 }
 
-export default connect()(
-  reduxForm({
-    form: formName,
-  })(UserInfo),
-);
+export default connect()(ActionList);

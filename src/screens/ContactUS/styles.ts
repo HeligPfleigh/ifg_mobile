@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../constants';
 
-export default StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: theme.sizes.padding,
     paddingVertical: theme.sizes.padding / 2,
@@ -11,23 +11,23 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: theme.sizes.h2,
   },
-  name: {
-    fontSize: theme.sizes.font,
-    marginBottom: theme.sizes.margin / 2,
+  fieldWrapper: {
+    marginTop: theme.sizes.margin,
+    marginBottom: theme.sizes.margin,
+  },
+  fieldLabel: {
     color: theme.colors.gray,
+    fontSize: theme.sizes.label,
+    marginBottom: theme.sizes.margin,
   },
-  input: {
-    height: 40,
-    borderColor: theme.colors.gray,
+  btnSend: {
+    marginBottom: theme.sizes.margin / 2,
+  },
+  labelSend: {
+    color: theme.colors.white,
+  },
+  btnCancel: {
+    borderColor: theme.colors.blue,
     borderWidth: StyleSheet.hairlineWidth,
-    width: '100%',
-    paddingHorizontal: theme.sizes.margin / 2,
-  },
-  content: {
-    paddingTop: theme.sizes.padding,
-    backgroundColor: theme.colors.transparent,
-  },
-  label: {
-    color: theme.colors.black,
   },
 });

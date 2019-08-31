@@ -1,4 +1,11 @@
 {
+  "common": {
+    "next": "NEXT",
+    "back": "BACK",
+    "send": "SEND",
+    "cancel": "CANCEL",
+    "submit": "SUBMIT"
+  },
   "messages": {
     "required": "Field is required",
     "pwd_confirm": "Confirm new password do not match"
@@ -165,7 +172,9 @@
     "account_parameters": "Parameters",
     "account_contact_us": {
       "title": "Contact us",
-      "page_title": "Please type your message"
+      "page_title": "Please type your\n message",
+      "subject": "Subject",
+      "description": "Please type your message"
     },
     "logout": "Logout"
   },
