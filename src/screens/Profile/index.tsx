@@ -38,6 +38,10 @@ class Home extends Component<HomeProps> {
     return this.props.navigation.navigate(NavigatorMap.GlobalScores);
   };
 
+  _navigateToContactUsScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.ContactUS);
+  };
+
   render() {
     const {
       me: {
@@ -71,8 +75,8 @@ class Home extends Component<HomeProps> {
           <MenuItem
             iconSize={19}
             iconName="list"
-            itemLabel={I18n.t('profile.account_contact_us')}
-            onPress={this._navigateToGlobalScoresScreen}
+            itemLabel={I18n.t('profile.account_contact_us.title')}
+            onPress={this._navigateToContactUsScreen}
           />
           <MenuItem
             iconSize={19}

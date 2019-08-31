@@ -50,9 +50,9 @@ const sizes = {
   h1: 26,
   h2: 20,
   h3: 18,
-  title: 18,
   header: 16,
   body: 14,
+  label: 13,
   caption: 12,
 };
 

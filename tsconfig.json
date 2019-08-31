@@ -11,7 +11,6 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "experimentalDecorators": true,
     "typeRoots": ["./src/@types/", "./node_modules/@types/"]
   },
   "include": ["./src/**/*"],

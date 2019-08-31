@@ -1,4 +1,11 @@
 {
+  "common": {
+    "next": "NEXT",
+    "back": "BACK",
+    "send": "SEND",
+    "cancel": "CANCEL",
+    "submit": "SUBMIT"
+  },
   "messages": {
     "required": "Field is required",
     "pwd_confirm": "Confirm new password do not match"
@@ -14,7 +21,8 @@
     "drafts": "Finish my drafts",
     "account_settings": "Account Settings",
     "user_info": "User Info",
-    "action_list": "My action list"
+    "action_list": "My action list",
+    "contact_us": "Contact US"
   },
   "modal": {
     "self_evaluation": {
@@ -162,7 +170,12 @@
       "confirm_with_password": "Confirm with password"
     },
     "account_parameters": "Parameters",
-    "account_contact_us": "Contact us",
+    "account_contact_us": {
+      "title": "Contact us",
+      "page_title": "Please type your\n message",
+      "subject": "Subject",
+      "description": "Please type your message"
+    },
     "logout": "Logout"
   },
   "action_list": {

@@ -18,6 +18,7 @@ import UserInfo from '../screens/UserInfo';
 import AccountSettings from '../screens/AccountSettings';
 import ActionListScreen from '../screens/ActionList';
 import AchievedActionsScreen from '../screens/AchievedActions';
+import ContactUS from '../screens/ContactUS';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -25,7 +26,7 @@ const defaultNavigationOptions = {
   },
   headerBackTitle: null,
   headerTintColor: theme.colors.black,
-  headerTitleStyle: { fontSize: theme.sizes.title },
+  headerTitleStyle: { fontSize: theme.sizes.h3 },
 };
 
 const HomeStack = createStackNavigator(
@@ -106,6 +107,12 @@ const ProfileStack = createStackNavigator(
       screen: UserInfo,
       navigationOptions: {
         title: I18n.t('navigation.user_info'),
+      },
+    },
+    [NavigatorMap.ContactUS]: {
+      screen: ContactUS,
+      navigationOptions: {
+        title: I18n.t('navigation.contact_us'),
       },
     },
     [NavigatorMap.AccountSettings]: {
