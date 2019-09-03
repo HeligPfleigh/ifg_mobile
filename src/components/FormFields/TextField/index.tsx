@@ -17,6 +17,7 @@ interface IProps {
   characterRestriction?: number;
   secureTextEntry?: boolean;
   enablesReturnKeyAutomatically?: boolean;
+  onChangeText?: (event: any) => void;
   onSubmitEditing?: (event: any) => void;
 }
 
@@ -48,10 +49,11 @@ class MyTextField extends Component<IProps, IStates> {
   render() {
     const {
       label,
-      meta: { error },
+      meta: { error, touched },
       input: { onChange, ...restInput },
       ...ownProps
     } = this.props;
+
     return (
       <TextField
         {...restInput}
@@ -59,8 +61,8 @@ class MyTextField extends Component<IProps, IStates> {
         label={label}
         labelHeight={18}
         labelFontSize={14}
-        onChangeText={onChange}
-        error={error}
+        onChangeText={this.props.onChangeText ? this.props.onChangeText : onChange}
+        error={touched && error}
         secureTextEntry={this.state.isRenderAccessory}
         renderAccessory={this.renderPasswordAccessory}
       />
