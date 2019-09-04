@@ -16,7 +16,7 @@ interface IRadioGroupProps {
   contentStyle?: any;
   onPress: (value: string) => void;
   selectedValue: string;
-  values: { label: string; value: string }[];
+  values: { label: string; value: any }[];
 }
 
 const RadioGroup = ({
@@ -34,7 +34,7 @@ const RadioGroup = ({
 }: IRadioGroupProps) => {
   // component default styles
   const mainStyles = StyleSheet.create({
-    conatiner: {
+    container: {
       flexDirection: horizontal ? 'column' : 'row',
     },
     contentStyles: {
@@ -64,7 +64,7 @@ const RadioGroup = ({
   });
 
   // add custom container style
-  let containerStyles = [mainStyles.conatiner];
+  let containerStyles = [mainStyles.container];
   if (!isUndefined(containerStyle)) {
     if (!isArray(containerStyle)) {
       containerStyles = [...containerStyles, containerStyle];

@@ -22,7 +22,8 @@
     "account_settings": "Account Settings",
     "user_info": "User Info",
     "action_list": "My action list",
-    "contact_us": "Contact US"
+    "contact_us": "Contact US",
+    "parameters": "Parameters"
   },
   "modal": {
     "self_evaluation": {
@@ -169,7 +170,15 @@
       "new_email": "New email",
       "confirm_with_password": "Confirm with password"
     },
-    "account_parameters": "Parameters",
+    "account_parameters": {
+      "title": "Parameters",
+      "notifications": "Notifications",
+      "notifications_subtitle": "I want to receive feel good information",
+      "newsletter": "Newsletter",
+      "newsletter_subtitle": "Receive cool and fun news",
+      "motivation_msgs": "Motivation messages",
+      "motivation_msgs_subtitle": "Receive congratulations and encouragements"
+    },
     "account_contact_us": {
       "title": "Contact us",
       "page_title": "Please type your\n message",

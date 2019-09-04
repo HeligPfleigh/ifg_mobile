@@ -18,6 +18,7 @@ enum NavigatorMap {
   ContactUS = 'Contact US',
   UserInfo = 'User Info',
   AccountSettings = 'Account Settings',
+  Parameters = 'Parameters',
 }
 
 export default NavigatorMap;

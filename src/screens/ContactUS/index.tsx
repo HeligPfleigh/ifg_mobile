@@ -27,7 +27,7 @@ interface IStates {
   initValue: any;
 }
 
-class ActionList extends Component<IProps, IStates> {
+class ContactUS extends Component<IProps, IStates> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -46,11 +46,11 @@ class ActionList extends Component<IProps, IStates> {
     const { initValue } = this.state;
     return (
       <Block style={styles.container}>
-        <Block middle>
-          <Block flex={false} center middle style={{ height: 65 }}>
+        <Block flex={false}>
+          <Block flex={false} center middle style={styles.titleWrapper}>
             <Text style={styles.pageTitle}>{I18n.t('profile.account_contact_us.page_title')}</Text>
           </Block>
-          <Block flex={false} style={[styles.fieldWrapper, { flex: 1 }]}>
+          <Block flex={false} style={styles.fieldWrapper}>
             <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.subject')}</Text>
             <Dropdown
               data={subjects}
@@ -59,24 +59,24 @@ class ActionList extends Component<IProps, IStates> {
               dropdownOffset={{ top: 5, left: 0 }}
             />
           </Block>
-          <Block flex={false} style={[styles.fieldWrapper, { flex: 3 }]}>
+          <Block flex={false} style={styles.fieldWrapper}>
             <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.description')}</Text>
             <TextField
               multiline
               labelHeight={0}
               labelPadding={0}
-              height={200}
+              height={175}
               maxLength={200}
               characterRestriction={200}
               label=""
               title="Maximum 200 characters"
               bordered
               activeLineWidth={1}
-              style={{ padding: 8, paddingTop: 8, paddingBottom: 8 }}
+              style={styles.textarea}
             />
           </Block>
         </Block>
-        <Block middle>
+        <Block flex={false}>
           <Button gradient style={styles.btnSend} onPress={this.onSubmit}>
             <Block center middle>
               <Text style={styles.labelSend}>{I18n.t('common.send')}</Text>
@@ -93,4 +93,4 @@ class ActionList extends Component<IProps, IStates> {
   }
 }
 
-export default connect()(ActionList);
+export default connect()(ContactUS);
