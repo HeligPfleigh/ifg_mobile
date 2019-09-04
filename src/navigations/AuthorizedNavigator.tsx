@@ -19,6 +19,7 @@ import AccountSettings from '../screens/AccountSettings';
 import ActionListScreen from '../screens/ActionList';
 import AchievedActionsScreen from '../screens/AchievedActions';
 import ContactUS from '../screens/ContactUS';
+import Parameters from '../screens/Parameters';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -102,6 +103,9 @@ const ProfileStack = createStackNavigator(
   {
     [NavigatorMap.Profile]: {
       screen: ProfileScreen,
+      navigationOptions: {
+        header: null,
+      },
     },
     [NavigatorMap.UserInfo]: {
       screen: UserInfo,
@@ -119,6 +123,12 @@ const ProfileStack = createStackNavigator(
       screen: AccountSettings,
       navigationOptions: {
         title: I18n.t('navigation.account_settings'),
+      },
+    },
+    [NavigatorMap.Parameters]: {
+      screen: Parameters,
+      navigationOptions: {
+        title: I18n.t('navigation.parameters'),
       },
     },
   },

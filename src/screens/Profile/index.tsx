@@ -34,8 +34,8 @@ class Home extends Component<HomeProps> {
     return this.props.navigation.navigate(NavigatorMap.AccountSettings);
   };
 
-  _navigateToGlobalScoresScreen = () => {
-    return this.props.navigation.navigate(NavigatorMap.GlobalScores);
+  _navigateToParametersScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.Parameters);
   };
 
   _navigateToContactUsScreen = () => {
@@ -69,8 +69,8 @@ class Home extends Component<HomeProps> {
           <MenuItem
             iconSize={20}
             iconName="user"
-            itemLabel={I18n.t('profile.account_parameters')}
-            onPress={this._navigateToGlobalScoresScreen}
+            itemLabel={I18n.t('profile.account_parameters.title')}
+            onPress={this._navigateToParametersScreen}
           />
           <MenuItem
             iconSize={19}
