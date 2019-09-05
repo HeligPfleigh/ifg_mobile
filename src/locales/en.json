@@ -8,7 +8,7 @@
   },
   "messages": {
     "required": "Field is required",
-    "pwd_confirm": "Confirm new password do not match"
+    "pwd_confirm": "Password and confirm password do not match"
   },
   "navigation": {
     "home": "Home",
@@ -73,9 +73,32 @@
   },
   "welcome": {
     "header": "I Feel Good",
-    "paragraph": "Find out what you need,\n and also what you don't",
+    "paragraph": "Find out what you need,\nand also what you don't !",
     "signup": "SIGN UP",
     "signin": "I HAVE AN ACCOUNT"
+  },
+  "signin": {
+    "title": "Glad to see you!",
+    "username": "Username",
+    "password": "Password",
+    "submit": "SIGN IN",
+    "forgot": "Forgot password?"
+  },
+  "signup": {
+    "title": "Sign up \nto get started !",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm Password",
+    "agree": "I agree with the ",
+    "terms": "terms of use",
+    "submit": "SIGN UP"
+  },
+  "forgot": {
+    "title": "Forgot Password",
+    "paragraph": "Enter email to reset password!",
+    "email": "Email",
+    "submit": "RESET PASSWORD"
   },
   "home": {
     "relationships": "RELATIONSHIPS",

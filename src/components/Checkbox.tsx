@@ -21,6 +21,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ size, checked, onPress }: CheckboxP
           width: size,
           height: size,
           borderWidth: 1,
+          borderRadius: 4,
           borderColor: checked ? theme.colors.blue : theme.colors.gray,
         }}
       >

@@ -48,10 +48,11 @@ class MyTextField extends Component<IProps, IStates> {
   render() {
     const {
       label,
-      meta: { error },
+      meta: { error, touched },
       input: { onChange, ...restInput },
       ...ownProps
     } = this.props;
+
     return (
       <TextField
         {...restInput}
@@ -60,7 +61,7 @@ class MyTextField extends Component<IProps, IStates> {
         labelHeight={18}
         labelFontSize={14}
         onChangeText={onChange}
-        error={error}
+        error={touched ? error : undefined}
         secureTextEntry={this.state.isRenderAccessory}
         renderAccessory={this.renderPasswordAccessory}
       />
