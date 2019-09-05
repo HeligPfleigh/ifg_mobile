@@ -3,7 +3,7 @@ export const ME_SUCCESSFUL = 'ME_SUCCESSFUL';
 export const ME_FAILURE = 'ME_FAILURE';
 
 export interface MeSuccessfulResponse {
-  name: string;
+  username: string;
   avatar?: string | null;
   score: {
     relationships?: number;

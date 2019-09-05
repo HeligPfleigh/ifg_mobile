@@ -12,19 +12,7 @@ export const authorizeApi = (token: string): void => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const me = () => {
-  return Promise.resolve({
-    name: 'Test User',
-    avatar: null,
-    score: {
-      relationships: 3.6,
-      activities: -2.5,
-      intakes: 1.8,
-      other: 3.6,
-      overall: 4.5,
-    },
-  });
-};
+const me = () => instance.get('/evaluations/overall');
 
 const getSummary = (type: Enum.EvaluationType) => {
   switch (type) {

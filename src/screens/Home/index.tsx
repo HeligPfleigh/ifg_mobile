@@ -53,7 +53,7 @@ class Home extends Component<HomeProps> {
   render() {
     const {
       me: {
-        data: { name, score, avatar },
+        data: { username, score, avatar },
       },
     } = this.props;
     return (
@@ -61,7 +61,7 @@ class Home extends Component<HomeProps> {
         <View style={styles.headerContainer}>
           <Image source={avatar || DefaultAvatar} style={styles.avatar} />
           <Block flex={0.5} middle center>
-            <Text>{name}</Text>
+            <Text>{username}</Text>
           </Block>
           <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
         </View>

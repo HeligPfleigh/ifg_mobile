@@ -27,8 +27,8 @@ export function me() {
   return async function(dispatch: Dispatch<MeActionType>) {
     dispatch(meRequest());
     try {
-      const response = await api.me();
-      dispatch(meSuccessfull(response));
+      const { data } = await api.me();
+      dispatch(meSuccessfull(data));
     } catch (e) {
       const error = {
         status: e.status || 400,
