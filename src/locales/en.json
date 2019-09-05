@@ -23,7 +23,8 @@
     "user_info": "User Info",
     "action_list": "My action list",
     "contact_us": "Contact US",
-    "parameters": "Parameters"
+    "parameters": "Parameters",
+    "delete_account": "Delete Account"
   },
   "modal": {
     "self_evaluation": {
@@ -42,7 +43,7 @@
       "body": "Welcome to your space! \n\n You can now self-evaluate everything in your life. Satisfaction scores will be calculated and updated \n in real time following your evaluations."
     },
     "delete_account": {
-      "body": "We hope that you will be back soon."
+      "body": "We hope that you will \nbe back soon."
     },
     "smart": {
       "specific": {
@@ -207,6 +208,13 @@
       "page_title": "Please type your\n message",
       "subject": "Subject",
       "description": "Please type your message"
+    },
+    "delete_account": {
+      "title": "Delete Account",
+      "page_title": "Are you sure you want to \ndelete the account?",
+      "page_subtitle": "Please let us know why you are leaving",
+      "label_input": "Add reason",
+      "label_button": "SUBMIT & DELETE ACCOUNT"
     },
     "logout": "Logout"
   },

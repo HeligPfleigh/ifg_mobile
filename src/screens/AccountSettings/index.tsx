@@ -19,8 +19,8 @@ interface ScreenProps {
 }
 
 class AccountSettings extends Component<ScreenProps> {
-  _navigateToGlobalScoresScreen = () => {
-    return this.props.navigation.navigate(NavigatorMap.GlobalScores);
+  _navigateToDeleteAccountScreen = () => {
+    return this.props.navigation.navigate(NavigatorMap.DeleteAccount);
   };
 
   render() {
@@ -39,7 +39,10 @@ class AccountSettings extends Component<ScreenProps> {
             childComponent={<LanguageSetting />}
             itemLabel={I18n.t('profile.account_settings.language_setting')}
           />
-          <MenuItem itemLabel={I18n.t('profile.account_settings.delete_account')} />
+          <MenuItem
+            onPress={this._navigateToDeleteAccountScreen}
+            itemLabel={I18n.t('profile.account_settings.delete_account')}
+          />
         </Block>
       </ScrollView>
     );

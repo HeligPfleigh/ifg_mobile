@@ -22,6 +22,7 @@ enum NavigatorMap {
   UserInfo = 'User Info',
   AccountSettings = 'Account Settings',
   Parameters = 'Parameters',
+  DeleteAccount = 'Delete Account',
 }
 
 export default NavigatorMap;
