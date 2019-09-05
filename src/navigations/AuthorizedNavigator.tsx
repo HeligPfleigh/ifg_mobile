@@ -20,6 +20,7 @@ import ActionListScreen from '../screens/ActionList';
 import AchievedActionsScreen from '../screens/AchievedActions';
 import ContactUS from '../screens/ContactUS';
 import Parameters from '../screens/Parameters';
+import DeleteAccount from '../screens/DeleteAccount';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -127,6 +128,12 @@ const ProfileStack = createStackNavigator(
     },
     [NavigatorMap.Parameters]: {
       screen: Parameters,
+      navigationOptions: {
+        title: I18n.t('navigation.parameters'),
+      },
+    },
+    [NavigatorMap.DeleteAccount]: {
+      screen: DeleteAccount,
       navigationOptions: {
         title: I18n.t('navigation.parameters'),
       },
