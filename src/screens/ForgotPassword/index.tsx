@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { ReduxFormName } from '../../constants/enum';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import { Block, Button } from '../../components';
 import { styles } from './styles';
-
-const formName = 'forgot-password';
 
 const ForgotPassword: React.FC = () => {
   const { required, minLength4, maxLength120, email } = validator;
@@ -48,4 +47,4 @@ const ForgotPassword: React.FC = () => {
   );
 };
 
-export default connect()(reduxForm({ form: formName })(ForgotPassword));
+export default connect()(reduxForm({ form: ReduxFormName.FORGOT_PASSWORD })(ForgotPassword));
