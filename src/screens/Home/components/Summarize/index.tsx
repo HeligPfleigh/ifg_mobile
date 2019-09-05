@@ -18,9 +18,7 @@ export default class Summarize extends Component<SummarizeProps> {
     const { onPress, score } = this.props;
     return (
       <Block row style={styles.container}>
-        <Block flex={1}>
-          <WelcomeImg width={60} height={40} />
-        </Block>
+        <WelcomeImg width={60} height={40} />
         <Block flex={2}>
           <Text style={styles.label}>{I18n.t('home.global_scores')}</Text>
         </Block>

@@ -17,13 +17,11 @@ export default class AuthLoadingScreen extends PureComponent<AuthLoadingProps> {
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
-    /* eslint-disable-next-line */
     const userToken = await AsyncStorage.getItem('userToken');
 
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
-    /* eslint-disable-next-line */
-    this.props.navigation.navigate(true ? NavigatorMap.App : NavigatorMap.Auth);
+    this.props.navigation.navigate(userToken ? NavigatorMap.App : NavigatorMap.Auth);
   };
 
   // Render any loading content that you like here
