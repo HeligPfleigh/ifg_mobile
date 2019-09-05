@@ -41,4 +41,10 @@ enum NavigationParamsName {
   EVALUATION_DATA = 'evaluation_data',
 }
 
-export { Tags, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName };
+enum ReduxFormName {
+  SIGN_IN = 'signin',
+  SIGN_UP = 'signup',
+  FORGOT_PASSWORD = 'forgot-password',
+}
+
+export { Tags, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName };

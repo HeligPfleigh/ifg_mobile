@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import I18n from 'i18n-js';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button, Checkbox } from '../../components';
 import { theme } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
+import { ReduxFormName } from '../../constants/enum';
 
-interface SignUpProps {
-  navigation: NavigationScreenProp<NavigationState>;
+interface SignUpProps extends InjectedFormProps, NavigationInjectedProps {
+  password?: string;
 }
 
-const formName = 'signup';
+const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
+  const { required, minLength4, minLength8, maxLength120, password, email } = validator;
+  const [input, setInput] = useState({ isCheck: false });
 
-const SignUp: React.FC<any> = (props: SignUpProps) => {
-  const { required, minLength4, maxLength120, password, email } = validator;
-  const [input, setInput] = useState({ isCheck: false, username: '', email: '', password: '', retype: '' });
-
-  const compareValue = () => {
-    return validator.comparePassword(input.password, input.retype);
+  const compareValue = (value: string) => {
+    return validator.comparePassword(props.password, value);
   };
 
   const _navigateToLicenseScreen = () => {
@@ -38,7 +37,6 @@ const SignUp: React.FC<any> = (props: SignUpProps) => {
           <Block flex={2} margin={[theme.sizes.base, 0]}>
             <Block flex={1}>
               <Field
-                nbTheme
                 name="username"
                 label={I18n.t('signup.username')}
                 component={TextField}
@@ -53,7 +51,7 @@ const SignUp: React.FC<any> = (props: SignUpProps) => {
                 label={I18n.t('signup.email')}
                 component={TextField}
                 characterRestriction={120}
-                validate={[required, minLength4, maxLength120, email]}
+                validate={[required, minLength8, maxLength120, email]}
                 tintColor={theme.colors.green}
               />
             </Block>
@@ -65,7 +63,7 @@ const SignUp: React.FC<any> = (props: SignUpProps) => {
                 component={TextField}
                 autoCorrect={false}
                 characterRestriction={120}
-                validate={[required, minLength4, maxLength120, password]}
+                validate={[required, minLength8, maxLength120, password]}
                 tintColor={theme.colors.green}
               />
             </Block>
@@ -77,7 +75,7 @@ const SignUp: React.FC<any> = (props: SignUpProps) => {
                 component={TextField}
                 autoCorrect={false}
                 characterRestriction={120}
-                validate={[required, minLength4, maxLength120, password, compareValue]}
+                validate={[required, minLength8, maxLength120, password, compareValue]}
                 tintColor={theme.colors.green}
               />
             </Block>
@@ -111,4 +109,8 @@ const SignUp: React.FC<any> = (props: SignUpProps) => {
   );
 };
 
-export default connect()(reduxForm({ form: formName })(SignUp));
+const mapStateToProps = (state: T) => ({
+  password: formValueSelector(ReduxFormName.SIGN_UP)(state, 'password'),
+});
+
+export default connect(mapStateToProps)(reduxForm({ form: ReduxFormName.SIGN_UP })(withNavigation(SignUp)));

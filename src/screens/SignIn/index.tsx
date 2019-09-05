@@ -2,22 +2,19 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import I18n from 'i18n-js';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
+import { ReduxFormName } from '../../constants/enum';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button } from '../../components';
 import { theme } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
 
-interface SignInProps {
-  navigation: NavigationScreenProp<NavigationState>;
-}
+interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
-const formName = 'signin';
-
-const SignIn: React.FC<any> = (props: SignInProps) => {
-  const { required, minLength4, maxLength120, password } = validator;
+const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
+  const { required, minLength4, minLength8, maxLength120, password } = validator;
 
   const _navigateToForgotPasswordScreen = () => {
     props.navigation.navigate(NavigatorMap.ForgotPassword);
@@ -51,7 +48,7 @@ const SignIn: React.FC<any> = (props: SignInProps) => {
                     component={TextField}
                     autoCorrect={false}
                     characterRestriction={120}
-                    validate={[required, minLength4, maxLength120, password]}
+                    validate={[required, minLength8, maxLength120, password]}
                     tintColor={theme.colors.green}
                   />
                 </Block>
@@ -79,4 +76,4 @@ const SignIn: React.FC<any> = (props: SignInProps) => {
   );
 };
 
-export default connect()(reduxForm({ form: formName })(SignIn));
+export default connect()(reduxForm({ form: ReduxFormName.SIGN_IN })(withNavigation(SignIn)));
