@@ -11,7 +11,7 @@ import MenuItem from './components/MenuItem';
 import { DefaultAvatar } from '../../assets/images';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, MeState } from '../../store/types';
-import { me } from '../../store/actions';
+import { me, logout } from '../../store/actions';
 import { theme } from '../../constants';
 import { styles } from './styles';
 
@@ -42,10 +42,15 @@ class Home extends Component<HomeProps> {
     return this.props.navigation.navigate(NavigatorMap.ContactUS);
   };
 
+  _logout = () => {
+    this.props.dispatch(logout());
+    this.props.navigation.navigate(NavigatorMap.Welcome);
+  };
+
   render() {
     const {
       me: {
-        data: { name, avatar },
+        data: { username: name, avatar },
       },
     } = this.props;
     return (
@@ -86,7 +91,7 @@ class Home extends Component<HomeProps> {
             labelColor={theme.colors.white}
             backgroundColor={theme.colors.red}
             itemLabel={I18n.t('profile.logout')}
-            onPress={() => console.log('Logout action')}
+            onPress={this._logout}
           />
         </Block>
       </Block>

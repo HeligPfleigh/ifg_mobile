@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 
 import api from '../../core/api';
-import { LoginSuccessfulResponse, LOGIN_SUCCESSFUL, LOGIN_FAILURE, LoginActionType } from './types';
+import { LoginSuccessfulResponse, LOGIN_SUCCESSFUL, LOGIN_FAILURE, LoginActionType, LOGOUT } from './types';
 import { RequestError } from '../types';
 
 const loginSuccessfull = (response: LoginSuccessfulResponse): LoginActionType => {
@@ -26,5 +26,11 @@ export function login(username: string, password: string) {
     } catch (e) {
       dispatch(loginFail(e));
     }
+  };
+}
+
+export function logout() {
+  return {
+    type: LOGOUT,
   };
 }

@@ -42,11 +42,7 @@ class Summary extends Component<SummaryProps> {
           {summaryIcon(score || 0)}
         </Block>
         <Block middle flex={3}>
-          {factors.map((factor: string, index: number) => (
-            <Text key={`factor-${index}`} style={styles.factorTxt}>
-              {factor}
-            </Text>
-          ))}
+          <Text style={styles.factorTxt}>{factors}</Text>
         </Block>
         <Block flex={3} middle right row>
           {tags && (

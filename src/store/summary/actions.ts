@@ -36,8 +36,8 @@ export function loadSummary(evaluationType: Enum.EvaluationType) {
   return async function(dispatch: Dispatch<SummaryActionType>) {
     dispatch(summaryRequest(evaluationType));
     try {
-      const response = await api.getSummary(evaluationType);
-      dispatch(summarySuccessfull(response));
+      const { data } = await api.evaluationSummary(evaluationType);
+      dispatch(summarySuccessfull(data));
     } catch (e) {
       const error = {
         status: e.status || 400,

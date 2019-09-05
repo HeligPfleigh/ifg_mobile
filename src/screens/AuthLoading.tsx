@@ -1,36 +1,27 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { ActivityIndicator, StatusBar, View } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
-import AsyncStorage from '@react-native-community/async-storage';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
+import { useSelector } from 'react-redux';
+import { AppState } from '../store/types';
 import NavigatorMap from '../navigations/NavigatorMap';
+import { authorizeApi } from '../core/api';
 
 interface AuthLoadingProps {
-  navigation: NavigationScreenProp<any>;
+  navigation: NavigationScreenProp<NavigationState>;
 }
 
-export default class AuthLoadingScreen extends PureComponent<AuthLoadingProps> {
-  constructor(props: AuthLoadingProps) {
-    super(props);
-    this._bootstrapAsync();
-  }
+const AuthLoadingScreen: React.FC<AuthLoadingProps> = (props: AuthLoadingProps) => {
+  const { navigation } = props;
+  const authToken = useSelector((state: AppState) => state.auth.token);
+  authorizeApi(authToken);
+  navigation.navigate(authToken ? NavigatorMap.App : NavigatorMap.Auth);
+  return (
+    <View>
+      <ActivityIndicator />
+      <StatusBar barStyle="default" />
+    </View>
+  );
+};
 
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
-
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? NavigatorMap.App : NavigatorMap.Auth);
-  };
-
-  // Render any loading content that you like here
-  render() {
-    return (
-      <View>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
-      </View>
-    );
-  }
-}
+export default AuthLoadingScreen;

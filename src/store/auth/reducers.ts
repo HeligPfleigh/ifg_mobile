@@ -1,5 +1,5 @@
 import { createReducer } from '../createReducer';
-import { LOGIN_SUCCESSFUL, AuthState, LOGIN_FAILURE, LoginSuccessfulAction, LoginFailureAction } from './types';
+import { LOGIN_SUCCESSFUL, AuthState, LOGIN_FAILURE, LoginSuccessfulAction, LoginFailureAction, LOGOUT } from './types';
 
 const initialState = {
   token: '',
@@ -14,6 +14,9 @@ const authReducer = createReducer(initialState, {
       ...initialState,
       error: action.error,
     };
+  },
+  [LOGOUT]: () => {
+    return initialState;
   },
 });
 
