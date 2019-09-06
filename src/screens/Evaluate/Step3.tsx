@@ -44,7 +44,7 @@ export const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, 
           <Text>{name}</Text>
         </Block>
         <Block flex={3} row right center style={step3Styles.rightFrame}>
-          <Text style={step3Styles.name}>{label}</Text>
+          <Text style={step3Styles.name}>{I18n.t(`evaluate.tags.${label}`)}</Text>
           {feelingComponent}
           {impactComponent}
         </Block>

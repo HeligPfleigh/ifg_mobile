@@ -50,7 +50,7 @@ export const Step2: React.FC<Step2Props> = ({
           <Text>{name}</Text>
         </Block>
         <Block flex={1} center middle style={step2Styles.rightFrame}>
-          <Text style={step2Styles.name}>{label}</Text>
+          <Text style={step2Styles.name}>{I18n.t(`evaluate.tags.${label}`)}</Text>
         </Block>
       </Block>
       <Block flex={1}>
