@@ -5,7 +5,7 @@ import noop from 'lodash/noop';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Item, Label, Input } from 'native-base';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { NavigationScreenProps } from 'react-navigation';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox } from '../../components';
 import { styles } from './styles';
@@ -14,9 +14,8 @@ import { Enum, theme } from '../../constants';
 import { showModal } from '../../store/actions';
 import { Edit, Delete } from '../../assets/images';
 
-interface ActionListProps {
+interface ActionListProps extends NavigationScreenProps {
   dispatch: any;
-  navigation: NavigationScreenProp<NavigationState>;
 }
 
 class ActionList extends Component<ActionListProps> {

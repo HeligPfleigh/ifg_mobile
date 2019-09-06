@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, ScrollView, Image, View } from 'react-native';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import get from 'lodash/get';
@@ -17,16 +17,17 @@ import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, MeState } from '../../store/types';
 import { me, showModal } from '../../store/actions';
 
-interface HomeProps {
+interface HomeProps extends NavigationScreenProps {
   dispatch: Dispatch<any>;
-  navigation: NavigationScreenProp<NavigationState>;
   me: MeState;
 }
 
 class Home extends Component<HomeProps> {
   componentDidMount() {
-    this.props.dispatch(me());
+    this._loadData();
   }
+
+  _loadData = () => this.props.dispatch(me());
 
   _navigateToGlobalScoresScreen = () => {
     const {
@@ -58,6 +59,7 @@ class Home extends Component<HomeProps> {
     } = this.props;
     return (
       <Block>
+        <NavigationEvents onDidFocus={this._loadData} />
         <View style={styles.headerContainer}>
           <Image source={avatar || DefaultAvatar} style={styles.avatar} />
           <Block flex={0.5} middle center>

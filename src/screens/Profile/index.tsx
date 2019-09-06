@@ -11,7 +11,7 @@ import MenuItem from './components/MenuItem';
 import { DefaultAvatar } from '../../assets/images';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, MeState } from '../../store/types';
-import { me, logout } from '../../store/actions';
+import { logout } from '../../store/actions';
 import { theme } from '../../constants';
 import { styles } from './styles';
 
@@ -22,10 +22,6 @@ interface HomeProps {
 }
 
 class Home extends Component<HomeProps> {
-  componentDidMount() {
-    this.props.dispatch(me());
-  }
-
   _navigateToUserInfoScreen = () => {
     return this.props.navigation.navigate(NavigatorMap.UserInfo);
   };
