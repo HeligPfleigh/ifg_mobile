@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { NavigationScreenProp, NavigationState, HeaderBackButton } from 'react-navigation';
+import { HeaderBackButton, NavigationScreenProps } from 'react-navigation';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -13,9 +13,9 @@ import { Step2 } from './Step2';
 import { Step3 } from './Step3';
 import { Enum, theme } from '../../constants';
 import { showModal, saveDraft } from '../../store/actions';
+import api from '../../core/api';
 
-interface EvaluateProps {
-  navigation: NavigationScreenProp<NavigationState>;
+interface EvaluateProps extends NavigationScreenProps {
   dispatch: Dispatch<any>;
 }
 
@@ -29,6 +29,7 @@ interface EvaluateState {
   feeling: Enum.Feeling | null;
   impactType: Enum.ImpactType | null;
   score: number;
+  disableNextBtn: boolean;
 }
 
 class Evaluate extends Component<EvaluateProps, EvaluateState> {
@@ -55,6 +56,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
       feeling: null,
       impactType: null,
       score: 0,
+      disableNextBtn: true,
     };
   }
 
@@ -88,36 +90,69 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     const { step } = this.state;
     const { navigation } = this.props;
     if (step > 1) {
-      this.setState({ step: step - 1 });
+      this.setState({ step: step - 1, disableNextBtn: false });
     } else {
       navigation.goBack();
     }
   };
 
-  _handleNextAndSubmit = () => {
-    const { step } = this.state;
-    if (step === 3) {
-      // TODO
+  _handleNextAndSubmit = async () => {
+    const { step, type, name, score, label, impactType, desc } = this.state;
+    const { navigation, dispatch } = this.props;
+    if (step === 3 && type && label && impactType) {
+      try {
+        await api.createEvaluation({
+          evaluationType: type,
+          influentFactor: name,
+          score,
+          labelTag: label,
+          impactType,
+          description: desc,
+        });
+        dispatch(showModal({ modalType: Enum.ModalType.EVALUATION_SAVED, onModalPress: navigation.goBack }));
+      } catch (err) {
+        // TODO
+      }
     } else {
-      this.setState({ step: step + 1 });
+      this.setState({ step: step + 1, disableNextBtn: true });
     }
   };
 
-  _handleChipPress = (label: Enum.Tags) => this.setState({ label });
+  _enableNextBtn = () => {
+    const { step, name, label, feeling, impactType, score } = this.state;
+    switch (step) {
+      case 1:
+        if (!name || !label) {
+          this.setState({ disableNextBtn: true });
+          return;
+        }
+        break;
+      case 2:
+        if (!feeling || !impactType) return;
+        break;
+      case 3:
+        if (!score) return;
+        break;
+      default:
+    }
+    this.setState({ disableNextBtn: false });
+  };
 
-  _handleNameChange = (name: string) => this.setState({ name });
+  _handleChipPress = (label: Enum.Tags) => this.setState({ label }, this._enableNextBtn);
+
+  _handleNameChange = (name: string) => this.setState({ name }, this._enableNextBtn);
 
   _handleDescChange = (desc: string) => this.setState({ desc });
 
-  _handlePressFeelGood = () => this.setState({ feeling: Enum.Feeling.GOOD });
+  _handlePressFeelGood = () => this.setState({ feeling: Enum.Feeling.GOOD }, this._enableNextBtn);
 
-  _handlePressFeelBad = () => this.setState({ feeling: Enum.Feeling.BAD });
+  _handlePressFeelBad = () => this.setState({ feeling: Enum.Feeling.BAD }, this._enableNextBtn);
 
-  _handlePressImpactEnergy = () => this.setState({ impactType: Enum.ImpactType.ENERGY });
+  _handlePressImpactEnergy = () => this.setState({ impactType: Enum.ImpactType.ENERGY }, this._enableNextBtn);
 
-  _handlePressImpactMood = () => this.setState({ impactType: Enum.ImpactType.MOOD });
+  _handlePressImpactMood = () => this.setState({ impactType: Enum.ImpactType.MOOD }, this._enableNextBtn);
 
-  _handlePressScore = (score: number) => this.setState({ score });
+  _handlePressScore = (score: number) => this.setState({ score }, this._enableNextBtn);
 
   _handlePressSaveDraft = () => {
     const { dispatch, navigation } = this.props;
@@ -126,7 +161,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   };
 
   render() {
-    const { step, label, name, desc, feeling, impactType, score } = this.state;
+    const { step, label, name, desc, feeling, impactType, score, disableNextBtn } = this.state;
     return (
       <Block>
         <Block flex={5}>
@@ -164,7 +199,12 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
           )}
         </Block>
         <Block middle flex={1} style={styles.footerContainer}>
-          <Button gradient onPress={this._handleNextAndSubmit} style={styles.nextBtn}>
+          <Button
+            gradient={!disableNextBtn}
+            disabled={disableNextBtn}
+            onPress={this._handleNextAndSubmit}
+            style={styles.nextBtn}
+          >
             <Block center middle>
               <Text style={styles.nextBtnTxt}>
                 {step === 3 ? I18n.t('evaluate.footer.finish') : I18n.t('evaluate.footer.next')}

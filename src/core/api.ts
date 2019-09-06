@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Enum } from '../constants';
 
-const API_SERVER = 'http://192.168.100.10:8001';
+const API_SERVER = 'http://192.168.100.18:8001';
 
 const instance = axios.create({
   baseURL: API_SERVER,
@@ -20,8 +20,19 @@ const login = (username: string, password: string) => {
   return instance.post(`/users/login`, { username, password });
 };
 
+const createEvaluation = (data: {
+  evaluationType: Enum.EvaluationType;
+  influentFactor: string;
+  score: number;
+  labelTag: Enum.Tags;
+  image?: string;
+  impactType: Enum.ImpactType;
+  description?: string;
+}) => instance.post(`/evaluations`, data);
+
 export default {
   me,
   evaluationSummary,
   login,
+  createEvaluation,
 };

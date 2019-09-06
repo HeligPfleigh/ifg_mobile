@@ -40,7 +40,8 @@ export const step1Styles = StyleSheet.create({
     paddingHorizontal: theme.sizes.margin / 2,
   },
   chip: {
-    margin: theme.sizes.margin,
+    marginRight: theme.sizes.margin / 2,
+    marginVertical: theme.sizes.margin,
     borderRadius: theme.sizes.base,
     paddingHorizontal: theme.sizes.padding / 2,
     borderColor: theme.colors.gray,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
+import { StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { theme } from '../constants';
 
@@ -25,8 +25,7 @@ const styles: any = StyleSheet.create({
   gray2: { backgroundColor: theme.colors.gray2 },
 });
 
-interface ButtonProps extends React.Props<any> {
-  style?: any;
+interface ButtonProps extends TouchableOpacityProps {
   opacity: any;
   gradient: any;
   color: any;
@@ -36,7 +35,6 @@ interface ButtonProps extends React.Props<any> {
   start: any;
   locations: any;
   shadow: any;
-  onPress: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 }
 
 class Button extends Component<ButtonProps> {
