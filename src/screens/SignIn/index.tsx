@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import I18n from 'i18n-js';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button } from '../../components';
@@ -16,7 +16,7 @@ import { authorizeApi } from '../../core/api';
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
 const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
-  const { required, minLength4, minLength8, maxLength120, password } = validator;
+  const { required, minLength4, minLength8, maxLength120 } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
 
@@ -64,7 +64,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
                     component={TextField}
                     autoCorrect={false}
                     characterRestriction={120}
-                    validate={[required, minLength8, maxLength120, password]}
+                    validate={[required, minLength8, maxLength120]}
                     tintColor={theme.colors.green}
                   />
                 </Block>
@@ -92,4 +92,9 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
   );
 };
 
-export default reduxForm({ form: Enum.ReduxFormName.SIGN_IN })(withNavigation(SignIn));
+export default connect(() => ({
+  initialValues: {
+    username: '',
+    password: '',
+  },
+}))(reduxForm({ form: Enum.ReduxFormName.SIGN_IN })(withNavigation(SignIn)));

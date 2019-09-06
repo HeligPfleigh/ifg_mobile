@@ -4,7 +4,7 @@ import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import get from 'lodash/get';
-
+import isUndefined from 'lodash/isUndefined';
 import noop from 'lodash/noop';
 import { Block, EvaluationItem } from '../../components';
 import { theme, Enum } from '../../constants';
@@ -23,6 +23,17 @@ interface HomeProps extends NavigationScreenProps {
 }
 
 class Home extends Component<HomeProps> {
+  static navigationOptions = {
+    headerStyle: {
+      elevation: 0,
+      height: 15,
+      borderBottomWidth: 0,
+      backgroundColor: theme.colors.secondary,
+    },
+    headerBackImage: null,
+    headerBackTitle: null,
+  };
+
   componentDidMount() {
     this._loadData();
   }
@@ -61,7 +72,7 @@ class Home extends Component<HomeProps> {
       <Block>
         <NavigationEvents onDidFocus={this._loadData} />
         <View style={styles.headerContainer}>
-          <Image source={avatar || DefaultAvatar} style={styles.avatar} />
+          <Image source={!isUndefined(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
           <Block flex={0.5} middle center>
             <Text>{username}</Text>
           </Block>

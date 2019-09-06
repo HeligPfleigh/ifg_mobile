@@ -33,12 +33,7 @@ const defaultNavigationOptions = {
 
 const HomeStack = createStackNavigator(
   {
-    [NavigatorMap.Home]: {
-      screen: HomeScreen,
-      navigationOptions: {
-        header: null,
-      },
-    },
+    [NavigatorMap.Home]: HomeScreen, // Main screen
     [NavigatorMap.GlobalScores]: {
       screen: GlobalScoresScreen,
       navigationOptions: {
@@ -102,12 +97,7 @@ const FeelGoodToolsStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
   {
-    [NavigatorMap.Profile]: {
-      screen: ProfileScreen,
-      navigationOptions: {
-        header: null,
-      },
-    },
+    [NavigatorMap.Profile]: ProfileScreen, // Main screen
     [NavigatorMap.UserInfo]: {
       screen: UserInfo,
       navigationOptions: {

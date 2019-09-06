@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import isUndefined from 'lodash/isUndefined';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +23,17 @@ interface HomeProps {
 }
 
 class Home extends Component<HomeProps> {
+  static navigationOptions = {
+    headerStyle: {
+      elevation: 0,
+      height: 15,
+      borderBottomWidth: 0,
+      backgroundColor: theme.colors.secondary,
+    },
+    headerBackImage: null,
+    headerBackTitle: null,
+  };
+
   _navigateToUserInfoScreen = () => {
     return this.props.navigation.navigate(NavigatorMap.UserInfo);
   };
@@ -52,7 +64,7 @@ class Home extends Component<HomeProps> {
     return (
       <Block style={styles.container}>
         <View style={styles.header}>
-          <Image source={avatar || DefaultAvatar} style={styles.avatar} />
+          <Image source={!isUndefined(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
           <Block row middle center style={{ alignSelf: 'stretch' }}>
             <Text style={styles.name}>{name}</Text>
             <TouchableOpacity style={styles.headerNav} onPress={this._navigateToUserInfoScreen}>
