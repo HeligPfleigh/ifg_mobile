@@ -60,37 +60,45 @@ class FeelGoodTools extends Component<FeelGoodToolsProps> {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Block flex={false} middle row style={styles.groupIcon}>
-          {relationshipsScore && (
+          {relationshipsScore ? (
             <RoundIconButton
               icon={showWeatherIcon(relationshipsScore, 30)}
               colors={theme.gradients.pink}
               text={I18n.t('summary.relationships')}
               onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
             />
+          ) : (
+            <Block flex={false} />
           )}
-          {activitiesScore && (
+          {activitiesScore ? (
             <RoundIconButton
               icon={showWeatherIcon(activitiesScore, 30)}
               colors={theme.gradients.blue}
               text={I18n.t('summary.activities')}
               onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
             />
+          ) : (
+            <Block flex={false} />
           )}
-          {intakesScore && (
+          {intakesScore ? (
             <RoundIconButton
               icon={showWeatherIcon(intakesScore, 30)}
               colors={theme.gradients.orange}
               text={I18n.t('summary.intakes')}
               onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
             />
+          ) : (
+            <Block flex={false} />
           )}
-          {otherScore && (
+          {otherScore ? (
             <RoundIconButton
               icon={showWeatherIcon(otherScore, 30)}
               colors={theme.gradients.purple}
               text={I18n.t('summary.other')}
               onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
             />
+          ) : (
+            <Block flex={false} />
           )}
         </Block>
         <Text style={styles.header}>{I18n.t('feel_good_tools.header')}</Text>
