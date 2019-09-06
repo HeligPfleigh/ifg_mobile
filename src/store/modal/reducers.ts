@@ -18,8 +18,11 @@ const modalReducer = createReducer(initialState, {
       onModalPress: action.onModalPress,
     };
   },
-  [HIDE_MODAL]: () => {
-    return initialState;
+  [HIDE_MODAL]: (state: ModalState) => {
+    return {
+      ...initialState,
+      modalType: state.modalType,
+    };
   },
 });
 
