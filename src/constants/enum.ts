@@ -45,4 +45,9 @@ const tags: any = {
   [EvaluationType.OTHER]: ['routines', 'places', 'objects', 'memories', 'dreams', 'animals', 'other_elements'],
 };
 
-export { EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName, tags };
+enum ActionStatus {
+  ONGOING = 'ongoing',
+  ARCHIEVED = 'archieved',
+}
+
+export { ActionStatus, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName, tags };
