@@ -1,19 +1,8 @@
 import { DraftsState, SAVE_DRAFT, SaveDraftAction } from './types';
 import { createReducer } from '../createReducer';
-import { Enum } from '../../constants';
 
 const initialState: DraftsState = {
-  data: [
-    {
-      id: 1,
-      type: Enum.EvaluationType.RELATIONSHIPS,
-      name: 'tuan.tran',
-      label: Enum.Tags.SOCIAL,
-      desc: 'this is an description',
-      score: 5,
-      impactType: Enum.ImpactType.ENERGY,
-    },
-  ],
+  data: [],
 };
 
 const draftsReducer = createReducer(initialState, {

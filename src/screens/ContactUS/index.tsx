@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import get from 'lodash/get';
 import { Text } from 'react-native';
-import { connect } from 'react-redux';
 import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { NavigationScreenProps } from 'react-navigation';
 
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
@@ -18,10 +17,7 @@ const subjects = [
   { label: 'Other', value: 'OTHER' },
 ];
 
-interface IProps {
-  dispatch: any;
-  navigation: NavigationScreenProp<NavigationState>;
-}
+interface IProps extends NavigationScreenProps {}
 
 interface IStates {
   initValue: any;
@@ -93,4 +89,4 @@ class ContactUS extends Component<IProps, IStates> {
   }
 }
 
-export default connect()(ContactUS);
+export default ContactUS;
