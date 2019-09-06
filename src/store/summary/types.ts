@@ -18,7 +18,7 @@ export interface SummaryError {
 
 interface Factors {
   factors: string[];
-  tag?: Enum.Tags | null;
+  tag?: string | null;
   score: number;
 }
 

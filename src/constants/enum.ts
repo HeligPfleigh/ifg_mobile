@@ -6,15 +6,6 @@ enum EvaluationType {
   OVERALL = 'overall',
 }
 
-enum Tags {
-  FAMILY = 'Family',
-  LOVER = 'Lover/Partner',
-  FRIENDS = 'Friends',
-  WORK = 'Work',
-  SOCIAL = 'Social',
-  OTHER = 'Other',
-}
-
 enum Feeling {
   GOOD = 'good',
   BAD = 'bad',
@@ -47,4 +38,11 @@ enum ReduxFormName {
   FORGOT_PASSWORD = 'forgot-password',
 }
 
-export { Tags, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName };
+const tags: any = {
+  [EvaluationType.RELATIONSHIPS]: ['family', 'lover', 'friends', 'work', 'social', 'other_figures'],
+  [EvaluationType.ACTIVITIES]: ['hobbies', 'job', 'fitness', 'spirituality', 'projects', 'other_activities'],
+  [EvaluationType.INTAKES]: ['foods', 'drinks', 'supplements', 'medications', 'other_intakes'],
+  [EvaluationType.OTHER]: ['routines', 'places', 'objects', 'memories', 'dreams', 'animals', 'other_elements'],
+};
+
+export { EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName, tags };

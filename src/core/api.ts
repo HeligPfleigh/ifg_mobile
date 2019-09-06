@@ -24,7 +24,7 @@ const createEvaluation = (data: {
   evaluationType: Enum.EvaluationType;
   influentFactor: string;
   score: number;
-  labelTag: Enum.Tags;
+  labelTag: string;
   image?: string;
   impactType: Enum.ImpactType;
   description?: string;

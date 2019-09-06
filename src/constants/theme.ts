@@ -70,9 +70,6 @@ const fonts = {
   header: {
     fontSize: sizes.header,
   },
-  title: {
-    fontSize: sizes.title,
-  },
   body: {
     fontSize: sizes.body,
   },

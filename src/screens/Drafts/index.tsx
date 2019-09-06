@@ -12,7 +12,7 @@ import { AppState, DraftsState, DraftState } from '../../store/types';
 interface DraftProps {
   type: Enum.EvaluationType | null;
   name?: string;
-  label?: Enum.Tags | null;
+  label?: string | null;
   desc?: string;
   score?: number;
   onPress?: (e: GestureResponderEvent) => void;

@@ -14,8 +14,9 @@ interface CardProps {
 }
 
 interface Step2Props {
+  type: Enum.EvaluationType;
   name: string;
-  label: Enum.Tags | null;
+  label: string | null;
   feeling: Enum.Feeling | null;
   impactType: Enum.ImpactType | null;
   onPressFeelGood: () => void;
@@ -32,6 +33,7 @@ const Card: React.FC<CardProps> = ({ text, icon, selected }: CardProps) => (
 );
 
 export const Step2: React.FC<Step2Props> = ({
+  type,
   name,
   label,
   feeling,
@@ -53,7 +55,7 @@ export const Step2: React.FC<Step2Props> = ({
       </Block>
       <Block flex={1}>
         <Block center middle flex={false}>
-          <Text style={step2Styles.header}>{I18n.t('evaluate.step2.header.feelling')}</Text>
+          <Text style={step2Styles.header}>{I18n.t(`evaluate.step2.${type}.feelling`)}</Text>
         </Block>
         <Block flex={1} row middle center>
           <Button onPress={onPressFeelGood}>
@@ -74,7 +76,7 @@ export const Step2: React.FC<Step2Props> = ({
       </Block>
       <Block flex={1}>
         <Block center middle flex={false}>
-          <Text style={step2Styles.header}>{I18n.t('evaluate.step2.header.and')}</Text>
+          <Text style={step2Styles.header}>{I18n.t('evaluate.step2.and')}</Text>
         </Block>
         <Block flex={1} row middle center>
           <Button onPress={onPressImpactEnergy}>

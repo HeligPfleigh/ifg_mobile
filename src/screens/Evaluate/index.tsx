@@ -12,7 +12,7 @@ import { Step1 } from './Step1';
 import { Step2 } from './Step2';
 import { Step3 } from './Step3';
 import { Enum, theme } from '../../constants';
-import { showModal, saveDraft } from '../../store/actions';
+import { showModal, saveDraft, removeDraft } from '../../store/actions';
 import api from '../../core/api';
 
 interface EvaluateProps extends NavigationScreenProps {
@@ -24,7 +24,7 @@ interface EvaluateState {
   type: Enum.EvaluationType | null;
   step: number;
   name: string;
-  label: Enum.Tags | null;
+  label: string | null;
   desc: string;
   feeling: Enum.Feeling | null;
   impactType: Enum.ImpactType | null;
@@ -97,7 +97,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   };
 
   _handleNextAndSubmit = async () => {
-    const { step, type, name, score, label, impactType, desc } = this.state;
+    const { id, step, type, name, score, label, impactType, desc } = this.state;
     const { navigation, dispatch } = this.props;
     if (step === 3 && type && label && impactType) {
       try {
@@ -109,6 +109,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
           impactType,
           description: desc,
         });
+        dispatch(removeDraft(id));
         dispatch(showModal({ modalType: Enum.ModalType.EVALUATION_SAVED, onModalPress: navigation.goBack }));
       } catch (err) {
         // TODO
@@ -138,7 +139,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     this.setState({ disableNextBtn: false });
   };
 
-  _handleChipPress = (label: Enum.Tags) => this.setState({ label }, this._enableNextBtn);
+  _handleChipPress = (label: string) => this.setState({ label }, this._enableNextBtn);
 
   _handleNameChange = (name: string) => this.setState({ name }, this._enableNextBtn);
 
@@ -162,11 +163,14 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   render() {
     const { step, label, name, desc, feeling, impactType, score, disableNextBtn } = this.state;
+    const { navigation } = this.props;
+    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, Enum.EvaluationType.RELATIONSHIPS);
     return (
       <Block>
         <Block flex={5}>
           {step === 1 && (
             <Step1
+              type={type}
               label={label}
               name={name}
               desc={desc}
@@ -177,6 +181,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
           )}
           {step === 2 && (
             <Step2
+              type={type}
               name={name}
               label={label}
               feeling={feeling}

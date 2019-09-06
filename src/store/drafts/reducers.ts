@@ -1,4 +1,4 @@
-import { DraftsState, SAVE_DRAFT, SaveDraftAction } from './types';
+import { DraftsState, SAVE_DRAFT, SaveDraftAction, REMOVE_DRAFT, RemoveDraftAction } from './types';
 import { createReducer } from '../createReducer';
 
 const initialState: DraftsState = {
@@ -17,6 +17,14 @@ const draftsReducer = createReducer(initialState, {
     const newDrafts = [...state.data];
     newDrafts[existedDraftIdx] = action.payload;
 
+    return {
+      ...state,
+      data: newDrafts,
+    };
+  },
+  [REMOVE_DRAFT]: (state: DraftsState, action: RemoveDraftAction) => {
+    const { id } = action;
+    const newDrafts = state.data.filter(draft => draft.id !== id);
     return {
       ...state,
       data: newDrafts,

@@ -25,7 +25,7 @@ const bad = [
 
 interface Step3Props {
   name: string;
-  label: Enum.Tags | null;
+  label: string | null;
   feeling: Enum.Feeling | null;
   impactType: Enum.ImpactType | null;
   onScoring: (score: number) => void;

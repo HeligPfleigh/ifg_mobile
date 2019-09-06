@@ -7,15 +7,17 @@ import I18n from '../../core/i18n';
 import { Enum } from '../../constants';
 
 interface Step1Props {
-  label: Enum.Tags | null;
+  type: Enum.EvaluationType;
+  label: string | null;
   name: string;
   desc: string;
-  onChipPress: (tag: Enum.Tags) => void;
+  onChipPress: (tag: string) => void;
   onNameChange: (name: string) => void;
   onDescChange: (desc: string) => void;
 }
 
 export const Step1: React.FC<Step1Props> = ({
+  type,
   label,
   onChipPress,
   onNameChange,
@@ -23,11 +25,12 @@ export const Step1: React.FC<Step1Props> = ({
   name,
   desc,
 }: Step1Props) => {
+  const listTags = Enum.tags[`${type}`];
   return (
     <Block flex={1} style={step1Styles.container}>
       <Block flex={1} middle>
         <Block flex={1} center middle>
-          <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.name')}</Text>
+          <Text style={step1Styles.header}>{I18n.t(`evaluate.step1.header.${type}.name`)}</Text>
         </Block>
         <Block flex={1}>
           <Text style={step1Styles.name}>{I18n.t('evaluate.step1.name')}</Text>
@@ -38,8 +41,8 @@ export const Step1: React.FC<Step1Props> = ({
         <Block flex={1} center middle>
           <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.label')}</Text>
         </Block>
-        <Block flex={3} row style={{ flexWrap: 'wrap' }}>
-          {Object.values(Enum.Tags).map(tag => (
+        <Block flex={3} row middle style={{ flexWrap: 'wrap' }}>
+          {listTags.map((tag: any) => (
             <Button key={`${tag}`} onPress={() => onChipPress(tag)}>
               <Block
                 flex={false}
@@ -47,7 +50,7 @@ export const Step1: React.FC<Step1Props> = ({
                 middle
                 style={[step1Styles.chip, tag === label ? step1Styles.selectedChip : {}]}
               >
-                <Text style={tag === label ? step1Styles.selectedChipTxt : {}}>{tag}</Text>
+                <Text style={tag === label ? step1Styles.selectedChipTxt : {}}>{I18n.t(`evaluate.tags.${tag}`)}</Text>
               </Block>
             </Button>
           ))}
