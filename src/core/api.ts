@@ -30,9 +30,15 @@ const createEvaluation = (data: {
   description?: string;
 }) => instance.post(`/evaluations`, data);
 
+const createAction = (data: { action: string; reason?: string }) => instance.post('/actions', data);
+
+const getActionsByType = (status: Enum.ActionStatus) => instance.get(`/actions/${status}`);
+
 export default {
   me,
   evaluationSummary,
   login,
   createEvaluation,
+  createAction,
+  getActionsByType,
 };

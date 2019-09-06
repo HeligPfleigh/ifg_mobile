@@ -6,6 +6,9 @@ export const styles = StyleSheet.create({
     paddingVertical: theme.sizes.margin,
     paddingHorizontal: theme.sizes.padding,
   },
+  saveBtn: {
+    marginTop: theme.sizes.margin / 2,
+  },
   nextBtn: {
     marginBottom: theme.sizes.margin / 2,
   },

@@ -5,6 +5,7 @@ export * from './me/types';
 export * from './summary/types';
 export * from './drafts/types';
 export * from './auth/types';
+export * from './myaction/types';
 
 export interface CustomError {
   statusCode: number;

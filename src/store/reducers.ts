@@ -7,6 +7,7 @@ import { navReducer } from '../navigations/AppNavigator';
 import { modalReducer } from './modal/reducers';
 import { draftsReducer } from './drafts/reducers';
 import { authReducer } from './auth/reducers';
+import { myActionReducer } from './myaction/reducers';
 
 export const rootReducer = combineReducers({
   form: formReducer,
@@ -17,4 +18,5 @@ export const rootReducer = combineReducers({
   modal: modalReducer,
   drafts: draftsReducer,
   auth: authReducer,
+  myaction: myActionReducer,
 });

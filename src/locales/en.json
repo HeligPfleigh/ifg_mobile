@@ -274,6 +274,7 @@
     "footer": {
       "new": "CREATE",
       "achieve": "MARK AS ARCHIEVED",
+      "save": "SAVE",
       "delete": "DELETE"
     }
   },
