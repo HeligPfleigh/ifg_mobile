@@ -5,7 +5,7 @@ import { Block, ScoreText } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import { styles } from './styles';
-import { FeelGoodLv4, FeelGoodLv2, FeelGoodLv0 } from '../../assets/images';
+import { SunImg, MoonImg, StormImg } from '../../assets/images';
 
 const scores = [...Array(11)].map((_, index) => index - 5).reverse();
 
@@ -29,7 +29,7 @@ export default class Legend extends Component {
             <Block flex={8}>
               <Block flex={1} row>
                 <Block flex={2} center middle>
-                  <FeelGoodLv4 width={100} height={100} />
+                  <SunImg width={100} height={100} />
                 </Block>
                 <Block flex={3} middle>
                   <Text style={{ color: theme.scoreSpectrum[10] }}>{I18n.t('legend.subtitle.good')}</Text>
@@ -37,7 +37,7 @@ export default class Legend extends Component {
               </Block>
               <Block flex={1} row style={styles.rightMiddleContainer}>
                 <Block flex={2} center middle>
-                  <FeelGoodLv2 width={100} height={100} />
+                  <MoonImg width={80} height={80} />
                 </Block>
                 <Block flex={3} middle>
                   <Text style={{ color: theme.colors.yellow }}>{I18n.t('legend.subtitle.normal')}</Text>
@@ -45,7 +45,7 @@ export default class Legend extends Component {
               </Block>
               <Block flex={1} row>
                 <Block flex={2} center middle>
-                  <FeelGoodLv0 width={100} height={100} />
+                  <StormImg width={100} height={100} />
                 </Block>
                 <Block flex={3} middle>
                   <Text style={{ color: theme.scoreSpectrum[0] }}>{I18n.t('legend.subtitle.bad')}</Text>

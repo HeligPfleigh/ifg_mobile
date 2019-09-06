@@ -110,10 +110,10 @@
     "view_details": "View details",
     "global_scores": "Global scores",
     "description": {
-      "relationships": "People who influence my energy level and moods.",
-      "activities": "Occupations that change my physical and mental states.",
-      "intakes": "Absorptions that impact my body and mind.",
-      "other": "Any other aspect that modifies my vitality and spirit."
+      "relationships": "Evaluate people who influence my energy levels and moods.",
+      "activities": "Evaluate occupations that change my physical and mental states.",
+      "intakes": "Evaluate absorptions that impact my body and mind.",
+      "other": "Evaluate other aspects that modify my vitality and spirit."
     }
   },
   "summary": {
