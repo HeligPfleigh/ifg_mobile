@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { StyleProvider } from 'native-base';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './store';
@@ -15,6 +16,7 @@ export default () => {
   // https://github.com/oblador/react-native-vector-icons#option-with-cocoapods
   SimpleLineIcons.loadFont();
   MaterialCommunityIcons.loadFont();
+  MaterialIcons.loadFont();
   return (
     <StyleProvider style={getTheme(custom)}>
       <Provider store={store}>
