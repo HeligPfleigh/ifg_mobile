@@ -4,7 +4,10 @@ import { createReducer } from '../createReducer';
 const initialState: MeState = {
   isFetching: false,
   data: {
-    username: '',
+    user: {
+      username: '',
+      avatar: '',
+    },
     score: {
       relationships: 0,
       activities: 0,

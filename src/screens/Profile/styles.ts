@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.gray3,
+    backgroundColor: theme.colors.secondary,
+    paddingTop: Platform.OS === 'ios' ? 35 : 15,
   },
   header: {
     flex: 1,

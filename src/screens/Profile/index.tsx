@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import isUndefined from 'lodash/isUndefined';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
+import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -23,17 +24,6 @@ interface HomeProps {
 }
 
 class Home extends Component<HomeProps> {
-  static navigationOptions = {
-    headerStyle: {
-      elevation: 0,
-      height: 15,
-      borderBottomWidth: 0,
-      backgroundColor: theme.colors.secondary,
-    },
-    headerBackImage: null,
-    headerBackTitle: null,
-  };
-
   _navigateToUserInfoScreen = () => {
     return this.props.navigation.navigate(NavigatorMap.UserInfo);
   };
@@ -56,15 +46,21 @@ class Home extends Component<HomeProps> {
   };
 
   render() {
-    const {
-      me: {
-        data: { username: name, avatar },
-      },
-    } = this.props;
+    const isFetching = get(this.props, 'me.isFetching', true);
+    if (isFetching) {
+      return (
+        <Block middle>
+          <ActivityIndicator size="large" color={theme.colors.blue} />
+        </Block>
+      );
+    }
+
+    const avatar = get(this.props, 'me.data.user.avatar', undefined);
+    const name = `${get(this.props, 'me.data.user.firstName')} ${get(this.props, 'me.data.user.lastName')}`;
     return (
       <Block style={styles.container}>
         <View style={styles.header}>
-          <Image source={!isUndefined(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
+          <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
           <Block row middle center style={{ alignSelf: 'stretch' }}>
             <Text style={styles.name}>{name}</Text>
             <TouchableOpacity style={styles.headerNav} onPress={this._navigateToUserInfoScreen}>

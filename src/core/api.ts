@@ -12,7 +12,7 @@ export const authorizeApi = (token: string): void => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const me = () => instance.get('/evaluations/statistic');
+const me = () => instance.get('/evaluations/overall');
 
 const evaluationSummary = (type: Enum.EvaluationType) => instance.get(`/evaluations/${type}`);
 

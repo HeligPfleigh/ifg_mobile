@@ -2,9 +2,18 @@ export const ME_REQUEST = 'ME_REQUEST';
 export const ME_SUCCESSFUL = 'ME_SUCCESSFUL';
 export const ME_FAILURE = 'ME_FAILURE';
 
-export interface MeSuccessfulResponse {
+interface UserProfile {
+  firstName?: string;
+  lastName?: string;
   username: string;
-  avatar?: string | null;
+  height?: number;
+  weight?: number;
+  gender?: boolean;
+  avatar?: string;
+}
+
+export interface MeSuccessfulResponse {
+  user: UserProfile;
   score: {
     relationships?: number;
     activities?: number;

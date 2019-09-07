@@ -1,7 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: theme.colors.secondary,
+    paddingTop: Platform.OS === 'ios' ? 35 : 15,
+  },
   headerContainer: {
     flex: 1,
     padding: theme.sizes.padding,
@@ -17,6 +21,9 @@ export const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: theme.colors.white,
     marginRight: theme.sizes.margin,
+  },
+  content: {
+    backgroundColor: theme.colors.white,
   },
   detail: {
     fontSize: theme.sizes.font,

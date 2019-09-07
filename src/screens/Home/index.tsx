@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, Image, View } from 'react-native';
+import { Text, ScrollView, Image, View, ActivityIndicator } from 'react-native';
 import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import get from 'lodash/get';
-import isUndefined from 'lodash/isUndefined';
+import isEmpty from 'lodash/isEmpty';
 import noop from 'lodash/noop';
 import { Block, EvaluationItem } from '../../components';
 import { theme, Enum } from '../../constants';
@@ -23,17 +23,6 @@ interface HomeProps extends NavigationScreenProps {
 }
 
 class Home extends Component<HomeProps> {
-  static navigationOptions = {
-    headerStyle: {
-      elevation: 0,
-      height: 15,
-      borderBottomWidth: 0,
-      backgroundColor: theme.colors.secondary,
-    },
-    headerBackImage: null,
-    headerBackTitle: null,
-  };
-
   componentDidMount() {
     this._loadData();
   }
@@ -63,23 +52,32 @@ class Home extends Component<HomeProps> {
   };
 
   render() {
-    const {
-      me: {
-        data: { username, score, avatar },
-      },
-    } = this.props;
+    // render spinner
+    const isFetching = get(this.props, 'me.isFetching', true);
+    if (isFetching) {
+      return (
+        <Block middle>
+          <ActivityIndicator size="large" color={theme.colors.blue} />
+        </Block>
+      );
+    }
+
+    // render ui
+    const avatar = get(this.props, 'me.data.user.avatar', undefined);
+    const name = `${get(this.props, 'me.data.user.firstName')} ${get(this.props, 'me.data.user.lastName')}`;
+    const score = get(this.props, 'me.data.score');
     return (
-      <Block>
+      <Block style={styles.container}>
         <NavigationEvents onDidFocus={this._loadData} />
         <View style={styles.headerContainer}>
-          <Image source={!isUndefined(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
+          <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
           <Block flex={0.5} middle center>
-            <Text>{username}</Text>
+            <Text>{name}</Text>
           </Block>
           <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
         </View>
-        <Block flex={2}>
-          <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
+        <Block flex={2} style={styles.content}>
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: theme.sizes.padding }}>
             <EvaluationItem
               colors={theme.gradients.pink}
               header={I18n.t('home.relationships')}
