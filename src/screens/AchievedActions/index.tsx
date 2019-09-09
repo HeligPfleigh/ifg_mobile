@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     marginVertical: theme.sizes.margin,
     paddingVertical: theme.sizes.margin,
     backgroundColor: theme.colors.white,
-    justifyContent: 'center',
     paddingLeft: theme.sizes.padding,
     shadowColor: theme.colors.black,
     shadowOffset: {
@@ -46,7 +45,12 @@ export const AchievedActions: React.FC = () => {
   return (
     <Block center>
       <Text style={styles.header}>{I18n.t('achieved_actions.header')}</Text>
-      <ScrollView>
+      <ScrollView
+        style={{
+          width: '100%',
+          paddingHorizontal: theme.sizes.padding,
+        }}
+      >
         {achievedActions.map((achievedAction: any) => (
           <AchievedAction action={achievedAction} key={`${achievedAction.id}`} />
         ))}

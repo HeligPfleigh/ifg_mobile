@@ -12,7 +12,7 @@ export const authorizeApi = (token: string): void => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const me = () => instance.get('/evaluations/overall');
+const me = () => instance.get('/evaluations/statistic');
 
 const evaluationSummary = (type: Enum.EvaluationType) => instance.get(`/evaluations/${type}`);
 
@@ -34,6 +34,14 @@ const createAction = (data: { action: string; reason?: string }) => instance.pos
 
 const getActionsByType = (status: Enum.ActionStatus) => instance.get(`/actions/${status}`);
 
+const deleteAction = (id: string) => instance.delete(`/actions/${id}`);
+
+const archievedActions = (actions: string[]) => instance.post('/actions/archieve', { actions });
+
+const deleteActions = (actions: string[]) => instance.post('/actions/list', { actions });
+
+const editAction = (id: string, action: string) => instance.patch(`/actions/${id}`, { action });
+
 export default {
   me,
   evaluationSummary,
@@ -41,4 +49,8 @@ export default {
   createEvaluation,
   createAction,
   getActionsByType,
+  deleteAction,
+  archievedActions,
+  deleteActions,
+  editAction,
 };

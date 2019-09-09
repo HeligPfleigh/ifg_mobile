@@ -5,6 +5,16 @@ import {
   REQUEST_ACTION_FAIL,
   MyActionSuccessfulAction,
   MyActionFailureAction,
+  POST_ACTION_SUCCESS,
+  MyActionPostSuccessfulAction,
+  DELETE_ACTION_SUCCESS,
+  MyActionDeleteSuccessfulAction,
+  MARK_AS_ARCHIEVED_SUCCESS,
+  MyActionMarkAsArchievedSuccessfulAction,
+  DELETE_ACTIONS_SUCCESS,
+  MyActionDeleteListSuccessfulAction,
+  EDIT_ACTION_SUCCESS,
+  MyActionEditSuccessfulAction,
 } from './types';
 import { Enum } from '../../constants';
 import { createReducer } from '../createReducer';
@@ -36,6 +46,37 @@ const myActionReducer = createReducer(initialState, {
       isFetching: false,
       error: action.error,
     };
+  },
+  [POST_ACTION_SUCCESS]: (state: MyActionState, action: MyActionPostSuccessfulAction) => {
+    const newOngoingAction = [...state.data[Enum.ActionStatus.ONGOING], action.response];
+    const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: newOngoingAction };
+    return { ...state, isFetching: false, data: newData, error: undefined };
+  },
+  [DELETE_ACTION_SUCCESS]: (state: MyActionState, action: MyActionDeleteSuccessfulAction) => {
+    const { id } = action;
+    const newOngoingAction = state.data[Enum.ActionStatus.ONGOING].filter(act => act.id !== id);
+    const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: newOngoingAction };
+    return { ...state, isFetching: false, data: newData, error: undefined };
+  },
+  [MARK_AS_ARCHIEVED_SUCCESS]: (state: MyActionState, action: MyActionMarkAsArchievedSuccessfulAction) => {
+    const { actions } = action;
+    const newOngoingAction = state.data[Enum.ActionStatus.ONGOING].filter(act => !actions.includes(act.id));
+    const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: newOngoingAction };
+    return { ...state, isFetching: false, data: newData, error: undefined };
+  },
+  [DELETE_ACTIONS_SUCCESS]: (state: MyActionState, action: MyActionDeleteListSuccessfulAction) => {
+    const { actions } = action;
+    const newOngoingAction = state.data[Enum.ActionStatus.ONGOING].filter(act => !actions.includes(act.id));
+    const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: newOngoingAction };
+    return { ...state, isFetching: false, data: newData, error: undefined };
+  },
+  [EDIT_ACTION_SUCCESS]: (state: MyActionState, action: MyActionEditSuccessfulAction) => {
+    const { id, newAction } = action;
+    const ongoingActions = [...state.data[Enum.ActionStatus.ONGOING]];
+    const updateAction = ongoingActions.find(act => act.id === id);
+    if (updateAction) updateAction.action = newAction;
+    const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: ongoingActions };
+    return { ...state, isFetching: false, data: newData, error: undefined };
   },
 });
 

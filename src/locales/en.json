@@ -270,7 +270,10 @@
     "actions": "Actions ",
     "done": "done",
     "add_new": "Add new",
+    "edit_action": "Edit action",
     "select_reason": "Select the reason (optional)",
+    "cancel": "CANCEL",
+    "update": "UPDATE",
     "footer": {
       "new": "CREATE",
       "achieve": "MARK AS ARCHIEVED",

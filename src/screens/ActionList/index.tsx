@@ -1,52 +1,60 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, ScrollView, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import noop from 'lodash/noop';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import { Dropdown } from 'react-native-material-dropdown';
-import { Item, Label, Input } from 'native-base';
 import { NavigationScreenProps } from 'react-navigation';
+import { TextField } from 'react-native-material-textfield';
+import Modal from 'react-native-modal';
+import get from 'lodash/get';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox } from '../../components';
 import { styles } from './styles';
 import I18n from '../../core/i18n';
 import { Enum, theme } from '../../constants';
-import { showModal, loadActions } from '../../store/actions';
+import {
+  showModal,
+  loadActions,
+  postAction,
+  deleteAction,
+  markAsArchievedAction,
+  deleteActions,
+  editAction,
+} from '../../store/actions';
 import { Edit, Delete } from '../../assets/images';
 
-interface ActionListProps extends NavigationScreenProps {
-  dispatch: any;
-  ongoingActions: any;
-}
+interface ActionListProps extends NavigationScreenProps {}
 
-class ActionList extends Component<ActionListProps> {
-  componentDidMount() {
-    this.props.dispatch(loadActions(Enum.ActionStatus.ONGOING));
-  }
+const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
+  const [selected, setSelected] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onCheckboxPress(action.id, selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
 
-  _navigateToArchivedActions = () => this.props.navigation.navigate(NavigatorMap.AchievedActions);
-
-  _showSMARTModal = () => {
-    this.props.dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.SMART }));
+  const handleDeleteAction = () => {
+    dispatch(deleteAction(action.id));
   };
 
-  _renderOngoingAction = (action: any) => (
-    <SwipeRow disableRightSwipe rightOpenValue={-100} key={`${action.id}`}>
+  return (
+    <SwipeRow disableRightSwipe rightOpenValue={-100}>
       <Block flex={false} style={styles.standaloneRowBack}>
         <Block flex={false} />
         <Block flex={false} row style={{ height: '100%' }}>
-          <TouchableOpacity style={[styles.btn, styles.indigo]}>
+          <TouchableOpacity style={[styles.btn, styles.indigo]} onPress={() => onEdit(action.id)}>
             <Edit width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={handleDeleteAction}>
             <Delete width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
         </Block>
       </Block>
       <Block flex={false} row style={styles.standaloneRowFront}>
         <Block flex={1} middle>
-          <Checkbox size={20} checked={false} />
+          <Checkbox size={20} checked={selected} onPress={() => setSelected(!selected)} />
         </Block>
         <Block flex={9} middle>
           <Text>{action.action}</Text>
@@ -54,59 +62,146 @@ class ActionList extends Component<ActionListProps> {
       </Block>
     </SwipeRow>
   );
+};
 
-  render() {
-    const { ongoingActions } = this.props;
-    return (
-      <Block>
-        <Block flex={5}>
-          <Block flex={false} style={styles.addNewContainer}>
-            <Item stackedLabel>
-              <Label style={styles.addNewTxt}>{I18n.t('action_list.add_new')}</Label>
-              <Input />
-            </Item>
-            <Dropdown label={I18n.t('action_list.select_reason')} data={[]} rippleColor={theme.colors.gray} />
-            <Button gradient style={styles.saveBtn}>
-              <Block center middle>
-                <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.save')}</Text>
-              </Block>
-            </Button>
-          </Block>
-          <Block flex={false} row style={styles.tipSection}>
-            <Button onPress={this._showSMARTModal}>
-              <Text style={styles.tip}>
-                {I18n.t('action_list.tip_for_action')}
-                <Text style={styles.smart}>{I18n.t('action_list.smart')}</Text>
-              </Text>
-            </Button>
-            <Button onPress={this._navigateToArchivedActions}>
-              <Text style={styles.tip}>
-                {I18n.t('action_list.actions')}
-                <Text style={styles.smart}>{I18n.t('action_list.done')}</Text>
-              </Text>
-            </Button>
-          </Block>
-          <ScrollView>{ongoingActions.map((action: any) => this._renderOngoingAction(action))}</ScrollView>
-        </Block>
-        <Block middle flex={1} style={styles.footerContainer}>
-          <Button gradient style={styles.nextBtn}>
+const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) => {
+  const [reasons] = useState([]);
+  const [action, setAction] = useState('');
+  const [selectedActions, setSelectedActions] = useState<string[]>([]);
+  const [modalVisible, toggleModal] = useState(false);
+  const [editValue, setEditValue] = useState('');
+  const [editActionID, setEditActionID] = useState('');
+  const ongoingActions = useSelector((state: AppState) => state.myaction.data.ongoing);
+  const dispatch = useDispatch();
+
+  const showSMARTModal = () => {
+    dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.SMART }));
+  };
+
+  const navigateToArchivedActions = () => navigation.navigate(NavigatorMap.AchievedActions);
+
+  useEffect(() => {
+    dispatch(loadActions(Enum.ActionStatus.ONGOING));
+  }, [dispatch]);
+
+  const saveAction = () => {
+    dispatch(postAction({ action }));
+  };
+
+  const updateSelectedAction = (id: string, selected: boolean) => {
+    let newSelectedActions = [];
+    if (!selected) {
+      newSelectedActions = selectedActions.filter((act: any) => act !== id);
+    } else {
+      newSelectedActions = [...selectedActions, id];
+    }
+    setSelectedActions(newSelectedActions);
+  };
+
+  const markAsArchieved = () => {
+    dispatch(markAsArchievedAction(selectedActions));
+  };
+
+  const deleteAll = () => {
+    dispatch(deleteActions(selectedActions));
+  };
+
+  const handleEdit = (selectedId: string) => {
+    const preText = get(ongoingActions.find((act: any) => act.id === selectedId), 'action', '');
+    setEditValue(preText);
+    setEditActionID(selectedId);
+    toggleModal(true);
+  };
+
+  const handleUpdate = () => {
+    dispatch(editAction(editActionID, editValue));
+    toggleModal(false);
+  };
+
+  return (
+    <Block>
+      <Block flex={5}>
+        <Block flex={false} style={styles.addNewContainer}>
+          <TextField label={I18n.t('action_list.add_new')} value={action} onChangeText={val => setAction(val)} />
+          <Dropdown label={I18n.t('action_list.select_reason')} data={reasons} rippleColor={theme.colors.gray} />
+          <Button gradient style={styles.saveBtn} onPress={saveAction}>
             <Block center middle>
-              <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.achieve')}</Text>
+              <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.save')}</Text>
             </Block>
           </Button>
-          <Button shadow style={styles.draftBtn}>
-            <Block center middle>
-              <Text>{I18n.t('action_list.footer.delete')}</Text>
-            </Block>
+        </Block>
+        <Block flex={false} row style={styles.tipSection}>
+          <Button onPress={showSMARTModal}>
+            <Text style={styles.tip}>
+              {I18n.t('action_list.tip_for_action')}
+              <Text style={styles.smart}>{I18n.t('action_list.smart')}</Text>
+            </Text>
+          </Button>
+          <Button onPress={navigateToArchivedActions}>
+            <Text style={styles.tip}>
+              {I18n.t('action_list.actions')}
+              <Text style={styles.smart}>{I18n.t('action_list.done')}</Text>
+            </Text>
           </Button>
         </Block>
+        <ScrollView>
+          {ongoingActions.map((data: any) => (
+            <OngoingAction
+              action={data}
+              key={`${data.id}`}
+              onCheckboxPress={updateSelectedAction}
+              onEdit={handleEdit}
+            />
+          ))}
+        </ScrollView>
       </Block>
-    );
-  }
-}
+      <Block middle flex={1} style={styles.footerContainer}>
+        <Button gradient style={styles.nextBtn} onPress={markAsArchieved}>
+          <Block center middle>
+            <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.achieve')}</Text>
+          </Block>
+        </Button>
+        <Button shadow style={styles.draftBtn} onPress={deleteAll}>
+          <Block center middle>
+            <Text>{I18n.t('action_list.footer.delete')}</Text>
+          </Block>
+        </Button>
+      </Block>
+      <Modal
+        isVisible={modalVisible}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        animationInTiming={600}
+        animationOutTiming={600}
+      >
+        <Block flex={false} style={styles.modal}>
+          <TextField
+            label={I18n.t('action_list.edit_action')}
+            multiline
+            height={100}
+            value={editValue}
+            onChangeText={text => setEditValue(text)}
+          />
+          <Block flex={false} row middle>
+            <Block flex={1} style={styles.modalBtnContainer}>
+              <Button shadow style={styles.draftBtn} onPress={() => toggleModal(false)}>
+                <Block center middle>
+                  <Text>{I18n.t('action_list.cancel')}</Text>
+                </Block>
+              </Button>
+            </Block>
+            <Block flex={1} style={styles.modalBtnContainer}>
+              <Button gradient style={styles.nextBtn} onPress={handleUpdate}>
+                <Block center middle>
+                  <Text style={styles.nextBtnTxt}>{I18n.t('action_list.update')}</Text>
+                </Block>
+              </Button>
+            </Block>
+          </Block>
+        </Block>
+      </Modal>
+    </Block>
+  );
+};
 
-const mapStateToProps = (state: AppState) => ({
-  ongoingActions: state.myaction.data.ongoing,
-});
-
-export default connect(mapStateToProps)(ActionList);
+export default ActionList;

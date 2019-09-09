@@ -74,4 +74,13 @@ export const styles = StyleSheet.create({
   addNewContainer: {
     paddingHorizontal: theme.sizes.padding,
   },
+  modal: {
+    backgroundColor: theme.colors.white,
+    padding: 22,
+    borderRadius: theme.sizes.radius,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  modalBtnContainer: {
+    padding: theme.sizes.padding / 2,
+  },
 });
