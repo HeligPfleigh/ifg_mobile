@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import get from 'lodash/get';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
@@ -49,11 +50,21 @@ class ChooseDateField extends Component<IProps> {
   };
 
   _showChooseDateModal = () => {
+    const value = get(this.props, 'input.value');
+    const current = value ? moment(value) : moment();
+    const currentDateStr = current.format('YYYY-MM-DD');
+    const datePickerProps = {
+      ...this.props.datePickerProps,
+      current: currentDateStr,
+      markedDates: {
+        [currentDateStr]: { selected: true, marked: true },
+      },
+    };
     this.props.dispatch(
       showModal({
-        onDateChanged: this._onDateChanged,
-        ...this.props.datePickerProps,
+        ...datePickerProps,
         onModalPress: noop,
+        onDateChanged: this._onDateChanged,
         modalType: Enum.ModalType.CHOOSE_DATE,
       }),
     );
