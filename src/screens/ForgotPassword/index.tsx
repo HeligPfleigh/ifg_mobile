@@ -14,35 +14,32 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Block flex={1} margin={[0, theme.sizes.padding]}>
-        <Block flex={0.5} middle>
+      <Block margin={[0, theme.sizes.padding]}>
+        <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
           <Text style={styles.title}>{I18n.t('forgot.title')}</Text>
         </Block>
-        <Block flex={0.5} middle>
+        <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
           <Text style={styles.paragraph}>{I18n.t('forgot.paragraph')}</Text>
         </Block>
-        <Block flex={1}>
-          <Block flex={1} middle>
-            <Field
-              name="email"
-              label={I18n.t('forgot.email')}
-              component={TextField}
-              autoCorrect={false}
-              characterRestriction={120}
-              validate={[required, minLength4, maxLength120, email]}
-              tintColor={theme.colors.green}
-            />
-          </Block>
-          <Block flex={0.5} middle>
-            <Button gradient>
-              <Block center middle>
-                <Text style={styles.textButton}>{I18n.t('forgot.submit')}</Text>
-              </Block>
-            </Button>
-          </Block>
+        <Block flex={false} style={{ aspectRatio: 3 }}>
+          <Field
+            name="email"
+            label={I18n.t('forgot.email')}
+            component={TextField}
+            autoCorrect={false}
+            characterRestriction={120}
+            validate={[required, minLength4, maxLength120, email]}
+            tintColor={theme.colors.green}
+          />
+        </Block>
+        <Block flex={false} style={{ aspectRatio: 5 }}>
+          <Button gradient>
+            <Block center middle>
+              <Text style={styles.textButton}>{I18n.t('forgot.submit')}</Text>
+            </Block>
+          </Button>
         </Block>
       </Block>
-      <Block flex={1.5} />
     </React.Fragment>
   );
 };
