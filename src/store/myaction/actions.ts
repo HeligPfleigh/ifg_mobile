@@ -11,6 +11,7 @@ import {
   MARK_AS_ARCHIEVED_SUCCESS,
   DELETE_ACTIONS_SUCCESS,
   EDIT_ACTION_SUCCESS,
+  GET_REASONS_SUCCESS,
 } from './types';
 import { Enum } from '../../constants';
 import api from '../../core/api';
@@ -69,6 +70,13 @@ function editActionSuccessful(id: string, newAction: string): MyActionType {
     type: EDIT_ACTION_SUCCESS,
     id,
     newAction,
+  };
+}
+
+function getReasonsSuccessful(response: any): MyActionType {
+  return {
+    type: GET_REASONS_SUCCESS,
+    response,
   };
 }
 
@@ -158,6 +166,22 @@ export function editAction(id: string, action: string) {
     try {
       await api.editAction(id, action);
       dispatch(editActionSuccessful(id, action));
+    } catch (err) {
+      const error = {
+        status: err.status || 400,
+        message: err.message || 'Unexpected error',
+      };
+      dispatch(myActionFailure(error));
+    }
+  };
+}
+
+export function getReasons() {
+  return async function(dispatch: Dispatch<MyActionType>) {
+    dispatch(myActionRequest());
+    try {
+      const { data } = await api.getReasons();
+      dispatch(getReasonsSuccessful(data));
     } catch (err) {
       const error = {
         status: err.status || 400,

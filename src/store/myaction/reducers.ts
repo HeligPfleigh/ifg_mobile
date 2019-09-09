@@ -15,6 +15,8 @@ import {
   MyActionDeleteListSuccessfulAction,
   EDIT_ACTION_SUCCESS,
   MyActionEditSuccessfulAction,
+  GET_REASONS_SUCCESS,
+  MyActionReasonsSuccessfulAction,
 } from './types';
 import { Enum } from '../../constants';
 import { createReducer } from '../createReducer';
@@ -24,6 +26,7 @@ const initialState: MyActionState = {
   data: {
     [Enum.ActionStatus.ONGOING]: [],
     [Enum.ActionStatus.ARCHIEVED]: [],
+    reasons: [],
   },
 };
 
@@ -76,6 +79,13 @@ const myActionReducer = createReducer(initialState, {
     const updateAction = ongoingActions.find(act => act.id === id);
     if (updateAction) updateAction.action = newAction;
     const newData = { ...state.data, [Enum.ActionStatus.ONGOING]: ongoingActions };
+    return { ...state, isFetching: false, data: newData, error: undefined };
+  },
+  [GET_REASONS_SUCCESS]: (state: MyActionState, action: MyActionReasonsSuccessfulAction) => {
+    const {
+      response: { reasons },
+    } = action;
+    const newData = { ...state.data, reasons };
     return { ...state, isFetching: false, data: newData, error: undefined };
   },
 });

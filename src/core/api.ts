@@ -42,6 +42,8 @@ const deleteActions = (actions: string[]) => instance.post('/actions/list', { ac
 
 const editAction = (id: string, action: string) => instance.patch(`/actions/${id}`, { action });
 
+const getReasons = () => instance.get('/actions/reasons');
+
 export default {
   me,
   evaluationSummary,
@@ -53,4 +55,5 @@ export default {
   archievedActions,
   deleteActions,
   editAction,
+  getReasons,
 };

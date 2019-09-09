@@ -22,6 +22,7 @@ import {
   markAsArchievedAction,
   deleteActions,
   editAction,
+  getReasons,
 } from '../../store/actions';
 import { Edit, Delete } from '../../assets/images';
 
@@ -65,13 +66,14 @@ const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
 };
 
 const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) => {
-  const [reasons] = useState([]);
   const [action, setAction] = useState('');
   const [selectedActions, setSelectedActions] = useState<string[]>([]);
   const [modalVisible, toggleModal] = useState(false);
   const [editValue, setEditValue] = useState('');
   const [editActionID, setEditActionID] = useState('');
+  const [selectedReason, setSelectedReason] = useState('');
   const ongoingActions = useSelector((state: AppState) => state.myaction.data.ongoing);
+  const reasons = useSelector((state: AppState) => state.myaction.data.reasons);
   const dispatch = useDispatch();
 
   const showSMARTModal = () => {
@@ -82,10 +84,11 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
 
   useEffect(() => {
     dispatch(loadActions(Enum.ActionStatus.ONGOING));
+    dispatch(getReasons());
   }, [dispatch]);
 
   const saveAction = () => {
-    dispatch(postAction({ action }));
+    dispatch(postAction({ action, reason: selectedReason }));
   };
 
   const updateSelectedAction = (id: string, selected: boolean) => {
@@ -118,12 +121,22 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
     toggleModal(false);
   };
 
+  const handleChangeReason = (value: string) => {
+    setSelectedReason(value);
+  };
+
   return (
     <Block>
       <Block flex={5}>
         <Block flex={false} style={styles.addNewContainer}>
           <TextField label={I18n.t('action_list.add_new')} value={action} onChangeText={val => setAction(val)} />
-          <Dropdown label={I18n.t('action_list.select_reason')} data={reasons} rippleColor={theme.colors.gray} />
+          <Dropdown
+            label={I18n.t('action_list.select_reason')}
+            data={reasons.map((reason: any) => ({ value: reason }))}
+            rippleColor={theme.colors.gray}
+            onChangeText={handleChangeReason}
+            value={selectedReason}
+          />
           <Button gradient style={styles.saveBtn} onPress={saveAction}>
             <Block center middle>
               <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.save')}</Text>

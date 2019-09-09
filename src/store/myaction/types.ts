@@ -8,6 +8,7 @@ export const DELETE_ACTION_SUCCESS = 'DELETE_ACTION_SUCCESS';
 export const MARK_AS_ARCHIEVED_SUCCESS = 'MARK_AS_ARCHIEVED_SUCCESS';
 export const DELETE_ACTIONS_SUCCESS = 'DELETE_ACTIONS_SUCCESS';
 export const EDIT_ACTION_SUCCESS = 'EDIT_ACTION_SUCCESS';
+export const GET_REASONS_SUCCESS = 'GET_REASONS_SUCCESS';
 
 interface Action {
   action: string;
@@ -27,6 +28,7 @@ export interface MyActionState {
   data: {
     [Enum.ActionStatus.ONGOING]: Action[];
     [Enum.ActionStatus.ARCHIEVED]: Action[];
+    reasons: [];
   };
   error?: MyActionFailureError;
 }
@@ -72,6 +74,11 @@ export interface MyActionEditSuccessfulAction {
   newAction: string;
 }
 
+export interface MyActionReasonsSuccessfulAction {
+  type: typeof GET_REASONS_SUCCESS;
+  response?: any;
+}
+
 export interface MyActionSuccessfulResponse {
   data: Action[];
 }
@@ -84,4 +91,5 @@ export type MyActionType =
   | MyActionDeleteSuccessfulAction
   | MyActionMarkAsArchievedSuccessfulAction
   | MyActionDeleteListSuccessfulAction
-  | MyActionEditSuccessfulAction;
+  | MyActionEditSuccessfulAction
+  | MyActionReasonsSuccessfulAction;
