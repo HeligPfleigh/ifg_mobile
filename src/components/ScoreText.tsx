@@ -14,7 +14,7 @@ const ScoreText: React.FC<ScoreTextProps> = ({ score = 0, style, ...rest }: Scor
   }
   return (
     <Text style={[defaultScoreStyle, style]} {...rest}>
-      {score}
+      {Math.round(score * 100) / 100}
     </Text>
   );
 };

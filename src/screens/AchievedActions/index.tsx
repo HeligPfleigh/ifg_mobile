@@ -3,7 +3,7 @@ import { Text, ScrollView, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadActions } from '../../store/actions';
 import { theme, Enum } from '../../constants';
-import { Block } from '../../components';
+import { Block, Loader } from '../../components';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
 
@@ -39,11 +39,13 @@ const AchievedAction = ({ action: { action } }: any) => (
 export const AchievedActions: React.FC = () => {
   const dispatch = useDispatch();
   const achievedActions = useSelector((state: AppState) => state.myaction.data.archieved);
+  const isFetching = useSelector((state: AppState) => state.myaction.isFetching);
   useEffect(() => {
     dispatch(loadActions(Enum.ActionStatus.ARCHIEVED));
   }, [dispatch]);
   return (
     <Block center>
+      <Loader loading={isFetching} />
       <Text style={styles.header}>{I18n.t('achieved_actions.header')}</Text>
       <ScrollView
         style={{

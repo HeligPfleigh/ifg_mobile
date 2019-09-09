@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, Image, View, ActivityIndicator } from 'react-native';
+import { Text, ScrollView, Image, View } from 'react-native';
 import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import noop from 'lodash/noop';
-import { Block, EvaluationItem } from '../../components';
+import { Block, EvaluationItem, Loader } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import { showWeatherIcon } from '../../core/utils';
@@ -52,22 +52,13 @@ class Home extends Component<HomeProps> {
   };
 
   render() {
-    // render spinner
     const isFetching = get(this.props, 'me.isFetching', true);
-    if (isFetching) {
-      return (
-        <Block middle>
-          <ActivityIndicator size="large" color={theme.colors.blue} />
-        </Block>
-      );
-    }
-
-    // render ui
     const avatar = get(this.props, 'me.data.user.avatar', undefined);
     const name = `${get(this.props, 'me.data.user.firstName')} ${get(this.props, 'me.data.user.lastName')}`;
     const score = get(this.props, 'me.data.score');
     return (
       <Block style={styles.container}>
+        <Loader loading={isFetching} />
         <NavigationEvents onDidFocus={this._loadData} />
         <View style={styles.headerContainer}>
           <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />

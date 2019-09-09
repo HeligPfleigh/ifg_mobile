@@ -5,5 +5,6 @@ import EvaluationItem, { RoundIconButton } from './EvaluationItem';
 import ScoreText from './ScoreText';
 import ModalContainer from './modal/ModalContainer';
 import Checkbox from './Checkbox';
+import Loader from './Loader';
 
-export { Block, Button, EvaluationItem, ScoreText, ModalContainer, RoundIconButton, FormFields, Checkbox };
+export { Block, Button, EvaluationItem, ScoreText, ModalContainer, RoundIconButton, FormFields, Checkbox, Loader };

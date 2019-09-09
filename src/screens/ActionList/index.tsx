@@ -10,7 +10,7 @@ import Modal from 'react-native-modal';
 import get from 'lodash/get';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { Block, Button, Checkbox } from '../../components';
+import { Block, Button, Checkbox, Loader } from '../../components';
 import { styles } from './styles';
 import I18n from '../../core/i18n';
 import { Enum, theme } from '../../constants';
@@ -74,6 +74,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   const [selectedReason, setSelectedReason] = useState('');
   const ongoingActions = useSelector((state: AppState) => state.myaction.data.ongoing);
   const reasons = useSelector((state: AppState) => state.myaction.data.reasons);
+  const isFetching = useSelector((state: AppState) => state.myaction.isFetching);
   const dispatch = useDispatch();
 
   const showSMARTModal = () => {
@@ -127,6 +128,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
 
   return (
     <Block>
+      <Loader loading={isFetching} />
       <Block flex={5}>
         <Block flex={false} style={styles.addNewContainer}>
           <TextField label={I18n.t('action_list.add_new')} value={action} onChangeText={val => setAction(val)} />
