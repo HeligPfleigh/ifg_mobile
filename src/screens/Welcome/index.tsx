@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { WelcomeImg } from '../../assets/images';
 import { Block, Button } from '../../components';
@@ -22,15 +22,15 @@ const Welcome: React.FC<WelcomeProps> = (props: WelcomeProps) => {
   };
 
   return (
-    <Block>
-      <Block center bottom flex={1}>
+    <SafeAreaView>
+      <Block center bottom flex={false} style={{ aspectRatio: 1.5 }}>
         <WelcomeImg />
       </Block>
-      <Block center middle flex={0.5}>
+      <Block center middle flex={false} style={{ aspectRatio: 2.5 }}>
         <Text style={styles.header}>{I18n.t('welcome.header')}</Text>
         <Text style={styles.paragraph}>{I18n.t('welcome.paragraph')}</Text>
       </Block>
-      <Block middle flex={0.5} margin={[0, theme.sizes.padding]}>
+      <Block middle margin={[0, theme.sizes.padding]} flex={false} style={{ aspectRatio: 2.5 }}>
         <Block middle>
           <Button gradient onPress={_navigateToSignUpScreen}>
             <Block center middle>
@@ -46,8 +46,7 @@ const Welcome: React.FC<WelcomeProps> = (props: WelcomeProps) => {
           </Button>
         </Block>
       </Block>
-      <Block flex={1} />
-    </Block>
+    </SafeAreaView>
   );
 };
 
