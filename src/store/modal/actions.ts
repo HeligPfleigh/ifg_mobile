@@ -2,11 +2,14 @@ import { Dispatch } from 'redux';
 
 import { SHOW_MODAL, HIDE_MODAL, ModalActionType, ShowModalRequest } from './types';
 
-export const showModal = ({ onModalPress, modalType }: ShowModalRequest) => (dispatch: Dispatch<ModalActionType>) => {
+export const showModal = ({ onModalPress, modalType, ...ownProps }: ShowModalRequest) => (
+  dispatch: Dispatch<ModalActionType>,
+) => {
   dispatch({
     type: SHOW_MODAL,
     onModalPress,
     modalType,
+    ...ownProps,
   });
 };
 

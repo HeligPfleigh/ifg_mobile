@@ -1,5 +1,6 @@
 {
   "common": {
+    "save": "SAVE",
     "next": "NEXT",
     "back": "BACK",
     "send": "SEND",

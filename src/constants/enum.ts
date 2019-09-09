@@ -25,6 +25,7 @@ enum ModalType {
   DELETE_ACCOUNT = 'delete_account',
   SMART = 'smart',
   FEATURE_NOT_AVAILABLE = 'feature_not_available',
+  CHOOSE_DATE = 'choose_date',
 }
 
 enum NavigationParamsName {
@@ -36,6 +37,7 @@ enum ReduxFormName {
   SIGN_IN = 'signin',
   SIGN_UP = 'signup',
   FORGOT_PASSWORD = 'forgot-password',
+  UPDATE_INFO = 'update-user-info',
 }
 
 const tags: any = {

@@ -17,11 +17,13 @@ export interface ShowModalAction {
   type: typeof SHOW_MODAL;
   modalType: string;
   onModalPress: () => void;
+  onDateChanged?: (date: any) => void;
 }
 
 export interface ShowModalRequest {
   modalType: string;
   onModalPress: () => void;
+  onDateChanged?: (date: any) => void;
 }
 
 export type ModalActionType = HideModalAction | ShowModalAction;

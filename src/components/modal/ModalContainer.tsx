@@ -3,7 +3,6 @@ import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import noop from 'lodash/noop';
 
-import { hideModal } from '../../store/actions';
 import {
   SelfEvaluationModal,
   DeleteAccountModal,
@@ -14,7 +13,9 @@ import {
   SMARTModal,
   FeatureNotAvailableModal,
 } from './NoticeModal';
+import ChooseDate from './ChooseDateModal';
 import { AppState } from '../../store/types';
+import { hideModal } from '../../store/actions';
 import { Enum } from '../../constants';
 
 interface ModalContainerProps {
@@ -41,6 +42,7 @@ const MODAL_TYPES: any = {
   [Enum.ModalType.DELETE_ACCOUNT]: DeleteAccountModal,
   [Enum.ModalType.SMART]: SMARTModal,
   [Enum.ModalType.FEATURE_NOT_AVAILABLE]: FeatureNotAvailableModal,
+  [Enum.ModalType.CHOOSE_DATE]: ChooseDate,
 };
 
 class ModalContainer extends Component<ModalContainerProps, ModalContainerState> {
@@ -73,7 +75,7 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
 
   render() {
     const { isVisible } = this.state;
-    const { modalType } = this.props;
+    const { modalType, ...ownProps } = this.props;
     const SpecifiedModal = MODAL_TYPES[modalType];
     return (
       <Modal
@@ -85,7 +87,7 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
         animationOutTiming={600}
         onModalHide={this.onModalHide}
       >
-        <SpecifiedModal onPress={this.onModalPress} />
+        <SpecifiedModal onPress={this.onModalPress} {...ownProps} />
       </Modal>
     );
   }

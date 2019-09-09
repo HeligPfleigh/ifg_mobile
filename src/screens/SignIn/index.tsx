@@ -85,7 +85,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
 export default connect(() => ({
   initialValues: {
-    username: '',
-    password: '',
+    username: 'user.demo',
+    password: '12345678',
   },
 }))(reduxForm({ form: Enum.ReduxFormName.SIGN_IN })(withNavigation(SignIn)));

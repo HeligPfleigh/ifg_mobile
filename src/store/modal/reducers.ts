@@ -14,8 +14,7 @@ const modalReducer = createReducer(initialState, {
   [SHOW_MODAL]: (state: ModalState, action: ShowModalAction) => {
     return {
       isVisible: true,
-      modalType: action.modalType,
-      onModalPress: action.onModalPress,
+      ...action,
     };
   },
   [HIDE_MODAL]: (state: ModalState) => {

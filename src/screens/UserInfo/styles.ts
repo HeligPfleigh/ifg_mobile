@@ -31,4 +31,17 @@ export default StyleSheet.create({
   label: {
     color: theme.colors.black,
   },
+  btnGroup: {
+    paddingTop: theme.sizes.padding,
+  },
+  btnSend: {
+    marginBottom: theme.sizes.margin / 2,
+  },
+  labelSend: {
+    color: theme.colors.white,
+  },
+  btnCancel: {
+    borderColor: theme.colors.blue,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
 });

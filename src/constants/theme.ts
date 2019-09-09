@@ -20,6 +20,7 @@ const colors = {
   purple1: '#8E78E1',
   darkindigo: '#1E53B3',
   transparent: 'transparent',
+  underline: 'rgba(0, 0, 0, .38)',
 };
 
 const gradients = {

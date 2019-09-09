@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Enum } from '../constants';
 
-const API_SERVER = 'http://192.168.100.18:8001';
+const API_SERVER = 'http://192.168.100.3:8001';
 
 const instance = axios.create({
   baseURL: API_SERVER,
