@@ -44,6 +44,10 @@ const editAction = (id: string, action: string) => instance.patch(`/actions/${id
 
 const getReasons = () => instance.get('/actions/reasons');
 
+const giveFeedback = (data: { subject: string; message: string }) => instance.post('/feedbacks', data);
+
+const deleteAccount = () => instance.delete('/users/me');
+
 export default {
   me,
   evaluationSummary,
@@ -56,4 +60,6 @@ export default {
   deleteActions,
   editAction,
   getReasons,
+  giveFeedback,
+  deleteAccount,
 };
