@@ -1,39 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Text, FlatList } from 'react-native';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { NavigationScreenProps } from 'react-navigation';
+import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
 
 import { Block } from '../../components';
 import { styles } from './styles';
 import SummaryHeader from './components/SummaryHeader';
 import { Enum } from '../../constants';
-import { AppState, SummaryState } from '../../store/types';
+import { AppState } from '../../store/types';
 import { loadSummary } from '../../store/actions';
 import { summaryIcon } from '../../core/utils';
+import I18n from '../../core/i18n';
 
-interface SummaryProps {
-  dispatch: Dispatch<any>;
-  navigation: NavigationScreenProp<NavigationState>;
-  summary: SummaryState;
-}
+interface TestProps extends NavigationScreenProps {}
 
-class Summary extends Component<SummaryProps> {
-  componentDidMount() {
-    const { navigation, dispatch } = this.props;
-    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, Enum.EvaluationType.OVERALL);
+const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
+  const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
+  const summary = useSelector((state: AppState) => state.summary);
+  const data = get(summary, `data.${type}.affections`, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     dispatch(loadSummary(type));
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  _renderSummaryHeader = () => {
-    const { navigation, summary } = this.props;
-    const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, Enum.EvaluationType.OVERALL);
+  const renderSummaryHeader = () => {
     const score = get(summary, `data.${type}.score`, 0);
     return <SummaryHeader type={type} score={score} />;
   };
 
-  _renderSummaryItem = ({ item }: any) => {
+  const renderSummaryItem = ({ item }: any) => {
     const factors = get(item, 'factors', []);
     const { tags, score } = item;
     return (
@@ -47,7 +45,7 @@ class Summary extends Component<SummaryProps> {
         <Block flex={3} middle right row>
           {tags && (
             <Block flex={false} center middle style={styles.chip}>
-              <Text>{tags}</Text>
+              <Text>{I18n.t(`evaluate.tags.${tags}`)}</Text>
             </Block>
           )}
         </Block>
@@ -55,26 +53,14 @@ class Summary extends Component<SummaryProps> {
     );
   };
 
-  render() {
-    const { navigation, summary } = this.props;
-    const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
-    const data = get(summary, `data.${type}.affections`, []);
-    return (
-      <FlatList
-        ListHeaderComponent={this._renderSummaryHeader}
-        data={data}
-        renderItem={this._renderSummaryItem}
-        keyExtractor={(_, index) => `summary-${index}`}
-      />
-    );
-  }
-}
+  return (
+    <FlatList
+      ListHeaderComponent={renderSummaryHeader}
+      data={data}
+      renderItem={renderSummaryItem}
+      keyExtractor={(_, index) => `summary-${index}`}
+    />
+  );
+};
 
-const mapStateToProps = (state: AppState) => ({
-  summary: state.summary,
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Summary);
+export default Summary;

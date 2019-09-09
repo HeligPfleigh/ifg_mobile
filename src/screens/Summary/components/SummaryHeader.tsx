@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
@@ -71,48 +71,44 @@ interface SummaryHeaderProps extends NavigationInjectedProps {
   type: Enum.EvaluationType;
 }
 
-class SummaryHeader extends Component<SummaryHeaderProps> {
-  _navigateToLegend = () => this.props.navigation.navigate(NavigatorMap.Legend);
-
-  render() {
-    const { score, type } = this.props;
-    const { gradients, iconGradients, title } = summaryDisplayProps(type);
-    return (
-      <Block flex={false}>
-        <LinearGradient
-          colors={gradients}
-          start={{ x: 0.0, y: 1.0 }}
-          end={{ x: 1.0, y: 1.0 }}
-          style={styles.linearGradientContainer}
-        >
-          <Block flex={2} row style={{ alignItems: 'center' }}>
-            <LinearGradient
-              colors={iconGradients}
-              start={{ x: 0.0, y: 0.0 }}
-              end={{ x: 0.0, y: 1.0 }}
-              style={styles.roundContainer}
-            >
-              <Block flex={false} style={styles.iconContainer}>
-                {showWeatherIcon(score)}
-              </Block>
-            </LinearGradient>
-            <Block flex={2} middle style={styles.summary}>
-              <Text style={styles.title}>{title}</Text>
-              <ScoreText score={score} style={styles.score} />
+const SummaryHeader: React.FC<SummaryHeaderProps> = ({ navigation, score, type }: SummaryHeaderProps) => {
+  const { gradients, iconGradients, title } = summaryDisplayProps(type);
+  const navigateToLegend = () => navigation.navigate(NavigatorMap.Legend);
+  return (
+    <Block flex={false}>
+      <LinearGradient
+        colors={gradients}
+        start={{ x: 0.0, y: 1.0 }}
+        end={{ x: 1.0, y: 1.0 }}
+        style={styles.linearGradientContainer}
+      >
+        <Block flex={2} row style={{ alignItems: 'center' }}>
+          <LinearGradient
+            colors={iconGradients}
+            start={{ x: 0.0, y: 0.0 }}
+            end={{ x: 0.0, y: 1.0 }}
+            style={styles.roundContainer}
+          >
+            <Block flex={false} style={styles.iconContainer}>
+              {showWeatherIcon(score)}
             </Block>
+          </LinearGradient>
+          <Block flex={2} middle style={styles.summary}>
+            <Text style={styles.title}>{title}</Text>
+            <ScoreText score={score} style={styles.score} />
           </Block>
-        </LinearGradient>
-        <Block flex={1} center middle>
-          <Button onPress={this._navigateToLegend}>
-            <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
-          </Button>
         </Block>
-        <Block flex={1} center middle>
-          <Text style={styles.descTxt}>{I18n.t('summary.detail_perceptions')}</Text>
-        </Block>
+      </LinearGradient>
+      <Block flex={1} center middle>
+        <Button onPress={navigateToLegend}>
+          <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
+        </Button>
       </Block>
-    );
-  }
-}
+      <Block flex={1} center middle>
+        <Text style={styles.descTxt}>{I18n.t('summary.detail_perceptions')}</Text>
+      </Block>
+    </Block>
+  );
+};
 
 export default withNavigation(SummaryHeader);
