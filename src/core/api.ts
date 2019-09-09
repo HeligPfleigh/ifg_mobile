@@ -48,6 +48,16 @@ const giveFeedback = (data: { subject: string; message: string }) => instance.po
 
 const deleteAccount = () => instance.delete('/users/me');
 
+const updateUserInfo = (data: {
+  firstName?: string;
+  lastName?: string;
+  gender?: string;
+  height?: number;
+  weight?: number;
+  avatar?: string;
+  DOB?: string;
+}) => instance.patch('/users/me/profile', data);
+
 export default {
   me,
   evaluationSummary,
@@ -62,4 +72,5 @@ export default {
   getReasons,
   giveFeedback,
   deleteAccount,
+  updateUserInfo,
 };

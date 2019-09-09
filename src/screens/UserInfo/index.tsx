@@ -1,50 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import get from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
-import { connect, useDispatch } from 'react-redux';
+import isUndefined from 'lodash/isUndefined';
+import { connect } from 'react-redux';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { View, Image, ScrollView, Text, KeyboardAvoidingView } from 'react-native';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
+import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard } from 'react-native';
 
 import styles from './styles';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
 import { DefaultAvatar } from '../../assets/images';
 import { Enum } from '../../constants';
-import { showModal } from '../../store/actions';
-import { Button, Block, FormFields } from '../../components';
+import { Button, Block, FormFields, Loader } from '../../components';
+import api from '../../core/api';
+
+interface IUser {
+  avatar?: any;
+  username?: any;
+  firstName?: any;
+  lastName?: any;
+  DOB?: any;
+  gender?: any;
+  height?: number;
+  weight?: number;
+}
 
 interface IProps extends InjectedFormProps, NavigationScreenProps {
-  initialValues: {
-    avatar?: any;
-    username?: any;
-    firstName?: any;
-    lastName?: any;
-    dob?: any;
-    gender?: any;
-    height?: number;
-    weight?: number;
-  };
+  initialValues: IUser;
 }
 
 const UserInfo: React.FC<IProps> = (props: IProps) => {
-  const dispatch = useDispatch();
+  const genders = [
+    { label: 'Male', value: 'MALE' },
+    { label: 'Female', value: 'FEMALE' },
+    { label: 'Other', value: 'OTHER' },
+  ];
 
-  // back button
-  const _onCancel = () => props.navigation.goBack();
-
-  // handle submit form
-  const _handleSubmit = () => {
-    const { navigation } = props;
-    dispatch(showModal({ modalType: Enum.ModalType.DELETE_ACCOUNT, onModalPress: navigation.goBack }));
+  const datePickerProps = {
+    horizontal: true,
+    scrollEnabled: true,
+    pagingEnabled: true,
+    calendarWidth: 320,
+    futureScrollRange: 1,
+    pastScrollRange: 1200,
+    maxDate: moment()
+      .subtract(12, 'years')
+      .format('YYYY-MM-DD'),
+    minDate: moment()
+      .subtract(100, 'years')
+      .format('YYYY-MM-DD'),
   };
 
+  // back button
+  const _handleCancel = () => props.navigation.goBack();
+
+  const [loading, setLoading] = useState(false);
+  // handle submit form
+  const _handleSubmit = async (values: IUser) => {
+    try {
+      setLoading(true);
+      Keyboard.dismiss();
+      const formData = { ...values };
+      if (!isUndefined(get(values, 'DOB'))) {
+        formData.DOB = moment(get(values, 'DOB')).toISOString();
+      }
+      if (!isUndefined(get(values, 'height'))) {
+        formData.height = Number(get(values, 'height'));
+      }
+      if (!isUndefined(get(values, 'weight'))) {
+        formData.weight = Number(get(values, 'weight'));
+      }
+      await api.updateUserInfo(formData);
+    } catch (err) {
+      // TODO
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const { handleSubmit } = props;
   const avatar = get(props, 'initialValues.avatar');
   const { required, maxLength120 } = FormFields.FormValidator;
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      <Loader loading={loading} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Image source={avatar || DefaultAvatar} style={styles.avatar} />
@@ -59,6 +100,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
           <Field
             name="firstName"
             autoCorrect={false}
+            returnKeyType="done"
             component={FormFields.TextField}
             label={I18n.t('profile.user_info.first_name')}
             validate={[required, maxLength120]}
@@ -66,21 +108,27 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
           <Field
             name="lastName"
             autoCorrect={false}
+            returnKeyType="done"
             component={FormFields.TextField}
             label={I18n.t('profile.user_info.last_name')}
             validate={[required, maxLength120]}
           />
-          <Field name="dob" component={FormFields.DateField} label={I18n.t('profile.user_info.dob')} />
+          <Field
+            name="DOB"
+            component={FormFields.DateField}
+            datePickerProps={datePickerProps}
+            label={I18n.t('profile.user_info.dob')}
+          />
           <Field
             name="gender"
-            autoCorrect={false}
-            component={FormFields.TextField}
+            datasource={genders}
+            component={FormFields.Dropdown}
             label={I18n.t('profile.user_info.gender')}
-            validate={[required]}
           />
           <Field
             name="height"
             autoCorrect={false}
+            returnKeyType="done"
             keyboardType="numeric"
             component={FormFields.TextField}
             label={`${I18n.t('profile.user_info.height')} (cm)`}
@@ -89,6 +137,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
           <Field
             name="weight"
             autoCorrect={false}
+            returnKeyType="done"
             keyboardType="numeric"
             component={FormFields.TextField}
             label={`${I18n.t('profile.user_info.weight')} (kg)`}
@@ -96,12 +145,12 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
           />
         </Block>
         <Block flex={false} style={styles.btnGroup}>
-          <Button gradient style={styles.btnSend} onPress={_handleSubmit}>
+          <Button gradient style={styles.btnSend} onPress={handleSubmit(_handleSubmit)}>
             <Block center middle>
               <Text style={styles.labelSend}>{I18n.t('common.save')}</Text>
             </Block>
           </Button>
-          <Button shadow style={styles.btnCancel} onPress={_onCancel}>
+          <Button shadow style={styles.btnCancel} onPress={_handleCancel}>
             <Block center middle>
               <Text>{I18n.t('common.cancel')}</Text>
             </Block>
@@ -114,16 +163,17 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
 
 const mapStateToProps = (state: AppState) => {
   // user dob
-  const _dob = get(state, 'me.data.user.dob');
+  const _dob = get(state, 'me.data.user.DOB');
+  const dateDefault = moment().subtract(12, 'years');
   return {
     initialValues: {
       username: get(state, 'me.data.user.username'),
       firstName: get(state, 'me.data.user.firstName'),
       lastName: get(state, 'me.data.user.lastName'),
-      dob: isEmpty(_dob) ? new Date() : moment(_dob).toDate(),
-      gender: isEmpty(get(state, 'me.data.user.lastName')) ? 'Male' : 'Female',
+      gender: get(state, 'me.data.user.gender', 'MALE'),
       height: `${get(state, 'me.data.user.height', 0)}`,
       weight: `${get(state, 'me.data.user.weight', 0)}`,
+      DOB: isUndefined(_dob) ? dateDefault.toDate() : moment(_dob).toDate(),
     },
   };
 };
