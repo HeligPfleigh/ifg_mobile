@@ -1,77 +1,98 @@
-import React, { Component } from 'react';
-import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
+import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, FormValidator as validator } from '../../../../../components/FormFields';
-
+import { Keyboard } from 'react-native';
+import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
+import api from '../../../../../core/api';
+import I18n from '../../../../../core/i18n';
+import { Enum, theme } from '../../../../../constants';
+import { Block, Loader, FormFields } from '../../../../../components';
 import styles from './styles';
-import { theme } from '../../../../../constants';
-import { Block } from '../../../../../components';
-
-const formName = 'change-password';
-const selector = formValueSelector(formName);
 
 interface IProps extends InjectedFormProps {
   newPassword?: any;
 }
-class ChangePassword extends Component<IProps> {
-  compareValue = (value: any) => {
-    const { newPassword } = this.props;
-    return validator.comparePassword(newPassword, value);
+
+interface IStates {
+  loading?: any;
+}
+
+class ChangePassword extends React.Component<IProps, IStates> {
+  state = {
+    loading: false,
   };
 
-  onSubmitPassword = (values: any) => {
-    /* eslint-disable-next-line */
-    console.log('on submit form values: ', values);
-    // this.password.blur();
+  // func use comfirm new password
+  _compareValue = (value: any) => {
+    const { newPassword } = this.props;
+    return FormFields.FormValidator.comparePassword(newPassword, value);
+  };
+
+  // handle submit form
+  _handleSubmit = async (values: any) => {
+    try {
+      this.setState(
+        () => ({ loading: true }),
+        async () => {
+          await Keyboard.dismiss();
+          await api.changePassword(values);
+          await this.props.reset();
+        },
+      );
+    } catch (err) {
+      // TODO
+    } finally {
+      this.setState({ loading: false });
+    }
   };
 
   render() {
-    const { required, minLength4, maxLength120, password } = validator;
+    const { loading } = this.state;
     const { handleSubmit } = this.props;
+    const { required, minLength8 } = FormFields.FormValidator;
     return (
       <Block flex={false} style={styles.container}>
+        <Loader loading={loading} />
         <Field
-          name="currentPass"
-          label="Current password"
-          component={TextField}
+          name="currentPwd"
           secureTextEntry
           autoCorrect={false}
-          characterRestriction={120}
           tintColor={theme.colors.green}
-          validate={[required, minLength4, maxLength120, password]}
+          component={FormFields.TextField}
+          validate={[required, minLength8]}
+          label={I18n.t('profile.account_settings.current_password')}
         />
         <Field
-          name="newPassword"
-          label="New password"
-          component={TextField}
+          name="newPwd"
           secureTextEntry
           autoCorrect={false}
-          characterRestriction={120}
           tintColor={theme.colors.green}
-          validate={[required, minLength4, maxLength120, password]}
+          component={FormFields.TextField}
+          validate={[required, minLength8]}
+          label={I18n.t('profile.account_settings.new_password')}
         />
         <Field
-          name="newPassConfirm"
-          label="Confirm new password"
-          component={TextField}
+          name="confirmPwd"
+          secureTextEntry
           returnKeyType="done"
-          secureTextEntry
           enablesReturnKeyAutomatically
-          onSubmitEditing={handleSubmit(this.onSubmitPassword)}
           autoCorrect={false}
-          characterRestriction={120}
           tintColor={theme.colors.green}
-          validate={[required, minLength4, maxLength120, password, this.compareValue]}
+          component={FormFields.TextField}
+          validate={[required, minLength8, this._compareValue]}
+          label={I18n.t('profile.account_settings.confirm_new_pwd')}
+          onSubmitEditing={handleSubmit(this._handleSubmit)}
         />
       </Block>
     );
   }
 }
 
+const selector = formValueSelector(Enum.ReduxFormName.CHANGE_PASSWORD);
+
 const mapStateToProps = (state: any) => ({
-  newPassword: selector(state, 'newPassword'),
+  newPassword: selector(state, 'newPwd'),
 });
 
 export default reduxForm({
-  form: formName,
+  form: Enum.ReduxFormName.CHANGE_PASSWORD,
 })(connect(mapStateToProps)(ChangePassword));

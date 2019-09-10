@@ -6,4 +6,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.gray3,
   },
+  content: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
 });

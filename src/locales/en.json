@@ -269,9 +269,10 @@
       "title": "Account settings",
       "change_user_email": "Change email",
       "change_password": "Change password",
-      "language_setting": "Language setting",
       "delete_account": "Delete account",
       "current_password": "Current password",
+      "new_password": "New password",
+      "confirm_new_pwd": "Confirm new password",
       "current_email": "Current email",
       "new_email": "New email",
       "confirm_with_password": "Confirm with password"

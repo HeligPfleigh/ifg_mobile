@@ -58,6 +58,14 @@ const updateUserInfo = (data: {
   DOB?: string;
 }) => instance.patch('/users/me/profile', data);
 
+// PATCH: /users/me/password
+interface IChangePassword {
+  currentPwd: string;
+  newPwd: string;
+  confirmPwd: string;
+}
+const changePassword = (data: IChangePassword) => instance.patch('/users/me/password', data);
+
 export default {
   me,
   evaluationSummary,
@@ -73,4 +81,5 @@ export default {
   giveFeedback,
   deleteAccount,
   updateUserInfo,
+  changePassword,
 };
