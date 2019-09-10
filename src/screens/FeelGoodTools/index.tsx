@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, Text, StyleSheet } from 'react-native';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import { connect } from 'react-redux';
+import { NavigationScreenProps } from 'react-navigation';
+import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
 import noop from 'lodash/noop';
 
@@ -11,7 +11,7 @@ import { theme, Enum } from '../../constants';
 import { LightBulb, Flag, ActionList } from '../../assets/images';
 import { showWeatherIcon } from '../../core/utils';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, MeState } from '../../store/types';
+import { AppState } from '../../store/types';
 import { showModal } from '../../store/actions';
 
 const styles = StyleSheet.create({
@@ -29,112 +29,96 @@ const styles = StyleSheet.create({
   },
 });
 
-interface FeelGoodToolsProps {
-  navigation: NavigationScreenProp<NavigationState>;
-  me: MeState;
-  dispatch: any;
-}
+const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+  const score = useSelector((state: AppState) => state.me.data.score);
+  const dispatch = useDispatch();
+  const relationshipsScore = get(score, Enum.EvaluationType.RELATIONSHIPS);
+  const activitiesScore = get(score, Enum.EvaluationType.ACTIVITIES);
+  const intakesScore = get(score, Enum.EvaluationType.INTAKES);
+  const otherScore = get(score, Enum.EvaluationType.OTHER);
 
-class FeelGoodTools extends Component<FeelGoodToolsProps> {
-  _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
-    this.props.navigation.navigate(NavigatorMap.Summary, {
+  const navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
+    navigation.navigate(NavigatorMap.Summary, {
       [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
     });
 
-  _navigateToDrafts = () => this.props.navigation.navigate(NavigatorMap.Drafts);
+  const navigateToDrafts = () => navigation.navigate(NavigatorMap.Drafts);
 
-  _navigateToActionList = () => this.props.navigation.navigate(NavigatorMap.ActionList);
+  const navigateToActionList = () => navigation.navigate(NavigatorMap.ActionList);
 
-  render() {
-    const {
-      me: {
-        data: { score },
-      },
-    } = this.props;
+  const showNotAvailableModal = () =>
+    dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.FEATURE_NOT_AVAILABLE }));
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Block flex={false} middle row style={styles.groupIcon}>
+        {relationshipsScore ? (
+          <RoundIconButton
+            icon={showWeatherIcon(relationshipsScore, 30)}
+            colors={theme.gradients.pink}
+            text={I18n.t('summary.relationships')}
+            onPress={() => navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
+          />
+        ) : (
+          <Block flex={false} />
+        )}
+        {activitiesScore ? (
+          <RoundIconButton
+            icon={showWeatherIcon(activitiesScore, 30)}
+            colors={theme.gradients.blue}
+            text={I18n.t('summary.activities')}
+            onPress={() => navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
+          />
+        ) : (
+          <Block flex={false} />
+        )}
+        {intakesScore ? (
+          <RoundIconButton
+            icon={showWeatherIcon(intakesScore, 30)}
+            colors={theme.gradients.orange}
+            text={I18n.t('summary.intakes')}
+            onPress={() => navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
+          />
+        ) : (
+          <Block flex={false} />
+        )}
+        {otherScore ? (
+          <RoundIconButton
+            icon={showWeatherIcon(otherScore, 30)}
+            colors={theme.gradients.purple}
+            text={I18n.t('summary.other')}
+            onPress={() => navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
+          />
+        ) : (
+          <Block flex={false} />
+        )}
+      </Block>
+      <Text style={styles.header}>{I18n.t('feel_good_tools.header')}</Text>
+      <EvaluationItem
+        colors={theme.gradients.pink}
+        header={I18n.t('feel_good_tools.tip')}
+        icon={<LightBulb />}
+        headerColor={theme.colors.black}
+        round={false}
+        onPress={showNotAvailableModal}
+      />
+      <EvaluationItem
+        colors={theme.gradients.pink}
+        header={I18n.t('feel_good_tools.draft')}
+        icon={<Flag />}
+        headerColor={theme.colors.black}
+        round={false}
+        onPress={navigateToDrafts}
+      />
+      <EvaluationItem
+        colors={theme.gradients.pink}
+        header={I18n.t('feel_good_tools.action_list')}
+        icon={<ActionList />}
+        headerColor={theme.colors.black}
+        round={false}
+        onPress={navigateToActionList}
+      />
+    </ScrollView>
+  );
+};
 
-    const relationshipsScore = get(score, Enum.EvaluationType.RELATIONSHIPS);
-    const activitiesScore = get(score, Enum.EvaluationType.ACTIVITIES);
-    const intakesScore = get(score, Enum.EvaluationType.INTAKES);
-    const otherScore = get(score, Enum.EvaluationType.OTHER);
-
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <Block flex={false} middle row style={styles.groupIcon}>
-          {relationshipsScore ? (
-            <RoundIconButton
-              icon={showWeatherIcon(relationshipsScore, 30)}
-              colors={theme.gradients.pink}
-              text={I18n.t('summary.relationships')}
-              onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
-            />
-          ) : (
-            <Block flex={false} />
-          )}
-          {activitiesScore ? (
-            <RoundIconButton
-              icon={showWeatherIcon(activitiesScore, 30)}
-              colors={theme.gradients.blue}
-              text={I18n.t('summary.activities')}
-              onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
-            />
-          ) : (
-            <Block flex={false} />
-          )}
-          {intakesScore ? (
-            <RoundIconButton
-              icon={showWeatherIcon(intakesScore, 30)}
-              colors={theme.gradients.orange}
-              text={I18n.t('summary.intakes')}
-              onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
-            />
-          ) : (
-            <Block flex={false} />
-          )}
-          {otherScore ? (
-            <RoundIconButton
-              icon={showWeatherIcon(otherScore, 30)}
-              colors={theme.gradients.purple}
-              text={I18n.t('summary.other')}
-              onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
-            />
-          ) : (
-            <Block flex={false} />
-          )}
-        </Block>
-        <Text style={styles.header}>{I18n.t('feel_good_tools.header')}</Text>
-        <EvaluationItem
-          colors={theme.gradients.pink}
-          header={I18n.t('feel_good_tools.tip')}
-          icon={<LightBulb />}
-          headerColor={theme.colors.black}
-          round={false}
-          onPress={() =>
-            this.props.dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.FEATURE_NOT_AVAILABLE }))
-          }
-        />
-        <EvaluationItem
-          colors={theme.gradients.pink}
-          header={I18n.t('feel_good_tools.draft')}
-          icon={<Flag />}
-          headerColor={theme.colors.black}
-          round={false}
-          onPress={this._navigateToDrafts}
-        />
-        <EvaluationItem
-          colors={theme.gradients.pink}
-          header={I18n.t('feel_good_tools.action_list')}
-          icon={<ActionList />}
-          headerColor={theme.colors.black}
-          round={false}
-          onPress={this._navigateToActionList}
-        />
-      </ScrollView>
-    );
-  }
-}
-
-const mapStateToProps = (state: AppState) => ({
-  me: state.me,
-});
-
-export default connect(mapStateToProps)(FeelGoodTools);
+export default FeelGoodTools;
