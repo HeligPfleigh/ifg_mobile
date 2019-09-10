@@ -66,6 +66,13 @@ interface IChangePassword {
 }
 const changePassword = (data: IChangePassword) => instance.patch('/users/me/password', data);
 
+// PATCH: /users/me/change-email
+interface IChangeEmail {
+  password: string;
+  email: string;
+}
+const changeEmail = (data: IChangeEmail) => instance.patch('/users/me/change-email', data);
+
 export default {
   me,
   evaluationSummary,
@@ -82,4 +89,5 @@ export default {
   deleteAccount,
   updateUserInfo,
   changePassword,
+  changeEmail,
 };

@@ -3,12 +3,14 @@ export const ME_SUCCESSFUL = 'ME_SUCCESSFUL';
 export const ME_FAILURE = 'ME_FAILURE';
 
 interface UserProfile {
+  email?: string;
   firstName?: string;
   lastName?: string;
   username: string;
+  gender?: boolean;
+  DOB?: string;
   height?: number;
   weight?: number;
-  gender?: boolean;
   avatar?: string;
 }
 
