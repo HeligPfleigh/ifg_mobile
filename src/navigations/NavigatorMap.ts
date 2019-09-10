@@ -8,7 +8,6 @@ enum NavigatorMap {
   SignIn = 'Sign In',
   SignUp = 'Sign Up',
   Welcome = 'Welcome',
-  License = 'License',
   ForgotPassword = 'Forgot Password',
   HomeStack = 'HomeStack',
   GlobalScores = 'GlobalScores',
