@@ -1,8 +1,327 @@
 {
+  "common": {
+    "save": "SAUVER",
+    "next": "SUIVANT",
+    "back": "RETOUR",
+    "send": "ENVOYER",
+    "cancel": "ANNULER",
+    "submit": "SOUMETTRE"
+  },
+  "messages": {
+    "required": "Champ requis",
+    "pwd_confirm": "Mot de passe et confirmez que le mot de passe ne correspond pas"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "feel_good_tools": "Outils Feel Good",
+    "profile": "Profil",
+    "global_scores": "Tous les scores",
+    "summary": "Récapitulatif",
+    "legend": "Légende",
+    "evaluate": "Évaluer",
+    "drafts": "Terminer mes brouillons",
+    "account_settings": "Paramètres du compte",
+    "user_info": "Informations de l'utilisateur",
+    "action_list": "Ma liste d'actions",
+    "contact_us": "Contactez nous",
+    "parameters": "Paramètres",
+    "delete_account": "Effacer mon compte"
+  },
+  "modal": {
+    "self_evaluation": {
+      "header": "Please do self-evaluations \nin order to get feel good scores."
+    },
+    "draft_saved": {
+      "header": "Your draft has been saved.",
+      "body": "You can take time to think and finish it \nat any time in your Feel Good Tools."
+    },
+    "evaluation_saved": {
+      "header": "Your feel good scores \nhave been updated accordingly.",
+      "body": "You can go to the Scores page to \nsee the change."
+    },
+    "signup_success": {
+      "header": "Congratulation!",
+      "body": "Welcome to your space! \n\n You can now self-evaluate everything in your life. Satisfaction scores will be calculated and updated \n in real time following your evaluations."
+    },
+    "delete_account": {
+      "body": "We hope that you will \nbe back soon."
+    },
+    "smart": {
+      "specific": {
+        "header": "Specific",
+        "body": "Address precisely at least one of the following questions: Who, What, Where?"
+      },
+      "measurable": {
+        "header": "Measurable",
+        "body": "Indicate a milestone in order to quantify the progress (it's totally OK even if it's a tiny milestone)."
+      },
+      "achievable": {
+        "header": "Achievable",
+        "body": "Your goal should not be to high too avoid frustrations, nor too low because you will feel bored."
+      },
+      "relevant": {
+        "header": "Realistic",
+        "body": "The action must be in line with your priorities, the context and the external constraints."
+      },
+      "time_based": {
+        "header": "Time-bound",
+        "body": "Set a deadline to motivate yourself: you can choose a periodic deadline (per day, per week etc…), or an unique deadline."
+      },
+      "footer": "And finally, begin your action with a verb!"
+    },
+    "feature_not_available": {
+      "header": "Sorry, this feature isn't available at this moment!"
+    },
+    "license": {
+      "title": "Terms and conditions",
+      "description": "These terms and conditions are an agreement between Mobile Application Owner (\"Mobile Application Owner\", \"us\", \"we\" or \"our\") and you (\"User\", \"you\" or \"your\"). This Agreement sets forth the general terms and conditions of your use of the I FEEL GOOD mobile application and any of its products or services (collectively, \"Mobile Application\" or \"Services\").",
+      "body": {
+        "accounts_and_membership": {
+          "title": "Accounts and membership",
+          "description": "If you create an account in the Mobile Application, you are responsible for maintaining the security of your account and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it. We may, but have no obligation to, monitor and review new accounts before you may sign in and use our Services. You must immediately notify us of any unauthorized uses of your account or any other breaches of security. We will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions. We may suspend, disable, or delete your account (or any part thereof) if we determine that you have violated any provision of this Agreement or that your conduct or content would tend to damage our reputation and goodwill. If we delete your account for the foregoing reasons, you may not re-register for our Services. We may block your email address and Internet protocol address to prevent further registration."
+        },
+        "user_content": {
+          "title": "User content",
+          "description": "We do not own any data, information or material (\"Content\") that you submit in the Mobile Application in the course of using the Service. You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, appropriateness, and intellectual property ownership or right to use of all submitted Content. We may, but have no obligation to, monitor and review Content in the Mobile Application submitted or created using our Services by you. Unless specifically permitted by you, your use of the Mobile Application does not grant us the license to use, reproduce, adapt, modify, publish or distribute the Content created by you or stored in your user account for commercial, marketing or any similar purpose. But you grant us permission to access, copy, distribute, store, transmit, reformat, display and perform the Content of your user account solely as required for the purpose of providing the Services to you."
+        },
+        "backups": {
+          "title": "Backups",
+          "description": "We perform regular backups of the Content and will do our best to ensure completeness and accuracy of these backups. In the event of the hardware failure or data loss we will restore backups automatically to minimize the impact and downtime."
+        },
+        "link": {
+          "title": "Links to other mobile applications",
+          "description": "Although this Mobile Application may link to other mobile applications, we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked mobile application, unless specifically stated herein. We are not responsible for examining or evaluating, and we do not warrant the offerings of, any businesses or individuals or the content of their mobile applications. We do not assume any responsibility or liability for the actions, products, services, and content of any other third-parties. You should carefully review the legal statements and other conditions of use of any mobile application which you access through a link from this Mobile Application. Your linking to any other off-site mobile applications is at your own risk."
+        },
+        "changes": {
+          "title": "Changes and amendments",
+          "description": "We reserve the right to modify this Agreement or its policies relating to the Mobile Application or Services at any time, effective upon posting of an updated version of this Agreement in the Mobile Application. When we do, we will post a notification in our Mobile Application. Continued use of the Mobile Application after any such changes shall constitute your consent to such changes."
+        },
+        "acceptance": {
+          "title": "Acceptance of these terms",
+          "description": "You acknowledge that you have read this Agreement and agree to all its terms and conditions. By using the Mobile Application or its Services you agree to be bound by this Agreement. If you do not agree to abide by the terms of this Agreement, you are not authorized to use or access the Mobile Application and its Services."
+        },
+        "contact": {
+          "title": "Contacting us",
+          "description": "If you would like to contact us to understand more about this Agreement or wish to contact us concerning any matter relating to it, you may send an email to ifeelgood.hello@gmail.com"
+        }
+      },
+      "end": "This document was last updated on September 7, 2019"
+    }
+  },
   "welcome": {
-    "header": "HEADER",
-    "paragraph": "PARAGRAPH",
-    "signup": "SIGN UP",
-    "signin": "SIGN IN"
+    "header": "I Feel Good",
+    "paragraph": "Découvre ce qui est utile pour toi,\net aussi ce qui ne l'est pas !",
+    "signup": "Créer un compte",
+    "signin": "J'ai déjà un compte"
+  },
+  "signin": {
+    "title": "Heureux de te voir !",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "submit": "Connexion",
+    "forgot": "Mot de passe oublié?"
+  },
+  "signup": {
+    "title": "Créer un compte\npour commencer !",
+    "username": "Nom d'utilisateur",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirm": "Confirmer le mot de passe",
+    "agree": "J'accepte les ",
+    "terms": "conditions d'utilisation",
+    "submit": "Créer un compte"
+  },
+  "forgot": {
+    "title": "Mot de passe oublié",
+    "paragraph": "Entrez l'email pour réinitialiser le mot de passe!",
+    "email": "E-mail",
+    "submit": "Envoyer"
+  },
+  "home": {
+    "relationships": "RELATIONS",
+    "activities": "ACTIVITÉS",
+    "intakes": "ABSORPTIONS",
+    "other": "AUTRES FACTEURS",
+    "overall": "GÉNÉRAL",
+    "view_details": "Voir les détails",
+    "global_scores": "Tous les scores",
+    "description": {
+      "relationships": "Evaluer les personnes qui influencent mon énergie et mon humeur.",
+      "activities": "Evaluer les occupations qui changent mes états physiques et mental.",
+      "intakes": "Evaluer les apports qui impactent mon corps et ma tête.",
+      "other": "Evaluer tout autre facteur qui modifie ma vitalité et mon esprit."
+    }
+  },
+  "summary": {
+    "relationships": "Relations",
+    "activities": "Activités",
+    "intakes": "Absorptions",
+    "other": "Autres facteurs",
+    "overall": "Général",
+    "legends": "Légende",
+    "detail_perceptions": "Détails de tes perceptions"
+  },
+  "legend": {
+    "header": {
+      "title": "Your Feel Good Level",
+      "body": "The scores you gave during self-assesment are used to calculate an average fell good score."
+    },
+    "subtitle": {
+      "good": "Factors that are on good track, keep going in this direction!",
+      "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
+      "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
+    }
+  },
+  "evaluate": {
+    "step1": {
+      "header": {
+        "relationships": {
+          "name": "Qui t'a apporté de la joie, \nqui t'a donné des ondes négatives ?"
+        },
+        "activities": {
+          "name": "Dans 2 ans, quelle activité tu continuerais avec joie, laquelle tu voudrais t'en débarrasser ?"
+        },
+        "intakes": {
+          "name": "Te souviens-tu de la fois où tu as pris quelque chose qui t'a fait du bien, ou au contraire, t'a rendu inconfortable ?"
+        },
+        "other": {
+          "name": "Quels autres éléments dans ton univers contribue à augmenter ou réduire ton énergy et ton humeur ?"
+        },
+        "label": "Catégorie",
+        "desc": "Ajouter une description"
+      },
+      "name": "Nom",
+      "optional": "(Optionnel)"
+    },
+    "step2": {
+      "relationships": {
+        "feelling": "Quel est l'impact de cette relation\n sur toi ?"
+      },
+      "activities": {
+        "feelling": "Quel est l'impact de cette activité\n sur toi ?"
+      },
+      "intakes": {
+        "feelling": "Quel est l'impact de cette absorption\n sur toi ?"
+      },
+      "other": {
+        "feelling": "Quel est l'impact de cet élément\n sur toi ?"
+      },
+      "and": "Et",
+      "feel": "Je me sens",
+      "energy": "L'impact est sur \nmon niveau d'énergie",
+      "mood": "L'impact est sur \nmon humeur"
+    },
+    "step3": {
+      "header": "Quell est la force de ce sentiment ?",
+      "slight": "Léger",
+      "huge": "Immense"
+    },
+    "footer": {
+      "next": "SUIVANT",
+      "draft": "ENREGISTRER COMME BROUILLON",
+      "finish": "TERMINER"
+    },
+    "tags": {
+      "family": "Famille",
+      "lover": "Amoureux/Partenaire",
+      "friends": "Amis",
+      "work": "Travail",
+      "social": "Social",
+      "other_figures": "Autres figures",
+      "hobbies": "Loisirs",
+      "job": "Profession",
+      "fitness": "Forme",
+      "spirituality": "Spiritualité",
+      "projects": "Projets",
+      "other_activities": "Autres activités",
+      "foods": "Aliments",
+      "drinks": "Boissons",
+      "supplements": "Compléments alimentaires",
+      "medications": "Médicaments",
+      "other_intakes": "Autres absorptions",
+      "routines": "Routines",
+      "places": "Endroits",
+      "objects": "Objets",
+      "memories": "Souvenirs",
+      "dreams": "Rêves",
+      "animals": "Animaux",
+      "other_elements": "Autres éléments"
+    }
+  },
+  "feel_good_tools": {
+    "header": "Outils pour piloter ma vie afin de\nvivre plus en forme et plus heureux-se.",
+    "tip": "CONSEILS FEEL GOOD",
+    "draft": "TERMINER MES BROUILLONS",
+    "action_list": "MA LISTE D'ACTIONS"
+  },
+  "profile": {
+    "user_info": {
+      "title": "Informations de l'utilisateur",
+      "username": "Nom d'utilisateur",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "dob": "Date de naissance",
+      "gender": "Sexe",
+      "height": "Taille",
+      "weight": "Poids"
+    },
+    "account_settings": {
+      "title": "Paramètres du compte",
+      "change_user_email": "Changer mon E-mail",
+      "change_password": "Changer mon mot de passe",
+      "language_setting": "Paramètres de langue",
+      "delete_account": "Effacer mon compte",
+      "current_password": "Mot de passe actuel",
+      "new_password": "Nouveau mot de passe",
+      "current_email": "E-mail actuel",
+      "new_email": "Nouvel E-mail",
+      "confirm_new_password": "Confirmer le nouveau mot de passe",
+      "confirm_with_password": "Confirmer le mot de passe"
+    },
+    "account_parameters": {
+      "title": "Paramètres",
+      "notifications": "Notifications",
+      "notifications_subtitle": "Je veux recevoir les informations feel good",
+      "newsletter": "Newsletter",
+      "newsletter_subtitle": "Receive cool and fun news",
+      "motivation_msgs": "Motivation messages",
+      "motivation_msgs_subtitle": "Receive congratulations and encouragements",
+      "language_setting": "Paramètres de langue",
+      "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue"
+    },
+    "account_contact_us": {
+      "title": "Contactez nous",
+      "page_title": "Veuillez taper votre\n message",
+      "subject": "Sujet",
+      "description": "Veuillez taper votre message"
+    },
+    "delete_account": {
+      "title": "Supprimer Votre Compte",
+      "page_title": "Êtes-vous sûr que vous voulez\neffacer mon compte?",
+      "page_subtitle": "Peux-tu partager avec nous la raison de ton départ ?",
+      "label_input": "La raison est….",
+      "label_button": "ENVOYER & EFFACER MON COMPTE"
+    },
+    "logout": "Déconnexion"
+  },
+  "action_list": {
+    "tip_for_action": "Astuces pour l'action ",
+    "smart": "SMART",
+    "actions": "Actions ",
+    "done": "achevées",
+    "add_new": "Ajouter une nouvelle action",
+    "edit_action": "Edit action",
+    "select_reason": "Sélectionnez la raison (optionnel)",
+    "cancel": "ANNULER",
+    "update": "METTRE À JOUR",
+    "footer": {
+      "new": "CRÉER",
+      "achieve": "MARQUER COMME ACHEVÉE",
+      "save": "SAUVER",
+      "delete": "EFFACER"
+    }
+  },
+  "achieved_actions": {
+    "header": "Félicitations!! \nTu as déjà terminé ces actions!"
   }
 }
