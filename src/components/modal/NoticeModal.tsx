@@ -133,8 +133,8 @@ const EmphasizeFirstCharacterText = ({ text }: IEmphasizeFirstCharacterText) => 
   );
 };
 
-export const SMARTModal: React.FC<NoticeModalProps> = () => (
-  <TouchableOpacity style={styles.smartContainer}>
+export const SMARTModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => (
+  <TouchableOpacity style={styles.smartContainer} onPress={onPress}>
     <EmphasizeFirstCharacterText text={I18n.t('modal.smart.specific.header')} />
     <Text style={styles.smartBody}>{I18n.t('modal.smart.specific.body')}</Text>
     <EmphasizeFirstCharacterText text={I18n.t('modal.smart.measurable.header')} />
