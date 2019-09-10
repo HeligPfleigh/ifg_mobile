@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { NavigationScreenProp, NavigationState, ScrollView } from 'react-navigation';
 
 import NavigatorMap from '../../navigations/NavigatorMap';
 import Notifications from './components/Notifications';
-import Newsletter from './components/Newsletter';
-import MotivationMessages from './components/MotivationMessages';
+import LanguageSetting from './components/LanguageSetting';
 import { styles } from './styles';
 
 interface ScreenProps {
@@ -22,11 +22,10 @@ class Parameters extends Component<ScreenProps> {
     return (
       <ScrollView scrollEnabled={false} style={styles.container}>
         <Notifications />
-        <Newsletter />
-        <MotivationMessages />
+        <LanguageSetting language="fr" />
       </ScrollView>
     );
   }
 }
 
-export default Parameters;
+export default connect()(Parameters);

@@ -248,7 +248,9 @@
       "newsletter": "Newsletter",
       "newsletter_subtitle": "Receive cool and fun news",
       "motivation_msgs": "Motivation messages",
-      "motivation_msgs_subtitle": "Receive congratulations and encouragements"
+      "motivation_msgs_subtitle": "Receive congratulations and encouragements",
+      "language_setting": "Language setting",
+      "language_setting_subtitle": "Please select your language"
     },
     "account_contact_us": {
       "title": "Contact us",

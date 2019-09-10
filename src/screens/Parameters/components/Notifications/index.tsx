@@ -12,11 +12,7 @@ interface IStates {
   itemSelected: any;
 }
 
-const data = [
-  { label: 'One per week', value: 1 },
-  { label: 'Twice per week', value: 2 },
-  { label: `I DON'T need feel good information`, value: 0 },
-];
+const data = [{ label: 'Yes', value: 1 }, { label: `I DON'T need feel good information`, value: 0 }];
 
 class MotivationMessages extends Component<{}, IStates> {
   constructor(props: any) {
