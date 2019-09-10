@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { Rocket, BrainStorm, Folder, Congratulation, Finger, WelcomeImg } from '../../assets/images';
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
@@ -41,6 +41,25 @@ const styles = StyleSheet.create({
   smartCharacter: {
     color: theme.colors.blue,
     fontWeight: 'bold',
+  },
+  licenseContainer: {
+    backgroundColor: theme.colors.white,
+    padding: theme.sizes.margin,
+    borderRadius: theme.sizes.radius,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  licenseBody: {
+    marginTop: theme.sizes.margin,
+    marginBottom: theme.sizes.padding,
+  },
+  licenseDescription: {
+    marginTop: theme.sizes.margin,
+    marginBottom: theme.sizes.margin,
+  },
+  licenseTitle: {
+    fontWeight: '700',
+    fontSize: theme.sizes.h3,
+    marginTop: theme.sizes.padding,
   },
 });
 
@@ -136,5 +155,35 @@ export const FeatureNotAvailableModal: React.FC<NoticeModalProps> = ({ onPress }
       <WelcomeImg />
       <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.feature_not_available.header')}</Text>
     </TouchableOpacity>
+  );
+};
+
+export const LicenseModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => {
+  return (
+    <SafeAreaView>
+      <ScrollView style={styles.licenseContainer}>
+        <TouchableOpacity style={styles.licenseBody} onPress={onPress}>
+          <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.license.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.accounts_and_membership.title')}</Text>
+          <Text style={[styles.licenseDescription]}>
+            {I18n.t('modal.license.body.accounts_and_membership.description')}
+          </Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.user_content.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.user_content.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.backups.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.backups.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.link.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.link.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.changes.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.changes.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.acceptance.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.acceptance.description')}</Text>
+          <Text style={styles.licenseTitle}>{I18n.t('modal.license.body.contact.title')}</Text>
+          <Text style={[styles.licenseDescription]}>{I18n.t('modal.license.body.contact.description')}</Text>
+          <Text>{I18n.t('modal.license.end')}</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 };

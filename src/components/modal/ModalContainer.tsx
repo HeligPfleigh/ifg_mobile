@@ -12,6 +12,7 @@ import {
   DefaultModal,
   SMARTModal,
   FeatureNotAvailableModal,
+  LicenseModal,
 } from './NoticeModal';
 import ChooseDate from './ChooseDateModal';
 import { AppState } from '../../store/types';
@@ -43,6 +44,7 @@ const MODAL_TYPES: any = {
   [Enum.ModalType.SMART]: SMARTModal,
   [Enum.ModalType.FEATURE_NOT_AVAILABLE]: FeatureNotAvailableModal,
   [Enum.ModalType.CHOOSE_DATE]: ChooseDate,
+  [Enum.ModalType.LICENSE]: LicenseModal,
 };
 
 class ModalContainer extends Component<ModalContainerProps, ModalContainerState> {

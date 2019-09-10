@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
 import I18n from 'i18n-js';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
+import { noop } from 'lodash';
+import { showModal } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button, Checkbox } from '../../components';
-import { theme } from '../../constants';
+import { theme, Enum } from '../../constants';
 import { styles } from './styles';
-import NavigatorMap from '../../navigations/NavigatorMap';
 import { ReduxFormName } from '../../constants/enum';
 
 interface SignUpProps extends InjectedFormProps, NavigationInjectedProps {
@@ -19,13 +20,14 @@ interface SignUpProps extends InjectedFormProps, NavigationInjectedProps {
 const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
   const { required, minLength4, minLength8, maxLength120, password, email } = validator;
   const [input, setInput] = useState({ isCheck: false });
+  const dispatch = useDispatch();
 
   const compareValue = (value: string) => {
     return validator.comparePassword(props.password, value);
   };
 
-  const _navigateToLicenseScreen = () => {
-    props.navigation.navigate(NavigatorMap.License);
+  const showLicenseModal = () => {
+    dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.LICENSE }));
   };
 
   return (
@@ -80,7 +82,7 @@ const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
               />
             </View>
             <Text style={styles.textConfirm}>{I18n.t('signup.agree')}</Text>
-            <TouchableOpacity onPress={_navigateToLicenseScreen}>
+            <TouchableOpacity onPress={showLicenseModal}>
               <Text style={styles.textLink}>{I18n.t('signup.terms')}</Text>
             </TouchableOpacity>
           </View>
