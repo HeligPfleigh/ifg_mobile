@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
+import Toast from 'react-native-root-toast';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
 import api from '../../../../../core/api';
 import I18n from '../../../../../core/i18n';
@@ -13,12 +14,24 @@ interface IProps extends InjectedFormProps {
 }
 
 interface IStates {
-  loading?: any;
+  loading?: boolean;
 }
 
 class ChangePassword extends React.Component<IProps, IStates> {
+  toastr = null;
+
   state = {
     loading: false,
+  };
+
+  showToast = async ({ backgroundColor = theme.colors.black, message }: any) => {
+    this.toastr = Toast.show(message, {
+      shadow: false,
+      animation: true,
+      backgroundColor,
+      duration: Toast.durations.LONG,
+      position: Toast.positions.BOTTOM,
+    });
   };
 
   // func use comfirm new password
@@ -30,24 +43,40 @@ class ChangePassword extends React.Component<IProps, IStates> {
   // handle submit form
   _handleSubmit = async (values: any) => {
     try {
-      this.setState(
-        () => ({ loading: true }),
-        async () => {
-          await Keyboard.dismiss();
-          await api.changePassword(values);
-          await this.props.reset();
-        },
-      );
+      await this.setState({ loading: true });
+      await Keyboard.dismiss();
+      await api.changePassword(values);
+      await this.props.reset();
+      await this.showToast({
+        backgroundColor: theme.colors.green,
+        message: I18n.t('profile.account_settings.change_pwd_success'),
+      });
     } catch (err) {
       // TODO
+      this.setState(
+        () => ({ loading: false }),
+        async () => {
+          await this.showToast({
+            backgroundColor: theme.colors.red,
+            message: I18n.t('profile.account_settings.change_pwd_error'),
+          });
+        },
+      );
     } finally {
-      this.setState({ loading: false });
+      this.setState(
+        () => ({ loading: false }),
+        () => {
+          setTimeout(() => {
+            Toast.hide(this.toastr);
+          }, 10000);
+        },
+      );
     }
   };
 
   render() {
-    const { loading } = this.state;
     const { handleSubmit } = this.props;
+    const { loading } = this.state;
     const { required, minLength8 } = FormFields.FormValidator;
     return (
       <Block flex={false} style={styles.container}>

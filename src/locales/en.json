@@ -275,7 +275,9 @@
       "confirm_new_pwd": "Confirm new password",
       "current_email": "Current email",
       "new_email": "New email",
-      "confirm_with_password": "Confirm with password"
+      "confirm_with_password": "Confirm with password",
+      "change_pwd_success": "Change your password success",
+      "change_pwd_error": "Can't change your password"
     },
     "account_parameters": {
       "title": "Parameters",
