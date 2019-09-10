@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { TextField, FormValidator as validator } from '../../../../../components/FormFields';
-
+import I18n from '../../../../../core/i18n';
 import styles from './styles';
 import { theme } from '../../../../../constants';
 import { Block } from '../../../../../components';
@@ -32,7 +32,7 @@ class ChangePassword extends Component<IProps> {
       <Block flex={false} style={styles.container}>
         <Field
           name="currentPass"
-          label="Current password"
+          label={I18n.t('profile.account_settings.current_password')}
           component={TextField}
           secureTextEntry
           autoCorrect={false}
@@ -42,7 +42,7 @@ class ChangePassword extends Component<IProps> {
         />
         <Field
           name="newPassword"
-          label="New password"
+          label={I18n.t('profile.account_settings.new_password')}
           component={TextField}
           secureTextEntry
           autoCorrect={false}
@@ -52,7 +52,7 @@ class ChangePassword extends Component<IProps> {
         />
         <Field
           name="newPassConfirm"
-          label="Confirm new password"
+          label={I18n.t('profile.account_settings.confirm_new_password')}
           component={TextField}
           returnKeyType="done"
           secureTextEntry
