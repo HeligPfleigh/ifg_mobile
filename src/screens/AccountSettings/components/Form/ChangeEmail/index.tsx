@@ -4,6 +4,7 @@ import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { TextField, FormValidator as validator } from '../../../../../components/FormFields';
 
 import styles from './styles';
+import { theme } from '../../../../../constants';
 import I18n from '../../../../../core/i18n';
 import { Block } from '../../../../../components';
 
@@ -30,6 +31,7 @@ class ChangeEmail extends Component<IProps> {
           value={currentEmail}
           component={TextField}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           label={I18n.t('profile.account_settings.current_email')}
         />
         <Field
@@ -37,6 +39,7 @@ class ChangeEmail extends Component<IProps> {
           component={TextField}
           autoCorrect={false}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           label={I18n.t('profile.account_settings.new_email')}
           validate={[required, minLength4, maxLength120]}
         />
@@ -49,6 +52,7 @@ class ChangeEmail extends Component<IProps> {
           onSubmitEditing={handleSubmit(this.onSubmitPassword)}
           autoCorrect={false}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           label={I18n.t('profile.account_settings.confirm_with_password')}
           validate={[required, minLength4, maxLength120, password]}
         />

@@ -3,7 +3,7 @@ import { theme } from '../../../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    height: 55,
     maxHeight: 55,
     marginTop: theme.sizes.margin,
     padding: theme.sizes.margin,

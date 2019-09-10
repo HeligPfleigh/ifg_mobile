@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { TextField, FormValidator as validator } from '../../../../../components/FormFields';
 
 import styles from './styles';
+import { theme } from '../../../../../constants';
 import { Block } from '../../../../../components';
 
 const formName = 'change-password';
@@ -36,6 +37,7 @@ class ChangePassword extends Component<IProps> {
           secureTextEntry
           autoCorrect={false}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           validate={[required, minLength4, maxLength120, password]}
         />
         <Field
@@ -45,6 +47,7 @@ class ChangePassword extends Component<IProps> {
           secureTextEntry
           autoCorrect={false}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           validate={[required, minLength4, maxLength120, password]}
         />
         <Field
@@ -57,6 +60,7 @@ class ChangePassword extends Component<IProps> {
           onSubmitEditing={handleSubmit(this.onSubmitPassword)}
           autoCorrect={false}
           characterRestriction={120}
+          tintColor={theme.colors.green}
           validate={[required, minLength4, maxLength120, password, this.compareValue]}
         />
       </Block>

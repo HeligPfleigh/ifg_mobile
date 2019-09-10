@@ -44,7 +44,7 @@ class MenuItem extends Component<IProps, IStates> {
     const { itemLabel, onPress } = this.props;
     return (
       <TouchableWithoutFeedback onPress={!isFunction(onPress) ? this.toggleExpand : onPress}>
-        <Block row style={styles.container}>
+        <Block flex={false} row style={styles.container}>
           <Block left flex={1}>
             <Text style={styles.label}>{itemLabel}</Text>
           </Block>
