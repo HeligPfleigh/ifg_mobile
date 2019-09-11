@@ -74,6 +74,9 @@ interface IChangeEmail {
 const changeEmail = (data: IChangeEmail) => instance.patch('/users/me/change-email', data);
 const sendFirebaseToken = (data: { firebaseToken: string }) => instance.post('/firebases', data);
 
+const editFirebaseSetting = (data: { language?: string; isReceiveNotification?: boolean }, firebaseToken: string) =>
+  instance.patch(`/firebases/${firebaseToken}`, data);
+
 export default {
   me,
   evaluationSummary,
@@ -92,4 +95,5 @@ export default {
   changePassword,
   changeEmail,
   sendFirebaseToken,
+  editFirebaseSetting,
 };
