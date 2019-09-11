@@ -7,6 +7,7 @@ import ModalContainer from './modal/ModalContainer';
 import Checkbox from './Checkbox';
 import Loader from './Loader';
 import Toast from './Toast';
+import WithTranslations from './WithTranslations';
 
 export {
   Block,
@@ -19,4 +20,5 @@ export {
   Checkbox,
   Loader,
   Toast,
+  WithTranslations,
 };
