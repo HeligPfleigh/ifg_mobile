@@ -3,12 +3,13 @@ import { ActivityIndicator } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import firebase from 'react-native-firebase';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../store/types';
 import NavigatorMap from '../navigations/NavigatorMap';
-import api, { authorizeApi } from '../core/api';
+import { authorizeApi } from '../core/api';
 import { theme } from '../constants';
 import { Block } from '../components';
+import { saveFirebaseToken } from '../store/actions';
 
 interface AuthLoadingProps {
   navigation: NavigationScreenProp<NavigationState>;
@@ -16,15 +17,15 @@ interface AuthLoadingProps {
 
 const AuthLoadingScreen: React.FC<AuthLoadingProps> = (props: AuthLoadingProps) => {
   const { navigation } = props;
+  const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
+  const firebaseTk = useSelector((state: AppState) => state.notification.firebaseToken);
   authorizeApi(authToken);
   navigation.navigate(authToken ? NavigatorMap.App : NavigatorMap.Auth);
   const getToken = async () => {
-    const firebaseToken = await firebase.messaging().getToken();
-    try {
-      await api.sendFirebaseToken({ firebaseToken });
-    } catch (err) {
-      // TODO
+    if (!firebaseTk) {
+      const firebaseToken = await firebase.messaging().getToken();
+      dispatch(saveFirebaseToken({ firebaseToken }));
     }
   };
 

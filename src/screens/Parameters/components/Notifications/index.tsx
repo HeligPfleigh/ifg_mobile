@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
-import firebase from 'react-native-firebase';
+import { useDispatch, useSelector } from 'react-redux';
 
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
 import { Block } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
-import api from '../../../../core/api';
+import { toggleIsReceiveNotification } from '../../../../store/actions';
+import { AppState } from '../../../../store/types';
 
 const data = [{ label: 'Yes', value: true }, { label: `I DON'T need feel good information`, value: false }];
 
 const MotivationMessages: React.FC = () => {
-  const [itemSelected, setItemSelected] = useState(true);
+  const dispatch = useDispatch();
+  const isReceiveNotification = useSelector((state: AppState) => state.notification.isReceiveNotification);
 
-  const onSelected = async (value: boolean) => {
-    try {
-      const firebaseToken = await firebase.messaging().getToken();
-      await api.editFirebaseSetting({ isReceiveNotification: value }, firebaseToken);
-      setItemSelected(value);
-      // eslint-disable-next-line no-empty
-    } catch (error) {}
+  const onSelected = (value: boolean) => {
+    dispatch(toggleIsReceiveNotification(value));
   };
 
   return (
@@ -32,7 +29,7 @@ const MotivationMessages: React.FC = () => {
       <RadioGroup
         horizontal
         values={data}
-        selectedValue={itemSelected}
+        selectedValue={isReceiveNotification}
         circleColor={theme.colors.blue}
         contentStyle={styles.radioGroup}
         labelStyle={styles.radioLabel}

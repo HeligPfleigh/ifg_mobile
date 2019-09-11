@@ -8,7 +8,7 @@ import { styles } from './styles';
 const Parameters = () => (
   <ScrollView scrollEnabled={false} style={styles.container}>
     <Notifications />
-    <LanguageSetting language="fr" />
+    <LanguageSetting />
   </ScrollView>
 );
 
