@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import I18n from 'i18n-js';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { useDispatch, useSelector, connect } from 'react-redux';
+import I18n from '../../core/i18n';
 import { login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button } from '../../components';
