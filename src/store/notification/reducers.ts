@@ -8,7 +8,7 @@ import {
 import { createReducer } from '../createReducer';
 
 const initialState: NotificationState = {
-  isReceiveNotification: false,
+  isReceiveNotification: true,
 };
 
 const notificationReducer = createReducer(initialState, {
