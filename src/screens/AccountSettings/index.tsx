@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
 import { Dispatch } from 'redux';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import I18n from '../../core/i18n';
+import { Block } from '../../components';
 import MenuItem from './components/MenuItem';
 import Accordion from './components/Accordion';
 import ChangePassword from './components/Form/ChangePassword';
@@ -23,17 +24,31 @@ class AccountSettings extends Component<ScreenProps> {
 
   render() {
     return (
-      <ScrollView style={styles.container} contentContainerStyle={styles.container}>
-        <Accordion itemLabel={I18n.t('profile.account_settings.change_password')} childComponent={<ChangePassword />} />
-        <Accordion
-          childComponent={<ChangeUserEmail />}
-          itemLabel={I18n.t('profile.account_settings.change_user_email')}
-        />
-        <MenuItem
-          onPress={this._navigateToDeleteAccountScreen}
-          itemLabel={I18n.t('profile.account_settings.delete_account')}
-        />
-      </ScrollView>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.container}
+          showsVerticalScrollIndicator={false}
+        >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <Block style={styles.content}>
+              <Accordion
+                childComponent={<ChangePassword />}
+                itemLabel={I18n.t('profile.account_settings.change_password')}
+              />
+              <Accordion
+                childComponent={<ChangeUserEmail />}
+                itemLabel={I18n.t('profile.account_settings.change_user_email')}
+              />
+              <MenuItem
+                onPress={this._navigateToDeleteAccountScreen}
+                itemLabel={I18n.t('profile.account_settings.delete_account')}
+              />
+              <Block flex={1} />
+            </Block>
+          </TouchableWithoutFeedback>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }

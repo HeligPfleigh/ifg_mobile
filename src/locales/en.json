@@ -9,7 +9,8 @@
   },
   "messages": {
     "required": "Field is required",
-    "pwd_confirm": "Password and confirm password do not match"
+    "pwd_confirm": "Password and confirm password do not match",
+    "require_different": "Please input new email"
   },
   "navigation": {
     "home": "Home",
@@ -276,7 +277,11 @@
       "current_email": "Current E-mail",
       "new_email": "New E-mail",
       "confirm_new_password": "Confirm new password",
-      "confirm_with_password": "Confirm with password"
+      "confirm_with_password": "Confirm with password",
+      "change_pwd_error": "Can't change your password",
+      "change_pwd_success": "Change your password successful",
+      "change_email_error": "Can't change your email",
+      "change_email_success": "Change your email successful"
     },
     "account_parameters": {
       "title": "Parameters",

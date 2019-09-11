@@ -11,7 +11,7 @@ import styles from './styles';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
 import { DefaultAvatar } from '../../assets/images';
-import { Enum } from '../../constants';
+import { Enum, theme } from '../../constants';
 import { Button, Block, FormFields, Loader } from '../../components';
 import api from '../../core/api';
 
@@ -102,6 +102,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
             autoCorrect={false}
             returnKeyType="done"
             component={FormFields.TextField}
+            tintColor={theme.colors.green}
             label={I18n.t('profile.user_info.first_name')}
             validate={[required, maxLength120]}
           />
@@ -110,6 +111,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
             autoCorrect={false}
             returnKeyType="done"
             component={FormFields.TextField}
+            tintColor={theme.colors.green}
             label={I18n.t('profile.user_info.last_name')}
             validate={[required, maxLength120]}
           />
@@ -131,6 +133,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
             returnKeyType="done"
             keyboardType="numeric"
             component={FormFields.TextField}
+            tintColor={theme.colors.green}
             label={`${I18n.t('profile.user_info.height')} (cm)`}
             validate={[required]}
           />
@@ -140,6 +143,7 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
             returnKeyType="done"
             keyboardType="numeric"
             component={FormFields.TextField}
+            tintColor={theme.colors.green}
             label={`${I18n.t('profile.user_info.weight')} (kg)`}
             validate={[required]}
           />

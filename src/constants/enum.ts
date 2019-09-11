@@ -39,6 +39,8 @@ enum ReduxFormName {
   SIGN_UP = 'signup',
   FORGOT_PASSWORD = 'forgot-password',
   UPDATE_INFO = 'update-user-info',
+  CHANGE_PASSWORD = 'change-password',
+  CHANGE_EMAIL = 'change-user-email',
 }
 
 const tags: any = {
