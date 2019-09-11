@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { NavigationScreenProp, NavigationState, ScrollView } from 'react-navigation';
 
+import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import Notifications from './components/Notifications';
 import LanguageSetting from './components/LanguageSetting';
@@ -22,7 +23,7 @@ class Parameters extends Component<ScreenProps> {
     return (
       <ScrollView scrollEnabled={false} style={styles.container}>
         <Notifications />
-        <LanguageSetting language="fr" />
+        <LanguageSetting language={I18n.locale} />
       </ScrollView>
     );
   }

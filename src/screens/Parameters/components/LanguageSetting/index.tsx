@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import get from 'lodash/get';
 import { Text } from 'react-native';
 
+import { useDispatch, connect } from 'react-redux';
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
 import { Block } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
+import { changeLanguage } from '../../../../store/language/actions';
 
 interface IProps {
   language: string;
@@ -16,10 +18,12 @@ const languages = [{ label: 'English', value: 'en' }, { label: 'Français', valu
 
 const LanguageSetting: React.FC<IProps> = (props: IProps) => {
   const [itemSelected, setItemSelected] = useState(get(props, 'language', 'en'));
+  const dispatch = useDispatch();
 
   const _handleChangeLanguage = (value: any) => {
     // change language
     setItemSelected(value);
+    dispatch(changeLanguage({ locale: value }));
   };
 
   return (
@@ -40,4 +44,4 @@ const LanguageSetting: React.FC<IProps> = (props: IProps) => {
   );
 };
 
-export default LanguageSetting;
+export default connect()(LanguageSetting);
