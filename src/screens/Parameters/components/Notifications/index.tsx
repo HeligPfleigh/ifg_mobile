@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
-import { Block } from '../../../../components';
+import { Block, WithTranslations } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
 import { toggleIsReceiveNotification } from '../../../../store/actions';
@@ -39,4 +39,4 @@ const MotivationMessages: React.FC = () => {
   );
 };
 
-export default MotivationMessages;
+export default WithTranslations(MotivationMessages);

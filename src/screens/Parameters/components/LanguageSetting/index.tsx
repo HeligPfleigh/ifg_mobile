@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Text } from 'react-native';
 import firebase from 'react-native-firebase';
 import { get } from 'lodash';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
-import { Block } from '../../../../components';
+import { Block, WithTranslations } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
 import { changeLanguage } from '../../../../store/language/actions';
@@ -47,4 +47,4 @@ const LanguageSetting: React.FC<IProps> = (props: IProps) => {
   );
 };
 
-export default connect()(LanguageSetting);
+export default WithTranslations(LanguageSetting);
