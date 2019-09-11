@@ -6,5 +6,17 @@ import ScoreText from './ScoreText';
 import ModalContainer from './modal/ModalContainer';
 import Checkbox from './Checkbox';
 import Loader from './Loader';
+import WithTranslations from './WithTranslations';
 
-export { Block, Button, EvaluationItem, ScoreText, ModalContainer, RoundIconButton, FormFields, Checkbox, Loader };
+export {
+  Block,
+  Button,
+  EvaluationItem,
+  ScoreText,
+  ModalContainer,
+  RoundIconButton,
+  FormFields,
+  Checkbox,
+  Loader,
+  WithTranslations,
+};
