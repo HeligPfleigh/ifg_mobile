@@ -8,6 +8,7 @@ import { modalReducer } from './modal/reducers';
 import { draftsReducer } from './drafts/reducers';
 import { authReducer } from './auth/reducers';
 import { myActionReducer } from './myaction/reducers';
+import { notificationReducer } from './notification/reducers';
 
 export const rootReducer = combineReducers({
   form: formReducer,
@@ -19,4 +20,5 @@ export const rootReducer = combineReducers({
   drafts: draftsReducer,
   auth: authReducer,
   myaction: myActionReducer,
+  notification: notificationReducer,
 });

@@ -14,8 +14,8 @@ interface IRadioGroupProps {
   labelStyle?: any;
   containerStyle?: any;
   contentStyle?: any;
-  onPress: (value: string) => void;
-  selectedValue: string;
+  onPress: (value: string | boolean) => void;
+  selectedValue: string | boolean;
   values: { label: string; value: any }[];
 }
 
