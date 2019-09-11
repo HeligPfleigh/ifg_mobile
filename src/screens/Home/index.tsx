@@ -6,7 +6,7 @@ import { Dispatch } from 'redux';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import noop from 'lodash/noop';
-import { Block, EvaluationItem, Loader } from '../../components';
+import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import { showWeatherIcon } from '../../core/utils';
@@ -112,4 +112,4 @@ const mapStateToProps = (state: AppState) => ({
   me: state.me,
 });
 
-export default connect(mapStateToProps)(Home);
+export default WithTranslations(connect(mapStateToProps)(Home));

@@ -4,7 +4,7 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import get from 'lodash/get';
 
 import { connect } from 'react-redux';
-import { EvaluationItem, ScoreText } from '../../components';
+import { EvaluationItem, ScoreText, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -80,4 +80,4 @@ const mapStateToProps = (state: AppState) => ({
   me: state.me,
 });
 
-export default connect(mapStateToProps)(GlobalScores);
+export default WithTranslations(connect(mapStateToProps)(GlobalScores));

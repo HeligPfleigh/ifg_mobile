@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
 import noop from 'lodash/noop';
 
+import { WithTranslations, EvaluationItem, Block, RoundIconButton } from '../../components';
 import I18n from '../../core/i18n';
-import { EvaluationItem, Block, RoundIconButton } from '../../components';
+
 import { theme, Enum } from '../../constants';
 import { LightBulb, Flag, ActionList } from '../../assets/images';
 import { showWeatherIcon } from '../../core/utils';
@@ -121,4 +122,4 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
   );
 };
 
-export default FeelGoodTools;
+export default WithTranslations(FeelGoodTools);

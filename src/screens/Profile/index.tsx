@@ -7,7 +7,7 @@ import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-na
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Block } from '../../components';
+import { Block, WithTranslations } from '../../components';
 import I18n from '../../core/i18n';
 import MenuItem from './components/MenuItem';
 import { DefaultAvatar } from '../../assets/images';
@@ -107,4 +107,4 @@ const mapStateToProps = (state: AppState) => ({
   me: state.me,
 });
 
-export default connect(mapStateToProps)(Home);
+export default WithTranslations(connect(mapStateToProps)(Home));
