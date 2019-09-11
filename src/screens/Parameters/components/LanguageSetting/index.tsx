@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import get from 'lodash/get';
 import { Text } from 'react-native';
+import firebase from 'react-native-firebase';
 
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
 import { Block } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
-
-interface IProps {
-  language: string;
-}
+import api from '../../../../core/api';
 
 const languages = [{ label: 'English', value: 'en' }, { label: 'Français', value: 'fr' }];
 
-const LanguageSetting: React.FC<IProps> = (props: IProps) => {
-  const [itemSelected, setItemSelected] = useState(get(props, 'language', 'en'));
+const LanguageSetting: React.FC = () => {
+  const [itemSelected, setItemSelected] = useState('en');
 
-  const _handleChangeLanguage = (value: any) => {
+  const _handleChangeLanguage = async (value: any) => {
     // change language
     setItemSelected(value);
+    const firebaseToken = await firebase.messaging().getToken();
+    await api.editFirebaseSetting({ language: value }, firebaseToken);
   };
 
   return (

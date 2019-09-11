@@ -27,6 +27,9 @@ target 'ifg_mobile' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'RNLocalize', :path => '../node_modules/react-native-localize'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core', '~> 6.3.0'
+  pod 'Firebase/Messaging', '~> 6.3.0'
 
   target 'ifg_mobileTests' do
     inherit! :search_paths

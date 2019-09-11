@@ -14,6 +14,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1CE96114ABC88ED21C7F2124 /* libPods-ifg_mobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 011B1E1A42967CEADA09AF09 /* libPods-ifg_mobile-tvOS.a */; };
+		22D698762327C1A9006982F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22D698752327C1A9006982F5 /* GoogleService-Info.plist */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -53,6 +54,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ifg_mobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ifg_mobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ifg_mobile/main.m; sourceTree = "<group>"; };
+		22D698722327B6F5006982F5 /* ifg_mobile.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = ifg_mobile.entitlements; path = ifg_mobile/ifg_mobile.entitlements; sourceTree = "<group>"; };
+		22D698752327C1A9006982F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ifg_mobile/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* ifg_mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ifg_mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ifg_mobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ifg_mobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		347F7EEE7AD8D3E2C89ABC80 /* Pods-ifg_mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifg_mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ifg_mobile-tvOSTests/Pods-ifg_mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,9 +128,11 @@
 		13B07FAE1A68108700A75B9A /* ifg_mobile */ = {
 			isa = PBXGroup;
 			children = (
+				22D698752327C1A9006982F5 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				22D698722327B6F5006982F5 /* ifg_mobile.entitlements */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -148,7 +153,6 @@
 				D33CAFA7923ADC460BE7EE9C /* Pods-ifg_mobileTests.debug.xcconfig */,
 				B48271E43055C3811770E47C /* Pods-ifg_mobileTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -293,6 +297,17 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = A94B3925G6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -309,6 +324,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -339,6 +355,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				22D698762327C1A9006982F5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,8 +692,10 @@
 			baseConfigurationReference = E92A3848D69A867EF1F8493E /* Pods-ifg_mobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ifg_mobile/ifg_mobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = A94B3925G6;
 				INFOPLIST_FILE = ifg_mobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -684,7 +703,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ifg-mobile";
 				PRODUCT_NAME = ifg_mobile;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -695,7 +714,9 @@
 			baseConfigurationReference = 9175A9EFDF3E6F1BA6462489 /* Pods-ifg_mobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ifg_mobile/ifg_mobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A94B3925G6;
 				INFOPLIST_FILE = ifg_mobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -703,7 +724,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ifg-mobile";
 				PRODUCT_NAME = ifg_mobile;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
