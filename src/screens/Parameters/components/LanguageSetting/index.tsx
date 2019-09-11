@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import firebase from 'react-native-firebase';
-
+import { useDispatch } from 'react-redux';
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
-import { Block } from '../../../../components';
+import { Block, WithTranslations } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
 import api from '../../../../core/api';
+import { changeLanguage } from '../../../../store/actions';
 
 const languages = [{ label: 'English', value: 'en' }, { label: 'Français', value: 'fr' }];
 
 const LanguageSetting: React.FC = () => {
   const [itemSelected, setItemSelected] = useState('en');
+  const dispatch = useDispatch();
 
   const _handleChangeLanguage = async (value: any) => {
     // change language
     setItemSelected(value);
     const firebaseToken = await firebase.messaging().getToken();
     await api.editFirebaseSetting({ language: value }, firebaseToken);
+    dispatch(changeLanguage({ locale: value }));
   };
 
   return (
@@ -39,4 +42,4 @@ const LanguageSetting: React.FC = () => {
   );
 };
 
-export default LanguageSetting;
+export default WithTranslations(LanguageSetting);

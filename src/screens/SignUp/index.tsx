@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
-import I18n from 'i18n-js';
 import { connect, useDispatch } from 'react-redux';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import { noop } from 'lodash';
+import I18n from '../../core/i18n';
 import { showModal } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { Block, Button, Checkbox } from '../../components';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Block, ScoreText } from '../../components';
+import { Block, ScoreText, WithTranslations } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import { styles } from './styles';
@@ -60,4 +60,4 @@ const Legend: React.FC = () => {
   );
 };
 
-export default Legend;
+export default WithTranslations(Legend);
