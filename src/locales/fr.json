@@ -29,48 +29,48 @@
   },
   "modal": {
     "self_evaluation": {
-      "header": "Please do self-evaluations \nin order to get feel good scores."
+      "header": "S'il vous plaît faire des auto-évaluations \nafin d'obtenir de bonnes notes."
     },
     "draft_saved": {
-      "header": "Your draft has been saved.",
-      "body": "You can take time to think and finish it \nat any time in your Feel Good Tools."
+      "header": "Ton brouillon a été sauvegardé.",
+      "body": "Tu peux prendre ton temps pour réfléchir et le finir \nà tout moment dans tes Outils Feel Good."
     },
     "evaluation_saved": {
-      "header": "Your feel good scores \nhave been updated accordingly.",
-      "body": "You can go to the Scores page to \nsee the change."
+      "header": "Tes scores feel good ont \nété mis à jour suite à cette évaluation.",
+      "body": "Tu peux aller maintenant à la page Tous les scores pour \nvoir les dernières mises à jour."
     },
     "signup_success": {
-      "header": "Congratulation!",
-      "body": "Welcome to your space! \n\n You can now self-evaluate everything in your life. Satisfaction scores will be calculated and updated \n in real time following your evaluations."
+      "header": "Félicitation!",
+      "body": "Bienvenue dans votre espace! \n\n Vous pouvez maintenant auto-évaluer tout dans votre vie. Les scores de satisfaction seront calculés et mis à jour \n en temps réel après vos évaluations."
     },
     "delete_account": {
-      "body": "We hope that you will \nbe back soon."
+      "body": "Nous espérons que vous \nreviendrez bientôt."
     },
     "smart": {
       "specific": {
-        "header": "Specific",
-        "body": "Address precisely at least one of the following questions: Who, What, Where?"
+        "header": "Specific (Précis)",
+        "body": "Adresser précisément au moins un de ces points: Qui, Quoi, Où?"
       },
       "measurable": {
-        "header": "Measurable",
-        "body": "Indicate a milestone in order to quantify the progress (it's totally OK even if it's a tiny milestone)."
+        "header": "Measurable (Mesurable)",
+        "body": "Indiquer un jalon afin de pouvoir mesurer les progrès (c'est tout à fait OK même si c'est un jalon minuscule)."
       },
       "achievable": {
-        "header": "Achievable",
-        "body": "Your goal should not be to high too avoid frustrations, nor too low because you will feel bored."
+        "header": "Achievable (Atteignable)",
+        "body": "Ton objectif ne doit pas être trop haut pour éviter les frustrations, ni trop bas parce que tu vas t'ennuyer."
       },
       "relevant": {
-        "header": "Realistic",
-        "body": "The action must be in line with your priorities, the context and the external constraints."
+        "header": "Relevant (Réaliste)",
+        "body": "L'action doit être cohérente avec tes priorités, le context ainsi que les contraintes externes."
       },
       "time_based": {
-        "header": "Time-bound",
-        "body": "Set a deadline to motivate yourself: you can choose a periodic deadline (per day, per week etc…), or an unique deadline."
+        "header": "Time-bound (Remporellement défini)",
+        "body": "Tu peux indiquer une date de fin pour te motiver: elle peut être périodique (par jour, par semaine etc…), ou la date de fin peut être unique."
       },
-      "footer": "And finally, begin your action with a verb!"
+      "footer": "Et enfin, commencez votre action avec un verbe!"
     },
     "feature_not_available": {
-      "header": "Sorry, this feature isn't available at this moment!"
+      "header": "Pardon, cette fonctionnalité n'est pas disponible pour le moment!"
     },
     "license": {
       "title": "Terms and conditions",
@@ -163,13 +163,13 @@
   },
   "legend": {
     "header": {
-      "title": "Your Feel Good Level",
-      "body": "The scores you gave during self-assesment are used to calculate an average fell good score."
+      "title": "Votre niveau de bien-être",
+      "body": "Les scores que vous avez obtenus lors de l'auto-évaluation sont utilisés pour calculer un bon score moyen."
     },
     "subtitle": {
-      "good": "Factors that are on good track, keep going in this direction!",
-      "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
-      "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
+      "good": "Des facteurs qui sont sur la bonne voie, continue dans cette direction!",
+      "normal": "Demande toi \"Comment puis-je minimiser les côtés négatifs?\" et changer en priorité 2",
+      "bad": "Demande toi \"POURQUOI ?\" et changer en priorité 1. Vous aurez peut-être besoin de l'aide de professionnels pour vous sortir de la situation."
     }
   },
   "evaluate": {
@@ -282,10 +282,10 @@
       "title": "Paramètres",
       "notifications": "Notifications",
       "notifications_subtitle": "Je veux recevoir les informations feel good",
-      "newsletter": "Newsletter",
-      "newsletter_subtitle": "Receive cool and fun news",
-      "motivation_msgs": "Motivation messages",
-      "motivation_msgs_subtitle": "Receive congratulations and encouragements",
+      "newsletter": "Bulletin",
+      "newsletter_subtitle": "Recevez des nouvelles cool et amusantes",
+      "motivation_msgs": "Messages de motivation",
+      "motivation_msgs_subtitle": "Recevez des félicitations et des encouragements",
       "language_setting": "Paramètres de langue",
       "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue"
     },
