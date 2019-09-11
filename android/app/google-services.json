@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "800594048928",
+    "firebase_url": "https://i-feel-good-9ea0b.firebaseio.com",
+    "project_id": "i-feel-good-9ea0b",
+    "storage_bucket": "i-feel-good-9ea0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800594048928:android:131718b8e5d2bd8d4516c5",
+        "android_client_info": {
+          "package_name": "com.ifg_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800594048928-4uhqq4c5bion11e07aii2bih1dj8t78q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz6pJErBsCUtYGy3EywaMl2dmtRYS0rfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800594048928-4uhqq4c5bion11e07aii2bih1dj8t78q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
