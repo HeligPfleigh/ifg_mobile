@@ -6,7 +6,7 @@ import firebase from 'react-native-firebase';
 import { useSelector } from 'react-redux';
 import { AppState } from '../store/types';
 import NavigatorMap from '../navigations/NavigatorMap';
-import { authorizeApi } from '../core/api';
+import api, { authorizeApi } from '../core/api';
 import { theme } from '../constants';
 import { Block } from '../components';
 
@@ -20,8 +20,12 @@ const AuthLoadingScreen: React.FC<AuthLoadingProps> = (props: AuthLoadingProps) 
   authorizeApi(authToken);
   navigation.navigate(authToken ? NavigatorMap.App : NavigatorMap.Auth);
   const getToken = async () => {
-    const fcmToken = await firebase.messaging().getToken();
-    console.log(fcmToken);
+    const firebaseToken = await firebase.messaging().getToken();
+    try {
+      await api.sendFirebaseToken({ firebaseToken });
+    } catch (err) {
+      // TODO
+    }
   };
 
   const requestPermission = async () => {

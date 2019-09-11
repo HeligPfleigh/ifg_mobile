@@ -72,6 +72,7 @@ interface IChangeEmail {
   email: string;
 }
 const changeEmail = (data: IChangeEmail) => instance.patch('/users/me/change-email', data);
+const sendFirebaseToken = (data: { firebaseToken: string }) => instance.post('/firebases', data);
 
 export default {
   me,
@@ -90,4 +91,5 @@ export default {
   updateUserInfo,
   changePassword,
   changeEmail,
+  sendFirebaseToken,
 };
