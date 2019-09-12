@@ -64,6 +64,7 @@ class MyTextField extends Component<IProps, IStates> {
         error={touched ? error : undefined}
         secureTextEntry={this.state.isRenderAccessory}
         renderAccessory={this.renderPasswordAccessory}
+        autoCapitalize="none"
       />
     );
   }
