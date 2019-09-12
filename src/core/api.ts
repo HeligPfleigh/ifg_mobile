@@ -79,6 +79,8 @@ const editFirebaseSetting = (data: { language?: string; isReceiveNotification?: 
 
 const signup = (data: { email: string; username: string; password: string }) => instance.post('/users', data);
 
+const forgotPwd = (data: { email: string }) => instance.patch('/users/me/forgotpwd', data);
+
 export default {
   me,
   evaluationSummary,
@@ -99,4 +101,5 @@ export default {
   sendFirebaseToken,
   editFirebaseSetting,
   signup,
+  forgotPwd,
 };

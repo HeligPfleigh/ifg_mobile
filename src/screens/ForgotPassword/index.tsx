@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { ReduxFormName } from '../../constants/enum';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
-import { Block, Button } from '../../components';
+import api from '../../core/api';
+import { Block, Button, Loader, Toast } from '../../components';
 import { styles } from './styles';
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword: React.FC = (props: InjectedFormProps) => {
   const { required, minLength4, maxLength120, email } = validator;
+  const { handleSubmit } = props;
+  const [loading, setLoading] = useState(false);
+
+  const onPressSubmit = async value => {
+    setLoading(true);
+    try {
+      await api.forgotPwd(value);
+      Toast.success('Your reset password is sent to your email!');
+    } catch (err) {
+      Toast.error(err.message);
+    }
+    setLoading(false);
+  };
 
   return (
     <React.Fragment>
+      <Loader loading={loading} />
       <Block margin={[0, theme.sizes.padding]}>
         <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
           <Text style={styles.title}>{I18n.t('forgot.title')}</Text>
@@ -33,7 +47,7 @@ const ForgotPassword: React.FC = () => {
           />
         </Block>
         <Block flex={false} style={{ aspectRatio: 5 }}>
-          <Button gradient>
+          <Button gradient onPress={handleSubmit(onPressSubmit)}>
             <Block center middle>
               <Text style={styles.textButton}>{I18n.t('forgot.submit')}</Text>
             </Block>
@@ -44,4 +58,4 @@ const ForgotPassword: React.FC = () => {
   );
 };
 
-export default connect()(reduxForm({ form: ReduxFormName.FORGOT_PASSWORD })(ForgotPassword));
+export default reduxForm({ form: ReduxFormName.FORGOT_PASSWORD })(ForgotPassword);
