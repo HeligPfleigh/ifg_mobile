@@ -7,18 +7,17 @@ import { NavigationScreenProps } from 'react-navigation';
 
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
-import { Block, Button, Loader } from '../../components';
+import { Block, Button, Loader, WithTranslations } from '../../components';
 import { styles } from './styles';
 import api from '../../core/api';
 
-const subjects = [
-  { label: 'Feedback', value: 'FEEDBACK' },
-  { label: 'Suggestions', value: 'SUGGESTIONS' },
-  { label: 'Technical question', value: 'TECHNICAL_QUESTION' },
-  { label: 'Other', value: 'OTHER' },
-];
-
 const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+  const subjects = [
+    { label: I18n.t('profile.account_contact_us.feedback'), value: 'FEEDBACK' },
+    { label: I18n.t('profile.account_contact_us.suggest'), value: 'SUGGESTIONS' },
+    { label: I18n.t('profile.account_contact_us.tech_quest'), value: 'TECHNICAL_QUESTION' },
+    { label: I18n.t('profile.account_contact_us.other'), value: 'OTHER' },
+  ];
   const initialValue = get(subjects[0], 'value');
   const [value, setValue] = useState(initialValue);
   const [feedback, setFeedback] = useState('');
@@ -62,7 +61,7 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
             maxLength={200}
             characterRestriction={200}
             label=""
-            title="Maximum 200 characters"
+            title={I18n.t('messages.max_200')}
             bordered
             activeLineWidth={1}
             style={styles.textarea}
@@ -87,4 +86,4 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
   );
 };
 
-export default ContactUs;
+export default WithTranslations(ContactUs);
