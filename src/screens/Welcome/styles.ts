@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     padding: 2,
+    backgroundColor: theme.colors.transparent,
   },
   buttonBody: {
     backgroundColor: theme.colors.white,
