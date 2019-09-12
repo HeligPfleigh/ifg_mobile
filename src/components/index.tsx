@@ -8,6 +8,7 @@ import Checkbox from './Checkbox';
 import Loader from './Loader';
 import Toast from './Toast';
 import WithTranslations from './WithTranslations';
+import I18nTitle from './I18nTitle';
 
 export {
   Block,
@@ -21,4 +22,5 @@ export {
   Loader,
   Toast,
   WithTranslations,
+  I18nTitle,
 };
