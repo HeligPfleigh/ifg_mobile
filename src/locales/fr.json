@@ -9,7 +9,24 @@
   },
   "messages": {
     "required": "Champ requis",
-    "pwd_confirm": "Mot de passe et confirmez que le mot de passe ne correspond pas"
+    "pwd_confirm": "Mot de passe et confirmez que le mot de passe ne correspond pas",
+    "max_200": "Maximum 200 caractères",
+    "require_different": "Veuillez saisir un nouvel email",
+    "must_be": "Doit être",
+    "or_less": "caractères ou moins",
+    "or_more": "caractères ou plus",
+    "must_length": "Il doit avoir une longueur de ",
+    "to": "à",
+    "characters": "caractères",
+    "check_min": "Le nombre doit être supérieur à",
+    "only_number": "Seul numéro d'entrée",
+    "has_space": "Le champ ne peut pas contenir d'espace",
+    "email_invalid": "Adresse e-mail invalide",
+    "phone_invalid": "Numéro de téléphone invalide",
+    "only_alpha": "Seulement des caractères alphanumériques",
+    "user_name_special_chart": "Le nom d'utilisateur a un caractère spécial",
+    "first_chart_letter": "Le premier caractère doit être une lettre",
+    "pwd_valid": "Le champ doit contenir au moins 1 lettre majuscule et un caractère spécial"
   },
   "navigation": {
     "home": "Accueil",
@@ -263,7 +280,10 @@
       "dob": "Date de naissance",
       "gender": "Sexe",
       "height": "Taille",
-      "weight": "Poids"
+      "weight": "Poids",
+      "male": "Mâle",
+      "female": "Femelle",
+      "other": "Autre"
     },
     "account_settings": {
       "title": "Paramètres du compte",
@@ -287,13 +307,19 @@
       "motivation_msgs": "Messages de motivation",
       "motivation_msgs_subtitle": "Recevez des félicitations et des encouragements",
       "language_setting": "Paramètres de langue",
-      "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue"
+      "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue",
+      "yes": "Oui",
+      "no": "Je n'ai pas besoin de me sentir bien"
     },
     "account_contact_us": {
       "title": "Contactez nous",
       "page_title": "Veuillez taper votre\n message",
       "subject": "Sujet",
-      "description": "Veuillez taper votre message"
+      "description": "Veuillez taper votre message",
+      "feedback": "Retour d'information",
+      "suggest": "Suggestions",
+      "tech_quest": "Question technique",
+      "other": "Autre"
     },
     "delete_account": {
       "title": "Supprimer Votre Compte",
