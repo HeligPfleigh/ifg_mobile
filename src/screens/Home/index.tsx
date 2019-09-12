@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import get from 'lodash/get';
+import noop from 'lodash/noop';
+import isEmpty from 'lodash/isEmpty';
+import SplashScreen from 'react-native-splash-screen';
 import { Text, ScrollView, Image, View } from 'react-native';
 import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import get from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
-import noop from 'lodash/noop';
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -25,6 +26,7 @@ interface HomeProps extends NavigationScreenProps {
 class Home extends Component<HomeProps> {
   componentDidMount() {
     this._loadData();
+    SplashScreen.hide();
   }
 
   _loadData = () => this.props.dispatch(me());

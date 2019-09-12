@@ -40,3 +40,16 @@ export function toggleIsReceiveNotification(noti: boolean) {
     }
   };
 }
+
+export function changeLanguageNotification(language: string) {
+  return async function(dispatch: Dispatch<NotificationActionTypes>, getState: any) {
+    try {
+      const {
+        notification: { firebaseToken },
+      } = getState();
+      await api.editFirebaseSetting({ language }, firebaseToken);
+    } catch (error) {
+      // TODO
+    }
+  };
+}

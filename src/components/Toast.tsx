@@ -6,7 +6,7 @@ const success = (message: string) =>
     shadow: false,
     animation: true,
     backgroundColor: theme.colors.green,
-    duration: Toast.durations.SHORT,
+    duration: Toast.durations.LONG,
     position: Toast.positions.BOTTOM,
   });
 
@@ -15,7 +15,7 @@ const error = (message: string) =>
     shadow: false,
     animation: true,
     backgroundColor: theme.colors.red,
-    duration: Toast.durations.SHORT,
+    duration: Toast.durations.LONG,
     position: Toast.positions.BOTTOM,
   });
 

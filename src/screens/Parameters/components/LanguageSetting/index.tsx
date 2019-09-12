@@ -10,12 +10,11 @@ import { changeLanguage, changeLanguageNotification } from '../../../../store/ac
 
 const languages = [{ label: 'English', value: 'en' }, { label: 'Français', value: 'fr' }];
 
-const LanguageSetting: React.FC<IProps> = () => {
-  const language = useSelector(state => state.language.locale);
+const LanguageSetting: React.FC = () => {
   const dispatch = useDispatch();
+  const language = useSelector(state => state.language.locale);
 
   const _handleChangeLanguage = async (value: any) => {
-    // change language
     dispatch(changeLanguageNotification(value));
     dispatch(changeLanguage({ locale: value }));
   };

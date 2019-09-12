@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Keyboard } from 'react-native';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import I18n from '../../core/i18n';
 import { login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button } from '../../components';
+import { Block, Button, Loader } from '../../components';
 import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -19,6 +19,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
   const { required, minLength4, minLength8, maxLength120 } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
+  const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
 
   if (authToken) {
     authorizeApi(authToken);
@@ -31,6 +32,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
   const submit = (values: any) => {
     const { username, password: pwd } = values;
+    Keyboard.dismiss();
     dispatch(login(username, pwd));
   };
 
@@ -38,6 +40,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
   return (
     <React.Fragment>
+      <Loader loading={isRequesting} />
       <Block margin={[0, theme.sizes.padding]}>
         <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
           <Text style={styles.title}>{I18n.t('signin.title')}</Text>
@@ -85,7 +88,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
 export default connect(() => ({
   initialValues: {
-    username: 'user.demo',
-    password: '12345678',
+    username: '',
+    password: '',
   },
 }))(reduxForm({ form: Enum.ReduxFormName.SIGN_IN })(withNavigation(SignIn)));

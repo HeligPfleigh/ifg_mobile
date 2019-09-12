@@ -1,16 +1,22 @@
 import { RequestError, CustomError } from '../types';
 
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
 
 export interface AuthState {
+  isRequesting: boolean;
   token: string;
   error?: CustomError;
 }
 
 export interface LoginSuccessfulResponse {
   token: string;
+}
+
+export interface LoginRequestAction {
+  type: typeof LOGIN_REQUEST;
 }
 
 export interface LoginSuccessfulAction {
@@ -27,4 +33,4 @@ export interface LogoutAction {
   type: typeof LOGOUT;
 }
 
-export type LoginActionType = LoginFailureAction | LoginSuccessfulAction;
+export type LoginActionType = LoginRequestAction | LoginFailureAction | LoginSuccessfulAction;

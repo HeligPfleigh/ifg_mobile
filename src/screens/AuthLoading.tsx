@@ -10,6 +10,7 @@ import { authorizeApi } from '../core/api';
 import { theme } from '../constants';
 import { Block } from '../components';
 import { saveFirebaseToken } from '../store/actions';
+import I18n from '../core/i18n';
 
 interface AuthLoadingProps {
   navigation: NavigationScreenProp<NavigationState>;
@@ -20,6 +21,7 @@ const AuthLoadingScreen: React.FC<AuthLoadingProps> = (props: AuthLoadingProps) 
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const firebaseTk = useSelector((state: AppState) => state.notification.firebaseToken);
+  const locale = useSelector((state: AppState) => state.language.locale);
   authorizeApi(authToken);
   navigation.navigate(authToken ? NavigatorMap.App : NavigatorMap.Auth);
   const getToken = async () => {
@@ -62,6 +64,9 @@ const AuthLoadingScreen: React.FC<AuthLoadingProps> = (props: AuthLoadingProps) 
     firebase.notifications().android.createChannel(channel);
     checkPermission();
     createNotificationListeners();
+
+    // load language setting
+    I18n.locale = locale;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

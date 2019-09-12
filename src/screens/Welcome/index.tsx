@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, SafeAreaView } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { WelcomeImg } from '../../assets/images';
 import { Block, Button } from '../../components';
@@ -20,6 +21,10 @@ const Welcome: React.FC<WelcomeProps> = (props: WelcomeProps) => {
   const _navigateToSignInScreen = () => {
     props.navigation.navigate(NavigatorMap.SignIn);
   };
+
+  useEffect(() => {
+    SplashScreen.hide();
+  });
 
   return (
     <SafeAreaView>
