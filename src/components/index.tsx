@@ -6,6 +6,7 @@ import ScoreText from './ScoreText';
 import ModalContainer from './modal/ModalContainer';
 import Checkbox from './Checkbox';
 import Loader from './Loader';
+import Toast from './Toast';
 import WithTranslations from './WithTranslations';
 
 export {
@@ -18,5 +19,6 @@ export {
   FormFields,
   Checkbox,
   Loader,
+  Toast,
   WithTranslations,
 };
