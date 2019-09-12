@@ -146,13 +146,15 @@
     "confirm": "Confirm Password",
     "agree": "I agree with the ",
     "terms": "terms of use",
-    "submit": "SIGN UP"
+    "submit": "SIGN UP",
+    "success": "Sign up successful!"
   },
   "forgot": {
     "title": "Forgot Password",
     "paragraph": "Enter email to reset password!",
     "email": "E-mail",
-    "submit": "SEND"
+    "submit": "SEND",
+    "message": "Your reset password is sent to your email!"
   },
   "home": {
     "relationships": "RELATIONSHIPS",
@@ -323,7 +325,8 @@
       "feedback": "Feedback",
       "suggest": "Suggestions",
       "tech_quest": "Technical question",
-      "other": "Other"
+      "other": "Other",
+      "feedback_success": "Your feedback is sent successfully"
     },
     "delete_account": {
       "title": "Delete Account",
