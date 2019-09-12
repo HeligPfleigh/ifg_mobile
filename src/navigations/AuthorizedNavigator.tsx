@@ -136,7 +136,7 @@ const ProfileStack = createStackNavigator(
     [NavigatorMap.DeleteAccount]: {
       screen: DeleteAccount,
       navigationOptions: {
-        headerTitle: <I18nTitle text="navigation.parameters" />,
+        headerTitle: <I18nTitle text="navigation.delete_account" />,
       },
     },
   },

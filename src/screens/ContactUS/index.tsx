@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
-import { Text, Keyboard } from 'react-native';
+import { Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
 import { NavigationScreenProps } from 'react-navigation';
@@ -37,54 +37,56 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
     }
   };
   return (
-    <Block style={styles.container}>
-      <Loader loading={loading} />
-      <Block flex={false}>
-        <Block flex={false} center middle style={styles.titleWrapper}>
-          <Text style={styles.pageTitle}>{I18n.t('profile.account_contact_us.page_title')}</Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <Block style={styles.container}>
+        <Loader loading={loading} />
+        <Block flex={false}>
+          <Block flex={false} center middle style={styles.titleWrapper}>
+            <Text style={styles.pageTitle}>{I18n.t('profile.account_contact_us.page_title')}</Text>
+          </Block>
+          <Block flex={false} style={styles.fieldWrapper}>
+            <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.subject')}</Text>
+            <Dropdown
+              data={subjects}
+              value={value}
+              rippleColor={theme.colors.gray}
+              dropdownOffset={{ top: 5, left: 0 }}
+              onChangeText={text => setValue(text)}
+            />
+          </Block>
+          <Block flex={false} style={styles.fieldWrapper}>
+            <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.description')}</Text>
+            <TextField
+              multiline
+              labelHeight={0}
+              labelPadding={0}
+              height={175}
+              maxLength={200}
+              characterRestriction={200}
+              label=""
+              title={I18n.t('messages.max_200')}
+              bordered
+              activeLineWidth={1}
+              style={styles.textarea}
+              value={feedback}
+              onChangeText={text => setFeedback(text)}
+            />
+          </Block>
         </Block>
-        <Block flex={false} style={styles.fieldWrapper}>
-          <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.subject')}</Text>
-          <Dropdown
-            data={subjects}
-            value={value}
-            rippleColor={theme.colors.gray}
-            dropdownOffset={{ top: 5, left: 0 }}
-            onChangeText={text => setValue(text)}
-          />
-        </Block>
-        <Block flex={false} style={styles.fieldWrapper}>
-          <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.description')}</Text>
-          <TextField
-            multiline
-            labelHeight={0}
-            labelPadding={0}
-            height={175}
-            maxLength={200}
-            characterRestriction={200}
-            label=""
-            title={I18n.t('messages.max_200')}
-            bordered
-            activeLineWidth={1}
-            style={styles.textarea}
-            value={feedback}
-            onChangeText={text => setFeedback(text)}
-          />
+        <Block flex={false}>
+          <Button gradient style={styles.btnSend} onPress={handleSubmit}>
+            <Block center middle>
+              <Text style={styles.labelSend}>{I18n.t('common.send')}</Text>
+            </Block>
+          </Button>
+          <Button shadow style={styles.btnCancel} onPress={handleCancel}>
+            <Block center middle>
+              <Text>{I18n.t('common.cancel')}</Text>
+            </Block>
+          </Button>
         </Block>
       </Block>
-      <Block flex={false}>
-        <Button gradient style={styles.btnSend} onPress={handleSubmit}>
-          <Block center middle>
-            <Text style={styles.labelSend}>{I18n.t('common.send')}</Text>
-          </Block>
-        </Button>
-        <Button shadow style={styles.btnCancel} onPress={handleCancel}>
-          <Block center middle>
-            <Text>{I18n.t('common.cancel')}</Text>
-          </Block>
-        </Button>
-      </Block>
-    </Block>
+    </TouchableWithoutFeedback>
   );
 };
 
