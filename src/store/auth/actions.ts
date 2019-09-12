@@ -8,15 +8,15 @@ import {
   LOGIN_FAILURE,
   LoginActionType,
   LOGOUT,
-  LOGIN_REQUEST,
+  // LOGIN_REQUEST,
 } from './types';
 import { RequestError } from '../types';
 
-const loginRequest = (): LoginActionType => {
-  return {
-    type: LOGIN_REQUEST,
-  };
-};
+// const loginRequest = (): LoginActionType => {
+//   return {
+//     type: LOGIN_REQUEST,
+//   };
+// };
 
 const loginSuccessfull = (response: LoginSuccessfulResponse): LoginActionType => {
   return {
@@ -34,7 +34,7 @@ const loginFail = (error: RequestError): LoginActionType => {
 
 export function login(username: string, password: string) {
   return async function(dispatch: Dispatch<LoginActionType>) {
-    dispatch(loginRequest());
+    // dispatch(loginRequest());
     try {
       const { data } = await api.login(username, password);
       dispatch(loginSuccessfull(data));
