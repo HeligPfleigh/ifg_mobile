@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
-import firebase from 'react-native-firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
 import { Block, WithTranslations } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
 import styles from './styles';
-import api from '../../../../core/api';
-import { changeLanguage } from '../../../../store/actions';
+import { changeLanguage, changeLanguageNotification } from '../../../../store/actions';
 
 const languages = [{ label: 'English', value: 'en' }, { label: 'Français', value: 'fr' }];
 
 const LanguageSetting: React.FC = () => {
-  const [itemSelected, setItemSelected] = useState('en');
   const dispatch = useDispatch();
+  const language = useSelector(state => state.language.locale);
 
   const _handleChangeLanguage = async (value: any) => {
-    // change language
-    setItemSelected(value);
-    const firebaseToken = await firebase.messaging().getToken();
-    await api.editFirebaseSetting({ language: value }, firebaseToken);
+    dispatch(changeLanguageNotification(value));
     dispatch(changeLanguage({ locale: value }));
   };
 
@@ -32,7 +27,7 @@ const LanguageSetting: React.FC = () => {
       </Block>
       <RadioGroup
         values={languages}
-        selectedValue={itemSelected}
+        selectedValue={language}
         circleColor={theme.colors.blue}
         contentStyle={styles.radioGroup}
         labelStyle={styles.radioLabel}
