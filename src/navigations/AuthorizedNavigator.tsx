@@ -1,6 +1,6 @@
 import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps, StackActions } from 'react-navigation';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import I18n from '../core/i18n';
@@ -30,6 +30,9 @@ const defaultNavigationOptions = {
   headerBackTitle: null,
   headerTintColor: theme.colors.black,
   headerTitleStyle: { fontSize: theme.sizes.h3 },
+  headerLeftContainerStyle: {
+    marginLeft: Platform.OS === 'ios' ? theme.sizes.margin : 0,
+  },
 };
 
 const HomeStack = createStackNavigator(
@@ -73,7 +76,12 @@ const FeelGoodToolsStack = createStackNavigator(
     [NavigatorMap.FeelGoodTools]: {
       screen: FeelGoodToolsScreen,
       navigationOptions: {
-        headerTitle: <I18nTitle text="navigation.feel_good_tools" style={{ marginLeft: theme.sizes.padding }} />,
+        headerTitle: (
+          <I18nTitle
+            text="navigation.feel_good_tools"
+            style={{ marginLeft: Platform.OS === 'android' ? theme.sizes.padding : 0 }}
+          />
+        ),
       },
     },
     [NavigatorMap.Drafts]: {
