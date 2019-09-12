@@ -34,7 +34,7 @@ const loginFail = (error: RequestError): LoginActionType => {
 
 export function login(username: string, password: string) {
   return async function(dispatch: Dispatch<LoginActionType>) {
-    dispatch(loginRequest);
+    dispatch(loginRequest());
     try {
       const { data } = await api.login(username, password);
       dispatch(loginSuccessfull(data));
