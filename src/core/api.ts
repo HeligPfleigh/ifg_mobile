@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Enum } from '../constants';
 
-const API_SERVER = 'http://192.168.100.16:8001';
+const API_SERVER = 'https://api.ifeelgood.mttjsc.com/';
 
 const instance = axios.create({
   baseURL: API_SERVER,
@@ -77,6 +77,8 @@ const sendFirebaseToken = (data: { firebaseToken: string }) => instance.post('/f
 const editFirebaseSetting = (data: { language?: string; isReceiveNotification?: boolean }, firebaseToken: string) =>
   instance.patch(`/firebases/${firebaseToken}`, data);
 
+const signup = (data: { email: string; username: string; password: string }) => instance.post('/users', data);
+
 export default {
   me,
   evaluationSummary,
@@ -96,4 +98,5 @@ export default {
   changeEmail,
   sendFirebaseToken,
   editFirebaseSetting,
+  signup,
 };
