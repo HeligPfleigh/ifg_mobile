@@ -73,7 +73,7 @@ const FeelGoodToolsStack = createStackNavigator(
     [NavigatorMap.FeelGoodTools]: {
       screen: FeelGoodToolsScreen,
       navigationOptions: {
-        headerTitle: <I18nTitle text="navigation.feel_good_tools" />,
+        headerTitle: <I18nTitle text="navigation.feel_good_tools" style={{ marginLeft: theme.sizes.padding }} />,
       },
     },
     [NavigatorMap.Drafts]: {
