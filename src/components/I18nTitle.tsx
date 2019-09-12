@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TextStyle } from 'react-native';
 
 import I18n from '../core/i18n';
 
@@ -11,10 +11,16 @@ const styles = StyleSheet.create({
   },
 });
 
-class Test extends React.Component {
+interface I18nTitleProps {
+  text: string;
+  style?: TextStyle;
+}
+
+class Test extends React.Component<I18nTitleProps> {
   render() {
-    // eslint-disable-next-line react/prop-types
-    return <Text style={styles.text}>{I18n.t(this.props.text)}</Text>;
+    const { text, style } = this.props;
+
+    return <Text style={[styles.text, style]}>{I18n.t(text)}</Text>;
   }
 }
 
