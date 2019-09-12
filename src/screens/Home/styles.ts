@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     marginRight: theme.sizes.margin,
   },
   content: {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.white2,
   },
   detail: {
     fontSize: theme.sizes.font,
