@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import I18n from '../core/i18n';
 import { theme } from '../constants';
+import { I18nTitle } from '../components';
 import NavigatorMap from './NavigatorMap';
 import HomeScreen from '../screens/Home';
 import GlobalScoresScreen from '../screens/GlobalScores';
@@ -42,19 +43,19 @@ const HomeStack = createStackNavigator(
     [NavigatorMap.GlobalScores]: {
       screen: GlobalScoresScreen,
       navigationOptions: {
-        title: I18n.t('navigation.global_scores'),
+        headerTitle: <I18nTitle text="navigation.global_scores" />,
       },
     },
     [NavigatorMap.Summary]: {
       screen: SummaryScreen,
       navigationOptions: {
-        title: I18n.t('navigation.summary'),
+        headerTitle: <I18nTitle text="navigation.summary" />,
       },
     },
     [NavigatorMap.Legend]: {
       screen: LegendScreen,
       navigationOptions: {
-        title: I18n.t('navigation.legend'),
+        headerTitle: <I18nTitle text="navigation.legend" />,
       },
     },
     [NavigatorMap.Evaluate]: {
@@ -72,25 +73,25 @@ const FeelGoodToolsStack = createStackNavigator(
     [NavigatorMap.FeelGoodTools]: {
       screen: FeelGoodToolsScreen,
       navigationOptions: {
-        title: I18n.t('navigation.feel_good_tools'),
+        headerTitle: <I18nTitle text="navigation.feel_good_tools" />,
       },
     },
     [NavigatorMap.Drafts]: {
       screen: DraftsScreen,
       navigationOptions: {
-        title: I18n.t('navigation.drafts'),
+        headerTitle: <I18nTitle text="navigation.drafts" />,
       },
     },
     [NavigatorMap.ActionList]: {
       screen: ActionListScreen,
       navigationOptions: {
-        title: I18n.t('navigation.action_list'),
+        headerTitle: <I18nTitle text="navigation.action_list" />,
       },
     },
     [NavigatorMap.AchievedActions]: {
       screen: AchievedActionsScreen,
       navigationOptions: {
-        title: I18n.t('navigation.action_list'),
+        headerTitle: <I18nTitle text="navigation.action_list" />,
       },
     },
   },
@@ -111,31 +112,31 @@ const ProfileStack = createStackNavigator(
     [NavigatorMap.UserInfo]: {
       screen: UserInfo,
       navigationOptions: {
-        title: I18n.t('navigation.user_info'),
+        headerTitle: <I18nTitle text="navigation.user_info" />,
       },
     },
     [NavigatorMap.ContactUS]: {
       screen: ContactUS,
       navigationOptions: {
-        title: I18n.t('navigation.contact_us'),
+        headerTitle: <I18nTitle text="navigation.contact_us" />,
       },
     },
     [NavigatorMap.AccountSettings]: {
       screen: AccountSettings,
       navigationOptions: {
-        title: I18n.t('navigation.account_settings'),
+        headerTitle: <I18nTitle text="navigation.account_settings" />,
       },
     },
     [NavigatorMap.Parameters]: {
       screen: Parameters,
       navigationOptions: {
-        title: I18n.t('navigation.parameters'),
+        headerTitle: <I18nTitle text="navigation.parameters" />,
       },
     },
     [NavigatorMap.DeleteAccount]: {
       screen: DeleteAccount,
       navigationOptions: {
-        title: I18n.t('navigation.parameters'),
+        headerTitle: <I18nTitle text="navigation.parameters" />,
       },
     },
   },

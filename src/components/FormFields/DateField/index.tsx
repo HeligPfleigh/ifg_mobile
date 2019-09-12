@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import get from 'lodash/get';
+import extend from 'lodash/extend';
+import omit from 'lodash/omit';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
@@ -26,6 +28,7 @@ interface IDatePickerProps {
   monthFormat?: string;
   hideArrows?: boolean;
   disableMonthChange?: boolean;
+  dateRange?: number; // total years will display on calendar
   firstDay?: number; // If firstDay=1 week starts from Monday.
   hideDayNames?: boolean; // Hide day names. Default = false
   showWeekNumbers?: boolean; // Show week numbers to the left. Default = false
@@ -50,11 +53,26 @@ class ChooseDateField extends Component<IProps> {
   };
 
   _showChooseDateModal = () => {
+    const today = moment();
     const value = get(this.props, 'input.value');
-    const current = value ? moment(value) : moment();
+    const current = value ? moment(value) : today;
     const currentDateStr = current.format('YYYY-MM-DD');
+    const dateRange = get(this.props, 'datePickerProps.dateRange', undefined);
+    let ownPickerProps = omit(get(this.props, 'datePickerProps', {}), ['dateRange']);
+    const maxDateStr = get(ownPickerProps, 'maxDate', undefined);
+    if (dateRange && maxDateStr) {
+      const maxDate = moment(maxDateStr, 'YYYY-MM-DD');
+      // calc futureScrollRange & pastScrollRange
+      const num = maxDate.diff(current, 'months');
+      const futureScrollRange = num >= 0 ? num : 0;
+      const expectMonths = dateRange * 12;
+      const minDate = maxDate.subtract(expectMonths > futureScrollRange ? expectMonths : futureScrollRange, 'months');
+      const minDateStr = minDate.format('YYYY-MM-DD');
+      const pastScrollRange = current.diff(minDate, 'months') + 1;
+      ownPickerProps = extend(ownPickerProps, { minDate: minDateStr, futureScrollRange, pastScrollRange });
+    }
     const datePickerProps = {
-      ...this.props.datePickerProps,
+      ...ownPickerProps,
       current: currentDateStr,
       markedDates: {
         [currentDateStr]: { selected: true, marked: true },

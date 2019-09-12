@@ -42,13 +42,9 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
     scrollEnabled: true,
     pagingEnabled: true,
     calendarWidth: 320,
-    futureScrollRange: 1,
-    pastScrollRange: 1200,
+    dateRange: 120,
     maxDate: moment()
       .subtract(12, 'years')
-      .format('YYYY-MM-DD'),
-    minDate: moment()
-      .subtract(100, 'years')
       .format('YYYY-MM-DD'),
   };
 
