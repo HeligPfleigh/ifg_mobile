@@ -146,13 +146,15 @@
     "confirm": "Confirmer le mot de passe",
     "agree": "J'accepte les ",
     "terms": "conditions d'utilisation",
-    "submit": "Créer un compte"
+    "submit": "Créer un compte",
+    "success": "Inscription réussie!"
   },
   "forgot": {
     "title": "Mot de passe oublié",
     "paragraph": "Entrez l'email pour réinitialiser le mot de passe!",
     "email": "E-mail",
-    "submit": "Envoyer"
+    "submit": "Envoyer",
+    "message": "Votre mot de passe de réinitialisation est envoyé à votre adresse email!"
   },
   "home": {
     "relationships": "RELATIONS",
@@ -319,7 +321,8 @@
       "feedback": "Retour d'information",
       "suggest": "Suggestions",
       "tech_quest": "Question technique",
-      "other": "Autre"
+      "other": "Autre",
+      "feedback_success": "Votre commentaire est envoyé avec succès"
     },
     "delete_account": {
       "title": "Supprimer Votre Compte",
