@@ -41,7 +41,7 @@ class SignUp extends React.Component<SignUpProps> {
       const { username, email, password } = value;
       const bundleData = { username, email, password };
       await api.signup(bundleData);
-      Toast.success('Sign up successful!');
+      Toast.success(I18n.t('signup.success'));
     } catch (err) {
       Toast.error(err.message);
     } finally {
