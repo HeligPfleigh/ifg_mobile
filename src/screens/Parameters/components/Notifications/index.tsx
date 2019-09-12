@@ -10,9 +10,11 @@ import styles from './styles';
 import { toggleIsReceiveNotification } from '../../../../store/actions';
 import { AppState } from '../../../../store/types';
 
-const data = [{ label: 'Yes', value: true }, { label: `I DON'T need feel good information`, value: false }];
-
 const MotivationMessages: React.FC = () => {
+  const data = [
+    { label: I18n.t('profile.account_parameters.yes'), value: true },
+    { label: I18n.t('profile.account_parameters.no'), value: false },
+  ];
   const dispatch = useDispatch();
   const isReceiveNotification = useSelector((state: AppState) => state.notification.isReceiveNotification);
 

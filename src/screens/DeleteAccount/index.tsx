@@ -55,7 +55,7 @@ const DeleteAccount: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
             maxLength={200}
             characterRestriction={200}
             label=""
-            title="Maximum 200 characters"
+            title={I18n.t('messages.max_200')}
             bordered
             activeLineWidth={1}
             style={styles.textarea}
