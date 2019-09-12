@@ -10,7 +10,23 @@
   "messages": {
     "required": "Field is required",
     "pwd_confirm": "Password and confirm password do not match",
-    "require_different": "Please input new email"
+    "max_200": "Maximum 200 characters",
+    "require_different": "Please input new email",
+    "must_be": "Must be",
+    "or_less": "characters or less",
+    "or_more": "characters or more",
+    "must_length": "It must have length from ",
+    "to": "to",
+    "characters": "characters",
+    "check_min": "The number must be greater than",
+    "only_number": "Only input number",
+    "has_space": "Field can't contain space character",
+    "email_invalid": "Invalid email address",
+    "phone_invalid": "Invalid phone number",
+    "only_alpha": "Only alphanumeric characters",
+    "user_name_special_chart": "The username has a special character",
+    "first_chart_letter": "The first character must be a letter",
+    "pwd_valid": "Field must contain at least 1 uppercase letter and special character"
   },
   "navigation": {
     "home": "Home",
@@ -130,13 +146,15 @@
     "confirm": "Confirm Password",
     "agree": "I agree with the ",
     "terms": "terms of use",
-    "submit": "SIGN UP"
+    "submit": "SIGN UP",
+    "success": "Sign up successful!"
   },
   "forgot": {
     "title": "Forgot Password",
     "paragraph": "Enter email to reset password!",
     "email": "E-mail",
-    "submit": "SEND"
+    "submit": "SEND",
+    "message": "Your reset password is sent to your email!"
   },
   "home": {
     "relationships": "RELATIONSHIPS",
@@ -264,7 +282,10 @@
       "dob": "Date of birth",
       "gender": "Gender",
       "height": "Height",
-      "weight": "Weight"
+      "weight": "Weight",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
     },
     "account_settings": {
       "title": "Account settings",
@@ -292,13 +313,20 @@
       "motivation_msgs": "Motivation messages",
       "motivation_msgs_subtitle": "Receive congratulations and encouragements",
       "language_setting": "Language settings",
-      "language_setting_subtitle": "Please select your language"
+      "language_setting_subtitle": "Please select your language",
+      "yes": "Yes",
+      "no": "I DON'T need feel good information"
     },
     "account_contact_us": {
       "title": "Contact us",
       "page_title": "Please type your\n message",
       "subject": "Subject",
-      "description": "Please type your message"
+      "description": "Please type your message",
+      "feedback": "Feedback",
+      "suggest": "Suggestions",
+      "tech_quest": "Technical question",
+      "other": "Other",
+      "feedback_success": "Your feedback is sent successfully"
     },
     "delete_account": {
       "title": "Delete Account",

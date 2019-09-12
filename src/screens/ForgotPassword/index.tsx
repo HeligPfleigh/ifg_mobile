@@ -18,7 +18,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps) => {
     setLoading(true);
     try {
       await api.forgotPwd(value);
-      Toast.success('Your reset password is sent to your email!');
+      Toast.success(I18n.t('forgot.message'));
     } catch (err) {
       Toast.error(err.message);
     }

@@ -108,7 +108,7 @@ class ChangePassword extends React.Component<IProps, IStates> {
           tintColor={theme.colors.green}
           component={FormFields.TextField}
           validate={[required, minLength8, this._compareValue]}
-          label={I18n.t('profile.account_settings.confirm_new_pwd')}
+          label={I18n.t('profile.account_settings.confirm_new_password')}
           onSubmitEditing={handleSubmit(this._handleSubmit)}
         />
       </Block>

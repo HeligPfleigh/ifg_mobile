@@ -32,9 +32,9 @@ interface IProps extends InjectedFormProps, NavigationScreenProps {
 
 const UserInfo: React.FC<IProps> = (props: IProps) => {
   const genders = [
-    { label: 'Male', value: 'MALE' },
-    { label: 'Female', value: 'FEMALE' },
-    { label: 'Other', value: 'OTHER' },
+    { label: I18n.t('profile.user_info.male'), value: 'MALE' },
+    { label: I18n.t('profile.user_info.female'), value: 'FEMALE' },
+    { label: I18n.t('profile.user_info.other'), value: 'OTHER' },
   ];
 
   const datePickerProps = {
