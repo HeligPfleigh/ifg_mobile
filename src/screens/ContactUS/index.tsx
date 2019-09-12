@@ -7,7 +7,7 @@ import { NavigationScreenProps } from 'react-navigation';
 
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
-import { Block, Button, Loader } from '../../components';
+import { Block, Button, Loader, Toast } from '../../components';
 import { styles } from './styles';
 import api from '../../core/api';
 
@@ -29,8 +29,10 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
       setLoading(true);
       Keyboard.dismiss();
       await api.giveFeedback({ subject: value, message: feedback });
+      Toast.success('Your feedback is sent successfully');
     } catch (err) {
       // TODO
+      Toast.error(err.message);
     } finally {
       setLoading(false);
     }
