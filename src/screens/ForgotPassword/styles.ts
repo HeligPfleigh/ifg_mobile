@@ -3,7 +3,7 @@ import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
   title: {
-    fontSize: theme.sizes.h1 + 8,
+    fontSize: theme.sizes.h1 + 5,
   },
   paragraph: {
     fontSize: theme.sizes.h2,
