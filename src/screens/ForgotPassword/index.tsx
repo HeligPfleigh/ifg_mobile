@@ -9,12 +9,12 @@ import api from '../../core/api';
 import { Block, Button, Loader, Toast } from '../../components';
 import { styles } from './styles';
 
-const ForgotPassword: React.FC = (props: InjectedFormProps) => {
+const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
   const { required, minLength4, maxLength120, email } = validator;
   const { handleSubmit } = props;
   const [loading, setLoading] = useState(false);
 
-  const onPressSubmit = async value => {
+  const onPressSubmit = async (value: any) => {
     setLoading(true);
     try {
       await api.forgotPwd(value);
