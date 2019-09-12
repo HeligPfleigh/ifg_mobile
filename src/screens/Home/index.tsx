@@ -56,7 +56,7 @@ class Home extends Component<HomeProps> {
   render() {
     const isFetching = get(this.props, 'me.isFetching', true);
     const avatar = get(this.props, 'me.data.user.avatar', undefined);
-    const name = `${get(this.props, 'me.data.user.firstName')} ${get(this.props, 'me.data.user.lastName')}`;
+    const name = `${get(this.props, 'me.data.user.firstName', '')} ${get(this.props, 'me.data.user.lastName', '')}`;
     const score = get(this.props, 'me.data.score');
     return (
       <Block style={styles.container}>
