@@ -59,15 +59,19 @@ class Home extends Component<HomeProps> {
     const name = `${get(this.props, 'me.data.user.firstName', '')} ${get(this.props, 'me.data.user.lastName', '')}`;
     return (
       <Block style={styles.container}>
-        <View style={styles.header}>
-          <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
-          <Block row middle center style={{ alignSelf: 'stretch' }}>
+        <Block flex={1.5} style={styles.header}>
+          <Block flex={2} center middle>
+            <View style={styles.avatar}>
+              <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.image} />
+            </View>
+          </Block>
+          <Block flex={0.8} row center middle>
             <Text style={styles.name}>{name}</Text>
             <TouchableOpacity style={styles.headerNav} onPress={this._navigateToUserInfoScreen}>
               <MaterialCommunityIcons name="square-edit-outline" size={theme.sizes.icon} />
             </TouchableOpacity>
           </Block>
-        </View>
+        </Block>
         <Block flex={3} style={styles.content}>
           <MenuItem
             iconSize={20}

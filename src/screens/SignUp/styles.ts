@@ -4,13 +4,18 @@ import { theme } from '../../constants';
 export const styles = StyleSheet.create({
   container: { marginLeft: theme.sizes.padding, marginRight: theme.sizes.padding },
   title: {
-    fontSize: theme.sizes.h1 + 8,
+    fontSize: theme.sizes.h1 + 5,
   },
   textButton: {
     color: theme.colors.white,
     fontSize: theme.sizes.h2,
   },
-  confirm: { flexDirection: 'row', alignItems: 'center', aspectRatio: 6.5 },
+  confirm: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    aspectRatio: 6.5,
+    flexWrap: 'wrap',
+  },
   box: { marginRight: 5 },
   textConfirm: {
     fontSize: theme.sizes.h3,

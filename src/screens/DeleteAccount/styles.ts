@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: theme.sizes.padding,
     paddingVertical: theme.sizes.padding / 2,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.white2,
   },
   titleWrapper: {
     marginTop: theme.sizes.margin,
@@ -38,13 +38,22 @@ export const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   btnSend: {
-    marginBottom: theme.sizes.margin / 2,
+    backgroundColor: theme.colors.transparent,
+    marginTop: theme.sizes.padding,
+    marginBottom: theme.sizes.base,
   },
   labelSend: {
     color: theme.colors.white,
   },
   btnCancel: {
-    borderColor: theme.colors.blue,
-    borderWidth: StyleSheet.hairlineWidth,
+    padding: 2,
+    backgroundColor: theme.colors.transparent,
+  },
+  btnCancelBody: {
+    backgroundColor: theme.colors.white2,
+    borderRadius: theme.sizes.radius - 1,
+  },
+  txtCancel: {
+    color: theme.colors.primary,
   },
 });

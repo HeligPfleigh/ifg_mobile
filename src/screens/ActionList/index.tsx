@@ -176,9 +176,9 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
             <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.achieve')}</Text>
           </Block>
         </Button>
-        <Button shadow style={styles.draftBtn} onPress={deleteAll}>
-          <Block center middle>
-            <Text>{I18n.t('action_list.footer.delete')}</Text>
+        <Button gradient style={styles.draftBtn} onPress={deleteAll}>
+          <Block center middle style={styles.draftBtnBody}>
+            <Text style={styles.draftBtnTxt}>{I18n.t('action_list.footer.delete')}</Text>
           </Block>
         </Button>
       </Block>
