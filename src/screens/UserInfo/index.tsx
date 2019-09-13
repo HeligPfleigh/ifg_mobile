@@ -7,12 +7,12 @@ import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-picker';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
-import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
-import { DefaultAvatar } from '../../assets/images';
+import { DefaultAvatar, EditCircle } from '../../assets/images';
 import { Enum, theme } from '../../constants';
 import { Button, Block, FormFields, Loader } from '../../components';
 import api from '../../core/api';
@@ -135,11 +135,14 @@ class UserInfo extends React.Component<IProps, IStates> {
         <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
           <Loader loading={loading} />
           <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.header}>
-              <TouchableWithoutFeedback onPress={this._showActionSheet}>
-                <Image source={avatar || DefaultAvatar} style={styles.avatar} />
-              </TouchableWithoutFeedback>
-            </View>
+            <Block flex={2} center middle>
+              <TouchableOpacity onPress={this._showActionSheet} style={styles.avatar}>
+                <Image source={avatar || DefaultAvatar} style={styles.image} />
+                <View style={styles.edit}>
+                  <EditCircle />
+                </View>
+              </TouchableOpacity>
+            </Block>
             <Block flex={5} style={styles.content}>
               <Field
                 disabled
@@ -198,15 +201,15 @@ class UserInfo extends React.Component<IProps, IStates> {
                 validate={[required]}
               />
             </Block>
-            <Block flex={false} style={styles.btnGroup}>
+            <Block flex={false}>
               <Button gradient style={styles.btnSend} onPress={handleSubmit(this._handleSubmit)}>
                 <Block center middle>
                   <Text style={styles.labelSend}>{I18n.t('common.save')}</Text>
                 </Block>
               </Button>
-              <Button shadow style={styles.btnCancel} onPress={this._handleCancel}>
-                <Block center middle>
-                  <Text>{I18n.t('common.cancel')}</Text>
+              <Button gradient style={styles.btnCancel} onPress={this._handleCancel}>
+                <Block style={styles.btnCancelBody} center middle>
+                  <Text style={styles.txtCancel}>{I18n.t('common.cancel')}</Text>
                 </Block>
               </Button>
             </Block>
