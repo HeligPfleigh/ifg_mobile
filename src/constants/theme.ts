@@ -13,6 +13,7 @@ const colors = {
   green: '#008000',
   pink: '#FF7CB6',
   blue: '#02A4F7',
+  blue2: '#6785EC',
   orange: '#FF955F',
   purple: '#A0039D',
   indigo: '#7F81FF',
