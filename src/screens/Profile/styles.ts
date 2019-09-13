@@ -8,30 +8,30 @@ export const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'ios' ? 35 : 15,
   },
   header: {
-    flex: 1,
-    padding: theme.sizes.padding,
     backgroundColor: theme.colors.secondary,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 25,
   },
   avatar: {
-    height: 80,
-    width: 80,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    borderRadius: 40,
-    backgroundColor: theme.colors.white,
-    marginRight: theme.sizes.margin,
+    height: 120,
+    width: 120,
+    padding: 20,
+    borderRadius: 60,
+    backgroundColor: '#6785EC',
   },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50,
+  },
+
   name: {
     fontWeight: '600',
     color: theme.colors.black,
-    fontSize: theme.sizes.base,
+    fontSize: theme.sizes.h1,
   },
   headerNav: {
     position: 'absolute',
     right: theme.sizes.zero,
-    bottom: theme.sizes.zero,
   },
   content: {
     paddingTop: theme.sizes.padding,
