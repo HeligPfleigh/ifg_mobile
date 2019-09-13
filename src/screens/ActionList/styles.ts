@@ -16,9 +16,17 @@ export const styles = StyleSheet.create({
     color: theme.colors.white,
   },
   draftBtn: {
-    borderColor: theme.colors.blue,
-    borderWidth: StyleSheet.hairlineWidth,
+    padding: 2,
+    backgroundColor: theme.colors.transparent,
   },
+  draftBtnBody: {
+    backgroundColor: theme.colors.white,
+    borderRadius: theme.sizes.radius - 1,
+  },
+  draftBtnTxt: {
+    color: theme.colors.primary,
+  },
+
   tipSection: {
     paddingHorizontal: theme.sizes.padding,
     justifyContent: 'space-between',
