@@ -39,7 +39,7 @@ const DeleteAccount: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
   const handleCancel = () => navigation.goBack();
   return (
     <Block style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Loader loading={loading} />
         <Block flex={false}>
           <Block flex={false} center middle style={styles.titleWrapper}>
