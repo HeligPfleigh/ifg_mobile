@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     width: 120,
     padding: 20,
     borderRadius: 60,
-    backgroundColor: '#6785EC',
+    backgroundColor: theme.colors.blue2,
   },
   image: {
     width: '100%',
