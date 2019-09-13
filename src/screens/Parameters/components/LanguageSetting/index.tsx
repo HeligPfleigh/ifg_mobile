@@ -2,19 +2,20 @@ import React from 'react';
 import { Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationInjectedProps, withNavigation, StackActions, NavigationActions } from 'react-navigation';
+
+import styles from './styles';
 import I18n from '../../../../core/i18n';
 import { theme } from '../../../../constants';
 import { Block, WithTranslations } from '../../../../components';
 import { RadioGroup } from '../../../../components/FormFields';
-import styles from './styles';
-import { changeLanguage, changeLanguageNotification } from '../../../../store/actions';
 import NavigatorMap from '../../../../navigations/NavigatorMap';
+import { changeLanguage, changeLanguageNotification } from '../../../../store/actions';
 
 const languages = [{ label: 'English', value: 'en' }, { label: 'Français', value: 'fr' }];
 
-const LanguageSetting: React.FC = ({ navigation }: NavigationInjectedProps) => {
+const LanguageSetting: React.FC = ({ navigation }: NavigationInjectedProps | any) => {
   const dispatch = useDispatch();
-  const language = useSelector(state => state.language.locale);
+  const language = useSelector((state: any) => state.language.locale);
 
   const _handleChangeLanguage = async (value: any) => {
     dispatch(changeLanguageNotification(value));

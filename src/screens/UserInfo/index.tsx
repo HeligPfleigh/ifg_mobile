@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import { connect } from 'react-redux';
+import ActionSheet from 'react-native-actionsheet';
+import ImagePicker from 'react-native-image-picker';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
-import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard } from 'react-native';
+import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import styles from './styles';
 import I18n from '../../core/i18n';
@@ -30,14 +32,32 @@ interface IProps extends InjectedFormProps, NavigationScreenProps {
   initialValues: IUser;
 }
 
-const UserInfo: React.FC<IProps> = (props: IProps) => {
-  const genders = [
+interface IStates {
+  loading: boolean;
+}
+
+class UserInfo extends React.Component<IProps, IStates> {
+  // ActionSheet reference
+  ActionSheet: any;
+
+  // inner state component
+  state = { loading: false };
+
+  buttons = [
+    I18n.t('profile.user_info.picker_modal.btn_camera'),
+    I18n.t('profile.user_info.picker_modal.btn_photos'),
+    I18n.t('profile.user_info.picker_modal.btn_cancel'),
+  ];
+
+  // datasource for dropdown
+  genders = [
     { label: I18n.t('profile.user_info.male'), value: 'MALE' },
     { label: I18n.t('profile.user_info.female'), value: 'FEMALE' },
     { label: I18n.t('profile.user_info.other'), value: 'OTHER' },
   ];
 
-  const datePickerProps = {
+  // default config for ChooseDateModal
+  datePickerProps = {
     horizontal: true,
     scrollEnabled: true,
     pagingEnabled: true,
@@ -48,15 +68,37 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
       .format('YYYY-MM-DD'),
   };
 
-  // back button
-  const _handleCancel = () => props.navigation.goBack();
+  _showActionSheet = () => this.ActionSheet.show();
 
-  const [loading, setLoading] = useState(false);
+  _handleActionModal = (index: number) => {
+    switch (index) {
+      case 0:
+        // Launch Camera:
+        ImagePicker.launchCamera({}, response => {
+          console.log('Take photo from camera');
+          console.log(response);
+        });
+        break;
+      case 1:
+        // Open Image Library:
+        ImagePicker.launchImageLibrary({}, response => {
+          console.log('Take photo from gallery');
+          console.log(response);
+        });
+        break;
+    }
+  };
+
+  // back button
+  _handleCancel = () => this.props.navigation.goBack();
+
   // handle submit form
-  const _handleSubmit = async (values: IUser) => {
+  _handleSubmit = async (values: IUser) => {
     try {
-      setLoading(true);
+      // hide keyboard
       Keyboard.dismiss();
+      // showing loader component
+      this.setState({ loading: true });
       const formData = { ...values };
       if (!isUndefined(get(values, 'DOB'))) {
         formData.DOB = moment(get(values, 'DOB')).toISOString();
@@ -71,95 +113,109 @@ const UserInfo: React.FC<IProps> = (props: IProps) => {
     } catch (err) {
       // TODO
     } finally {
-      setLoading(false);
+      this.setState({ loading: false });
     }
   };
 
-  const { handleSubmit } = props;
-  const avatar = get(props, 'initialValues.avatar');
-  const { required, maxLength120 } = FormFields.FormValidator;
+  render() {
+    const { loading } = this.state;
+    const { handleSubmit } = this.props;
+    const avatar = get(this.props, 'initialValues.avatar');
+    const { required, maxLength120 } = FormFields.FormValidator;
 
-  return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <Loader loading={loading} />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Image source={avatar || DefaultAvatar} style={styles.avatar} />
-        </View>
-        <Block flex={5} style={styles.content}>
-          <Field
-            disabled
-            name="username"
-            component={FormFields.TextField}
-            label={I18n.t('profile.user_info.username')}
-          />
-          <Field
-            name="firstName"
-            autoCorrect={false}
-            returnKeyType="done"
-            component={FormFields.TextField}
-            tintColor={theme.colors.green}
-            label={I18n.t('profile.user_info.first_name')}
-            validate={[required, maxLength120]}
-          />
-          <Field
-            name="lastName"
-            autoCorrect={false}
-            returnKeyType="done"
-            component={FormFields.TextField}
-            tintColor={theme.colors.green}
-            label={I18n.t('profile.user_info.last_name')}
-            validate={[required, maxLength120]}
-          />
-          <Field
-            name="DOB"
-            component={FormFields.DateField}
-            datePickerProps={datePickerProps}
-            label={I18n.t('profile.user_info.dob')}
-          />
-          <Field
-            name="gender"
-            datasource={genders}
-            component={FormFields.Dropdown}
-            label={I18n.t('profile.user_info.gender')}
-          />
-          <Field
-            name="height"
-            autoCorrect={false}
-            returnKeyType="done"
-            keyboardType="numeric"
-            component={FormFields.TextField}
-            tintColor={theme.colors.green}
-            label={`${I18n.t('profile.user_info.height')} (cm)`}
-            validate={[required]}
-          />
-          <Field
-            name="weight"
-            autoCorrect={false}
-            returnKeyType="done"
-            keyboardType="numeric"
-            component={FormFields.TextField}
-            tintColor={theme.colors.green}
-            label={`${I18n.t('profile.user_info.weight')} (kg)`}
-            validate={[required]}
-          />
-        </Block>
-        <Block flex={false} style={styles.btnGroup}>
-          <Button gradient style={styles.btnSend} onPress={handleSubmit(_handleSubmit)}>
-            <Block center middle>
-              <Text style={styles.labelSend}>{I18n.t('common.save')}</Text>
+    return (
+      <React.Fragment>
+        <ActionSheet
+          cancelButtonIndex={2}
+          options={this.buttons}
+          ref={o => (this.ActionSheet = o)}
+          title={I18n.t('profile.user_info.picker_modal.title')}
+          onPress={this._handleActionModal}
+        />
+        <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+          <Loader loading={loading} />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.header}>
+              <TouchableWithoutFeedback onPress={this._showActionSheet}>
+                <Image source={avatar || DefaultAvatar} style={styles.avatar} />
+              </TouchableWithoutFeedback>
+            </View>
+            <Block flex={5} style={styles.content}>
+              <Field
+                disabled
+                name="username"
+                component={FormFields.TextField}
+                label={I18n.t('profile.user_info.username')}
+              />
+              <Field
+                name="firstName"
+                autoCorrect={false}
+                returnKeyType="done"
+                component={FormFields.TextField}
+                tintColor={theme.colors.green}
+                label={I18n.t('profile.user_info.first_name')}
+                validate={[required, maxLength120]}
+              />
+              <Field
+                name="lastName"
+                autoCorrect={false}
+                returnKeyType="done"
+                component={FormFields.TextField}
+                tintColor={theme.colors.green}
+                label={I18n.t('profile.user_info.last_name')}
+                validate={[required, maxLength120]}
+              />
+              <Field
+                name="DOB"
+                component={FormFields.DateField}
+                datePickerProps={this.datePickerProps}
+                label={I18n.t('profile.user_info.dob')}
+              />
+              <Field
+                name="gender"
+                datasource={this.genders}
+                component={FormFields.Dropdown}
+                label={I18n.t('profile.user_info.gender')}
+              />
+              <Field
+                name="height"
+                autoCorrect={false}
+                returnKeyType="done"
+                keyboardType="numeric"
+                component={FormFields.TextField}
+                tintColor={theme.colors.green}
+                label={`${I18n.t('profile.user_info.height')} (cm)`}
+                validate={[required]}
+              />
+              <Field
+                name="weight"
+                autoCorrect={false}
+                returnKeyType="done"
+                keyboardType="numeric"
+                component={FormFields.TextField}
+                tintColor={theme.colors.green}
+                label={`${I18n.t('profile.user_info.weight')} (kg)`}
+                validate={[required]}
+              />
             </Block>
-          </Button>
-          <Button shadow style={styles.btnCancel} onPress={_handleCancel}>
-            <Block center middle>
-              <Text>{I18n.t('common.cancel')}</Text>
+            <Block flex={false} style={styles.btnGroup}>
+              <Button gradient style={styles.btnSend} onPress={handleSubmit(this._handleSubmit)}>
+                <Block center middle>
+                  <Text style={styles.labelSend}>{I18n.t('common.save')}</Text>
+                </Block>
+              </Button>
+              <Button shadow style={styles.btnCancel} onPress={this._handleCancel}>
+                <Block center middle>
+                  <Text>{I18n.t('common.cancel')}</Text>
+                </Block>
+              </Button>
             </Block>
-          </Button>
-        </Block>
-      </ScrollView>
-    </KeyboardAvoidingView>
-  );
-};
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </React.Fragment>
+    );
+  }
+}
 
 const mapStateToProps = (state: AppState) => {
   // user dob

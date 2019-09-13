@@ -8,8 +8,11 @@ module.exports = {
     'prettier/react',
   ],
   rules: {
+    'default-case': 'off',
     'func-names': 'off',
     'import/no-cycle': 'off',
+    'no-return-assign': 'off',
+    'react/no-this-in-sfc': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-prototype-builtins': 'off',

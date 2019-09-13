@@ -285,7 +285,13 @@
       "weight": "Weight",
       "male": "Male",
       "female": "Female",
-      "other": "Other"
+      "other": "Other",
+      "picker_modal": {
+        "title": "Select avatar",
+        "btn_camera": "Take avatar from camera",
+        "btn_photos": "Choose avatar from Gallery",
+        "btn_cancel": "Cancel"
+      }
     },
     "account_settings": {
       "title": "Account settings",
