@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { HeaderBackButton, NavigationScreenProps } from 'react-navigation';
+import { Text, BackHandler } from 'react-native';
+import { HeaderBackButton, NavigationScreenProps, NavigationEventSubscription } from 'react-navigation';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -44,6 +44,10 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     };
   };
 
+  _didFocusSubscription: NavigationEventSubscription;
+
+  _willBlurSubscription: NavigationEventSubscription;
+
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
@@ -58,6 +62,12 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
       score: 0,
       disableNextBtn: true,
     };
+    this._didFocusSubscription = props.navigation.addListener('didFocus', () =>
+      BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressAndroid),
+    );
+    this._willBlurSubscription = props.navigation.addListener('willBlur', () =>
+      BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid),
+    );
   }
 
   componentDidMount() {
@@ -85,6 +95,18 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
       this.setState({ ...draftData });
     }
   }
+
+  componentWillUnmount() {
+    // eslint-disable-next-line no-unused-expressions
+    this._didFocusSubscription && this._didFocusSubscription.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this._willBlurSubscription && this._willBlurSubscription.remove();
+  }
+
+  onBackButtonPressAndroid = () => {
+    this._handleBack();
+    return true;
+  };
 
   _handleBack = () => {
     const { step } = this.state;
