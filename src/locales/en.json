@@ -151,7 +151,8 @@
     "agree": "I agree with the ",
     "terms": "terms of use",
     "submit": "SIGN UP",
-    "success": "Sign up successful!"
+    "success": "Sign up successful!",
+    "email_not_available": "Hmmm... we are sorry, this E-mail is already registered. Please choose another E-mai address."
   },
   "forgot": {
     "title": "Forgot Password",
