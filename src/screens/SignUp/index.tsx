@@ -130,13 +130,15 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
                 <Text style={styles.textLink}>{I18n.t('signup.terms')}</Text>
               </TouchableOpacity>
             </View>
-            <Button gradient disabled={!isChecked} onPress={handleSubmit(this._onSignup)}>
+            <Button style={styles.button} gradient disabled={!isChecked} onPress={handleSubmit(this._onSignup)}>
               <Block center middle>
                 <Text style={styles.textButton}>{I18n.t('signup.submit')}</Text>
               </Block>
             </Button>
+            <View style={styles.contact}>
+              <ContactMail />
+            </View>
           </ScrollView>
-          <ContactMail />
         </KeyboardAvoidingView>
       </React.Fragment>
     );

@@ -6,13 +6,16 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: theme.sizes.h1 + 5,
   },
+  button: {
+    marginBottom: theme.sizes.margin,
+  },
   textButton: {
     color: theme.colors.white,
     fontSize: theme.sizes.h2,
   },
   confirm: {
     marginTop: theme.sizes.padding,
-    marginBottom: theme.sizes.margin,
+    marginBottom: theme.sizes.padding,
     flexDirection: 'row',
     alignItems: 'center',
     aspectRatio: 6.5,
@@ -26,5 +29,8 @@ export const styles = StyleSheet.create({
   textLink: {
     color: theme.colors.primary,
     fontSize: theme.sizes.h3,
+  },
+  contact: {
+    aspectRatio: 5.5,
   },
 });
