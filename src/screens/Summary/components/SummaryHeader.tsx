@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   legendTxt: {
     color: theme.colors.secondary,
-    fontSize: theme.sizes.caption,
+    fontSize: theme.sizes.header,
   },
   descTxt: {
     marginTop: theme.sizes.margin,
@@ -100,7 +100,7 @@ const SummaryHeader: React.FC<SummaryHeaderProps> = ({ navigation, score, type }
         </Block>
       </LinearGradient>
       <Block flex={1} center middle>
-        <Button onPress={navigateToLegend}>
+        <Button onPress={navigateToLegend} hitSlop={{ top: 5, left: 5, bottom: 5, right: 5 }}>
           <Text style={styles.legendTxt}>{I18n.t('summary.legends')}</Text>
         </Button>
       </Block>

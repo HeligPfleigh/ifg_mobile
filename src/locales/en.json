@@ -182,13 +182,13 @@
     "intakes": "Intakes",
     "other": "Other factors",
     "overall": "Overall",
-    "legends": "Legends",
+    "legends": "Your Feel Good cursor",
     "detail_perceptions": "Details of your perceptions"
   },
   "legend": {
     "header": {
       "title": "Your Feel Good Level",
-      "body": "The scores you gave during self-assesment are used to calculate an average fell good score."
+      "body": "The scores you gave during self-assesment are used to calculate an average feel good score."
     },
     "subtitle": {
       "good": "Factors that are on good track, keep going in this direction!",
