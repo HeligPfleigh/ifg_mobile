@@ -8,13 +8,7 @@ const initialState: MeState = {
       username: '',
       avatar: '',
     },
-    score: {
-      relationships: 0,
-      activities: 0,
-      intakes: 0,
-      other: 0,
-      overall: 0,
-    },
+    score: {},
   },
 };
 
