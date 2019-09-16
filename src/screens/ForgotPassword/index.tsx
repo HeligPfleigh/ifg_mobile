@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import NavigatorMap from '../../navigations/NavigatorMap';
 import { ReduxFormName } from '../../constants/enum';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { theme } from '../../constants';
@@ -19,6 +20,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
     try {
       await api.forgotPwd(value);
       Toast.success(I18n.t('forgot.message'));
+      props.navigation.navigate(NavigatorMap.Welcome);
     } catch (err) {
       Toast.error(err.message);
     }
