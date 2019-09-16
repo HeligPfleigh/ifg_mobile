@@ -84,7 +84,6 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
     return (
       <Modal
         isVisible={isVisible}
-        onBackdropPress={this.hide}
         animationIn="zoomInDown"
         animationOut="zoomOutUp"
         animationInTiming={600}
