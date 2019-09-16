@@ -91,4 +91,7 @@ export const styles = StyleSheet.create({
   modalBtnContainer: {
     padding: theme.sizes.padding / 2,
   },
+  iconBtn: {
+    marginRight: theme.sizes.margin / 2,
+  },
 });

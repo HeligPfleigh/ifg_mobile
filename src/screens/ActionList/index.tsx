@@ -8,6 +8,8 @@ import { NavigationScreenProps } from 'react-navigation';
 import { TextField } from 'react-native-material-textfield';
 import Modal from 'react-native-modal';
 import get from 'lodash/get';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox, Loader } from '../../components';
@@ -73,9 +75,16 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   const [editActionID, setEditActionID] = useState('');
   const [selectedReason, setSelectedReason] = useState('');
   const ongoingActions = useSelector((state: AppState) => state.myaction.data.ongoing);
-  const reasons = useSelector((state: AppState) => state.myaction.data.reasons);
+  const reasonsValue = useSelector((state: AppState) => state.myaction.data.reasons);
   const isFetching = useSelector((state: AppState) => state.myaction.isFetching);
   const dispatch = useDispatch();
+
+  // list reasons
+  let reasons: any = [];
+  if (reasonsValue.length > 0) {
+    reasons = reasonsValue.map((reason: any) => ({ value: reason }));
+    reasons.push({ value: '' });
+  }
 
   const showSMARTModal = () => {
     dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.SMART }));
@@ -89,6 +98,9 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   }, [dispatch]);
 
   const saveAction = () => {
+    // reset input and save action
+    setAction('');
+    setSelectedReason('');
     dispatch(postAction({ action, reason: selectedReason }));
   };
 
@@ -134,16 +146,16 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
           <TextField label={I18n.t('action_list.add_new')} value={action} onChangeText={val => setAction(val)} />
           <Dropdown
             label={I18n.t('action_list.select_reason')}
-            data={reasons.map((reason: any) => ({ value: reason }))}
+            data={reasons}
             rippleColor={theme.colors.gray}
             onChangeText={handleChangeReason}
             value={selectedReason}
           />
-          <Button gradient style={styles.saveBtn} onPress={saveAction}>
+          {/* <Button gradient style={styles.saveBtn} onPress={saveAction}>
             <Block center middle>
               <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.save')}</Text>
             </Block>
-          </Button>
+          </Button> */}
         </Block>
         <Block flex={false} row style={styles.tipSection}>
           <Button onPress={showSMARTModal}>
@@ -159,6 +171,17 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
             </Text>
           </Button>
         </Block>
+        <Block flex={false} row bottom padding={[0, theme.sizes.padding]}>
+          <TouchableOpacity onPress={saveAction}>
+            <MaterialIcons size={theme.sizes.innerIcon} name="save" color={theme.colors.blue} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={markAsArchieved}>
+            <MaterialIcons size={theme.sizes.innerIcon} name="archive" color={theme.colors.blue} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={deleteAll}>
+            <MaterialCommunityIcons size={theme.sizes.innerIcon} name="trash-can-outline" color={theme.colors.gray4} />
+          </TouchableOpacity>
+        </Block>
         <ScrollView>
           {ongoingActions.map((data: any) => (
             <OngoingAction
@@ -170,7 +193,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
           ))}
         </ScrollView>
       </Block>
-      <Block middle flex={1} style={styles.footerContainer}>
+      {/* <Block middle flex={1} style={styles.footerContainer}>
         <Button gradient style={styles.nextBtn} onPress={markAsArchieved}>
           <Block center middle>
             <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.achieve')}</Text>
@@ -181,7 +204,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
             <Text style={styles.draftBtnTxt}>{I18n.t('action_list.footer.delete')}</Text>
           </Block>
         </Button>
-      </Block>
+      </Block> */}
       <Modal
         isVisible={modalVisible}
         animationIn="zoomInDown"
