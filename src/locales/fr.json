@@ -151,7 +151,8 @@
     "agree": "J'accepte les ",
     "terms": "conditions d'utilisation",
     "submit": "Créer un compte",
-    "success": "Inscription réussie!"
+    "success": "Inscription réussie!",
+    "email_not_available": "Hmmm ... nous sommes désolés, cet e-mail est déjà enregistré. Veuillez choisir une autre adresse E-mai."
   },
   "forgot": {
     "title": "Mot de passe oublié",
