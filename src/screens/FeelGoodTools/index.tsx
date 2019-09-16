@@ -1,19 +1,17 @@
 import React from 'react';
 import { ScrollView, Text, StyleSheet } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import get from 'lodash/get';
-import noop from 'lodash/noop';
 
 import { WithTranslations, EvaluationItem, Block, RoundIconButton } from '../../components';
 import I18n from '../../core/i18n';
 
 import { theme, Enum } from '../../constants';
-import { LightBulb, Flag, ActionList } from '../../assets/images';
+import { Flag, ActionList } from '../../assets/images';
 import { showWeatherIcon } from '../../core/utils';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState } from '../../store/types';
-import { showModal } from '../../store/actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +33,6 @@ const styles = StyleSheet.create({
 
 const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
   const score = useSelector((state: AppState) => state.me.data.score);
-  const dispatch = useDispatch();
   const relationshipsScore = get(score, Enum.EvaluationType.RELATIONSHIPS);
   const activitiesScore = get(score, Enum.EvaluationType.ACTIVITIES);
   const intakesScore = get(score, Enum.EvaluationType.INTAKES);
@@ -50,8 +47,6 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
 
   const navigateToActionList = () => navigation.navigate(NavigatorMap.ActionList);
 
-  const showNotAvailableModal = () =>
-    dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.FEATURE_NOT_AVAILABLE }));
   return (
     <Block style={styles.container}>
       <ScrollView contentContainerStyle={styles.containerScroll}>
@@ -98,14 +93,6 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
           )}
         </Block>
         <Text style={styles.header}>{I18n.t('feel_good_tools.header')}</Text>
-        <EvaluationItem
-          colors={theme.gradients.pink}
-          header={I18n.t('feel_good_tools.tip')}
-          icon={<LightBulb />}
-          headerColor={theme.colors.black}
-          round={false}
-          onPress={showNotAvailableModal}
-        />
         <EvaluationItem
           colors={theme.gradients.pink}
           header={I18n.t('feel_good_tools.draft')}
