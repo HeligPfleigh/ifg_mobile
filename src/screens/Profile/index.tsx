@@ -97,7 +97,7 @@ class Home extends Component<HomeProps> {
             isNavigator={false}
             iconColor={theme.colors.white}
             labelColor={theme.colors.white}
-            backgroundColor={theme.colors.red}
+            backgroundColor={theme.colors.gray2}
             itemLabel={I18n.t('profile.logout')}
             onPress={this._logout}
           />
