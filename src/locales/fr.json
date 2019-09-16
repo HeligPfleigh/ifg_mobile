@@ -137,6 +137,7 @@
   "signin": {
     "title": "Heureux de te voir !",
     "username": "Nom d'utilisateur",
+    "email": "E-mail",
     "password": "Mot de passe",
     "submit": "Connexion",
     "forgot": "Mot de passe oublié?"

@@ -16,8 +16,8 @@ const me = () => instance.get('/evaluations/statistic');
 
 const evaluationSummary = (type: Enum.EvaluationType) => instance.get(`/evaluations/${type}`);
 
-const login = (username: string, password: string) => {
-  return instance.post(`/users/login`, { username, password });
+const login = (email: string, password: string) => {
+  return instance.post(`/users/login`, { email, password });
 };
 
 const createEvaluation = (data: {
