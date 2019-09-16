@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
+import { summaryIcon } from '../../core/utils';
 import { Block, ScoreText, WithTranslations } from '../../components';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
@@ -16,11 +17,17 @@ const Legend: React.FC = () => {
   return (
     <Block padding={theme.sizes.padding}>
       <Block style={styles.container}>
-        <Block center middle padding={theme.sizes.base} flex={1}>
-          <Text style={styles.headerTitle}>{I18n.t('legend.header.title')}</Text>
-          <Text>{I18n.t('legend.header.body')}</Text>
+        <Block center middle padding={theme.sizes.base} flex={false}>
+          <Text style={styles.headerBody}>{I18n.t('legend.header.body')}</Text>
         </Block>
         <Block flex={3} padding={theme.sizes.base} row>
+          <Block flex={false}>
+            {[5, 3, 1, -1, -3, -5].map(item => (
+              <Block flex={1} center middle key={`${item}`}>
+                {summaryIcon(item, 20)}
+              </Block>
+            ))}
+          </Block>
           <Block flex={1} style={styles.leftContainer}>
             {scores.map(item => (
               <Block flex={1} center middle key={`${item}`}>
@@ -30,24 +37,24 @@ const Legend: React.FC = () => {
           </Block>
           <Block flex={8}>
             <Block flex={1} row>
-              <Block flex={2} center middle>
-                <SunImg width={100} height={100} />
+              <Block flex={1} center middle>
+                <SunImg width={50} height={50} />
               </Block>
               <Block flex={3} middle>
                 <Text style={{ color: theme.scoreSpectrum[10] }}>{I18n.t('legend.subtitle.good')}</Text>
               </Block>
             </Block>
             <Block flex={1} row style={styles.rightMiddleContainer}>
-              <Block flex={2} center middle>
-                <MoonImg width={80} height={80} />
+              <Block flex={1} center middle>
+                <MoonImg width={40} height={40} />
               </Block>
               <Block flex={3} middle>
                 <Text style={{ color: theme.colors.yellow }}>{I18n.t('legend.subtitle.normal')}</Text>
               </Block>
             </Block>
             <Block flex={1} row>
-              <Block flex={2} center middle>
-                <StormImg width={100} height={100} />
+              <Block flex={1} center middle>
+                <StormImg width={50} height={50} />
               </Block>
               <Block flex={3} middle>
                 <Text style={{ color: theme.scoreSpectrum[0] }}>{I18n.t('legend.subtitle.bad')}</Text>

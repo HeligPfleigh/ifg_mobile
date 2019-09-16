@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
     marginBottom: theme.sizes.base,
   },
   headerBody: {
-    fontSize: theme.sizes.h2,
     textAlign: 'center',
   },
   leftContainer: {
