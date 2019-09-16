@@ -99,6 +99,15 @@ class Drafts extends Component<DraftsProps> {
     const {
       drafts: { data: draftList },
     } = this.props;
+
+    if (draftList.length === 0) {
+      return (
+        <Block center middle flex={1}>
+          <Text>{I18n.t('drafts.no_draft')}</Text>
+        </Block>
+      );
+    }
+
     return (
       <ScrollView>
         {draftList.map(draft => (

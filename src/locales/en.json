@@ -367,5 +367,8 @@
   },
   "achieved_actions": {
     "header": "Congratulation!! \nYou already achieved these actions!"
+  },
+  "drafts": {
+    "no_draft": "You don't have any draft yet!"
   }
 }

@@ -357,5 +357,8 @@
   },
   "achieved_actions": {
     "header": "Félicitations!! \nTu as déjà terminé ces actions!"
+  },
+  "drafts": {
+    "no_draft": "Vous n'avez pas encore de projet!"
   }
 }
