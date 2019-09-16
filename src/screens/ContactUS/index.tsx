@@ -40,7 +40,7 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Block style={styles.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Loader loading={loading} />
           <Block flex={false}>
             <Block flex={false} center middle style={styles.titleWrapper}>
