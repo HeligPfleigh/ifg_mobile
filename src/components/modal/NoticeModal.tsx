@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
     fontSize: theme.sizes.h2,
   },
   smartBody: {
-    marginTop: theme.sizes.margin,
-    marginBottom: theme.sizes.padding,
+    marginBottom: theme.sizes.margin,
     fontSize: theme.sizes.font,
   },
   smartCharacter: {

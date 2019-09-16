@@ -19,11 +19,11 @@ export default class Summarize extends Component<SummarizeProps> {
     return (
       <Block row style={styles.container}>
         <WelcomeImg width={60} height={40} />
-        <Block flex={2}>
+        <Block flex={3}>
           <Text style={styles.label}>{I18n.t('home.global_scores')}</Text>
         </Block>
         {score !== undefined ? (
-          <Block row right flex={2}>
+          <Block row right flex={1}>
             <ScoreText score={score} />
           </Block>
         ) : (

@@ -68,7 +68,9 @@ const styles = StyleSheet.create({
     fontSize: theme.sizes.header,
   },
   roundBtnContainer: {
+    alignItems: 'center',
     marginHorizontal: theme.sizes.margin,
+    backgroundColor: theme.colors.white2,
   },
   roundBtnTxt: {
     fontSize: theme.sizes.base / 2,
