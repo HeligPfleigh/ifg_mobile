@@ -89,6 +89,9 @@
     "feature_not_available": {
       "header": "Pardon, cette fonctionnalité n'est pas disponible pour le moment!"
     },
+    "network_not_available": {
+      "header": "Votre appareil ne dispose pas d'une connexion Internet, veuillez noter que certaines fonctionnalités ne fonctionneront pas correctement"
+    },
     "license": {
       "title": "Terms and conditions",
       "description": "These terms and conditions are an agreement between Mobile Application Owner (\"Mobile Application Owner\", \"us\", \"we\" or \"our\") and you (\"User\", \"you\" or \"your\"). This Agreement sets forth the general terms and conditions of your use of the I FEEL GOOD mobile application and any of its products or services (collectively, \"Mobile Application\" or \"Services\").",

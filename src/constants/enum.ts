@@ -27,6 +27,7 @@ enum ModalType {
   FEATURE_NOT_AVAILABLE = 'feature_not_available',
   CHOOSE_DATE = 'choose_date',
   LICENSE = 'license',
+  NETWORK_NOT_AVAILABLE = 'network_not_available',
 }
 
 enum NavigationParamsName {

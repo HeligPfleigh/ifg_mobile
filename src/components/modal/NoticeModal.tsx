@@ -158,6 +158,15 @@ export const FeatureNotAvailableModal: React.FC<NoticeModalProps> = ({ onPress }
   );
 };
 
+export const NetworkNotAvailableModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => {
+  return (
+    <TouchableOpacity style={styles.content} onPress={onPress}>
+      <WelcomeImg />
+      <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.network_not_available.header')}</Text>
+    </TouchableOpacity>
+  );
+};
+
 export const LicenseModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => {
   return (
     <SafeAreaView>
