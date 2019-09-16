@@ -10,7 +10,7 @@ import I18n from '../../core/i18n';
 import { styles } from './styles';
 import { Step1 } from './Step1';
 import { Step2 } from './Step2';
-import { Step3 } from './Step3';
+import Step3 from './Step3';
 import { Enum, theme } from '../../constants';
 import { showModal, saveDraft, removeDraft } from '../../store/actions';
 import api from '../../core/api';
