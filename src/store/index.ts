@@ -4,9 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 import { rootReducer } from './reducers';
-import { navMiddleware } from '../navigations/AppNavigator';
 
-const middlewares = [thunk, navMiddleware];
+const middlewares = [thunk];
 const middleWareEnhancer = applyMiddleware(...middlewares);
 
 const persistConfig = {

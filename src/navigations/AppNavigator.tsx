@@ -1,10 +1,4 @@
-import { createSwitchNavigator } from 'react-navigation';
-import {
-  createReduxContainer,
-  createReactNavigationReduxMiddleware,
-  createNavigationReducer,
-} from 'react-navigation-redux-helpers';
-import { connect } from 'react-redux';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
 import NavigatorMap from './NavigatorMap';
 import { AuthStack } from './UnAuthorizedNavigator';
@@ -22,16 +16,4 @@ const AppNavigator = createSwitchNavigator(
   },
 );
 
-export const navReducer = createNavigationReducer(AppNavigator);
-
-export const navMiddleware = createReactNavigationReduxMiddleware((state: any) => state.nav);
-
-const App = createReduxContainer(AppNavigator);
-
-const mapStateToProps = (state: any) => ({
-  state: state.nav,
-});
-
-const AppWithNavigationState = connect(mapStateToProps)(App);
-
-export default AppWithNavigationState;
+export default createAppContainer(AppNavigator);

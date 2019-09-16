@@ -56,7 +56,7 @@ class Home extends Component<HomeProps> {
     }
 
     const avatar = get(this.props, 'me.data.user.avatar', undefined);
-    const name = `${get(this.props, 'me.data.user.firstName', '')} ${get(this.props, 'me.data.user.lastName', '')}`;
+    const name = get(this.props, 'me.data.user.username', '');
     return (
       <Block style={styles.container}>
         <Block flex={1.5} style={styles.header}>
@@ -97,7 +97,7 @@ class Home extends Component<HomeProps> {
             isNavigator={false}
             iconColor={theme.colors.white}
             labelColor={theme.colors.white}
-            backgroundColor={theme.colors.red}
+            backgroundColor={theme.colors.gray2}
             itemLabel={I18n.t('profile.logout')}
             onPress={this._logout}
           />
