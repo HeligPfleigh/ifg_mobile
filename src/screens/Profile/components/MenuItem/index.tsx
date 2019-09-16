@@ -45,7 +45,7 @@ export default class MenuItem extends Component<MenuItemProps> {
             <Text style={labelStyles}>{itemLabel}</Text>
           </Block>
           {isNavigator && (
-            <Block flex={1} right row>
+            <Block flex={0.2} right row>
               <SimpleLineIcons name="arrow-right" size={theme.sizes.base} />
             </Block>
           )}

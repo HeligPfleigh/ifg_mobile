@@ -10,7 +10,7 @@
   "messages": {
     "required": "Field is required",
     "pwd_confirm": "Password and confirm password do not match",
-    "max_200": "Maximum 200 characters",
+    "max_200": "200 words maximum",
     "require_different": "Please input new email",
     "must_be": "Must be",
     "or_less": "characters or less",
@@ -32,7 +32,7 @@
     "home": "Home",
     "feel_good_tools": "Feel Good Tools",
     "profile": "Profile",
-    "global_scores": "Global scores",
+    "global_scores": "My Feel Good GPS",
     "summary": "Summary",
     "legend": "Legend",
     "evaluate": "Evaluate",
@@ -130,7 +130,7 @@
   },
   "welcome": {
     "header": "I Feel Good",
-    "paragraph": "Find out what you need,\nand also what you don't !",
+    "paragraph": "You are the GPS of your lifestyle",
     "signup": "SIGN UP",
     "signin": "I HAVE AN ACCOUNT"
   },
@@ -166,12 +166,12 @@
     "other": "OTHER FACTORS",
     "overall": "OVERALL",
     "view_details": "View details",
-    "global_scores": "All scores",
+    "global_scores": "My Feel Good GPS",
     "description": {
-      "relationships": "Evaluate people who influence my energy levels and moods.",
+      "relationships": "Evaluate people who influence my energy and moods.",
       "activities": "Evaluate occupations that change my physical and mental states.",
-      "intakes": "Evaluate absorptions that impact my body and mind.",
-      "other": "Evaluate other aspects that modify my vitality and spirit."
+      "intakes": "Absorptions that impact my body and mind.",
+      "other": "Any other aspect that modifies my vitality and spirit."
     }
   },
   "summary": {
@@ -198,7 +198,7 @@
     "step1": {
       "header": {
         "relationships": {
-          "name": "Who has brought joy to you, \nwho gave you negative waves?"
+          "name": "Who has brought joy to you, who gave you, who gave you negative waves ?"
         },
         "activities": {
           "name": "In 2 years, which activity would you continue with joy, which one you would like to get rid of?"
@@ -217,16 +217,16 @@
     },
     "step2": {
       "relationships": {
-        "feelling": "How does this relation\n influence you?"
+        "feelling": "How does this relation\n impact you?"
       },
       "activities": {
-        "feelling": "How does this activity\n influence you?"
+        "feelling": "How does this activity\n impact you?"
       },
       "intakes": {
-        "feelling": "How does this intake\n influence you?"
+        "feelling": "How does this intake\n impact you?"
       },
       "other": {
-        "feelling": "How does this element\n influence you?"
+        "feelling": "How does this element\n impact you?"
       },
       "and": "And",
       "feel": "I feel",
@@ -321,19 +321,19 @@
       "newsletter_subtitle": "Receive cool and fun news",
       "motivation_msgs": "Motivation messages",
       "motivation_msgs_subtitle": "Receive congratulations and encouragements",
-      "language_setting": "Language settings",
+      "language_setting": "Change language",
       "language_setting_subtitle": "Please select your language",
       "yes": "Yes",
       "no": "I DON'T need feel good information"
     },
     "account_contact_us": {
-      "title": "Contact us",
-      "page_title": "Please type your\n message",
+      "title": "Contact your Feel Good team",
+      "page_title": "Your message",
       "subject": "Subject",
-      "description": "Please type your message",
-      "feedback": "Feedback",
+      "description": "You can type your message below",
+      "feedback": "Feedbacks",
       "suggest": "Suggestions",
-      "tech_quest": "Technical question",
+      "tech_quest": "Technical problems",
       "other": "Other",
       "feedback_success": "Your feedback is sent successfully"
     },

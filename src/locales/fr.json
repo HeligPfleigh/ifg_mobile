@@ -10,7 +10,7 @@
   "messages": {
     "required": "Champ requis",
     "pwd_confirm": "Mot de passe et confirmez que le mot de passe ne correspond pas",
-    "max_200": "Maximum 200 caractères",
+    "max_200": "200 mots maximum",
     "require_different": "Veuillez saisir un nouvel email",
     "must_be": "Doit être",
     "or_less": "caractères ou moins",
@@ -32,7 +32,7 @@
     "home": "Accueil",
     "feel_good_tools": "Outils Feel Good",
     "profile": "Profil",
-    "global_scores": "Tous les scores",
+    "global_scores": "Mon GPS Feel Good",
     "summary": "Récapitulatif",
     "legend": "Légende",
     "evaluate": "Évaluer",
@@ -50,7 +50,7 @@
     },
     "draft_saved": {
       "header": "Ton brouillon a été sauvegardé.",
-      "body": "Tu peux prendre ton temps pour réfléchir et le finir \nà tout moment dans tes Outils Feel Good."
+      "body": "Tu peux prendre ton temps pour réfléchir et le finir à tout moment dans tes Outils Feel Good."
     },
     "evaluation_saved": {
       "header": "Tes scores feel good ont \nété mis à jour suite à cette évaluation.",
@@ -130,7 +130,7 @@
   },
   "welcome": {
     "header": "I Feel Good",
-    "paragraph": "Découvre ce qui est utile pour toi,\net aussi ce qui ne l'est pas !",
+    "paragraph": "Tu es le GPS de ton style de vie",
     "signup": "Créer un compte",
     "signin": "J'ai déjà un compte"
   },
@@ -162,22 +162,22 @@
   "home": {
     "relationships": "RELATIONS",
     "activities": "ACTIVITÉS",
-    "intakes": "ABSORPTIONS",
+    "intakes": "NUTRITION",
     "other": "AUTRES FACTEURS",
     "overall": "GÉNÉRAL",
     "view_details": "Voir les détails",
-    "global_scores": "Tous les scores",
+    "global_scores": "Mon GPS Feel Good",
     "description": {
       "relationships": "Evaluer les personnes qui influencent mon énergie et mon humeur.",
       "activities": "Evaluer les occupations qui changent mes états physiques et mental.",
-      "intakes": "Evaluer les apports qui impactent mon corps et ma tête.",
+      "intakes": "Evaluer les absorptions qui impactent mon corps et ma tête.",
       "other": "Evaluer tout autre facteur qui modifie ma vitalité et mon esprit."
     }
   },
   "summary": {
     "relationships": "Relations",
     "activities": "Activités",
-    "intakes": "Absorptions",
+    "intakes": "Nutrition",
     "other": "Autres facteurs",
     "overall": "Général",
     "legends": "Légende",
@@ -260,7 +260,7 @@
       "drinks": "Boissons",
       "supplements": "Compléments alimentaires",
       "medications": "Médicaments",
-      "other_intakes": "Autres absorptions",
+      "other_intakes": "Autres nutrition",
       "routines": "Routines",
       "places": "Endroits",
       "objects": "Objets",
@@ -311,25 +311,25 @@
       "newsletter_subtitle": "Recevez des nouvelles cool et amusantes",
       "motivation_msgs": "Messages de motivation",
       "motivation_msgs_subtitle": "Recevez des félicitations et des encouragements",
-      "language_setting": "Paramètres de langue",
+      "language_setting": "Changer de langue",
       "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue",
       "yes": "Oui",
-      "no": "Je n'ai pas besoin de me sentir bien"
+      "no": "Je n'ai pas besoin d'informations feel good"
     },
     "account_contact_us": {
-      "title": "Contactez nous",
-      "page_title": "Veuillez taper votre\n message",
+      "title": "Contacter ton équipe Feel Good",
+      "page_title": "Ton message",
       "subject": "Sujet",
-      "description": "Veuillez taper votre message",
-      "feedback": "Retour d'information",
+      "description": "Tu peux écrire ton message ci-dessous",
+      "feedback": "Commentaires",
       "suggest": "Suggestions",
-      "tech_quest": "Question technique",
+      "tech_quest": "Problèmes techniques",
       "other": "Autre",
       "feedback_success": "Votre commentaire est envoyé avec succès"
     },
     "delete_account": {
       "title": "Supprimer Votre Compte",
-      "page_title": "Êtes-vous sûr que vous voulez\neffacer mon compte?",
+      "page_title": "Es-tu sûr-e de vouloir \neffacer ton compte ?",
       "page_subtitle": "Peux-tu partager avec nous la raison de ton départ ?",
       "label_input": "La raison est….",
       "label_button": "ENVOYER & EFFACER MON COMPTE"
