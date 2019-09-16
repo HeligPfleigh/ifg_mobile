@@ -137,6 +137,7 @@
   "signin": {
     "title": "Glad to see you!",
     "username": "Username",
+    "email": "E-mail",
     "password": "Password",
     "submit": "SIGN IN",
     "forgot": "Forgot password?"

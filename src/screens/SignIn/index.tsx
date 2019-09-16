@@ -16,7 +16,7 @@ import { authorizeApi } from '../../core/api';
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
 const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
-  const { required, minLength4, minLength8, maxLength120 } = validator;
+  const { required, minLength4, minLength8, maxLength120, email } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
@@ -31,9 +31,9 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
   };
 
   const submit = (values: any) => {
-    const { username, password: pwd } = values;
+    const { email: _email, password: pwd } = values;
     Keyboard.dismiss();
-    dispatch(login(username, pwd));
+    dispatch(login(_email, pwd));
   };
 
   const { handleSubmit } = props;
@@ -48,11 +48,11 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
         <Block flex={false} style={{ aspectRatio: 1.5 }}>
           <Block bottom margin={[theme.sizes.margin * 2, 0]}>
             <Field
-              name="username"
-              label={I18n.t('signin.username')}
+              name="email"
+              label={I18n.t('signin.email')}
               component={TextField}
               characterRestriction={120}
-              validate={[required, minLength4, maxLength120]}
+              validate={[required, minLength4, email]}
               tintColor={theme.colors.green}
             />
             <Field
@@ -88,7 +88,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
 export default connect(() => ({
   initialValues: {
-    username: '',
+    email: '',
     password: '',
   },
 }))(reduxForm({ form: Enum.ReduxFormName.SIGN_IN })(withNavigation(SignIn)));
