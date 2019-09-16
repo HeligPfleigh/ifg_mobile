@@ -5,7 +5,7 @@ import { changeLanguage } from '../store/actions';
 import { SupportedLanguage } from '../store/language/types';
 import { theme } from '../constants';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   text: {
     color: theme.colors.primary,
     fontSize: theme.sizes.h3,

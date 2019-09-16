@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import NavigatorMap from '../../navigations/NavigatorMap';
 import { ReduxFormName } from '../../constants/enum';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import api from '../../core/api';
-import { Block, Button, Loader, Toast } from '../../components';
+import { Block, Button, Loader, Toast, ContactMail } from '../../components';
 import { styles } from './styles';
 
 const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
@@ -19,6 +20,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
     try {
       await api.forgotPwd(value);
       Toast.success(I18n.t('forgot.message'));
+      props.navigation.navigate(NavigatorMap.Welcome);
     } catch (err) {
       Toast.error(err.message);
     }
@@ -53,6 +55,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
             </Block>
           </Button>
         </Block>
+        <ContactMail />
       </Block>
     </React.Fragment>
   );

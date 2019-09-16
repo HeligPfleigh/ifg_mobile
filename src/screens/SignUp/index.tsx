@@ -10,7 +10,7 @@ import NavigatorMap from '../../navigations/NavigatorMap';
 import I18n from '../../core/i18n';
 import { showModal, login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button, Checkbox, Toast, Loader } from '../../components';
+import { Block, Button, Checkbox, Toast, Loader, ContactMail } from '../../components';
 import { theme, Enum } from '../../constants';
 import api from '../../core/api';
 import { styles } from './styles';
@@ -123,18 +123,21 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
             />
             <View style={styles.confirm}>
               <View style={styles.box}>
-                <Checkbox size={22} checked={isChecked} onPress={() => this.setState({ isChecked: !isChecked })} />
+                <Checkbox size={25} checked={isChecked} onPress={() => this.setState({ isChecked: !isChecked })} />
               </View>
               <Text style={styles.textConfirm}>{I18n.t('signup.agree')}</Text>
               <TouchableOpacity onPress={this._showLicenseModal}>
                 <Text style={styles.textLink}>{I18n.t('signup.terms')}</Text>
               </TouchableOpacity>
             </View>
-            <Button gradient disabled={!isChecked} onPress={handleSubmit(this._onSignup)}>
+            <Button style={styles.button} gradient disabled={!isChecked} onPress={handleSubmit(this._onSignup)}>
               <Block center middle>
                 <Text style={styles.textButton}>{I18n.t('signup.submit')}</Text>
               </Block>
             </Button>
+            <View style={styles.contact}>
+              <ContactMail />
+            </View>
           </ScrollView>
         </KeyboardAvoidingView>
       </React.Fragment>
