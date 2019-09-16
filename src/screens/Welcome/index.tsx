@@ -3,7 +3,7 @@ import { Text, SafeAreaView } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { WelcomeImg } from '../../assets/images';
-import { Block, Button } from '../../components';
+import { Block, Button, WithTranslations } from '../../components';
 import { theme } from '../../constants';
 import { styles } from './styles';
 import I18n from '../../core/i18n';
@@ -55,4 +55,4 @@ const Welcome: React.FC<WelcomeProps> = (props: WelcomeProps) => {
   );
 };
 
-export default Welcome;
+export default WithTranslations(Welcome);

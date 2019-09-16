@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 import React from 'react';
 import { Platform } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import ChooseLanguage from '../components/ChooseLanguage';
 import { theme } from '../constants';
 import NavigatorMap from './NavigatorMap';
 import SignInScreen from '../screens/SignIn';
@@ -11,7 +12,10 @@ import ForgotPasswordScreen from '../screens/ForgotPassword';
 
 export const AuthStack = createStackNavigator(
   {
-    [NavigatorMap.Welcome]: { screen: WelcomeScreen, navigationOptions: { header: null } },
+    [NavigatorMap.Welcome]: {
+      screen: WelcomeScreen,
+      navigationOptions: { headerRight: <ChooseLanguage /> },
+    },
     [NavigatorMap.SignIn]: SignInScreen,
     [NavigatorMap.SignUp]: SignUpScreen,
     [NavigatorMap.ForgotPassword]: ForgotPasswordScreen,
