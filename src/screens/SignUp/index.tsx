@@ -99,7 +99,7 @@ class SignUp extends React.Component<SignUpProps> {
             />
             <View style={styles.confirm}>
               <View style={styles.box}>
-                <Checkbox size={22} checked={isChecked} onPress={() => this.setState({ isChecked: !isChecked })} />
+                <Checkbox size={25} checked={isChecked} onPress={() => this.setState({ isChecked: !isChecked })} />
               </View>
               <Text style={styles.textConfirm}>{I18n.t('signup.agree')}</Text>
               <TouchableOpacity onPress={this._showLicenseModal}>

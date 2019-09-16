@@ -11,10 +11,13 @@ export const styles = StyleSheet.create({
     fontSize: theme.sizes.h2,
   },
   confirm: {
+    marginTop: theme.sizes.padding,
+    marginBottom: theme.sizes.margin,
     flexDirection: 'row',
     alignItems: 'center',
     aspectRatio: 6.5,
     flexWrap: 'wrap',
+    width: '100%',
   },
   box: { marginRight: 5 },
   textConfirm: {
