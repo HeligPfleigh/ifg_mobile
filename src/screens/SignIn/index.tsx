@@ -6,7 +6,7 @@ import { useDispatch, useSelector, connect } from 'react-redux';
 import I18n from '../../core/i18n';
 import { login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button, Loader } from '../../components';
+import { Block, Button, Loader, ContactMail } from '../../components';
 import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -81,6 +81,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
             </TouchableOpacity>
           </Block>
         </Block>
+        <ContactMail />
       </Block>
     </React.Fragment>
   );

@@ -7,7 +7,7 @@ import { TextField, FormValidator as validator } from '../../components/FormFiel
 import { theme } from '../../constants';
 import I18n from '../../core/i18n';
 import api from '../../core/api';
-import { Block, Button, Loader, Toast } from '../../components';
+import { Block, Button, Loader, Toast, ContactMail } from '../../components';
 import { styles } from './styles';
 
 const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
@@ -55,6 +55,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
             </Block>
           </Button>
         </Block>
+        <ContactMail />
       </Block>
     </React.Fragment>
   );

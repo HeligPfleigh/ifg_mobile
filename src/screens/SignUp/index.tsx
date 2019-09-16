@@ -10,7 +10,7 @@ import NavigatorMap from '../../navigations/NavigatorMap';
 import I18n from '../../core/i18n';
 import { showModal, login } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button, Checkbox, Toast, Loader } from '../../components';
+import { Block, Button, Checkbox, Toast, Loader, ContactMail } from '../../components';
 import { theme, Enum } from '../../constants';
 import api from '../../core/api';
 import { styles } from './styles';
@@ -136,6 +136,7 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
               </Block>
             </Button>
           </ScrollView>
+          <ContactMail />
         </KeyboardAvoidingView>
       </React.Fragment>
     );
