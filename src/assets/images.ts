@@ -20,6 +20,7 @@ import LightBulb from './images/light_bulb.svg';
 import Edit from './images/edit.svg';
 import Delete from './images/trash.svg';
 import EditCircle from './images/edit_circle.svg';
+import Delete2 from './images/trash_blue.svg';
 
 const DefaultAvatar = require('./images/avatar.png');
 
@@ -47,4 +48,5 @@ export {
   Edit,
   Delete,
   EditCircle,
+  Delete2,
 };
