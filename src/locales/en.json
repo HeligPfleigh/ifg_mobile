@@ -212,10 +212,10 @@
           "name": "What else in your universe contributes to increase or decrease you energy and moods?"
         },
         "label": "Select a sub-category",
+        "input_placeholder": "Type name here...",
         "desc": "Add description"
       },
-      "name": "Name",
-      "optional": "(Optional)"
+      "optional": " (optional)"
     },
     "step2": {
       "relationships": {

@@ -234,7 +234,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
             gradient={!disableNextBtn}
             disabled={disableNextBtn}
             onPress={this._handleNextAndSubmit}
-            style={styles.nextBtn}
+            style={[styles.nextBtn, disableNextBtn ? styles.disableNextBtn : {}]}
           >
             <Block center middle>
               <Text style={styles.nextBtnTxt}>

@@ -26,7 +26,7 @@ interface Step2Props {
 }
 
 const Card: React.FC<CardProps> = ({ text, icon, selected }: CardProps) => (
-  <Block center middle flex={false} style={[step2Styles.card, selected ? step2Styles.selected : {}]}>
+  <Block center middle flex={false} style={[step2Styles.card, selected ? {} : step2Styles.selected]}>
     <Text style={step2Styles.cardHeader}>{text}</Text>
     {icon}
   </Block>

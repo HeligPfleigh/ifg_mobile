@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Rocket, BrainStorm, Folder, Congratulation, Finger, WelcomeImg } from '../../assets/images';
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
+import { Block } from '..';
 
 const styles = StyleSheet.create({
   content: {
@@ -60,6 +62,17 @@ const styles = StyleSheet.create({
     fontSize: theme.sizes.h3,
     marginTop: theme.sizes.padding,
   },
+  decorateBtn: {
+    height: 30,
+    width: 80,
+    borderRadius: 20,
+    borderColor: theme.colors.blue,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  decorateTxt: {
+    color: theme.colors.blue,
+    marginLeft: theme.sizes.margin / 2,
+  },
 });
 
 interface NoticeModalProps {
@@ -83,12 +96,20 @@ export const SelfEvaluationModal: React.FC<NoticeModalProps> = ({ onPress }: Not
   );
 };
 
+const DecorationBtn = () => (
+  <Block style={styles.decorateBtn} flex={false} center middle row>
+    <MaterialCommunityIcons size={20} name="check" color={theme.colors.blue} />
+    <Text style={styles.decorateTxt}>OK</Text>
+  </Block>
+);
+
 export const DraftSavedModal: React.FC<NoticeModalProps> = ({ onPress }: NoticeModalProps) => {
   return (
     <TouchableOpacity style={styles.content} onPress={onPress}>
       <Folder />
       <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.draft_saved.header')}</Text>
       <Text style={[styles.contentTitle, styles.text]}>{I18n.t('modal.draft_saved.body')}</Text>
+      <DecorationBtn />
     </TouchableOpacity>
   );
 };
@@ -99,6 +120,7 @@ export const EvaluationSavedModal: React.FC<NoticeModalProps> = ({ onPress }: No
       <BrainStorm />
       <Text style={[styles.headerTitle, styles.text]}>{I18n.t('modal.evaluation_saved.header')}</Text>
       <Text style={[styles.contentTitle, styles.text]}>{I18n.t('modal.evaluation_saved.body')}</Text>
+      <DecorationBtn />
     </TouchableOpacity>
   );
 };

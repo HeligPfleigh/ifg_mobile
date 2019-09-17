@@ -16,6 +16,9 @@ export const styles = StyleSheet.create({
     borderColor: theme.colors.orange,
     borderWidth: StyleSheet.hairlineWidth,
   },
+  disableNextBtn: {
+    backgroundColor: theme.colors.gray2,
+  },
 });
 
 export const step1Styles = StyleSheet.create({
@@ -23,14 +26,18 @@ export const step1Styles = StyleSheet.create({
     paddingHorizontal: theme.sizes.padding,
     paddingVertical: theme.sizes.padding / 2,
   },
+  field: {
+    marginBottom: theme.sizes.margin,
+  },
   header: {
     textAlign: 'center',
     fontSize: theme.sizes.h2,
+    marginBottom: theme.sizes.margin / 2,
+    color: theme.colors.blue,
   },
   name: {
     fontSize: theme.sizes.font,
-    marginBottom: theme.sizes.margin / 2,
-    color: theme.colors.gray,
+    color: theme.colors.blue,
   },
   input: {
     height: 40,
@@ -43,7 +50,7 @@ export const step1Styles = StyleSheet.create({
     marginRight: theme.sizes.margin / 2,
     marginVertical: theme.sizes.margin,
     borderRadius: theme.sizes.base,
-    paddingHorizontal: theme.sizes.padding / 2,
+    paddingHorizontal: theme.sizes.padding / 3,
     borderColor: theme.colors.gray,
     borderWidth: 1,
     paddingVertical: theme.sizes.margin / 2,
@@ -53,6 +60,9 @@ export const step1Styles = StyleSheet.create({
   },
   selectedChipTxt: {
     color: theme.colors.white,
+  },
+  chipTxt: {
+    color: theme.colors.black,
   },
 });
 

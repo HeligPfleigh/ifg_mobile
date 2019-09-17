@@ -53,22 +53,25 @@ export const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, 
         <Text style={step3Styles.header}>{I18n.t('evaluate.step3.header')}</Text>
       </Block>
       <Block flex={1} middle>
-        {scores.map(spec => (
-          <Button onPress={() => onScoring(spec.score)} key={`spec-${spec.score}`}>
-            <Block
-              flex={1}
-              center
-              middle
-              style={[
-                step3Styles.spectrum,
-                score === spec.score ? { backgroundColor: theme.colors.purple1 } : { backgroundColor: spec.color },
-              ]}
-            >
-              <Text style={step3Styles.score}>{spec.score}</Text>
-              {spec.label && <Text style={step3Styles.score_label}>{spec.label}</Text>}
-            </Block>
-          </Button>
-        ))}
+        {scores.map(spec => {
+          let blockBackground = {};
+          if (score) {
+            blockBackground =
+              score === spec.score
+                ? { backgroundColor: theme.colors.purple1 }
+                : { backgroundColor: theme.colors.gray2 };
+          } else {
+            blockBackground = { backgroundColor: spec.color };
+          }
+          return (
+            <Button onPress={() => onScoring(spec.score)} key={`spec-${spec.score}`}>
+              <Block flex={1} center middle style={[step3Styles.spectrum, blockBackground]}>
+                <Text style={step3Styles.score}>{spec.score}</Text>
+                {spec.label && <Text style={step3Styles.score_label}>{spec.label}</Text>}
+              </Block>
+            </Button>
+          );
+        })}
       </Block>
     </Block>
   );

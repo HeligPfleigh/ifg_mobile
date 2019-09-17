@@ -29,16 +29,21 @@ export const Step1: React.FC<Step1Props> = ({
   return (
     <ScrollView>
       <Block flex={1} style={step1Styles.container}>
-        <Block flex={1} middle>
+        <Block flex={1} middle style={step1Styles.field}>
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>{I18n.t(`evaluate.step1.header.${type}.name`)}</Text>
           </Block>
           <Block flex={1}>
-            <Text style={step1Styles.name}>{I18n.t('evaluate.step1.name')}</Text>
-            <TextInput style={step1Styles.input} onChangeText={onNameChange} value={name} />
+            <TextInput
+              style={step1Styles.input}
+              onChangeText={onNameChange}
+              value={name}
+              maxLength={20}
+              placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
+            />
           </Block>
         </Block>
-        <Block flex={1}>
+        <Block flex={2} style={step1Styles.field}>
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.label')}</Text>
           </Block>
@@ -51,16 +56,20 @@ export const Step1: React.FC<Step1Props> = ({
                   middle
                   style={[step1Styles.chip, tag === label ? step1Styles.selectedChip : {}]}
                 >
-                  <Text style={tag === label ? step1Styles.selectedChipTxt : {}}>{I18n.t(`evaluate.tags.${tag}`)}</Text>
+                  <Text style={tag === label ? step1Styles.selectedChipTxt : step1Styles.chipTxt}>
+                    {I18n.t(`evaluate.tags.${tag}`)}
+                  </Text>
                 </Block>
               </Button>
             ))}
           </Block>
         </Block>
-        <Block flex={1}>
+        <Block flex={1} style={step1Styles.field}>
           <Block flex={1} center middle>
-            <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.desc')}</Text>
-            <Text style={step1Styles.name}>{I18n.t('evaluate.step1.optional')}</Text>
+            <Text style={step1Styles.header}>
+              {I18n.t('evaluate.step1.header.desc')}
+              <Text style={step1Styles.name}>{I18n.t('evaluate.step1.optional')}</Text>
+            </Text>
           </Block>
           <Block flex={1} center>
             <TextInput style={step1Styles.input} onChangeText={onDescChange} value={desc} />

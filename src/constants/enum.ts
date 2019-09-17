@@ -47,7 +47,7 @@ enum ReduxFormName {
 const tags: any = {
   [EvaluationType.RELATIONSHIPS]: ['family', 'lover', 'friends', 'work', 'social', 'other_figures'],
   [EvaluationType.ACTIVITIES]: ['hobbies', 'job', 'fitness', 'spirituality', 'projects', 'other_activities'],
-  [EvaluationType.INTAKES]: ['foods', 'drinks', 'supplements', 'medications', 'other_intakes'],
+  [EvaluationType.INTAKES]: ['supplements', 'drinks', 'medications', 'foods', 'other_intakes'],
   [EvaluationType.OTHER]: ['routines', 'places', 'objects', 'memories', 'dreams', 'animals', 'other_elements'],
 };
 
