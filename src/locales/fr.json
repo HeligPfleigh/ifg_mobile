@@ -84,7 +84,7 @@
         "header": "Time-bound (Remporellement défini)",
         "body": "Tu peux indiquer une date de fin pour te motiver: elle peut être périodique (par jour, par semaine etc…), ou la date de fin peut être unique."
       },
-      "footer": "Et enfin, commencez votre action avec un verbe!"
+      "footer": "Et pour terminer, commence ton action avec un verbe !"
     },
     "feature_not_available": {
       "header": "Pardon, cette fonctionnalité n'est pas disponible pour le moment!"
@@ -209,9 +209,9 @@
           "name": "Te souviens-tu de la fois où tu as pris quelque chose qui t'a fait du bien, ou au contraire, t'a rendu inconfortable ?"
         },
         "other": {
-          "name": "Quels autres éléments dans ton univers contribue à augmenter ou réduire ton énergy et ton humeur ?"
+          "name": "Quel autre élément dans ton univers contribue à augmenter ou réduire ton énergie et ton humeur ?"
         },
-        "label": "Catégorie",
+        "label": "Sélectionner une sous-catégorie",
         "desc": "Ajouter une description"
       },
       "name": "Nom",
@@ -260,9 +260,9 @@
       "other_activities": "Autres activités",
       "foods": "Aliments",
       "drinks": "Boissons",
-      "supplements": "Compléments alimentaires",
+      "supplements": "Compléments",
       "medications": "Médicaments",
-      "other_intakes": "Autres nutrition",
+      "other_intakes": "Autres absorptions",
       "routines": "Routines",
       "places": "Endroits",
       "objects": "Objets",
@@ -280,7 +280,7 @@
   },
   "profile": {
     "user_info": {
-      "title": "Informations de l'utilisateur",
+      "title": "Mes informations",
       "username": "Nom d'utilisateur",
       "first_name": "Prénom",
       "last_name": "Nom",
@@ -288,8 +288,8 @@
       "gender": "Sexe",
       "height": "Taille",
       "weight": "Poids",
-      "male": "Mâle",
-      "female": "Femelle",
+      "male": "Homme",
+      "female": "Femme",
       "other": "Autre"
     },
     "account_settings": {
@@ -306,7 +306,7 @@
       "confirm_with_password": "Confirmer le mot de passe"
     },
     "account_parameters": {
-      "title": "Paramètres",
+      "title": "Préférences",
       "notifications": "Notifications",
       "notifications_subtitle": "Je veux recevoir les informations feel good",
       "newsletter": "Bulletin",
@@ -314,7 +314,7 @@
       "motivation_msgs": "Messages de motivation",
       "motivation_msgs_subtitle": "Recevez des félicitations et des encouragements",
       "language_setting": "Changer de langue",
-      "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue",
+      "language_setting_subtitle": "Choisir une langue",
       "yes": "Oui",
       "no": "Je n'ai pas besoin d'informations feel good"
     },
@@ -344,8 +344,8 @@
     "actions": "Actions ",
     "done": "achevées",
     "add_new": "Ajouter une nouvelle action",
-    "edit_action": "Edit action",
-    "select_reason": "Sélectionnez la raison (optionnel)",
+    "edit_action": "Modifier l'action",
+    "select_reason": "Pourquoi tu le fais ? (optionnel)",
     "cancel": "ANNULER",
     "update": "METTRE À JOUR",
     "footer": {
@@ -359,6 +359,6 @@
     "header": "Félicitations!! \nTu as déjà terminé ces actions!"
   },
   "drafts": {
-    "no_draft": "Vous n'avez pas encore de projet!"
+    "no_draft": "Tu n'a aucun brouillon pour le moment !"
   }
 }

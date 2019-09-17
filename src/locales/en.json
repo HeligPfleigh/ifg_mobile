@@ -84,7 +84,7 @@
         "header": "Time-bound",
         "body": "Set a deadline to motivate yourself: you can choose a periodic deadline (per day, per week etc…), or an unique deadline."
       },
-      "footer": "And finally, begin your action with a verb!"
+      "footer": "Finally, begin your action with a verb !"
     },
     "feature_not_available": {
       "header": "Sorry, this feature isn't available at this moment!"
@@ -211,7 +211,7 @@
         "other": {
           "name": "What else in your universe contributes to increase or decrease you energy and moods?"
         },
-        "label": "Sub-category",
+        "label": "Select a sub-category",
         "desc": "Add description"
       },
       "name": "Name",
@@ -280,7 +280,7 @@
   },
   "profile": {
     "user_info": {
-      "title": "User info",
+      "title": "My information",
       "username": "Username",
       "first_name": "First name",
       "last_name": "Last name",
@@ -316,7 +316,7 @@
       "confirm_with_password": "Confirm with password"
     },
     "account_parameters": {
-      "title": "Parameters",
+      "title": "Preferences",
       "notifications": "Notifications",
       "notifications_subtitle": "I want to receive feel good information",
       "newsletter": "Newsletter",
@@ -355,7 +355,7 @@
     "done": "done",
     "add_new": "Add new",
     "edit_action": "Edit action",
-    "select_reason": "Select the reason (optional)",
+    "select_reason": "Why do you do it ? (optional)",
     "cancel": "CANCEL",
     "update": "UPDATE",
     "footer": {
