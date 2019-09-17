@@ -13,7 +13,7 @@ interface EvaluationItemProps {
   icon?: ReactNode;
   onPress?: (event: GestureResponderEvent) => void;
   textColor?: string;
-  detailComponent: ReactElement;
+  detailComponent?: ReactElement;
   round?: boolean;
 }
 

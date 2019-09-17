@@ -1,83 +1,90 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { NavigationScreenProps } from 'react-navigation';
 import get from 'lodash/get';
+import { useSelector, useDispatch } from 'react-redux';
+import noop from 'lodash/noop';
 
-import { connect } from 'react-redux';
 import { EvaluationItem, ScoreText, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { showWeatherIcon } from '../../core/utils';
-import { MeState, AppState } from '../../store/types';
+import { AppState } from '../../store/types';
+import { showModal } from '../../store/actions';
 
-interface HomeProps {
-  navigation: NavigationScreenProp<NavigationState>;
-  me: MeState;
-}
+const GlobalScores: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+  const dispatch = useDispatch();
 
-class GlobalScores extends Component<HomeProps> {
-  _navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
-    this.props.navigation.navigate(NavigatorMap.Summary, {
+  const navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
+    navigation.navigate(NavigatorMap.Summary, {
       [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
     });
 
-  render() {
-    const {
-      me: {
-        data: { score },
-      },
-    } = this.props;
-    return (
-      <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
-        <EvaluationItem
-          colors={theme.gradients.pink}
-          header={I18n.t('home.relationships')}
-          headerColor={theme.colors.pink}
-          icon={showWeatherIcon(get(score, Enum.EvaluationType.RELATIONSHIPS, 0))}
-          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)}
-          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.RELATIONSHIPS, 0)} />}
-        />
-        <EvaluationItem
-          colors={theme.gradients.blue}
-          header={I18n.t('home.activities')}
-          headerColor={theme.colors.blue}
-          icon={showWeatherIcon(get(score, Enum.EvaluationType.ACTIVITIES, 0))}
-          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES)}
-          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.ACTIVITIES, 0)} />}
-        />
-        <EvaluationItem
-          colors={theme.gradients.orange}
-          header={I18n.t('home.intakes')}
-          headerColor={theme.colors.orange}
-          icon={showWeatherIcon(get(score, Enum.EvaluationType.INTAKES, 0))}
-          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.INTAKES)}
-          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.INTAKES, 0)} />}
-        />
-        <EvaluationItem
-          colors={theme.gradients.purple}
-          header={I18n.t('home.other')}
-          headerColor={theme.colors.purple}
-          icon={showWeatherIcon(get(score, Enum.EvaluationType.OTHER, 0))}
-          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OTHER)}
-          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.OTHER, 0)} />}
-        />
+  const showRemindModal = () => dispatch(showModal({ onModalPress: noop, modalType: Enum.ModalType.SELF_EVALUATION }));
 
-        <EvaluationItem
-          colors={theme.gradients.indigo}
-          header={I18n.t('home.overall')}
-          headerColor={theme.colors.indigo}
-          icon={showWeatherIcon(get(score, Enum.EvaluationType.OVERALL, 0))}
-          onPress={() => this._navigateToSummaryScreen(Enum.EvaluationType.OVERALL)}
-          detailComponent={<ScoreText score={get(score, Enum.EvaluationType.OVERALL, 0)} />}
-        />
-      </ScrollView>
-    );
-  }
-}
+  const score = useSelector((state: AppState) => state.me.data.score);
+  const relationshipScore = get(score, Enum.EvaluationType.RELATIONSHIPS);
+  const activityScore = get(score, Enum.EvaluationType.ACTIVITIES);
+  const intakeScore = get(score, Enum.EvaluationType.INTAKES);
+  const otherScore = get(score, Enum.EvaluationType.OTHER);
+  const overallScore = get(score, Enum.EvaluationType.OVERALL);
+  return (
+    <ScrollView contentContainerStyle={{ padding: theme.sizes.padding }}>
+      <EvaluationItem
+        colors={theme.gradients.indigo}
+        header={I18n.t('home.overall')}
+        headerColor={theme.colors.indigo}
+        icon={overallScore !== undefined ? showWeatherIcon(overallScore) : null}
+        onPress={() =>
+          overallScore !== undefined ? navigateToSummaryScreen(Enum.EvaluationType.OVERALL) : showRemindModal()
+        }
+        detailComponent={overallScore !== undefined ? <ScoreText score={overallScore} /> : undefined}
+      />
+      <EvaluationItem
+        colors={theme.gradients.pink}
+        header={I18n.t('home.relationships')}
+        headerColor={theme.colors.pink}
+        icon={relationshipScore !== undefined ? showWeatherIcon(relationshipScore) : null}
+        onPress={() =>
+          relationshipScore !== undefined
+            ? navigateToSummaryScreen(Enum.EvaluationType.RELATIONSHIPS)
+            : showRemindModal()
+        }
+        detailComponent={relationshipScore !== undefined ? <ScoreText score={relationshipScore} /> : undefined}
+      />
+      <EvaluationItem
+        colors={theme.gradients.blue}
+        header={I18n.t('home.activities')}
+        headerColor={theme.colors.blue}
+        icon={activityScore !== undefined ? showWeatherIcon(activityScore) : null}
+        onPress={() =>
+          activityScore !== undefined ? navigateToSummaryScreen(Enum.EvaluationType.ACTIVITIES) : showRemindModal()
+        }
+        detailComponent={activityScore !== undefined ? <ScoreText score={activityScore} /> : undefined}
+      />
+      <EvaluationItem
+        colors={theme.gradients.orange}
+        header={I18n.t('home.intakes')}
+        headerColor={theme.colors.orange}
+        icon={intakeScore !== undefined ? showWeatherIcon(intakeScore) : null}
+        onPress={() =>
+          intakeScore !== undefined ? navigateToSummaryScreen(Enum.EvaluationType.INTAKES) : showRemindModal()
+        }
+        detailComponent={intakeScore !== undefined ? <ScoreText score={intakeScore} /> : undefined}
+      />
+      <EvaluationItem
+        colors={theme.gradients.purple}
+        header={I18n.t('home.other')}
+        headerColor={theme.colors.purple}
+        icon={otherScore !== undefined ? showWeatherIcon(otherScore) : null}
+        onPress={() =>
+          otherScore !== undefined ? navigateToSummaryScreen(Enum.EvaluationType.OTHER) : showRemindModal()
+        }
+        detailComponent={otherScore !== undefined ? <ScoreText score={otherScore} /> : undefined}
+      />
+    </ScrollView>
+  );
+};
 
-const mapStateToProps = (state: AppState) => ({
-  me: state.me,
-});
-
-export default WithTranslations(connect(mapStateToProps)(GlobalScores));
+export default WithTranslations(GlobalScores);

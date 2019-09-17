@@ -4,7 +4,7 @@ import { NavigationScreenProps } from 'react-navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
 
-import { Block } from '../../components';
+import { Block, Loader } from '../../components';
 import { styles } from './styles';
 import SummaryHeader from './components/SummaryHeader';
 import { Enum } from '../../constants';
@@ -17,8 +17,9 @@ interface TestProps extends NavigationScreenProps {}
 
 const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
   const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
-  const summary = useSelector((state: AppState) => state.summary);
-  const data = get(summary, `data.${type}.affections`, []);
+  const summary = useSelector((state: AppState) => state.summary.data);
+  const isLoading = useSelector((state: AppState) => state.summary.isFetching);
+  const data = get(summary, `${type}.affections`, []);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
   }, []);
 
   const renderSummaryHeader = () => {
-    const score = get(summary, `data.${type}.score`, 0);
+    const score = get(summary, `${type}.score`, 0);
     return <SummaryHeader type={type} score={score} />;
   };
 
@@ -53,13 +54,18 @@ const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
     );
   };
 
+  const sortedData = data.sort((item1: any, item2: any) => item2.score - item1.score);
+
   return (
-    <FlatList
-      ListHeaderComponent={renderSummaryHeader}
-      data={data}
-      renderItem={renderSummaryItem}
-      keyExtractor={(_, index) => `summary-${index}`}
-    />
+    <React.Fragment>
+      <Loader loading={isLoading} />
+      <FlatList
+        ListHeaderComponent={renderSummaryHeader}
+        data={sortedData}
+        renderItem={renderSummaryItem}
+        keyExtractor={(_, index) => `summary-${index}`}
+      />
+    </React.Fragment>
   );
 };
 
