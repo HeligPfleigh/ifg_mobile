@@ -158,7 +158,7 @@ class UserInfo extends React.Component<IProps, IStates> {
           <ScrollView showsVerticalScrollIndicator={false}>
             <Block flex={2} center middle>
               <TouchableOpacity onPress={this._showActionSheet} style={styles.avatar}>
-                <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
+                <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.image} />
                 <View style={styles.edit}>
                   <EditCircle />
                 </View>

@@ -10,12 +10,22 @@ export default StyleSheet.create({
     backgroundColor: theme.colors.white2,
   },
   avatar: {
-    height: 120,
+    padding: 8,
     width: 120,
-    padding: 20,
+    height: 120,
     borderRadius: 60,
     backgroundColor: theme.colors.secondary,
     marginTop: theme.sizes.padding,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50,
+  },
+  edit: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
   },
   content: {
     paddingTop: theme.sizes.base,
@@ -42,15 +52,5 @@ export default StyleSheet.create({
   },
   txtCancel: {
     color: theme.colors.primary,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 50,
-  },
-  edit: {
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
   },
 });

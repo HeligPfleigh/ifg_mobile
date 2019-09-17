@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     padding: 25,
   },
   avatar: {
+    padding: 8,
     height: 120,
     width: 120,
-    padding: 20,
     borderRadius: 60,
     backgroundColor: theme.colors.blue2,
   },
