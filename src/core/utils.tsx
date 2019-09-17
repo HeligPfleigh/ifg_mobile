@@ -44,16 +44,15 @@ export const getImageFormServerPath = async (imgServerPath: string): Promise<str
     const filename = last(imgServerPath.split('/'));
     // load image from locally
     const imagePath = `${dirPath}${filename}`;
-    if (await fs.exists(imagePath)) {
-      return imagePath;
-    }
-    // loda image from server
-    const fetchImage = await api.cacheImage(imgServerPath);
-    const temp = await fetchImage.path();
-    // check file contain in local
-    if (!isEmpty(temp)) {
-      // auto save locally
-      await RNFetchBlob.fs.cp(temp, imagePath);
+    if (!(await fs.exists(imagePath))) {
+      // loda image from server
+      const fetchImage = await api.cacheImage(imgServerPath);
+      const temp = await fetchImage.path();
+      // check file contain in local
+      if (!isEmpty(temp)) {
+        // auto save locally
+        await RNFetchBlob.fs.cp(temp, imagePath);
+      }
     }
     // file url with app run on Android platform
     if (Platform.OS === 'android') {
