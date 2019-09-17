@@ -5,13 +5,12 @@ import pick from 'lodash/pick';
 import isEqual from 'lodash/isEqual';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
-import Toast from 'react-native-root-toast';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
 
 import api from '../../../../../core/api';
 import I18n from '../../../../../core/i18n';
 import { Enum, theme } from '../../../../../constants';
-import { Block, Loader, FormFields } from '../../../../../components';
+import { Block, Loader, FormFields, Toast } from '../../../../../components';
 import { me } from '../../../../../store/actions';
 import styles from './styles';
 
@@ -29,16 +28,6 @@ class ChangeEmail extends React.Component<IProps, IStates> {
 
   state = {
     loading: false,
-  };
-
-  showToast = async ({ backgroundColor = theme.colors.black, message }: any) => {
-    this.toastr = Toast.show(message, {
-      shadow: false,
-      animation: true,
-      backgroundColor,
-      duration: Toast.durations.LONG,
-      position: Toast.positions.BOTTOM,
-    });
   };
 
   // func use comfirm new password
@@ -64,30 +53,15 @@ class ChangeEmail extends React.Component<IProps, IStates> {
       await this.props.dispatch(me());
       await this.props.change('currentEmail', data.email);
       // display Toast
-      await this.showToast({
-        backgroundColor: theme.colors.green,
-        message: I18n.t('profile.account_settings.change_email_success'),
-      });
+      Toast.success(I18n.t('profile.account_settings.change_email_success'));
     } catch (err) {
       // TODO
       this.setState(
         () => ({ loading: false }),
-        async () => {
-          await this.showToast({
-            backgroundColor: theme.colors.red,
-            message: I18n.t('profile.account_settings.change_email_error'),
-          });
-        },
+        () => Toast.error(I18n.t('profile.account_settings.change_email_error')),
       );
     } finally {
-      this.setState(
-        () => ({ loading: false }),
-        () => {
-          setTimeout(() => {
-            Toast.hide(this.toastr);
-          }, 10000);
-        },
-      );
+      this.setState({ loading: false });
     }
   };
 

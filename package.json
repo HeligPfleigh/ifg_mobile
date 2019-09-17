@@ -47,6 +47,7 @@
     "redux-form": "^8.2.6",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
+    "rn-fetch-blob": "^0.10.16",
     "validator": "^11.1.0"
   },
   "devDependencies": {

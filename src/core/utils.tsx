@@ -1,4 +1,8 @@
 import React from 'react';
+import last from 'lodash/last';
+import isEmpty from 'lodash/isEmpty';
+import RNFetchBlob from 'rn-fetch-blob';
+import { Platform } from 'react-native';
 
 import {
   StormImg,
@@ -10,8 +14,56 @@ import {
   FeelGoodLv3,
   FeelGoodLv4,
 } from '../assets/images';
-import { theme, Enum } from '../constants';
+import api from './api';
 import I18n from './i18n';
+import { theme, Enum } from '../constants';
+
+// Make directory
+export const getWorkdir = async () => {
+  // file system object
+  const { fs } = RNFetchBlob;
+  // workdir path
+  const rootPath = `${fs.dirs.DocumentDir}/com.ifg-mobile/`;
+  // create folder save media file if not exists
+  if (!(await fs.exists(rootPath))) {
+    // create new folder
+    await fs.mkdir(rootPath);
+    // ignore read media file in folder
+    const ignoreMediaFile = `${rootPath}.nomedia`;
+    await fs.createFile(ignoreMediaFile, '.nomedia', 'utf8');
+  }
+  // return path folder
+  return rootPath;
+};
+
+export const getImageFormServerPath = async (imgServerPath: string): Promise<string> => {
+  try {
+    const { fs } = RNFetchBlob;
+    const dirPath = await getWorkdir();
+    // extract image name from path
+    const filename = last(imgServerPath.split('/'));
+    // load image from locally
+    const imagePath = `${dirPath}${filename}`;
+    if (!(await fs.exists(imagePath))) {
+      // loda image from server
+      const fetchImage = await api.cacheImage(imgServerPath);
+      const temp = await fetchImage.path();
+      // check file contain in local
+      if (!isEmpty(temp)) {
+        // auto save locally
+        await RNFetchBlob.fs.cp(temp, imagePath);
+      }
+    }
+    // file url with app run on Android platform
+    if (Platform.OS === 'android') {
+      return `file://${imagePath}`;
+    }
+    // normal path with ios platform
+    return imagePath;
+  } catch (err) {
+    return '';
+  }
+};
 
 export const showWeatherIcon = (score?: number, size: number = 60) => {
   if (score === undefined) return null;

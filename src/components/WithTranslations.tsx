@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export default function withTranslations(WrappedComponent: any) {
-  class TranslationComponent extends React.Component {
+  class TranslationComponent extends React.Component<any> {
     render() {
-      // eslint-disable-next-line react/prop-types
       return <WrappedComponent {...this.props} lang={this.props.lang} />;
     }
   }

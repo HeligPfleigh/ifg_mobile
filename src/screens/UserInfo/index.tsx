@@ -1,35 +1,40 @@
 import React from 'react';
 import moment from 'moment';
+import { Dispatch } from 'redux';
 import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 import { connect } from 'react-redux';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-picker';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { NavigationScreenProps, withNavigation } from 'react-navigation';
-import { Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableOpacity, View } from 'react-native';
+import { NavigationScreenProps } from 'react-navigation';
+import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
 import { DefaultAvatar, EditCircle } from '../../assets/images';
 import { Enum, theme } from '../../constants';
-import { Button, Block, FormFields, Loader } from '../../components';
-import api from '../../core/api';
+import { Button, Block, FormFields, Loader, Toast } from '../../components';
+import { me } from '../../store/actions';
+import api, { IPhoto } from '../../core/api';
 
 interface IUser {
-  avatar?: any;
-  username?: any;
-  firstName?: any;
-  lastName?: any;
-  DOB?: any;
-  gender?: any;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  DOB?: string;
+  gender?: string;
   height?: number;
   weight?: number;
 }
 
 interface IProps extends InjectedFormProps, NavigationScreenProps {
+  token: string;
+  avatar?: string;
   initialValues: IUser;
+  dispatch: Dispatch<any>;
 }
 
 interface IStates {
@@ -70,21 +75,37 @@ class UserInfo extends React.Component<IProps, IStates> {
 
   _showActionSheet = () => this.ActionSheet.show();
 
+  _changeAvatarProcess = async (source: IPhoto) => {
+    if (source.error) {
+      Toast.error(I18n.t('profile.user_info.choose_image_error'));
+    } else if (!source.didCancel) {
+      try {
+        // showing loader component
+        this.setState({ loading: true });
+        await api.changeAvatar(source);
+        Toast.success(I18n.t('profile.user_info.change_avatar_success'));
+      } catch {
+        Toast.error(I18n.t('profile.user_info.change_avatar_error'));
+      } finally {
+        await this.props.dispatch(me());
+        this.setState({ loading: false });
+      }
+    }
+  };
+
   _handleActionModal = (index: number) => {
+    const options = {
+      maxWidth: 320,
+      maxHeight: 320,
+    };
     switch (index) {
       case 0:
         // Launch Camera:
-        ImagePicker.launchCamera({}, response => {
-          console.log('Take photo from camera');
-          console.log(response);
-        });
+        ImagePicker.launchCamera(options, this._changeAvatarProcess);
         break;
       case 1:
         // Open Image Library:
-        ImagePicker.launchImageLibrary({}, response => {
-          console.log('Take photo from gallery');
-          console.log(response);
-        });
+        ImagePicker.launchImageLibrary(options, this._changeAvatarProcess);
         break;
     }
   };
@@ -120,7 +141,7 @@ class UserInfo extends React.Component<IProps, IStates> {
   render() {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
-    const avatar = get(this.props, 'initialValues.avatar');
+    const avatar = get(this.props, 'avatar', undefined);
     const { required, maxLength120 } = FormFields.FormValidator;
 
     return (
@@ -137,7 +158,7 @@ class UserInfo extends React.Component<IProps, IStates> {
           <ScrollView showsVerticalScrollIndicator={false}>
             <Block flex={2} center middle>
               <TouchableOpacity onPress={this._showActionSheet} style={styles.avatar}>
-                <Image source={avatar || DefaultAvatar} style={styles.image} />
+                <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
                 <View style={styles.edit}>
                   <EditCircle />
                 </View>
@@ -225,6 +246,7 @@ const mapStateToProps = (state: AppState) => {
   const _dob = get(state, 'me.data.user.DOB');
   const dateDefault = moment().subtract(12, 'years');
   return {
+    avatar: get(state, 'me.data.user.avatar'),
     initialValues: {
       username: get(state, 'me.data.user.username'),
       firstName: get(state, 'me.data.user.firstName'),
@@ -240,5 +262,5 @@ const mapStateToProps = (state: AppState) => {
 export default connect(mapStateToProps)(
   reduxForm({
     form: Enum.ReduxFormName.UPDATE_INFO,
-  })(withNavigation(UserInfo)),
+  })(UserInfo as any),
 );
