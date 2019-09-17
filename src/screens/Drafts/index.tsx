@@ -96,6 +96,14 @@ const Drafts: React.FC<NavigationScreenProps> = () => {
   const intakeDrafts = myDraftList.filter((draft: DraftState) => draft.type === Enum.EvaluationType.INTAKES);
   const otherDrafts = myDraftList.filter((draft: DraftState) => draft.type === Enum.EvaluationType.OTHER);
 
+  if (myDraftList.length === 0) {
+    return (
+      <Block center middle flex={1}>
+        <Text>{I18n.t('drafts.no_draft')}</Text>
+      </Block>
+    );
+  }
+
   return (
     <ScrollView>
       <DraftGroupWithNavigation
