@@ -8,10 +8,10 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   paragraph: {
-    color: theme.colors.gray4,
-    marginTop: theme.sizes.margin,
-    fontSize: theme.sizes.h2,
     textAlign: 'center',
+    color: theme.colors.black,
+    marginTop: theme.sizes.margin,
+    fontSize: theme.sizes.h3,
   },
   textSignUpBtn: {
     fontSize: theme.sizes.h2,
