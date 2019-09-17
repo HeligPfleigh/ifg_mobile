@@ -5,18 +5,20 @@ import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { Block, Button } from '../../components';
+import { AppState } from '../../store/types';
+import { Block, Button, WithTranslations } from '../../components';
 import I18n from '../../core/i18n';
 import { styles } from './styles';
 import { Step1 } from './Step1';
 import { Step2 } from './Step2';
-import Step3 from './Step3';
+import { Step3 } from './Step3';
 import { Enum, theme } from '../../constants';
 import { showModal, saveDraft, removeDraft } from '../../store/actions';
 import api from '../../core/api';
 
 interface EvaluateProps extends NavigationScreenProps {
   dispatch: Dispatch<any>;
+  email: string;
 }
 
 interface EvaluateState {
@@ -178,8 +180,10 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   _handlePressScore = (score: number) => this.setState({ score }, this._enableNextBtn);
 
   _handlePressSaveDraft = () => {
-    const { dispatch, navigation } = this.props;
-    dispatch(saveDraft(this.state));
+    const { dispatch, navigation, email } = this.props;
+    // save email to distint users which use in same phone
+    const draft = { ...this.state, email };
+    dispatch(saveDraft(draft));
     dispatch(showModal({ modalType: Enum.ModalType.DRAFT_SAVED, onModalPress: navigation.goBack }));
   };
 
@@ -249,4 +253,4 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   }
 }
 
-export default connect()(Evaluate);
+export default connect((state: AppState) => ({ email: state.me.data.user.email }))(WithTranslations(Evaluate));

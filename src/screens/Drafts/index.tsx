@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, Text, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import { connect } from 'react-redux';
+import { NavigationScreenProps, NavigationInjectedProps, withNavigation } from 'react-navigation';
+import { useSelector } from 'react-redux';
 import { Block } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, DraftsState, DraftState } from '../../store/types';
+import { AppState, DraftState } from '../../store/types';
 
 interface DraftProps {
   type: Enum.EvaluationType | null;
@@ -16,11 +16,6 @@ interface DraftProps {
   desc?: string;
   score?: number;
   onPress?: (e: GestureResponderEvent) => void;
-}
-
-interface DraftsProps {
-  navigation: NavigationScreenProp<NavigationState>;
-  drafts: DraftsState;
 }
 
 const styles = StyleSheet.create({
@@ -49,85 +44,82 @@ const styles = StyleSheet.create({
   },
 });
 
-const Draft: React.FC<DraftProps> = ({ type, name, label, desc, score, onPress }: DraftProps) => {
-  let colors;
-  switch (type) {
-    case Enum.EvaluationType.RELATIONSHIPS:
-      colors = theme.gradients.lightpink;
-      break;
-    case Enum.EvaluationType.ACTIVITIES:
-      colors = theme.gradients.lightblue;
-      break;
-    case Enum.EvaluationType.INTAKES:
-      colors = theme.gradients.lightorange;
-      break;
-    case Enum.EvaluationType.OTHER:
-      colors = theme.gradients.lightpurple;
-      break;
-    default:
-      colors = theme.gradients.lightpink;
-  }
-  return (
-    <TouchableOpacity onPress={onPress}>
-      <Block style={styles.draftContainer}>
-        <LinearGradient
-          colors={colors}
-          start={{ x: 0.0, y: 0.0 }}
-          end={{ x: 1.0, y: 0.0 }}
-          style={styles.draftGradient}
-        >
-          <Text style={styles.draftType}>{I18n.t(`home.${type}`)}</Text>
-          <Text style={styles.draftBody}>{name}</Text>
-          <Text style={styles.draftBody}>{label}</Text>
-          <Text style={styles.draftBody}>{desc}</Text>
-          <Text style={styles.draftBody}>{score}</Text>
-        </LinearGradient>
-      </Block>
-    </TouchableOpacity>
-  );
-};
+interface DraftGroupProps extends NavigationInjectedProps {
+  colors: string[];
+  drafts: DraftState[];
+  type: string;
+}
 
-class Drafts extends Component<DraftsProps> {
-  _navigateToEvaluate = (draft: DraftState) => {
-    this.props.navigation.navigate(NavigatorMap.Evaluate, {
+const DraftsGroup: React.FC<DraftGroupProps> = ({ type, colors, drafts, navigation }: DraftGroupProps) => {
+  if (!drafts.length) return null;
+
+  const navigateToEvaluate = (draft: DraftState) => {
+    navigation.navigate(NavigatorMap.Evaluate, {
       [Enum.NavigationParamsName.EVALUATION_TYPE]: draft.type,
       [Enum.NavigationParamsName.EVALUATION_DATA]: draft,
     });
   };
 
-  render() {
-    const {
-      drafts: { data: draftList },
-    } = this.props;
+  return (
+    <Block style={styles.draftContainer}>
+      <LinearGradient colors={colors} start={{ x: 0.0, y: 0.0 }} end={{ x: 1.0, y: 0.0 }} style={styles.draftGradient}>
+        <Text style={styles.draftType}>{I18n.t(`home.${type}`)}</Text>
+        {drafts.map((draft: DraftState) => {
+          const { name, label, desc, score } = draft;
+          let displayText = '';
+          displayText += name || '';
+          displayText += label ? ` - ${label}` : '';
+          displayText += desc ? ` - ${desc}` : '';
+          displayText += score ? ` - ${score}` : '';
+          return (
+            <TouchableOpacity onPress={() => navigateToEvaluate(draft)}>
+              <Text style={styles.draftBody}>{displayText}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </LinearGradient>
+    </Block>
+  );
+};
 
-    if (draftList.length === 0) {
-      return (
-        <Block center middle flex={1}>
-          <Text>{I18n.t('drafts.no_draft')}</Text>
-        </Block>
-      );
-    }
+const DraftGroupWithNavigation = withNavigation(DraftsGroup);
 
-    return (
-      <ScrollView>
-        {draftList.map(draft => (
-          <Draft
-            key={draft.id}
-            type={draft.type}
-            name={draft.name}
-            label={draft.label}
-            score={draft.score}
-            desc={draft.desc}
-            onPress={() => this._navigateToEvaluate(draft)}
-          />
-        ))}
-      </ScrollView>
-    );
-  }
-}
+const Drafts: React.FC<NavigationScreenProps> = () => {
+  const draftList = useSelector((state: AppState) => state.drafts.data);
+  const email = useSelector((state: AppState) => state.me.data.user.email);
+  const myDraftList = draftList.filter((draft: DraftState) => draft.email === email);
 
-const mapStateToProps = (state: AppState) => ({
-  drafts: state.drafts,
-});
+  const activityDrafts = myDraftList.filter((draft: DraftState) => draft.type === Enum.EvaluationType.ACTIVITIES);
+  const relationshipDrafts = myDraftList.filter(
+    (draft: DraftState) => draft.type === Enum.EvaluationType.RELATIONSHIPS,
+  );
+  const intakeDrafts = myDraftList.filter((draft: DraftState) => draft.type === Enum.EvaluationType.INTAKES);
+  const otherDrafts = myDraftList.filter((draft: DraftState) => draft.type === Enum.EvaluationType.OTHER);
 
-export default connect(mapStateToProps)(Drafts);
+  return (
+    <ScrollView>
+      <DraftGroupWithNavigation
+        drafts={activityDrafts}
+        colors={theme.gradients.lightpink}
+        type={Enum.EvaluationType.ACTIVITIES}
+      />
+      <DraftGroupWithNavigation
+        drafts={relationshipDrafts}
+        colors={theme.gradients.lightblue}
+        type={Enum.EvaluationType.RELATIONSHIPS}
+      />
+      <DraftGroupWithNavigation
+        drafts={intakeDrafts}
+        colors={theme.gradients.lightorange}
+        type={Enum.EvaluationType.INTAKES}
+      />
+      <DraftGroupWithNavigation
+        drafts={otherDrafts}
+        colors={theme.gradients.lightpurple}
+        type={Enum.EvaluationType.OTHER}
+      />
+    </ScrollView>
+  );
+};
+
+export default Drafts;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Block, Button, WithTranslations } from '../../components';
+import { Block, Button } from '../../components';
 import { step3Styles } from './styles';
 import I18n from '../../core/i18n';
 import { FeelGoodLv4, MoodImg, EnergyImg, FeelGoodLv0 } from '../../assets/images';
@@ -16,7 +16,7 @@ interface Step3Props {
   score: number;
 }
 
-const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, onScoring, score }: Step3Props) => {
+export const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, onScoring, score }: Step3Props) => {
   const good = [
     { color: '#056404', score: 5, label: I18n.t('evaluate.step3.huge') },
     { color: '#219C20', score: 4 },
@@ -73,5 +73,3 @@ const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, onScori
     </Block>
   );
 };
-
-export default WithTranslations(Step3);
