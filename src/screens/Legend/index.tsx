@@ -49,7 +49,7 @@ const Legend: React.FC = () => {
                 <MoonImg width={40} height={40} />
               </Block>
               <Block flex={3} middle>
-                <Text style={{ color: theme.colors.yellow }}>{I18n.t('legend.subtitle.normal')}</Text>
+                <Text style={{ color: theme.colors.orange }}>{I18n.t('legend.subtitle.normal')}</Text>
               </Block>
             </Block>
             <Block flex={1} row>
