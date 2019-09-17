@@ -296,7 +296,10 @@
         "btn_camera": "Take avatar from camera",
         "btn_photos": "Choose avatar from Gallery",
         "btn_cancel": "Cancel"
-      }
+      },
+      "choose_image_error": "You can't choose image!",
+      "change_avatar_error": "Don't change your avatar!",
+      "change_avatar_success": "Change avatar successfully!"
     },
     "account_settings": {
       "title": "Account settings",

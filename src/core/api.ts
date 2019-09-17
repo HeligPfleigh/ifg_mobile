@@ -1,4 +1,7 @@
 import axios from 'axios';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
+import RNFetchBlob from 'rn-fetch-blob';
 import { Enum } from '../constants';
 
 const API_SERVER = 'https://api.ifeelgood.mttjsc.com/';
@@ -81,6 +84,66 @@ const signup = (data: { email: string; username: string; password: string }) => 
 
 const forgotPwd = (data: { email: string }) => instance.patch('/users/me/forgotpwd', data);
 
+export interface IPhoto {
+  data?: string;
+  fileName?: string;
+  fileSize?: number;
+  width?: number;
+  height?: number;
+  isVertical?: boolean;
+  latitude?: number;
+  longitude?: number;
+  origURL?: string;
+  originalRotation?: number;
+  path?: string;
+  timestamp?: string;
+  type?: string;
+  uri?: string;
+  didCancel?: any;
+  error?: any;
+}
+
+// POST: /users/me/change-avatar
+const changeAvatar = (source: IPhoto) => {
+  // require params
+  if (isEmpty(source)) {
+    throw new Error('Missing parameters');
+  }
+  // initial form data
+  const formData = new FormData();
+  // append image data into fromdata
+  formData.append('image', {
+    name: 'avatar.jpg',
+    uri: get(source, 'uri'),
+    size: get(source, 'fileSize', 0),
+    type: get(source, 'type', 'image/jpeg'),
+  });
+
+  return instance.patch('/users/me/change-avatar', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};
+
+const cacheImage = (path: string, config?: object): Promise<any> => {
+  try {
+    const {
+      baseURL,
+      headers: { common },
+    } = instance.defaults;
+    return RNFetchBlob.config({
+      fileCache: true,
+      appendExt: 'jpg',
+      ...config,
+    }).fetch('GET', `${baseURL}${path}`, {
+      Authorization: common.Authorization,
+    });
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export default {
   me,
   evaluationSummary,
@@ -102,4 +165,6 @@ export default {
   editFirebaseSetting,
   signup,
   forgotPwd,
+  changeAvatar,
+  cacheImage,
 };

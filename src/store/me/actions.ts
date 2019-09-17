@@ -1,6 +1,9 @@
+import set from 'lodash/set';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 import { Dispatch } from 'redux';
-
 import api from '../../core/api';
+import { getImageFormServerPath } from '../../core/utils';
 import { MeActionType, ME_REQUEST, ME_FAILURE, ME_SUCCESSFUL, MeSuccessfulResponse, MeFailureError } from './types';
 
 function meRequest(): MeActionType {
@@ -28,7 +31,18 @@ export function me() {
     dispatch(meRequest());
     try {
       const { data } = await api.me();
-      dispatch(meSuccessfull(data));
+      // clone response data
+      const result = Object.assign({}, data);
+      // get user avatar
+      const avatar = get(data, 'user.avatar');
+      if (!isEmpty(avatar)) {
+        try {
+          set(result, 'user.avatar', await getImageFormServerPath(avatar));
+        } catch (error) {
+          // TODO
+        }
+      }
+      dispatch(meSuccessfull(result));
     } catch (e) {
       const error = {
         status: e.status || 400,
