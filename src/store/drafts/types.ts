@@ -11,6 +11,7 @@ export interface DraftState {
   desc?: string;
   score?: number;
   impactType?: Enum.ImpactType | null;
+  email: string; // save email of user
 }
 
 export interface DraftsState {
