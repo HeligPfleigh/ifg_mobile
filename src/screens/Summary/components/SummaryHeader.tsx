@@ -55,8 +55,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   legendTxt: {
-    color: theme.colors.secondary,
+    color: theme.colors.primary,
     fontSize: theme.sizes.header,
+    textDecorationLine: 'underline',
   },
   descTxt: {
     marginTop: theme.sizes.margin,

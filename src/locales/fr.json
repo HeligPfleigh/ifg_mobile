@@ -34,7 +34,7 @@
     "profile": "Profil",
     "global_scores": "Mon GPS Feel Good",
     "summary": "Récapitulatif",
-    "legend": "Légende",
+    "legend": "Ton curseur Feel Good",
     "evaluate": "Évaluer",
     "drafts": "Terminer mes brouillons",
     "account_settings": "Paramètres du compte",
@@ -46,22 +46,22 @@
   },
   "modal": {
     "self_evaluation": {
-      "header": "S'il vous plaît faire des auto-évaluations \nafin d'obtenir de bonnes notes."
+      "header": "Tu as besoin de faire des évaluations afin de connaître tes différents niveaux de Feel Good. Tu peux changer d'avis et les mettre à jour autant de fois que tu souhaites, même pour des éléments déjà évalués !"
     },
     "draft_saved": {
       "header": "Ton brouillon a été sauvegardé.",
       "body": "Tu peux prendre ton temps pour réfléchir et le finir à tout moment dans tes Outils Feel Good."
     },
     "evaluation_saved": {
-      "header": "Tes scores feel good ont \nété mis à jour suite à cette évaluation.",
-      "body": "Tu peux aller maintenant à la page Tous les scores pour \nvoir les dernières mises à jour."
+      "header": "Tes scores feel good ont été mis à jour suite à cette évaluation.",
+      "body": "Tu peux aller maintenant à la page 'Mon GPS Feel Good' pour voir les dernières mises à jour."
     },
     "signup_success": {
       "header": "Félicitation!",
       "body": "Bienvenue dans votre espace! \n\n Vous pouvez maintenant auto-évaluer tout dans votre vie. Les scores de satisfaction seront calculés et mis à jour \n en temps réel après vos évaluations."
     },
     "delete_account": {
-      "body": "Nous espérons que vous \nreviendrez bientôt."
+      "body": "Merci de ton temps passé sur l'application I Feel Good. L'équipe espère que tu reviennes bientôt."
     },
     "smart": {
       "specific": {
@@ -84,7 +84,7 @@
         "header": "Time-bound (Remporellement défini)",
         "body": "Tu peux indiquer une date de fin pour te motiver: elle peut être périodique (par jour, par semaine etc…), ou la date de fin peut être unique."
       },
-      "footer": "Et enfin, commencez votre action avec un verbe!"
+      "footer": "Et pour terminer, commence ton action avec un verbe !"
     },
     "feature_not_available": {
       "header": "Pardon, cette fonctionnalité n'est pas disponible pour le moment!"
@@ -182,18 +182,18 @@
     "intakes": "Nutrition",
     "other": "Autres facteurs",
     "overall": "Général",
-    "legends": "Votre curseur se sentir bien",
+    "legends": "Ton curseur Feel Good",
     "detail_perceptions": "Détails de tes perceptions"
   },
   "legend": {
     "header": {
-      "title": "Votre niveau de bien-être",
-      "body": "Les scores que vous avez obtenus lors de l'auto-évaluation sont utilisés pour calculer un bon score moyen."
+      "title": "Ton curseur Feel Good",
+      "body": "Les scores que tu as données lors des auto-évaluations sont utilisés pour calculer un score feel good moyen."
     },
     "subtitle": {
-      "good": "Des facteurs qui sont sur la bonne voie, continue dans cette direction!",
-      "normal": "Demande toi \"Comment puis-je minimiser les côtés négatifs?\" et changer en priorité 2",
-      "bad": "Demande toi \"POURQUOI ?\" et changer en priorité 1. Vous aurez peut-être besoin de l'aide de professionnels pour vous sortir de la situation."
+      "good": "Eléments qui sont en bonne voie, tu peux établir des actions dans 'Outils Feel Good' pour les consolider.",
+      "normal": "Tu peux effectuer des actions en priorité 2 afin de minimiser les aspects négatifs de ces éléments.",
+      "bad": "Tu pourrais analyser 'POURQUOI?' et établir des actions en priorité 1 pour changer. Il se pourrait que tu aies besoin d'aide des professionnels pour t'en sortir."
     }
   },
   "evaluate": {
@@ -209,9 +209,9 @@
           "name": "Te souviens-tu de la fois où tu as pris quelque chose qui t'a fait du bien, ou au contraire, t'a rendu inconfortable ?"
         },
         "other": {
-          "name": "Quels autres éléments dans ton univers contribue à augmenter ou réduire ton énergy et ton humeur ?"
+          "name": "Quel autre élément dans ton univers contribue à augmenter ou réduire ton énergie et ton humeur ?"
         },
-        "label": "Catégorie",
+        "label": "Sélectionner une sous-catégorie",
         "desc": "Ajouter une description"
       },
       "name": "Nom",
@@ -260,9 +260,9 @@
       "other_activities": "Autres activités",
       "foods": "Aliments",
       "drinks": "Boissons",
-      "supplements": "Compléments alimentaires",
+      "supplements": "Compléments",
       "medications": "Médicaments",
-      "other_intakes": "Autres nutrition",
+      "other_intakes": "Autres absorptions",
       "routines": "Routines",
       "places": "Endroits",
       "objects": "Objets",
@@ -280,7 +280,7 @@
   },
   "profile": {
     "user_info": {
-      "title": "Informations de l'utilisateur",
+      "title": "Mes informations",
       "username": "Nom d'utilisateur",
       "first_name": "Prénom",
       "last_name": "Nom",
@@ -288,8 +288,8 @@
       "gender": "Sexe",
       "height": "Taille",
       "weight": "Poids",
-      "male": "Mâle",
-      "female": "Femelle",
+      "male": "Homme",
+      "female": "Femme",
       "other": "Autre"
     },
     "account_settings": {
@@ -306,7 +306,7 @@
       "confirm_with_password": "Confirmer le mot de passe"
     },
     "account_parameters": {
-      "title": "Paramètres",
+      "title": "Préférences",
       "notifications": "Notifications",
       "notifications_subtitle": "Je veux recevoir les informations feel good",
       "newsletter": "Bulletin",
@@ -314,7 +314,7 @@
       "motivation_msgs": "Messages de motivation",
       "motivation_msgs_subtitle": "Recevez des félicitations et des encouragements",
       "language_setting": "Changer de langue",
-      "language_setting_subtitle": "S'il vous plaît sélectionnez votre langue",
+      "language_setting_subtitle": "Choisir une langue",
       "yes": "Oui",
       "no": "Je n'ai pas besoin d'informations feel good"
     },
@@ -344,8 +344,8 @@
     "actions": "Actions ",
     "done": "achevées",
     "add_new": "Ajouter une nouvelle action",
-    "edit_action": "Edit action",
-    "select_reason": "Sélectionnez la raison (optionnel)",
+    "edit_action": "Modifier l'action",
+    "select_reason": "Pourquoi tu le fais ? (optionnel)",
     "cancel": "ANNULER",
     "update": "METTRE À JOUR",
     "footer": {
@@ -359,6 +359,6 @@
     "header": "Félicitations!! \nTu as déjà terminé ces actions!"
   },
   "drafts": {
-    "no_draft": "Vous n'avez pas encore de projet!"
+    "no_draft": "Tu n'a aucun brouillon pour le moment !"
   }
 }

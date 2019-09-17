@@ -224,7 +224,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
             <Block flex={1} style={styles.modalBtnContainer}>
               <Button shadow style={styles.draftBtn} onPress={() => toggleModal(false)}>
                 <Block center middle>
-                  <Text>{I18n.t('action_list.cancel')}</Text>
+                  <Text>{I18n.t('common.back')}</Text>
                 </Block>
               </Button>
             </Block>
