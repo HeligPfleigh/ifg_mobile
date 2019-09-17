@@ -34,7 +34,7 @@
     "profile": "Profile",
     "global_scores": "My Feel Good GPS",
     "summary": "Summary",
-    "legend": "Legend",
+    "legend": "Your Feel Good cursor",
     "evaluate": "Evaluate",
     "drafts": "Finish my drafts",
     "account_settings": "Account Settings",
@@ -46,7 +46,7 @@
   },
   "modal": {
     "self_evaluation": {
-      "header": "Please do self-evaluations \nin order to get feel good scores."
+      "header": "You need to perform evaluations in order to know your different Feel Good levels. You can change your mind and update them as much as you wish even for already evaluated items !"
     },
     "draft_saved": {
       "header": "Your draft has been saved.",
@@ -54,14 +54,14 @@
     },
     "evaluation_saved": {
       "header": "Your feel good scores \nhave been updated accordingly.",
-      "body": "You can go now to the All scores page \nto see the latests updates."
+      "body": "You can go now to the 'Your Feel Good GPS' page  \nto see the latests updates."
     },
     "signup_success": {
       "header": "Congratulation!",
       "body": "Welcome to your space! \n\n You can now self-evaluate everything in your life. Satisfaction scores will be calculated and updated \n in real time following your evaluations."
     },
     "delete_account": {
-      "body": "We hope that you will \nbe back soon."
+      "body": "Thanks for your time with the I Feel Good app. The team hope that you will be back soon."
     },
     "smart": {
       "specific": {
@@ -187,13 +187,13 @@
   },
   "legend": {
     "header": {
-      "title": "Your Feel Good Level",
-      "body": "The scores you gave during self-assesment are used to calculate an average feel good score."
+      "title": "Your Feel Good cursor",
+      "body": "The scores you gave during self-assessments are used to calculate an average feel good score."
     },
     "subtitle": {
-      "good": "Factors that are on good track, keep going in this direction!",
-      "normal": "Ask yourself \"How can I minimize the negative sides?\" and change as priority 2",
-      "bad": "Ask yourself \"WHY ?\" and change as priority 1. You may need help from professionals to get out of the situation."
+      "good": "Factors that are on good track, you can set actions in 'Feel Good Tools' to secure them.",
+      "normal": "You can perform priority 2 actions to minimize the negative sides of these elements",
+      "bad": "You can try to analyze 'WHY ?' and set actions as priority 1 to change. You may need help from professionnals to get out of the situation"
     }
   },
   "evaluate": {

@@ -34,7 +34,7 @@
     "profile": "Profil",
     "global_scores": "Mon GPS Feel Good",
     "summary": "Récapitulatif",
-    "legend": "Légende",
+    "legend": "Ton curseur Feel Good",
     "evaluate": "Évaluer",
     "drafts": "Terminer mes brouillons",
     "account_settings": "Paramètres du compte",
@@ -46,22 +46,22 @@
   },
   "modal": {
     "self_evaluation": {
-      "header": "S'il vous plaît faire des auto-évaluations \nafin d'obtenir de bonnes notes."
+      "header": "Tu as besoin de faire des évaluations afin de connaître tes différents niveaux de Feel Good. Tu peux changer d'avis et les mettre à jour autant de fois que tu souhaites, même pour des éléments déjà évalués !"
     },
     "draft_saved": {
       "header": "Ton brouillon a été sauvegardé.",
       "body": "Tu peux prendre ton temps pour réfléchir et le finir à tout moment dans tes Outils Feel Good."
     },
     "evaluation_saved": {
-      "header": "Tes scores feel good ont \nété mis à jour suite à cette évaluation.",
-      "body": "Tu peux aller maintenant à la page Tous les scores pour \nvoir les dernières mises à jour."
+      "header": "Tes scores feel good ont été mis à jour suite à cette évaluation.",
+      "body": "Tu peux aller maintenant à la page 'Mon GPS Feel Good' pour voir les dernières mises à jour."
     },
     "signup_success": {
       "header": "Félicitation!",
       "body": "Bienvenue dans votre espace! \n\n Vous pouvez maintenant auto-évaluer tout dans votre vie. Les scores de satisfaction seront calculés et mis à jour \n en temps réel après vos évaluations."
     },
     "delete_account": {
-      "body": "Nous espérons que vous \nreviendrez bientôt."
+      "body": "Merci de ton temps passé sur l'application I Feel Good. L'équipe espère que tu reviennes bientôt."
     },
     "smart": {
       "specific": {
@@ -182,18 +182,18 @@
     "intakes": "Nutrition",
     "other": "Autres facteurs",
     "overall": "Général",
-    "legends": "Votre curseur se sentir bien",
+    "legends": "Ton curseur Feel Good",
     "detail_perceptions": "Détails de tes perceptions"
   },
   "legend": {
     "header": {
-      "title": "Votre niveau de bien-être",
-      "body": "Les scores que vous avez obtenus lors de l'auto-évaluation sont utilisés pour calculer un bon score moyen."
+      "title": "Ton curseur Feel Good",
+      "body": "Les scores que tu as données lors des auto-évaluations sont utilisés pour calculer un score feel good moyen."
     },
     "subtitle": {
-      "good": "Des facteurs qui sont sur la bonne voie, continue dans cette direction!",
-      "normal": "Demande toi \"Comment puis-je minimiser les côtés négatifs?\" et changer en priorité 2",
-      "bad": "Demande toi \"POURQUOI ?\" et changer en priorité 1. Vous aurez peut-être besoin de l'aide de professionnels pour vous sortir de la situation."
+      "good": "Eléments qui sont en bonne voie, tu peux établir des actions dans 'Outils Feel Good' pour les consolider.",
+      "normal": "Tu peux effectuer des actions en priorité 2 afin de minimiser les aspects négatifs de ces éléments.",
+      "bad": "Tu pourrais analyser 'POURQUOI?' et établir des actions en priorité 1 pour changer. Il se pourrait que tu aies besoin d'aide des professionnels pour t'en sortir."
     }
   },
   "evaluate": {
