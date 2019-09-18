@@ -8,7 +8,7 @@ interface ScoreTextProps extends TextProps {
 }
 
 const ScoreText: React.FC<ScoreTextProps> = ({ score = 0, style, ...rest }: ScoreTextProps) => {
-  let defaultScoreStyle = { color: theme.colors.yellow };
+  let defaultScoreStyle = { color: theme.colors.orange };
   if (score >= -5 && score <= 5) {
     defaultScoreStyle = { color: theme.scoreSpectrum[Math.floor(score) + 5] };
   }
