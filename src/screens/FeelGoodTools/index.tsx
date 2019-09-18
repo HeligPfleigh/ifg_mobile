@@ -51,7 +51,7 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
     <Block style={styles.container}>
       <ScrollView contentContainerStyle={styles.containerScroll}>
         <Block flex={false} middle row style={styles.groupIcon}>
-          {relationshipsScore ? (
+          {relationshipsScore !== undefined ? (
             <RoundIconButton
               icon={showWeatherIcon(relationshipsScore, 30)}
               colors={theme.gradients.pink}
@@ -61,7 +61,7 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
           ) : (
             <Block flex={false} />
           )}
-          {activitiesScore ? (
+          {activitiesScore !== undefined ? (
             <RoundIconButton
               icon={showWeatherIcon(activitiesScore, 30)}
               colors={theme.gradients.blue}
@@ -71,7 +71,7 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
           ) : (
             <Block flex={false} />
           )}
-          {intakesScore ? (
+          {intakesScore !== undefined ? (
             <RoundIconButton
               icon={showWeatherIcon(intakesScore, 30)}
               colors={theme.gradients.orange}
@@ -81,7 +81,7 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
           ) : (
             <Block flex={false} />
           )}
-          {otherScore ? (
+          {otherScore !== undefined ? (
             <RoundIconButton
               icon={showWeatherIcon(otherScore, 30)}
               colors={theme.gradients.purple}
