@@ -60,14 +60,13 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
               <Text style={styles.fieldLabel}>{I18n.t('profile.account_contact_us.description')}</Text>
               <TextField
                 multiline
+                label=""
+                bordered
+                height={175}
+                maxLength={500}
+                characterRestriction={500}
                 labelHeight={0}
                 labelPadding={0}
-                height={175}
-                maxLength={200}
-                characterRestriction={200}
-                label=""
-                title={I18n.t('messages.max_200')}
-                bordered
                 activeLineWidth={1}
                 style={styles.textarea}
                 value={feedback}
