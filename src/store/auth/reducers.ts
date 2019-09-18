@@ -5,12 +5,11 @@ import {
   LOGIN_FAILURE,
   LoginSuccessfulAction,
   LoginFailureAction,
-  LOGOUT,
   LOGIN_REQUEST,
   LOGIN_RESET_ERROR,
 } from './types';
 
-const initialState = {
+export const initialState = {
   token: '',
   isRequesting: false,
 };
@@ -34,9 +33,6 @@ const authReducer = createReducer(initialState, {
       ...state,
       error: undefined,
     };
-  },
-  [LOGOUT]: () => {
-    return initialState;
   },
 });
 

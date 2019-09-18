@@ -9,7 +9,7 @@ import {
 } from './types';
 import { createReducer } from '../createReducer';
 
-const initialState: SummaryState = {
+export const initialState: SummaryState = {
   isFetching: false,
 };
 

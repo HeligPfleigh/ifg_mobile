@@ -6,7 +6,6 @@ import {
   LOGIN_SUCCESSFUL,
   LOGIN_FAILURE,
   LoginActionType,
-  LOGOUT,
   LOGIN_RESET_ERROR,
   // LOGIN_REQUEST,
 } from './types';
@@ -46,11 +45,5 @@ export function login(username: string, password: string) {
       const error = get(e, 'response.data.error');
       dispatch(loginFail(error));
     }
-  };
-}
-
-export function logout() {
-  return {
-    type: LOGOUT,
   };
 }
