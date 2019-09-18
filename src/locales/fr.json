@@ -360,5 +360,9 @@
   },
   "drafts": {
     "no_draft": "Tu n'a aucun brouillon pour le moment !"
+  },
+  "errors": {
+    "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
+    "unexpected": "Une erreur inattendue est apparue"
   }
 }

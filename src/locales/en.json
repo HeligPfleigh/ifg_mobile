@@ -373,5 +373,9 @@
   },
   "drafts": {
     "no_draft": "You don't have any draft yet!"
+  },
+  "errors": {
+    "sign_in_fail": "Your E-mail or password is not correct",
+    "unexpected": "An unexpected error occurred"
   }
 }

@@ -9,9 +9,9 @@ export * from './myaction/types';
 export * from './notification/types';
 
 export interface CustomError {
-  statusCode: number;
-  name: string;
-  message: string;
+  statusCode?: number;
+  name?: string;
+  message?: string;
 }
 
 export interface RequestError {

@@ -7,6 +7,7 @@ import {
   LoginFailureAction,
   LOGOUT,
   LOGIN_REQUEST,
+  LOGIN_RESET_ERROR,
 } from './types';
 
 const initialState = {
@@ -26,6 +27,12 @@ const authReducer = createReducer(initialState, {
       ...initialState,
       error: action.error,
       isRequesting: false,
+    };
+  },
+  [LOGIN_RESET_ERROR]: (state: AuthState) => {
+    return {
+      ...state,
+      error: undefined,
     };
   },
   [LOGOUT]: () => {
