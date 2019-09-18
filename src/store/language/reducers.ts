@@ -2,7 +2,7 @@ import { SupportedLanguage, LanguageActionTypes, LanguageState } from './types';
 import I18n from '../../core/i18n';
 import { createReducer } from '../createReducer';
 
-const initialState: LanguageState = {
+export const initialState: LanguageState = {
   locale: SupportedLanguage.en,
 };
 

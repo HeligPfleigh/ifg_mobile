@@ -21,7 +21,7 @@ import {
 import { Enum } from '../../constants';
 import { createReducer } from '../createReducer';
 
-const initialState: MyActionState = {
+export const initialState: MyActionState = {
   isFetching: false,
   data: {
     [Enum.ActionStatus.ONGOING]: [],

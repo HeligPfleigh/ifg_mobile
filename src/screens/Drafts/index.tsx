@@ -72,7 +72,7 @@ const DraftsGroup: React.FC<DraftGroupProps> = ({ type, colors, drafts, navigati
           displayText += desc ? ` - ${desc}` : '';
           displayText += score ? ` - ${score}` : '';
           return (
-            <TouchableOpacity onPress={() => navigateToEvaluate(draft)}>
+            <TouchableOpacity key={`${draft.id}`} onPress={() => navigateToEvaluate(draft)}>
               <Text style={styles.draftBody}>{displayText}</Text>
             </TouchableOpacity>
           );

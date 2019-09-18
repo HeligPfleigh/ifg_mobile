@@ -1,7 +1,7 @@
 import { MeState, ME_REQUEST, ME_SUCCESSFUL, ME_FAILURE, MeSuccessfulAction, MeFailureAction } from './types';
 import { createReducer } from '../createReducer';
 
-const initialState: MeState = {
+export const initialState: MeState = {
   isFetching: false,
   data: {
     user: {
