@@ -290,7 +290,18 @@
       "weight": "Poids",
       "male": "Homme",
       "female": "Femme",
-      "other": "Autre"
+      "other": "Autre",
+      "picker_modal": {
+        "title": "Sélectionnez un avatar",
+        "btn_camera": "Prendre un avatar de la caméra",
+        "btn_photos": "Choisissez un avatar de la galerie",
+        "btn_cancel": "Annuler"
+      },
+      "choose_image_error": "Vous ne pouvez pas choisir l'image!",
+      "change_avatar_error": "Ne changez pas votre avatar!",
+      "change_avatar_success": "Changer avatar avec succès!",
+      "change_info_success": "Changer les informations utilisateur avec succès!",
+      "change_info_error": "Modifier les informations utilisateur sans succès!"
     },
     "account_settings": {
       "title": "Paramètres du compte",
