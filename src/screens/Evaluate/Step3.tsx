@@ -16,7 +16,7 @@ interface Step3Props {
   score: number;
 }
 
-export const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, onScoring, score }: Step3Props) => {
+export const Step3: React.FC<Step3Props> = ({ name, feeling, impactType, onScoring, score }: Step3Props) => {
   const good = [
     { color: '#056404', score: 5, label: I18n.t('evaluate.step3.huge') },
     { color: '#219C20', score: 4 },
@@ -40,11 +40,10 @@ export const Step3: React.FC<Step3Props> = ({ name, label, feeling, impactType, 
   return (
     <Block flex={1} style={step3Styles.container}>
       <Block flex={false} row style={step3Styles.frame}>
-        <Block flex={1} middle style={step3Styles.leftFrame}>
+        <Block flex={3} middle style={step3Styles.leftFrame}>
           <Text>{name}</Text>
         </Block>
-        <Block flex={3} row right center style={step3Styles.rightFrame}>
-          <Text style={step3Styles.name}>{I18n.t(`evaluate.tags.${label}`)}</Text>
+        <Block flex={1} row right center style={step3Styles.rightFrame}>
           {feelingComponent}
           {impactComponent}
         </Block>

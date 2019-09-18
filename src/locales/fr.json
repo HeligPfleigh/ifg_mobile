@@ -9,7 +9,7 @@
   },
   "messages": {
     "required": "Champ requis",
-    "pwd_confirm": "Mot de passe et confirmez que le mot de passe ne correspond pas",
+    "pwd_confirm": "S'il vous plaît entrer le même mot de passe",
     "max_200": "200 mots maximum",
     "require_different": "Veuillez saisir un nouvel email",
     "must_be": "Doit être",
@@ -26,7 +26,7 @@
     "only_alpha": "Seulement des caractères alphanumériques",
     "user_name_special_chart": "Le nom d'utilisateur a un caractère spécial",
     "first_chart_letter": "Le premier caractère doit être une lettre",
-    "pwd_valid": "Le champ doit contenir au moins 1 lettre majuscule et un caractère spécial"
+    "pwd_valid": "Au moins 1 lettre majuscule et caractère spécial"
   },
   "navigation": {
     "home": "Accueil",
@@ -298,7 +298,7 @@
         "btn_cancel": "Annuler"
       },
       "choose_image_error": "Vous ne pouvez pas choisir l'image!",
-      "change_avatar_error": "Ne changez pas votre avatar!",
+      "change_avatar_error": "Vous ne pouvez pas changer votre avatar!",
       "change_avatar_success": "Changer avatar avec succès!",
       "change_info_success": "Changer les informations utilisateur avec succès!",
       "change_info_error": "Modifier les informations utilisateur sans succès!"

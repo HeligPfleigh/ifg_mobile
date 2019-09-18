@@ -3,7 +3,6 @@ import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    paddingVertical: theme.sizes.margin,
     paddingHorizontal: theme.sizes.padding,
   },
   nextBtn: {
@@ -87,14 +86,16 @@ export const step2Styles = StyleSheet.create({
   header: {
     textAlign: 'center',
     fontSize: theme.sizes.h2,
+    marginTop: 5,
+    color: theme.colors.blue,
   },
   cardHeader: {
     textAlign: 'center',
     fontSize: theme.sizes.font,
   },
   card: {
-    width: 150,
-    height: 120,
+    width: 130,
+    height: 100,
     borderColor: theme.colors.gray,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: theme.sizes.base,
@@ -133,6 +134,8 @@ export const step3Styles = StyleSheet.create({
   },
   header: {
     fontSize: theme.sizes.h2,
+    marginTop: 5,
+    color: theme.colors.blue,
   },
   score: {
     fontSize: theme.sizes.h2,

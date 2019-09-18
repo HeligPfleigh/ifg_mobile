@@ -4,9 +4,8 @@ import { theme } from '../../../../constants';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     maxHeight: 60,
-    marginTop: theme.sizes.margin,
-    marginBottom: theme.sizes.margin,
     padding: theme.sizes.margin,
     borderRadius: theme.sizes.base,
     alignItems: 'center',
@@ -34,5 +33,9 @@ export const styles = StyleSheet.create({
   icon: {
     marginLeft: 1,
     marginTop: 1,
+  },
+  textScore: {
+    fontSize: theme.sizes.base + 5,
+    fontWeight: '700',
   },
 });

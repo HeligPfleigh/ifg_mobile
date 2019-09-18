@@ -92,6 +92,7 @@ class Home extends Component<HomeProps> {
             onPress={this._navigateToContactUsScreen}
           />
           <MenuItem
+            isShadow={false}
             iconSize={19}
             iconName="logout"
             isNavigator={false}

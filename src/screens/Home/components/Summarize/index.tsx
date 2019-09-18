@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import { Text, TouchableOpacity, GestureResponderEvent, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { theme } from '../../../../constants';
@@ -17,29 +17,29 @@ export default class Summarize extends Component<SummarizeProps> {
   render() {
     const { onPress, score } = this.props;
     return (
-      <Block row style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <WelcomeImg width={60} height={40} />
         <Block flex={3}>
           <Text style={styles.label}>{I18n.t('home.global_scores')}</Text>
         </Block>
         {score !== undefined ? (
           <Block row right flex={1}>
-            <ScoreText score={score} />
+            <ScoreText score={score} style={styles.textScore} />
           </Block>
         ) : (
           <Block />
         )}
         <Block flex={1} right row>
-          <TouchableOpacity style={styles.roundContainer} onPress={onPress}>
+          <View style={styles.roundContainer}>
             <MaterialCommunityIcons
               name="chevron-right"
               color={theme.colors.white}
               size={theme.sizes.base}
               style={styles.icon}
             />
-          </TouchableOpacity>
+          </View>
         </Block>
-      </Block>
+      </TouchableOpacity>
     );
   }
 }

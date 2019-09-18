@@ -5,8 +5,8 @@ import get from 'lodash/get';
 import noop from 'lodash/noop';
 import isEmpty from 'lodash/isEmpty';
 import SplashScreen from 'react-native-splash-screen';
-import { Text, ScrollView, Image, View } from 'react-native';
-import { NavigationScreenProps, NavigationEvents } from 'react-navigation';
+import { Text, ScrollView, Image } from 'react-native';
+import { NavigationScreenProps, NavigationEvents, SafeAreaView } from 'react-navigation';
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -62,13 +62,17 @@ class Home extends Component<HomeProps> {
       <Block style={styles.container}>
         <Loader loading={isFetching} />
         <NavigationEvents onDidFocus={this._loadData} />
-        <View style={styles.headerContainer}>
-          <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
+        <SafeAreaView style={styles.headerContainer}>
+          <Block flex={1} middle center>
+            <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
+          </Block>
           <Block flex={0.5} middle center>
             <Text>{name}</Text>
           </Block>
-          <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
-        </View>
+          <Block flex={0.7} middle center>
+            <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
+          </Block>
+        </SafeAreaView>
         <Block flex={2} style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: theme.sizes.padding }}>
             <EvaluationItem
