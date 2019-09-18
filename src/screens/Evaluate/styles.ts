@@ -87,6 +87,8 @@ export const step2Styles = StyleSheet.create({
   header: {
     textAlign: 'center',
     fontSize: theme.sizes.h2,
+    marginTop: 5,
+    color: theme.colors.blue,
   },
   cardHeader: {
     textAlign: 'center',
@@ -133,6 +135,8 @@ export const step3Styles = StyleSheet.create({
   },
   header: {
     fontSize: theme.sizes.h2,
+    marginTop: 5,
+    color: theme.colors.blue,
   },
   score: {
     fontSize: theme.sizes.h2,

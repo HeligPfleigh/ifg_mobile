@@ -35,10 +35,11 @@ export const Step1: React.FC<Step1Props> = ({
           </Block>
           <Block flex={1}>
             <TextInput
+              autoFocus
               style={step1Styles.input}
               onChangeText={onNameChange}
               value={name}
-              maxLength={20}
+              maxLength={40}
               placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
             />
           </Block>
