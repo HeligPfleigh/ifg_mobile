@@ -9,7 +9,7 @@ const AppNavigator = createSwitchNavigator(
   {
     [NavigatorMap.AuthLoading]: AuthLoadingScreen,
     [NavigatorMap.App]: AppStack,
-    [NavigatorMap.Auth]: AuthStack,
+    [NavigatorMap.Auth]: { screen: AuthStack, path: 'auth' },
   },
   {
     initialRouteName: NavigatorMap.AuthLoading,

@@ -9,6 +9,8 @@ import SignInScreen from '../screens/SignIn';
 import SignUpScreen from '../screens/SignUp';
 import WelcomeScreen from '../screens/Welcome';
 import ForgotPasswordScreen from '../screens/ForgotPassword';
+import ResetPasswordScreen from '../screens/ResetPassword';
+import { NavigationParamsName } from '../constants/enum';
 
 export const AuthStack = createStackNavigator(
   {
@@ -19,6 +21,10 @@ export const AuthStack = createStackNavigator(
     [NavigatorMap.SignIn]: SignInScreen,
     [NavigatorMap.SignUp]: SignUpScreen,
     [NavigatorMap.ForgotPassword]: ForgotPasswordScreen,
+    [NavigatorMap.ResetPassword]: {
+      screen: ResetPasswordScreen,
+      path: `resetPwd/:${NavigationParamsName.RESET_PASSWORD_TOKEN}`,
+    },
   },
   {
     defaultNavigationOptions: {

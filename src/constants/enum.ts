@@ -33,6 +33,7 @@ enum ModalType {
 enum NavigationParamsName {
   EVALUATION_TYPE = 'evaluationType',
   EVALUATION_DATA = 'evaluation_data',
+  RESET_PASSWORD_TOKEN = 'reset_password_token',
 }
 
 enum ReduxFormName {
@@ -42,6 +43,7 @@ enum ReduxFormName {
   UPDATE_INFO = 'update-user-info',
   CHANGE_PASSWORD = 'change-password',
   CHANGE_EMAIL = 'change-user-email',
+  RESET_PASSWORD = 'reset-password',
 }
 
 const tags: any = {
@@ -56,4 +58,16 @@ enum ActionStatus {
   ARCHIEVED = 'archieved',
 }
 
-export { ActionStatus, EvaluationType, Feeling, ImpactType, ModalType, NavigationParamsName, ReduxFormName, tags };
+const SUFFIX = 'ifeelgood://test/';
+
+export {
+  ActionStatus,
+  EvaluationType,
+  Feeling,
+  ImpactType,
+  ModalType,
+  NavigationParamsName,
+  ReduxFormName,
+  tags,
+  SUFFIX,
+};
