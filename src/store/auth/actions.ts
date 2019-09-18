@@ -1,16 +1,16 @@
 import { Dispatch } from 'redux';
-
+import get from 'lodash/get';
 import api from '../../core/api';
-import { Toast } from '../../components';
 import {
   LoginSuccessfulResponse,
   LOGIN_SUCCESSFUL,
   LOGIN_FAILURE,
   LoginActionType,
   LOGOUT,
+  LOGIN_RESET_ERROR,
   // LOGIN_REQUEST,
 } from './types';
-import { RequestError } from '../types';
+import { CustomError } from '../types';
 
 // const loginRequest = (): LoginActionType => {
 //   return {
@@ -25,12 +25,16 @@ const loginSuccessfull = (response: LoginSuccessfulResponse): LoginActionType =>
   };
 };
 
-const loginFail = (error: RequestError): LoginActionType => {
+const loginFail = (error: CustomError): LoginActionType => {
   return {
     type: LOGIN_FAILURE,
     error,
   };
 };
+
+export const resetLoginError = () => ({
+  type: LOGIN_RESET_ERROR,
+});
 
 export function login(username: string, password: string) {
   return async function(dispatch: Dispatch<LoginActionType>) {
@@ -39,8 +43,8 @@ export function login(username: string, password: string) {
       const { data } = await api.login(username, password);
       dispatch(loginSuccessfull(data));
     } catch (e) {
-      dispatch(loginFail(e));
-      Toast.error(e.message);
+      const error = get(e, 'response.data.error');
+      dispatch(loginFail(error));
     }
   };
 }

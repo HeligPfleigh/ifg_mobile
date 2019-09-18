@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, TouchableOpacity, Keyboard } from 'react-native';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { useDispatch, useSelector, connect } from 'react-redux';
+import get from 'lodash/get';
 import I18n from '../../core/i18n';
-import { login } from '../../store/actions';
+import { login, resetLoginError } from '../../store/actions';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button, Loader, ContactMail } from '../../components';
+import { Block, Button, Loader, ContactMail, Toast } from '../../components';
 import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -20,11 +21,30 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
+  const signInErr = useSelector((state: AppState) => state.auth.error);
 
+  // navigate to Home after login
   if (authToken) {
     authorizeApi(authToken);
     props.navigation.navigate(NavigatorMap.Home);
   }
+
+  // toast error
+  if (signInErr) {
+    const statusCode = get(signInErr, 'statusCode', 400);
+    if (statusCode === 401 || statusCode === 404) {
+      Toast.error(I18n.t('errors.sign_in_fail'));
+    } else {
+      Toast.error(I18n.t('errors.unexpected'));
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetLoginError());
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const _navigateToForgotPasswordScreen = () => {
     props.navigation.navigate(NavigatorMap.ForgotPassword);

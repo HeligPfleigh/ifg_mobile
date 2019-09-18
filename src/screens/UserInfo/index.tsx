@@ -131,8 +131,10 @@ class UserInfo extends React.Component<IProps, IStates> {
         formData.weight = Number(get(values, 'weight'));
       }
       await api.updateUserInfo(formData);
+      Toast.success(I18n.t('profile.user_info.change_info_success'));
     } catch (err) {
       // TODO
+      Toast.error(I18n.t('profile.user_info.change_info_error'));
     } finally {
       this.setState({ loading: false });
     }
@@ -142,7 +144,7 @@ class UserInfo extends React.Component<IProps, IStates> {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
     const avatar = get(this.props, 'avatar', undefined);
-    const { required, maxLength120 } = FormFields.FormValidator;
+    const { required, maxLength120, hasWhiteSpace, hasSpecialChart } = FormFields.FormValidator;
 
     return (
       <React.Fragment>
@@ -164,13 +166,16 @@ class UserInfo extends React.Component<IProps, IStates> {
                 </View>
               </TouchableOpacity>
             </Block>
-            <Block flex={5} style={styles.content}>
+            <Block flex={false}>
               <Field
-                disabled
                 name="username"
+                tintColor={theme.colors.green}
+                style={{ textAlign: 'center' }}
                 component={FormFields.TextField}
-                label={I18n.t('profile.user_info.username')}
+                validate={[required, hasWhiteSpace, hasSpecialChart, maxLength120]}
               />
+            </Block>
+            <Block flex={5} style={styles.content}>
               <Field
                 name="firstName"
                 autoCorrect={false}

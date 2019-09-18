@@ -299,7 +299,9 @@
       },
       "choose_image_error": "You can't choose image!",
       "change_avatar_error": "Can't change your avatar!",
-      "change_avatar_success": "Change avatar successfully!"
+      "change_avatar_success": "Change avatar successfully!",
+      "change_info_success": "Change user info successfully!",
+      "change_info_error": "Change user info unsuccessfully!"
     },
     "account_settings": {
       "title": "Account settings",
@@ -373,5 +375,9 @@
   },
   "drafts": {
     "no_draft": "You don't have any draft yet!"
+  },
+  "errors": {
+    "sign_in_fail": "Your E-mail or password is not correct",
+    "unexpected": "An unexpected error occurred"
   }
 }
