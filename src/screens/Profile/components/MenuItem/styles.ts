@@ -15,6 +15,8 @@ export const styles = StyleSheet.create({
     paddingRight: theme.sizes.margin * 2,
     alignItems: 'center',
     backgroundColor: theme.colors.white,
+  },
+  shadow: {
     shadowColor: theme.colors.black,
     shadowOffset: {
       width: 0,

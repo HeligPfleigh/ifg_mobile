@@ -15,6 +15,7 @@ interface MenuItemProps {
   labelColor?: string;
   backgroundColor?: string;
   isNavigator?: boolean;
+  isShadow?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -29,10 +30,14 @@ export default class MenuItem extends Component<MenuItemProps> {
       iconColor = theme.colors.blue,
       labelColor = theme.colors.black,
       backgroundColor = theme.colors.white,
+      isShadow = true,
     } = this.props;
     const iconStyles = [styles.roundContainer, { borderColor: iconColor }];
     const labelStyles = [styles.label, { color: labelColor }];
-    const contentStyles = [styles.content, { backgroundColor }];
+    // const contentStyles = [styles.content, { backgroundColor }];
+    const contentStyles = isShadow
+      ? [styles.content, styles.shadow, { backgroundColor }]
+      : [styles.content, { backgroundColor }];
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Block row style={contentStyles}>
