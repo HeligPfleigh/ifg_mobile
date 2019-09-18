@@ -8,7 +8,6 @@ import { NavigationScreenProps } from 'react-navigation';
 import { TextField } from 'react-native-material-textfield';
 import Modal from 'react-native-modal';
 import get from 'lodash/get';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox, Loader } from '../../components';
@@ -25,7 +24,7 @@ import {
   editAction,
   getReasons,
 } from '../../store/actions';
-import { Edit, Delete, Delete2 } from '../../assets/images';
+import { Edit, Delete, Delete2, Save, Archived } from '../../assets/images';
 
 interface ActionListProps extends NavigationScreenProps {}
 
@@ -171,11 +170,11 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
           </Button>
         </Block>
         <Block flex={false} row bottom padding={[0, theme.sizes.padding]}>
-          <TouchableOpacity onPress={saveAction}>
-            <MaterialIcons size={theme.sizes.innerIcon} name="save" color={theme.colors.blue} />
+          <TouchableOpacity onPress={saveAction} style={styles.iconBtn}>
+            <Save width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={markAsArchieved}>
-            <MaterialIcons size={theme.sizes.innerIcon} name="archive" color={theme.colors.blue} />
+          <TouchableOpacity onPress={markAsArchieved} style={styles.iconBtn}>
+            <Archived width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={deleteAll} style={{ justifyContent: 'center' }}>
             <Delete2 width={theme.sizes.icon} height={theme.sizes.icon} />

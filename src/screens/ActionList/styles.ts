@@ -92,6 +92,7 @@ export const styles = StyleSheet.create({
     padding: theme.sizes.padding / 2,
   },
   iconBtn: {
-    marginRight: theme.sizes.margin / 2,
+    justifyContent: 'center',
+    marginRight: theme.sizes.margin,
   },
 });
