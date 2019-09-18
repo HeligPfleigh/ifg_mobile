@@ -94,6 +94,15 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   let reasons: any = [];
   if (reasonsValue.length > 0) {
     reasons = reasonsValue.map((reason: any) => ({ value: reason }));
+    reasons.sort((item1: any, item2: any) => {
+      if (item1.value < item2.value) {
+        return -1;
+      }
+      if (item1.value > item2.value) {
+        return 1;
+      }
+      return 0;
+    });
     reasons.push({ value: '' });
   }
 
