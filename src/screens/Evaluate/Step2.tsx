@@ -62,14 +62,14 @@ export const Step2: React.FC<Step2Props> = ({
             <Card
               selected={feeling === Enum.Feeling.GOOD}
               text={I18n.t('evaluate.step2.feel')}
-              icon={<FeelGoodLv4 width={60} height={60} />}
+              icon={<FeelGoodLv4 width={40} height={40} />}
             />
           </Button>
           <Button onPress={onPressFeelBad}>
             <Card
               selected={feeling === Enum.Feeling.BAD}
               text={I18n.t('evaluate.step2.feel')}
-              icon={<FeelGoodLv0 width={60} height={60} />}
+              icon={<FeelGoodLv0 width={40} height={40} />}
             />
           </Button>
         </Block>
@@ -83,14 +83,14 @@ export const Step2: React.FC<Step2Props> = ({
             <Card
               selected={impactType === Enum.ImpactType.ENERGY}
               text={I18n.t('evaluate.step2.energy')}
-              icon={<EnergyImg width={60} height={60} />}
+              icon={<EnergyImg width={40} height={40} />}
             />
           </Button>
           <Button onPress={onPressImpactMood}>
             <Card
               selected={impactType === Enum.ImpactType.MOOD}
               text={I18n.t('evaluate.step2.mood')}
-              icon={<MoodImg width={60} height={60} />}
+              icon={<MoodImg width={40} height={40} />}
             />
           </Button>
         </Block>

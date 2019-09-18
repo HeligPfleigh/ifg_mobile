@@ -3,7 +3,6 @@ import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    paddingVertical: theme.sizes.margin,
     paddingHorizontal: theme.sizes.padding,
   },
   nextBtn: {
@@ -95,8 +94,8 @@ export const step2Styles = StyleSheet.create({
     fontSize: theme.sizes.font,
   },
   card: {
-    width: 150,
-    height: 120,
+    width: 130,
+    height: 100,
     borderColor: theme.colors.gray,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: theme.sizes.base,

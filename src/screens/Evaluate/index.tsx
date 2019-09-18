@@ -229,7 +229,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
             />
           )}
         </Block>
-        <Block middle flex={1} style={styles.footerContainer}>
+        <Block middle flex={1.4} style={styles.footerContainer}>
           <Button
             gradient={!disableNextBtn}
             disabled={disableNextBtn}
