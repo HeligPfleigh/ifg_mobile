@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import noop from 'lodash/noop';
@@ -8,7 +8,6 @@ import { NavigationScreenProps } from 'react-navigation';
 import { TextField } from 'react-native-material-textfield';
 import Modal from 'react-native-modal';
 import get from 'lodash/get';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox, Loader } from '../../components';
@@ -25,7 +24,7 @@ import {
   editAction,
   getReasons,
 } from '../../store/actions';
-import { Edit, Delete, Delete2 } from '../../assets/images';
+import { Edit, Delete, Delete2, Save, Archived } from '../../assets/images';
 
 interface ActionListProps extends NavigationScreenProps {}
 
@@ -37,16 +36,29 @@ const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
+  const swipeEl = useRef<any>(null);
+
   const handleDeleteAction = () => {
+    if (swipeEl && swipeEl.current) {
+      swipeEl.current.closeRowWithoutAnimation();
+    }
+
     dispatch(deleteAction(action.id));
   };
 
+  const handleEditAction = () => {
+    if (swipeEl && swipeEl.current) {
+      swipeEl.current.closeRowWithoutAnimation();
+    }
+    onEdit(action.id);
+  };
+
   return (
-    <SwipeRow disableRightSwipe rightOpenValue={-100}>
+    <SwipeRow ref={swipeEl} disableRightSwipe rightOpenValue={-100}>
       <Block flex={false} style={styles.standaloneRowBack}>
         <Block flex={false} />
         <Block flex={false} row style={{ height: '100%' }}>
-          <TouchableOpacity style={[styles.btn, styles.indigo]} onPress={() => onEdit(action.id)}>
+          <TouchableOpacity style={[styles.btn, styles.indigo]} onPress={handleEditAction}>
             <Edit width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn} onPress={handleDeleteAction}>
@@ -82,6 +94,15 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   let reasons: any = [];
   if (reasonsValue.length > 0) {
     reasons = reasonsValue.map((reason: any) => ({ value: reason }));
+    reasons.sort((item1: any, item2: any) => {
+      if (item1.value < item2.value) {
+        return -1;
+      }
+      if (item1.value > item2.value) {
+        return 1;
+      }
+      return 0;
+    });
     reasons.push({ value: '' });
   }
 
@@ -171,11 +192,11 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
           </Button>
         </Block>
         <Block flex={false} row bottom padding={[0, theme.sizes.padding]}>
-          <TouchableOpacity onPress={saveAction}>
-            <MaterialIcons size={theme.sizes.innerIcon} name="save" color={theme.colors.blue} />
+          <TouchableOpacity onPress={saveAction} style={styles.iconBtn}>
+            <Save width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={markAsArchieved}>
-            <MaterialIcons size={theme.sizes.innerIcon} name="archive" color={theme.colors.blue} />
+          <TouchableOpacity onPress={markAsArchieved} style={styles.iconBtn}>
+            <Archived width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={deleteAll} style={{ justifyContent: 'center' }}>
             <Delete2 width={theme.sizes.icon} height={theme.sizes.icon} />

@@ -49,18 +49,17 @@ const DeleteAccount: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
           <Block flex={false} style={styles.fieldWrapper}>
             <Text style={styles.fieldLabel}>{I18n.t('profile.delete_account.label_input')}</Text>
             <TextField
+              label=""
               multiline
+              bordered
+              height={175}
               labelHeight={0}
               labelPadding={0}
-              height={175}
-              maxLength={200}
-              characterRestriction={200}
-              label=""
-              title={I18n.t('messages.max_200')}
-              bordered
               activeLineWidth={1}
-              style={styles.textarea}
               value={feedback}
+              maxLength={500}
+              style={styles.textarea}
+              characterRestriction={500}
               onChangeText={text => setFeedback(text)}
             />
           </Block>

@@ -107,12 +107,12 @@ const Drafts: React.FC<NavigationScreenProps> = () => {
   return (
     <ScrollView>
       <DraftGroupWithNavigation
-        drafts={activityDrafts}
+        drafts={relationshipDrafts}
         colors={theme.gradients.lightpink}
         type={Enum.EvaluationType.ACTIVITIES}
       />
       <DraftGroupWithNavigation
-        drafts={relationshipDrafts}
+        drafts={activityDrafts}
         colors={theme.gradients.lightblue}
         type={Enum.EvaluationType.RELATIONSHIPS}
       />
