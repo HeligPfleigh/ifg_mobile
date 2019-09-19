@@ -309,7 +309,7 @@
       "change_user_email": "Change email",
       "change_pwd_error": "Can't change your password",
       "change_pwd_success": "Change your password successful",
-      "change_email_error": "Can't change your email",
+      "change_email_error": "Hmm...we are sorry, this E-mail cannot be used. Please choose another E-mail address.",
       "change_email_success": "Change your email successful",
       "change_password": "Change my password",
       "language_setting": "Language setting",

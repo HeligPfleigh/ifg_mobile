@@ -315,7 +315,11 @@
       "current_email": "E-mail actuel",
       "new_email": "Nouvel E-mail",
       "confirm_new_password": "Confirmer le nouveau mot de passe",
-      "confirm_with_password": "Confirmer le mot de passe"
+      "confirm_with_password": "Confirmer le mot de passe",
+      "change_pwd_error": "Impossible de changer votre mot de passe",
+      "change_pwd_success": "Changer votre mot de passe avec succès",
+      "change_email_error": "Hmm ... nous sommes désolés, cet e-mail ne peut pas être utilisé. Veuillez choisir une autre adresse e-mail.",
+      "change_email_success": "Changer votre email avec succès"
     },
     "account_parameters": {
       "title": "Préférences",
