@@ -212,7 +212,7 @@
           "name": "Quel autre élément dans ton univers contribue à augmenter ou réduire ton énergie et ton humeur ?"
         },
         "label": "Sélectionner une sous-catégorie",
-        "input_placeholder": "Tapez le nom ici...",
+        "input_placeholder": "Entrer le texte ici...",
         "desc": "Ajouter une description"
       },
       "optional": " (optionnel)"
@@ -301,7 +301,8 @@
       "change_avatar_error": "Vous ne pouvez pas changer votre avatar!",
       "change_avatar_success": "Changer avatar avec succès!",
       "change_info_success": "Changer les informations utilisateur avec succès!",
-      "change_info_error": "Modifier les informations utilisateur sans succès!"
+      "change_info_error": "Modifier les informations utilisateur sans succès!",
+      "save": "ENREGISTRER"
     },
     "account_settings": {
       "title": "Paramètres du compte",

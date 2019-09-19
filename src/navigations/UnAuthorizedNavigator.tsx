@@ -14,7 +14,7 @@ export const AuthStack = createStackNavigator(
   {
     [NavigatorMap.Welcome]: {
       screen: WelcomeScreen,
-      navigationOptions: { headerRight: <ChooseLanguage /> },
+      navigationOptions: { headerTitle: <ChooseLanguage /> },
     },
     [NavigatorMap.SignIn]: SignInScreen,
     [NavigatorMap.SignUp]: SignUpScreen,

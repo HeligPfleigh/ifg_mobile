@@ -16,7 +16,7 @@ import { AppState } from '../../store/types';
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
 const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
-  const { required, minLength4, minLength8, maxLength120, email } = validator;
+  const { required, minLength8, maxLength120, email } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
@@ -60,29 +60,31 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
     <React.Fragment>
       <Loader loading={isRequesting} />
       <Block margin={[0, theme.sizes.padding]}>
-        <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
+        <Block flex={false} style={{ aspectRatio: 4 }} middle>
           <Text style={styles.title}>{I18n.t('signin.title')}</Text>
         </Block>
         <Block flex={false} style={{ aspectRatio: 1.5 }}>
           <Block bottom margin={[theme.sizes.margin * 2, 0]}>
-            <Field
-              name="email"
-              label={I18n.t('signin.email')}
-              component={TextField}
-              characterRestriction={120}
-              validate={[required, minLength4, email]}
-              tintColor={theme.colors.green}
-            />
-            <Field
-              name="password"
-              label={I18n.t('signin.password')}
-              secureTextEntry
-              component={TextField}
-              autoCorrect={false}
-              characterRestriction={120}
-              validate={[required, minLength8, maxLength120]}
-              tintColor={theme.colors.green}
-            />
+            <Block flex={1}>
+              <Field
+                name="email"
+                label={I18n.t('signin.email')}
+                component={TextField}
+                validate={[required, minLength8, maxLength120, email]}
+                tintColor={theme.colors.green}
+              />
+            </Block>
+            <Block flex={1}>
+              <Field
+                name="password"
+                label={I18n.t('signin.password')}
+                secureTextEntry
+                component={TextField}
+                autoCorrect={false}
+                validate={[required, minLength8, maxLength120]}
+                tintColor={theme.colors.green}
+              />
+            </Block>
           </Block>
         </Block>
         <Block flex={false} style={{ aspectRatio: 2.8 }}>
