@@ -8,6 +8,13 @@ import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: theme.colors.white2,
+  },
+  scrollview: {
+    width: '100%',
+    backgroundColor: theme.colors.white2,
+  },
   header: {
     textAlign: 'center',
     paddingHorizontal: theme.sizes.padding,
@@ -15,18 +22,10 @@ const styles = StyleSheet.create({
     paddingVertical: theme.sizes.margin,
   },
   item: {
-    marginVertical: theme.sizes.margin,
+    marginVertical: theme.sizes.margin / 2,
     paddingVertical: theme.sizes.margin,
     backgroundColor: theme.colors.white,
     paddingLeft: theme.sizes.padding,
-    shadowColor: theme.colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 2,
   },
 });
 
@@ -44,15 +43,10 @@ export const AchievedActions: React.FC = () => {
     dispatch(loadActions(Enum.ActionStatus.ARCHIEVED));
   }, [dispatch]);
   return (
-    <Block center>
+    <Block center style={styles.container}>
       <Loader loading={isFetching} />
       <Text style={styles.header}>{I18n.t('achieved_actions.header')}</Text>
-      <ScrollView
-        style={{
-          width: '100%',
-          paddingHorizontal: theme.sizes.padding,
-        }}
-      >
+      <ScrollView style={styles.scrollview}>
         {achievedActions.map((achievedAction: any) => (
           <AchievedAction action={achievedAction} key={`${achievedAction.id}`} />
         ))}

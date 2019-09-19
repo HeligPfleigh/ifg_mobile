@@ -161,7 +161,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   const navigateToLegend = () => navigation.navigate(NavigatorMap.Legend);
 
   return (
-    <Block>
+    <Block style={styles.container}>
       <Loader loading={isFetching} />
       <Block flex={5}>
         <Block flex={false} style={styles.addNewContainer}>
