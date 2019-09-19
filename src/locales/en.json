@@ -357,8 +357,8 @@
     "logout": "Logout"
   },
   "action_list": {
-    "tip_for_action": "Tip for action ",
     "smart": "SMART",
+    "cursor": "Your Feel Good cursor",
     "actions": "Actions ",
     "done": "done",
     "add_new": "Add new",

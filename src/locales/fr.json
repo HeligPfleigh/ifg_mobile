@@ -353,8 +353,8 @@
     "logout": "Déconnexion"
   },
   "action_list": {
-    "tip_for_action": "Astuces pour l'action ",
     "smart": "SMART",
+    "cursor": "Ton curseur Feel Good",
     "actions": "Actions ",
     "done": "achevées",
     "add_new": "Ajouter une nouvelle action",

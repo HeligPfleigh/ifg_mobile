@@ -158,6 +158,8 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
     setSelectedReason(value);
   };
 
+  const navigateToLegend = () => navigation.navigate(NavigatorMap.Legend);
+
   return (
     <Block>
       <Loader loading={isFetching} />
@@ -171,25 +173,20 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
             onChangeText={handleChangeReason}
             value={selectedReason}
           />
-          {/* <Button gradient style={styles.saveBtn} onPress={saveAction}>
-            <Block center middle>
-              <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.save')}</Text>
-            </Block>
-          </Button> */}
         </Block>
         <Block flex={false} row style={styles.tipSection}>
-          <Button onPress={showSMARTModal}>
-            <Text style={styles.tip}>
-              {I18n.t('action_list.tip_for_action')}
-              <Text style={styles.smart}>{I18n.t('action_list.smart')}</Text>
-            </Text>
-          </Button>
-          <Button onPress={navigateToArchivedActions}>
-            <Text style={styles.tip}>
+          <TouchableOpacity style={styles.tipBtn} onPress={showSMARTModal}>
+            <Text style={[styles.tip, styles.smart]}>{I18n.t('action_list.smart')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tipBtn} onPress={navigateToLegend}>
+            <Text style={[styles.tip, styles.smart]}>{I18n.t('action_list.cursor')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigateToArchivedActions}>
+            <Text style={[styles.tip, styles.smart]}>
               {I18n.t('action_list.actions')}
-              <Text style={styles.smart}>{I18n.t('action_list.done')}</Text>
+              {I18n.t('action_list.done')}
             </Text>
-          </Button>
+          </TouchableOpacity>
         </Block>
         <Block flex={false} row bottom padding={[0, theme.sizes.padding]}>
           <TouchableOpacity onPress={saveAction} style={styles.iconBtn}>
@@ -213,18 +210,6 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
           ))}
         </ScrollView>
       </Block>
-      {/* <Block middle flex={1} style={styles.footerContainer}>
-        <Button gradient style={styles.nextBtn} onPress={markAsArchieved}>
-          <Block center middle>
-            <Text style={styles.nextBtnTxt}>{I18n.t('action_list.footer.achieve')}</Text>
-          </Block>
-        </Button>
-        <Button gradient style={styles.draftBtn} onPress={deleteAll}>
-          <Block center middle style={styles.draftBtnBody}>
-            <Text style={styles.draftBtnTxt}>{I18n.t('action_list.footer.delete')}</Text>
-          </Block>
-        </Button>
-      </Block> */}
       <Modal
         isVisible={modalVisible}
         animationIn="zoomInDown"

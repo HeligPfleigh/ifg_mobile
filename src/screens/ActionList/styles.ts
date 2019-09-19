@@ -29,11 +29,15 @@ export const styles = StyleSheet.create({
 
   tipSection: {
     paddingHorizontal: theme.sizes.padding,
-    justifyContent: 'space-between',
     marginVertical: theme.sizes.margin / 2,
+  },
+  tipBtn: {
+    marginRight: theme.sizes.margin,
   },
   tip: {
     color: theme.colors.blue,
+    textDecorationLine: 'underline',
+    fontStyle: 'italic',
   },
   smart: {
     fontWeight: 'bold',
