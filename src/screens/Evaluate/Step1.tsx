@@ -57,10 +57,11 @@ export const Step1: React.FC<Step1Props> = ({
               defaultValue={name}
               onChangeText={onNameChange}
               placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
-              listStyle={{ margin: 0 }}
-              renderItem={({ item }: any) => {
+              listStyle={step1Styles.autocompleteList}
+              keyExtractor={item => `auto-complete-${item}`}
+              renderItem={({ item }: { item: string }) => {
                 return (
-                  <TouchableOpacity onPress={() => onNameChange(item)} style={{ padding: 5 }}>
+                  <TouchableOpacity onPress={() => onNameChange(item)} style={step1Styles.autocompleteItem}>
                     <Text>{item}</Text>
                   </TouchableOpacity>
                 );

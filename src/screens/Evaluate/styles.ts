@@ -39,11 +39,13 @@ export const step1Styles = StyleSheet.create({
     color: theme.colors.blue,
   },
   input: {
-    // height: 40,
-    // borderColor: theme.colors.gray,
-    // borderWidth: StyleSheet.hairlineWidth,
-    // width: '100%',
     paddingHorizontal: theme.sizes.margin / 2,
+  },
+  autocompleteList: {
+    margin: 0,
+  },
+  autocompleteItem: {
+    padding: theme.sizes.padding / 4,
   },
   chip: {
     marginRight: theme.sizes.margin / 2,
