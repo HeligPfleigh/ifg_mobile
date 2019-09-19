@@ -8,6 +8,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_RESET_ERROR,
 } from './types';
+import { authorizeApi } from '../../core/api';
 
 export const initialState = {
   token: '',
@@ -19,6 +20,7 @@ const authReducer = createReducer(initialState, {
     return { ...state, isRequesting: true };
   },
   [LOGIN_SUCCESSFUL]: (state: AuthState, action: LoginSuccessfulAction) => {
+    authorizeApi(action.response.token);
     return { token: action.response.token, isRequesting: false };
   },
   [LOGIN_FAILURE]: (state: AuthState, action: LoginFailureAction) => {

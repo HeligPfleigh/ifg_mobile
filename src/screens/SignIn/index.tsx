@@ -12,7 +12,6 @@ import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState } from '../../store/types';
-import { authorizeApi } from '../../core/api';
 
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
@@ -25,7 +24,6 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
 
   // navigate to Home after login
   if (authToken) {
-    authorizeApi(authToken);
     props.navigation.navigate(NavigatorMap.Home);
   }
 
