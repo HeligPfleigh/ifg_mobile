@@ -56,10 +56,10 @@ class MyTextField extends Component<IProps, IStates> {
     return (
       <TextField
         {...restInput}
-        {...ownProps}
         label={label}
         labelHeight={18}
         labelFontSize={14}
+        {...ownProps}
         onChangeText={onChange}
         error={touched ? error : undefined}
         secureTextEntry={this.state.isRenderAccessory}

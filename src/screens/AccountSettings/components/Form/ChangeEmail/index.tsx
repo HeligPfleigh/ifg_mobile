@@ -24,8 +24,6 @@ interface IProps extends InjectedFormProps {
 }
 
 class ChangeEmail extends React.Component<IProps, IStates> {
-  toastr = null;
-
   state = {
     loading: false,
   };

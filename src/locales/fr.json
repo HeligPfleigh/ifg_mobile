@@ -345,7 +345,9 @@
       "page_title": "Es-tu sûr-e de vouloir \neffacer ton compte ?",
       "page_subtitle": "Peux-tu partager avec nous la raison de ton départ ?",
       "label_input": "La raison est….",
-      "label_button": "ENVOYER & EFFACER MON COMPTE"
+      "label_button": "ENVOYER & EFFACER MON COMPTE",
+      "current_password_mismatch": "Mot de passe actuel incompatible.",
+      "delete_action_error": "Vous ne supprimez pas ce compte!"
     },
     "logout": "Déconnexion"
   },

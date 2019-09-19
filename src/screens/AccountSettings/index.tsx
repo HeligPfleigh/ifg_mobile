@@ -24,13 +24,9 @@ class AccountSettings extends Component<ScreenProps> {
 
   render() {
     return (
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.container}
-          showsVerticalScrollIndicator={false}
-        >
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <Block style={styles.content}>
               <Accordion
                 childComponent={<ChangePassword />}
@@ -46,9 +42,9 @@ class AccountSettings extends Component<ScreenProps> {
               />
               <Block flex={1} />
             </Block>
-          </TouchableWithoutFeedback>
-        </ScrollView>
-      </KeyboardAvoidingView>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }

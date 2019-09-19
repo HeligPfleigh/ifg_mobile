@@ -349,7 +349,9 @@
       "page_title": "Are you sure you want to \ndelete the account?",
       "page_subtitle": "Can you share with us why you are leaving ?",
       "label_input": "The reason is…",
-      "label_button": "SEND & DELETE ACCOUNT"
+      "label_button": "SEND & DELETE ACCOUNT",
+      "current_password_mismatch": "Current password mismatch.",
+      "delete_action_error": "You don't delete this account!"
     },
     "logout": "Logout"
   },

@@ -47,8 +47,15 @@ const editAction = (id: string, action: string) => instance.patch(`/actions/${id
 
 const getReasons = () => instance.get('/actions/reasons');
 
-const giveFeedback = (data: { subject: string; message: string }) => instance.post('/feedbacks', data);
+// POST: /feedbacks
+interface IGiveFeebackPayload {
+  subject: string;
+  message: string;
+  password?: string;
+}
+const giveFeedback = (data: IGiveFeebackPayload) => instance.post('/feedbacks', data);
 
+// DELETE: /users/me
 const deleteAccount = () => instance.delete('/users/me');
 
 const updateUserInfo = (data: {
@@ -75,6 +82,8 @@ interface IChangeEmail {
   email: string;
 }
 const changeEmail = (data: IChangeEmail) => instance.patch('/users/me/change-email', data);
+
+// POST: /firebases
 const sendFirebaseToken = (data: { firebaseToken: string }) => instance.post('/firebases', data);
 
 const editFirebaseSetting = (data: { language?: string; isReceiveNotification?: boolean }, firebaseToken: string) =>

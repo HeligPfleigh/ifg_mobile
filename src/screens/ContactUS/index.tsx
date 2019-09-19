@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import get from 'lodash/get';
-import { Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Text, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
 import { NavigationScreenProps } from 'react-navigation';
@@ -39,9 +39,9 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <Block style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+        <Loader loading={loading} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Loader loading={loading} />
           <Block flex={false}>
             <Block flex={false} center middle style={styles.titleWrapper}>
               <Text style={styles.pageTitle}>{I18n.t('profile.account_contact_us.page_title')}</Text>
@@ -87,7 +87,7 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
             </Button>
           </Block>
         </ScrollView>
-      </Block>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };

@@ -16,6 +16,7 @@ export const maxLength9 = maxLength(9);
 export const maxLength15 = maxLength(15);
 export const maxLength25 = maxLength(25);
 export const maxLength120 = maxLength(120);
+export const maxLength500 = maxLength(500);
 
 // Check min length
 export const minLength = (min: number) => (value: any) =>

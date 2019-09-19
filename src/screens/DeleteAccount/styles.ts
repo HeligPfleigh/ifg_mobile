@@ -23,10 +23,6 @@ export const styles = StyleSheet.create({
     fontWeight: '300',
     marginBottom: theme.sizes.margin,
   },
-  fieldWrapper: {
-    marginTop: theme.sizes.margin,
-    marginBottom: theme.sizes.margin,
-  },
   fieldLabel: {
     color: theme.colors.gray,
     fontSize: theme.sizes.label,
@@ -34,13 +30,20 @@ export const styles = StyleSheet.create({
   },
   textarea: {
     padding: 8,
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: theme.sizes.base,
+  },
+  password: {
+    padding: 8,
+    paddingTop: 3,
+    paddingBottom: 0,
+    fontSize: theme.sizes.base,
   },
   btnSend: {
-    backgroundColor: theme.colors.transparent,
     marginTop: theme.sizes.padding,
     marginBottom: theme.sizes.base,
+    backgroundColor: theme.colors.transparent,
   },
   labelSend: {
     color: theme.colors.white,
