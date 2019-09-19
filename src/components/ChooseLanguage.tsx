@@ -7,11 +7,8 @@ import { theme } from '../constants';
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.colors.primary,
-    fontSize: theme.sizes.h3,
-  },
-  separate: {
-    fontSize: theme.sizes.h3,
+    color: theme.colors.gray4,
+    fontSize: 15,
   },
 });
 
@@ -28,15 +25,14 @@ const ChooseLanguage: React.FC = () => {
           handleChange(SupportedLanguage.en);
         }}
       >
-        <Text style={styles.text}>English</Text>
+        <Text style={styles.text}>English </Text>
       </TouchableOpacity>
-      <Text style={styles.separate}> / </Text>
       <TouchableOpacity
         onPress={() => {
           handleChange(SupportedLanguage.fr);
         }}
       >
-        <Text style={styles.text}>Français</Text>
+        <Text style={styles.text}> Français</Text>
       </TouchableOpacity>
     </React.Fragment>
   );

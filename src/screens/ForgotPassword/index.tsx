@@ -31,22 +31,23 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
     <React.Fragment>
       <Loader loading={loading} />
       <Block margin={[0, theme.sizes.padding]}>
-        <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
+        <Block flex={false} style={{ aspectRatio: 4 }} middle>
           <Text style={styles.title}>{I18n.t('forgot.title')}</Text>
         </Block>
         <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
           <Text style={styles.paragraph}>{I18n.t('forgot.paragraph')}</Text>
         </Block>
-        <Block flex={false} style={{ aspectRatio: 3 }}>
-          <Field
-            name="email"
-            label={I18n.t('forgot.email')}
-            component={TextField}
-            autoCorrect={false}
-            characterRestriction={120}
-            validate={[required, minLength4, maxLength120, email]}
-            tintColor={theme.colors.green}
-          />
+        <Block flex={false} style={{ aspectRatio: 3.5 }}>
+          <Block flex={1}>
+            <Field
+              name="email"
+              label={I18n.t('forgot.email')}
+              component={TextField}
+              autoCorrect={false}
+              validate={[required, minLength4, maxLength120, email]}
+              tintColor={theme.colors.green}
+            />
+          </Block>
         </Block>
         <Block flex={false} style={{ aspectRatio: 5 }}>
           <Button gradient onPress={handleSubmit(onPressSubmit)}>

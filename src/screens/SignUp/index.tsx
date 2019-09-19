@@ -85,42 +85,48 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
             <Block flex={false} style={{ aspectRatio: 2.8 }} middle>
               <Text style={styles.title}>{I18n.t('signup.title')}</Text>
             </Block>
-            <Field
-              name="username"
-              label={I18n.t('signup.username')}
-              component={TextField}
-              characterRestriction={120}
-              validate={[required, minLength8, maxLength120]}
-              tintColor={theme.colors.green}
-            />
-            <Field
-              name="email"
-              label={I18n.t('signup.email')}
-              component={TextField}
-              characterRestriction={120}
-              validate={[required, minLength8, maxLength120, email]}
-              tintColor={theme.colors.green}
-            />
-            <Field
-              name="password"
-              label={I18n.t('signup.password')}
-              secureTextEntry
-              component={TextField}
-              autoCorrect={false}
-              characterRestriction={120}
-              validate={[required, minLength8, maxLength120, password]}
-              tintColor={theme.colors.green}
-            />
-            <Field
-              name="confirm"
-              label={I18n.t('signup.confirm')}
-              secureTextEntry
-              component={TextField}
-              autoCorrect={false}
-              characterRestriction={120}
-              validate={[required, this._compareValue]}
-              tintColor={theme.colors.green}
-            />
+            <Block flex={false} style={{ aspectRatio: 1 }} middle>
+              <Block flex={1}>
+                <Field
+                  name="username"
+                  label={I18n.t('signup.username')}
+                  component={TextField}
+                  validate={[required, minLength8, maxLength120]}
+                  tintColor={theme.colors.green}
+                />
+              </Block>
+              <Block flex={1}>
+                <Field
+                  name="email"
+                  label={I18n.t('signup.email')}
+                  component={TextField}
+                  validate={[required, minLength8, maxLength120, email]}
+                  tintColor={theme.colors.green}
+                />
+              </Block>
+              <Block flex={1}>
+                <Field
+                  name="password"
+                  label={I18n.t('signup.password')}
+                  secureTextEntry
+                  component={TextField}
+                  autoCorrect={false}
+                  validate={[required, minLength8, maxLength120, password]}
+                  tintColor={theme.colors.green}
+                />
+              </Block>
+              <Block flex={1}>
+                <Field
+                  name="confirm"
+                  label={I18n.t('signup.confirm')}
+                  secureTextEntry
+                  component={TextField}
+                  autoCorrect={false}
+                  validate={[required, this._compareValue]}
+                  tintColor={theme.colors.green}
+                />
+              </Block>
+            </Block>
             <View style={styles.confirm}>
               <View style={styles.box}>
                 <Checkbox size={25} checked={isChecked} onPress={() => this.setState({ isChecked: !isChecked })} />
