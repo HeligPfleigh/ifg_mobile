@@ -34,9 +34,10 @@ export const Step3: React.FC<Step3Props> = ({ name, feeling, impactType, onScori
   ];
 
   const scores = feeling === Enum.Feeling.GOOD ? good : bad;
-  const feelingComponent = feeling === Enum.Feeling.GOOD ? <FeelGoodLv4 /> : <FeelGoodLv0 />;
+  const feelingComponent =
+    feeling === Enum.Feeling.GOOD ? <FeelGoodLv4 width={20} height={20} /> : <FeelGoodLv0 width={20} height={20} />;
   const impactComponent =
-    impactType === Enum.ImpactType.ENERGY ? <EnergyImg width={40} height={40} /> : <MoodImg width={40} height={40} />;
+    impactType === Enum.ImpactType.ENERGY ? <EnergyImg width={20} height={20} /> : <MoodImg width={20} height={20} />;
   return (
     <Block flex={1} style={step3Styles.container}>
       <Block flex={false} row style={step3Styles.frame}>

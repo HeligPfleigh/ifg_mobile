@@ -1,10 +1,14 @@
-import React from 'react';
-import { Text, TextInput, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
+import Autocomplete from 'react-native-autocomplete-input';
+import { useSelector, useDispatch } from 'react-redux';
 import { Block, Button } from '../../components';
 import { step1Styles } from './styles';
 import I18n from '../../core/i18n';
 import { Enum } from '../../constants';
+import { AppState } from '../../store/types';
+import { getReasons } from '../../store/actions';
 
 interface Step1Props {
   type: Enum.EvaluationType;
@@ -26,6 +30,17 @@ export const Step1: React.FC<Step1Props> = ({
   desc,
 }: Step1Props) => {
   const listTags = Enum.tags[`${type}`];
+  const reasons = useSelector((state: AppState) => state.myaction.data.reasons);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getReasons());
+  }, [dispatch]);
+
+  let suggestList = [];
+
+  if (name) suggestList = reasons.filter((reason: string) => reason.includes(name));
+
   return (
     <ScrollView>
       <Block flex={1} style={step1Styles.container}>
@@ -34,13 +49,22 @@ export const Step1: React.FC<Step1Props> = ({
             <Text style={step1Styles.header}>{I18n.t(`evaluate.step1.header.${type}.name`)}</Text>
           </Block>
           <Block flex={1}>
-            <TextInput
-              autoFocus
-              style={step1Styles.input}
+            <Autocomplete
+              autoCapitalize="none"
+              autoCorrect={false}
+              containerStyle={step1Styles.input}
+              data={suggestList}
+              defaultValue={name}
               onChangeText={onNameChange}
-              value={name}
-              maxLength={40}
               placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
+              listStyle={{ margin: 0 }}
+              renderItem={({ item }: any) => {
+                return (
+                  <TouchableOpacity onPress={() => onNameChange(item)} style={{ padding: 5 }}>
+                    <Text>{item}</Text>
+                  </TouchableOpacity>
+                );
+              }}
             />
           </Block>
         </Block>

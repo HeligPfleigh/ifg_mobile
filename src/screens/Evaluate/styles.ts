@@ -39,10 +39,10 @@ export const step1Styles = StyleSheet.create({
     color: theme.colors.blue,
   },
   input: {
-    height: 40,
-    borderColor: theme.colors.gray,
-    borderWidth: StyleSheet.hairlineWidth,
-    width: '100%',
+    // height: 40,
+    // borderColor: theme.colors.gray,
+    // borderWidth: StyleSheet.hairlineWidth,
+    // width: '100%',
     paddingHorizontal: theme.sizes.margin / 2,
   },
   chip: {
@@ -117,7 +117,8 @@ export const step2Styles = StyleSheet.create({
 
 export const step3Styles = StyleSheet.create({
   container: {
-    padding: theme.sizes.padding,
+    paddingHorizontal: theme.sizes.padding,
+    paddingVertical: theme.sizes.margin,
   },
   frame: {
     borderColor: theme.colors.gray,
