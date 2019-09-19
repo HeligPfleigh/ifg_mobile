@@ -52,7 +52,6 @@ export const Step1: React.FC<Step1Props> = ({
             <Autocomplete
               autoCapitalize="none"
               autoCorrect={false}
-              containerStyle={step1Styles.input}
               data={suggestList}
               defaultValue={name}
               onChangeText={onNameChange}
