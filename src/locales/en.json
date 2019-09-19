@@ -301,7 +301,8 @@
       "change_avatar_error": "Can't change your avatar!",
       "change_avatar_success": "Change avatar successfully!",
       "change_info_success": "Change user info successfully!",
-      "change_info_error": "Change user info unsuccessfully!"
+      "change_info_error": "Change user info unsuccessfully!",
+      "save": "SAVE"
     },
     "account_settings": {
       "title": "Account settings",

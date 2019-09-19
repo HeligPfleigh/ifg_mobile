@@ -230,7 +230,7 @@ class UserInfo extends React.Component<IProps, IStates> {
             <Block flex={false}>
               <Button gradient style={styles.btnSend} onPress={handleSubmit(this._handleSubmit)}>
                 <Block center middle>
-                  <Text style={styles.labelSend}>{I18n.t('common.save')}</Text>
+                  <Text style={styles.labelSend}>{I18n.t('profile.user_info.save')}</Text>
                 </Block>
               </Button>
               <Button gradient style={styles.btnCancel} onPress={this._handleCancel}>
