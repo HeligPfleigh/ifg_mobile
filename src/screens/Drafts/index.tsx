@@ -109,12 +109,12 @@ const Drafts: React.FC<NavigationScreenProps> = () => {
       <DraftGroupWithNavigation
         drafts={relationshipDrafts}
         colors={theme.gradients.lightpink}
-        type={Enum.EvaluationType.ACTIVITIES}
+        type={Enum.EvaluationType.RELATIONSHIPS}
       />
       <DraftGroupWithNavigation
         drafts={activityDrafts}
         colors={theme.gradients.lightblue}
-        type={Enum.EvaluationType.RELATIONSHIPS}
+        type={Enum.EvaluationType.ACTIVITIES}
       />
       <DraftGroupWithNavigation
         drafts={intakeDrafts}

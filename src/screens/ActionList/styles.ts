@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native';
 import { theme } from '../../constants';
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: theme.colors.white2,
+  },
   footerContainer: {
     paddingVertical: theme.sizes.margin,
     paddingHorizontal: theme.sizes.padding,
