@@ -31,6 +31,7 @@ export const AuthStack = createStackNavigator(
       headerBackImage: <MaterialIcons size={theme.sizes.icon} name="keyboard-backspace" color={theme.colors.gray4} />,
       headerBackTitle: null,
     },
+    headerLayoutPreset: 'center',
     initialRouteName: NavigatorMap.Welcome,
   },
 );
