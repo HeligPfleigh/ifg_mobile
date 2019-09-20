@@ -292,9 +292,9 @@
       "female": "Femme",
       "other": "Autre",
       "picker_modal": {
-        "title": "Sélectionnez un avatar",
-        "btn_camera": "Prendre un avatar de la caméra",
-        "btn_photos": "Choisissez un avatar de la galerie",
+        "title": "Sélectionner une option",
+        "btn_camera": "Prendre une photo avec le téléphone",
+        "btn_photos": "Choisir une photo dans la galerie",
         "btn_cancel": "Annuler"
       },
       "choose_image_error": "Vous ne pouvez pas choisir l'image!",
