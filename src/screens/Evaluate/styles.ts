@@ -143,6 +143,7 @@ export const step3Styles = StyleSheet.create({
     fontSize: theme.sizes.h2,
     marginTop: 5,
     color: theme.colors.blue,
+    textAlign: 'center',
   },
   score: {
     fontSize: theme.sizes.h2,

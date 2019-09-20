@@ -49,9 +49,7 @@ export const Step3: React.FC<Step3Props> = ({ name, feeling, impactType, onScori
           {impactComponent}
         </Block>
       </Block>
-      <Block flex={false} column center>
-        <Text style={step3Styles.header}>{I18n.t('evaluate.step3.header')}</Text>
-      </Block>
+      <Text style={step3Styles.header}>{I18n.t('evaluate.step3.header')}</Text>
       <Block flex={1} middle>
         {scores.map(spec => {
           let blockBackground = {};
