@@ -4,9 +4,11 @@ import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-fo
 import { NavigationScreenProps } from 'react-navigation';
 import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
+import api from '../../core/api';
+import NavigatorMap from '../../navigations/NavigatorMap';
 import I18n from '../../core/i18n';
 import { TextField, FormValidator as validator } from '../../components/FormFields';
-import { Block, Button, Loader, ContactMail } from '../../components';
+import { Block, Button, Loader, ContactMail, Toast } from '../../components';
 import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import { AppState } from '../../store/types';
@@ -29,10 +31,19 @@ class ResetPassword extends Component<ResetPasswordProps> {
   };
 
   _submit = (value: any) => {
-    console.log(value);
     const { navigation } = this.props;
-    const test = navigation.getParam(Enum.NavigationParamsName.RESET_PASSWORD_TOKEN, '');
-    console.log(test);
+    const resetPasswordToken = navigation.getParam(Enum.NavigationParamsName.RESET_PASSWORD_TOKEN, '');
+    this.setState({ loading: true }, async () => {
+      try {
+        await api.resetPwd(value, resetPasswordToken);
+        Toast.success(I18n.t('reset_pwd.success'));
+        navigation.navigate(NavigatorMap.SignIn);
+      } catch (err) {
+        Toast.error(I18n.t('errors.reset_pwd'));
+      } finally {
+        this.setState({ loading: false });
+      }
+    });
   };
 
   render() {

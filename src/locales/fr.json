@@ -382,13 +382,15 @@
   "reset_pwd": {
     "title": "Réinitialiser le mot de passe",
     "password": "Nouveau mot de passe",
-    "confirmPwd": "Confirmer le mot de passe"
+    "confirmPwd": "Confirmer le mot de passe",
+    "success": "Your password is resetted. Now you can sign in with your new password."
   },
   "errors": {
     "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
-    "unexpected": "Une erreur inattendue est apparue",
     "change_email": {
       "password_not_match": "Votre mot de passe n'est pas correct!"
-    }
+    },
+    "reset_pwd": "Fail to reset password!",
+    "unexpected": "Une erreur inattendue est apparue"
   }
 }

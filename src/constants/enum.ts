@@ -58,7 +58,7 @@ enum ActionStatus {
   ARCHIEVED = 'archieved',
 }
 
-const SUFFIX = 'ifeelgood://test/';
+const SUFFIX = 'ifeelgood://';
 
 export {
   ActionStatus,
