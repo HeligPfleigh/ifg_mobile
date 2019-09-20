@@ -299,7 +299,7 @@
       },
       "choose_image_error": "Vous ne pouvez pas choisir l'image!",
       "change_avatar_error": "Vous ne pouvez pas changer votre avatar!",
-      "change_avatar_success": "Changer avatar avec succès!",
+      "change_avatar_success": "Modification effectuée!",
       "change_info_success": "Changer les informations utilisateur avec succès!",
       "change_info_error": "Modifier les informations utilisateur sans succès!",
       "save": "ENREGISTRER"
