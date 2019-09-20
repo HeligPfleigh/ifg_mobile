@@ -143,7 +143,7 @@ class UserInfo extends React.Component<IProps, IStates> {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
     const avatar = get(this.props, 'avatar', undefined);
-    const { required, maxLength120, hasWhiteSpace, hasSpecialChart } = FormFields.FormValidator;
+    const { required, maxLength120 } = FormFields.FormValidator;
 
     return (
       <React.Fragment>
@@ -172,7 +172,7 @@ class UserInfo extends React.Component<IProps, IStates> {
                 tintColor={theme.colors.green}
                 style={{ textAlign: 'center' }}
                 component={FormFields.TextField}
-                validate={[required, hasWhiteSpace, hasSpecialChart, maxLength120]}
+                validate={[required, maxLength120]}
               />
             </Block>
             <Block flex={5} style={styles.content}>
