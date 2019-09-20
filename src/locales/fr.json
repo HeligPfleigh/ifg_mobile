@@ -381,6 +381,9 @@
   },
   "errors": {
     "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
-    "unexpected": "Une erreur inattendue est apparue"
+    "unexpected": "Une erreur inattendue est apparue",
+    "change_email": {
+      "password_not_match": "Votre mot de passe n'est pas correct!"
+    }
   }
 }

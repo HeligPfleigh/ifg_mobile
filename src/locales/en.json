@@ -381,6 +381,9 @@
   },
   "errors": {
     "sign_in_fail": "Your E-mail or password is not correct",
-    "unexpected": "An unexpected error occurred"
+    "unexpected": "An unexpected error occurred",
+    "change_email": {
+      "password_not_match": "Your password isn't correct!"
+    }
   }
 }

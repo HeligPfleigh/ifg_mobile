@@ -54,9 +54,15 @@ class ChangeEmail extends React.Component<IProps, IStates> {
       Toast.success(I18n.t('profile.account_settings.change_email_success'));
     } catch (err) {
       // TODO
+      const statusCode = get(err, 'response.data.error.statusCode', 400);
       this.setState(
         () => ({ loading: false }),
-        () => Toast.error(I18n.t('profile.account_settings.change_email_error')),
+        () =>
+          Toast.error(
+            statusCode === 401
+              ? I18n.t('errors.change_email.password_not_match')
+              : I18n.t('profile.account_settings.change_email_error'),
+          ),
       );
     } finally {
       this.setState({ loading: false });
