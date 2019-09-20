@@ -32,6 +32,7 @@ interface IUser {
 
 interface IProps extends InjectedFormProps, NavigationScreenProps {
   token: string;
+  locale?: string;
   avatar?: string;
   initialValues: IUser;
   dispatch: Dispatch<any>;
@@ -62,16 +63,14 @@ class UserInfo extends React.Component<IProps, IStates> {
   ];
 
   // default config for ChooseDateModal
-  datePickerProps = {
-    horizontal: true,
-    scrollEnabled: true,
-    pagingEnabled: true,
-    calendarWidth: 320,
-    dateRange: 120,
-    maxDate: moment()
-      .subtract(12, 'years')
-      .format('YYYY-MM-DD'),
-  };
+  getMomentDate = (years: number) => moment().subtract(years, 'years');
+
+  datePickerProps = () => ({
+    mode: 'date',
+    locale: this.props.locale,
+    maximumDate: this.getMomentDate(12).toDate(),
+    minimumDate: this.getMomentDate(120).toDate(),
+  });
 
   _showActionSheet = () => this.ActionSheet.show();
 
@@ -168,6 +167,7 @@ class UserInfo extends React.Component<IProps, IStates> {
             </Block>
             <Block flex={false}>
               <Field
+                label=""
                 name="username"
                 tintColor={theme.colors.green}
                 style={{ textAlign: 'center' }}
@@ -196,8 +196,8 @@ class UserInfo extends React.Component<IProps, IStates> {
               />
               <Field
                 name="DOB"
-                component={FormFields.DateField}
-                datePickerProps={this.datePickerProps}
+                component={FormFields.DatePickerField}
+                datePickerProps={this.datePickerProps()}
                 label={I18n.t('profile.user_info.dob')}
               />
               <Field
@@ -251,6 +251,7 @@ const mapStateToProps = (state: AppState) => {
   const _dob = get(state, 'me.data.user.DOB');
   const dateDefault = moment().subtract(12, 'years');
   return {
+    locale: get(state, 'language.locale', 'en'),
     avatar: get(state, 'me.data.user.avatar'),
     initialValues: {
       username: get(state, 'me.data.user.username'),

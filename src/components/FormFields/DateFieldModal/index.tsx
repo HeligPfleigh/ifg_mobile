@@ -43,7 +43,7 @@ interface IProps {
   onSubmitEditing?: (event: any) => void;
 }
 
-class ChooseDateField extends Component<IProps> {
+class DateFieldModal extends Component<IProps> {
   _onDateChanged = (data: DateObject) => {
     const newSelectedDate = moment(data.timestamp);
     const {
@@ -107,4 +107,4 @@ class ChooseDateField extends Component<IProps> {
   }
 }
 
-export default connect()(ChooseDateField);
+export default connect()(DateFieldModal);

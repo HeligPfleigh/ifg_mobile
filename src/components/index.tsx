@@ -1,5 +1,6 @@
 import Block from './Block';
 import Button from './Button';
+import BottomSheet from './BottomSheet';
 import * as FormFields from './FormFields';
 import EvaluationItem, { RoundIconButton } from './EvaluationItem';
 import ScoreText from './ScoreText';
@@ -15,6 +16,7 @@ import ChooseLanguage from './ChooseLanguage';
 export {
   Block,
   Button,
+  BottomSheet,
   EvaluationItem,
   ScoreText,
   ModalContainer,
