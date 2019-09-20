@@ -34,8 +34,8 @@ export const Step1: React.FC<Step1Props> = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getReasons());
-  }, [dispatch]);
+    dispatch(getReasons(type));
+  }, [dispatch, type]);
 
   let suggestList = [];
 

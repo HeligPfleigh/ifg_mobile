@@ -45,8 +45,10 @@ const deleteActions = (actions: string[]) => instance.post('/actions/list', { ac
 
 const editAction = (id: string, action: string) => instance.patch(`/actions/${id}`, { action });
 
-const getReasons = () => instance.get('/actions/reasons');
-
+const getReasons = (type?: string) => {
+  const requestLink = !type ? '/actions/reasons' : `/actions/reasons?type=${type}`;
+  return instance.get(requestLink);
+};
 // POST: /feedbacks
 interface IGiveFeebackPayload {
   subject: string;

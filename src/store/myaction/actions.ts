@@ -176,11 +176,11 @@ export function editAction(id: string, action: string) {
   };
 }
 
-export function getReasons() {
+export function getReasons(type?: string) {
   return async function(dispatch: Dispatch<MyActionType>) {
     dispatch(myActionRequest());
     try {
-      const { data } = await api.getReasons();
+      const { data } = await api.getReasons(type);
       dispatch(getReasonsSuccessful(data));
     } catch (err) {
       const error = {
