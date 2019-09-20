@@ -11,6 +11,7 @@ import { theme } from '../../constants';
 import { Block, Button, Loader, WithTranslations, Toast } from '../../components';
 import { styles } from './styles';
 import api from '../../core/api';
+import NavigatorMap from '../../navigations/NavigatorMap';
 
 const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
   const subjects = [
@@ -30,6 +31,7 @@ const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationSc
       Keyboard.dismiss();
       await api.giveFeedback({ subject: value, message: feedback });
       Toast.success(I18n.t('profile.account_contact_us.feedback_success'));
+      navigation.navigate(NavigatorMap.Home);
     } catch (err) {
       // TODO
       Toast.error(err.message);
