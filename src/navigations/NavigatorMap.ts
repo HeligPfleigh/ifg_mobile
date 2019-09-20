@@ -23,6 +23,7 @@ enum NavigatorMap {
   Parameters = 'Parameters',
   DeleteAccount = 'Delete Account',
   FeelGoodToolsLegend = 'FeelGoodToolsLegend',
+  ResetPassword = 'Reset Password',
 }
 
 export default NavigatorMap;

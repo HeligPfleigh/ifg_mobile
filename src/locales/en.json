@@ -379,11 +379,18 @@
   "drafts": {
     "no_draft": "You don't have any draft yet!"
   },
+  "reset_pwd": {
+    "title": "Reset password",
+    "password": "New Password",
+    "confirmPwd": "Confirm with password",
+    "success": "Your password is resetted. Now you can sign in with your new password."
+  },
   "errors": {
     "sign_in_fail": "Your E-mail or password is not correct",
-    "unexpected": "An unexpected error occurred",
     "change_email": {
       "password_not_match": "Your password isn't correct!"
-    }
+    },
+    "reset_pwd": "Fail to reset password!",
+    "unexpected": "An unexpected error occurred"
   }
 }

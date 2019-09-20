@@ -9,7 +9,8 @@
     "test": "jest",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json}",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx index.js",
-    "lint:fix": "eslint --fix src --ext .js,.jsx,.ts,.tsx index.js"
+    "lint:fix": "eslint --fix src --ext .js,.jsx,.ts,.tsx index.js",
+    "release:doc": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -86,6 +87,7 @@
     "react-native-svg-transformer": "^0.13.0",
     "react-test-renderer": "16.8.6",
     "redux-devtools-extension": "^2.13.8",
+    "standard-version": "^7.0.0",
     "typescript": "^3.5.3"
   },
   "jest": {

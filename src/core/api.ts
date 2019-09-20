@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import RNFetchBlob from 'rn-fetch-blob';
 import { Enum } from '../constants';
 
-const API_SERVER = 'https://api.ifeelgood.mttjsc.com/';
+const API_SERVER = 'https://api.ifeelgood.mttjsc.com/api/';
 
 const instance = axios.create({
   baseURL: API_SERVER,
@@ -155,6 +155,9 @@ const cacheImage = (path: string, config?: object): Promise<any> => {
   }
 };
 
+const resetPwd = (data: { confirmPwd: string; password: string }, resetPasswordToken: string) =>
+  instance.patch(`/users/resetpwd/${resetPasswordToken}`, data);
+
 export default {
   me,
   evaluationSummary,
@@ -178,4 +181,5 @@ export default {
   forgotPwd,
   changeAvatar,
   cacheImage,
+  resetPwd,
 };

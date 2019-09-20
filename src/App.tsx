@@ -32,7 +32,7 @@ export default () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AppNavigator />
+        <AppNavigator uriPrefix={Enum.SUFFIX} />
         <ModalContainer />
       </PersistGate>
     </Provider>
