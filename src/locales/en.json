@@ -352,7 +352,7 @@
       "label_input": "The reason is…",
       "label_button": "SEND & DELETE ACCOUNT",
       "current_password_mismatch": "Current password mismatch.",
-      "delete_action_error": "You don't delete this account!"
+      "delete_action_error": "You can't delete this account!"
     },
     "logout": "Logout"
   },

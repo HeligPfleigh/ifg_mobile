@@ -352,7 +352,7 @@
       "label_input": "La raison est….",
       "label_button": "ENVOYER & EFFACER MON COMPTE",
       "current_password_mismatch": "Mot de passe actuel incompatible.",
-      "delete_action_error": "Vous ne supprimez pas ce compte!"
+      "delete_action_error": "Vous ne pouvez pas supprimer ce compte!"
     },
     "logout": "Déconnexion"
   },
