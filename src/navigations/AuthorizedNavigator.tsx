@@ -102,6 +102,12 @@ const FeelGoodToolsStack = createStackNavigator(
         headerTitle: <I18nTitle text="navigation.action_list" />,
       },
     },
+    [NavigatorMap.FeelGoodToolsLegend]: {
+      screen: LegendScreen,
+      navigationOptions: {
+        headerTitle: <I18nTitle text="navigation.legend" />,
+      },
+    },
   },
   {
     defaultNavigationOptions,

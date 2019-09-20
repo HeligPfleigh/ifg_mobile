@@ -158,7 +158,7 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
     setSelectedReason(value);
   };
 
-  const navigateToLegend = () => navigation.navigate(NavigatorMap.Legend);
+  const navigateToLegend = () => navigation.navigate(NavigatorMap.FeelGoodToolsLegend);
 
   return (
     <Block style={styles.container}>

@@ -22,6 +22,7 @@ enum NavigatorMap {
   AccountSettings = 'Account Settings',
   Parameters = 'Parameters',
   DeleteAccount = 'Delete Account',
+  FeelGoodToolsLegend = 'FeelGoodToolsLegend',
 }
 
 export default NavigatorMap;
