@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
 import Autocomplete from 'react-native-autocomplete-input';
@@ -32,14 +32,28 @@ export const Step1: React.FC<Step1Props> = ({
   const listTags = Enum.tags[`${type}`];
   const reasons = useSelector((state: AppState) => state.myaction.data.reasons);
   const dispatch = useDispatch();
+  const [hideResults, setHideResults] = useState(false);
 
   useEffect(() => {
     dispatch(getReasons(type));
   }, [dispatch, type]);
 
-  let suggestList = [];
+  let suggestList: string[] = [];
 
-  if (name) suggestList = reasons.filter((reason: string) => reason.includes(name));
+  if (name) {
+    suggestList = reasons.filter((reason: string) => reason.toLowerCase().includes(name));
+    suggestList = [...suggestList, ''];
+  }
+
+  const handlePressSuggestion = (suggestion: string) => {
+    onNameChange(suggestion);
+    setHideResults(true);
+  };
+
+  const handleChangeText = (text: string) => {
+    onNameChange(text);
+    setHideResults(false);
+  };
 
   return (
     <ScrollView>
@@ -50,17 +64,18 @@ export const Step1: React.FC<Step1Props> = ({
           </Block>
           <Block flex={1}>
             <Autocomplete
+              hideResults={hideResults}
               autoCapitalize="none"
               autoCorrect={false}
               data={suggestList}
               defaultValue={name}
-              onChangeText={onNameChange}
+              onChangeText={handleChangeText}
               placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
               listStyle={step1Styles.autocompleteList}
               keyExtractor={item => `auto-complete-${item}`}
               renderItem={({ item }: { item: string }) => {
                 return (
-                  <TouchableOpacity onPress={() => onNameChange(item)} style={step1Styles.autocompleteItem}>
+                  <TouchableOpacity onPress={() => handlePressSuggestion(item)} style={step1Styles.autocompleteItem}>
                     <Text>{item}</Text>
                   </TouchableOpacity>
                 );
