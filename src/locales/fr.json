@@ -81,7 +81,7 @@
         "body": "L'action doit être cohérente avec tes priorités, le context ainsi que les contraintes externes."
       },
       "time_based": {
-        "header": "Time-bound (Remporellement défini)",
+        "header": "Time-bound (Temporellement défini)",
         "body": "Tu peux indiquer une date de fin pour te motiver: elle peut être périodique (par jour, par semaine etc…), ou la date de fin peut être unique."
       },
       "footer": "Et pour terminer, commence ton action avec un verbe !"
@@ -171,7 +171,7 @@
     "global_scores": "Mon GPS Feel Good",
     "description": {
       "relationships": "Evaluer les personnes qui influencent mon énergie et mon humeur.",
-      "activities": "Evaluer les occupations qui changent mes états physiques et mental.",
+      "activities": "Evaluer les occupations qui changent mes états physique et mental.",
       "intakes": "Evaluer les absorptions qui impactent mon corps et ma tête.",
       "other": "Evaluer tout autre facteur qui modifie ma vitalité et mon esprit."
     }
@@ -188,7 +188,7 @@
   "legend": {
     "header": {
       "title": "Ton curseur Feel Good",
-      "body": "Les scores que tu as données lors des auto-évaluations sont utilisés pour calculer un score feel good moyen."
+      "body": "Les scores que tu as donnés lors des auto-évaluations sont utilisés pour calculer un score feel good moyen."
     },
     "subtitle": {
       "good": "Eléments qui sont en bonne voie, tu peux établir des actions dans 'Outils Feel Good' pour les consolider.",
