@@ -26,7 +26,7 @@
     "only_alpha": "Seulement des caractères alphanumériques",
     "user_name_special_chart": "Le nom d'utilisateur a un caractère spécial",
     "first_chart_letter": "Le premier caractère doit être une lettre",
-    "pwd_valid": "Au moins 1 lettre majuscule et caractère spécial"
+    "pwd_valid": "Au moins 1 lettre majuscule et 1 chiffre"
   },
   "navigation": {
     "home": "Accueil",

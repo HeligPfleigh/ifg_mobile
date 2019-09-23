@@ -26,7 +26,7 @@
     "only_alpha": "Only alphanumeric characters",
     "user_name_special_chart": "The username has a special character",
     "first_chart_letter": "The first character must be a letter",
-    "pwd_valid": "At least 1 uppercase letter and special character"
+    "pwd_valid": "At least 1 uppercase letter and 1 number"
   },
   "navigation": {
     "home": "Home",
