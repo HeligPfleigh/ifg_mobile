@@ -102,10 +102,17 @@ const FeelGoodToolsStack = createStackNavigator(
         headerTitle: <I18nTitle text="navigation.action_list" />,
       },
     },
+    // temporary solution for navigating back Feel Good Tool Screen from these screen
     [NavigatorMap.FeelGoodToolsLegend]: {
       screen: LegendScreen,
       navigationOptions: {
         headerTitle: <I18nTitle text="navigation.legend" />,
+      },
+    },
+    [NavigatorMap.FeelGoodToolsSummary]: {
+      screen: SummaryScreen,
+      navigationOptions: {
+        headerTitle: <I18nTitle text="navigation.summary" />,
       },
     },
   },

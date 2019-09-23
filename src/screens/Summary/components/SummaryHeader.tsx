@@ -74,7 +74,14 @@ interface SummaryHeaderProps extends NavigationInjectedProps {
 
 const SummaryHeader: React.FC<SummaryHeaderProps> = ({ navigation, score, type }: SummaryHeaderProps) => {
   const { gradients, iconGradients, title } = summaryDisplayProps(type);
-  const navigateToLegend = () => navigation.navigate(NavigatorMap.Legend);
+  const navigateToLegend = () => {
+    const currentRouteName = navigation.state.routeName;
+    if (currentRouteName === NavigatorMap.Summary) {
+      navigation.navigate(NavigatorMap.Legend);
+    } else {
+      navigation.navigate(NavigatorMap.FeelGoodToolsLegend);
+    }
+  };
   return (
     <Block flex={false}>
       <LinearGradient

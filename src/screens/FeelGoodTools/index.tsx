@@ -39,7 +39,7 @@ const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: Navigati
   const otherScore = get(score, Enum.EvaluationType.OTHER);
 
   const navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>
-    navigation.navigate(NavigatorMap.Summary, {
+    navigation.navigate(NavigatorMap.FeelGoodToolsSummary, {
       [Enum.NavigationParamsName.EVALUATION_TYPE]: evaluationType,
     });
 
