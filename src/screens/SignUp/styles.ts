@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
   button: {
     marginBottom: theme.sizes.margin,
   },
+  disableSignUp: {
+    backgroundColor: theme.colors.gray2,
+  },
   textButton: {
     color: theme.colors.white,
     fontSize: theme.sizes.h2,
