@@ -143,7 +143,7 @@ class UserInfo extends React.Component<IProps, IStates> {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
     const avatar = get(this.props, 'avatar', undefined);
-    const { required, maxLength120 } = FormFields.FormValidator;
+    const { maxLength120 } = FormFields.FormValidator;
 
     return (
       <React.Fragment>
@@ -172,7 +172,7 @@ class UserInfo extends React.Component<IProps, IStates> {
                 tintColor={theme.colors.green}
                 style={{ textAlign: 'center' }}
                 component={FormFields.TextField}
-                validate={[required, maxLength120]}
+                validate={[maxLength120]}
               />
             </Block>
             <Block flex={5} style={styles.content}>
@@ -183,7 +183,7 @@ class UserInfo extends React.Component<IProps, IStates> {
                 component={FormFields.TextField}
                 tintColor={theme.colors.green}
                 label={I18n.t('profile.user_info.first_name')}
-                validate={[required, maxLength120]}
+                validate={[maxLength120]}
               />
               <Field
                 name="lastName"
@@ -192,7 +192,7 @@ class UserInfo extends React.Component<IProps, IStates> {
                 component={FormFields.TextField}
                 tintColor={theme.colors.green}
                 label={I18n.t('profile.user_info.last_name')}
-                validate={[required, maxLength120]}
+                validate={[maxLength120]}
               />
               <Field
                 name="DOB"
@@ -214,7 +214,6 @@ class UserInfo extends React.Component<IProps, IStates> {
                 component={FormFields.TextField}
                 tintColor={theme.colors.green}
                 label={`${I18n.t('profile.user_info.height')} (cm)`}
-                validate={[required]}
               />
               <Field
                 name="weight"
@@ -224,7 +223,6 @@ class UserInfo extends React.Component<IProps, IStates> {
                 component={FormFields.TextField}
                 tintColor={theme.colors.green}
                 label={`${I18n.t('profile.user_info.weight')} (kg)`}
-                validate={[required]}
               />
             </Block>
             <Block flex={false}>
