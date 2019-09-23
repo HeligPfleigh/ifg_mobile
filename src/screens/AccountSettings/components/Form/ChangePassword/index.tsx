@@ -77,7 +77,7 @@ class ChangePassword extends React.Component<IProps, IStates> {
   render() {
     const { handleSubmit } = this.props;
     const { loading } = this.state;
-    const { required, minLength8 } = FormFields.FormValidator;
+    const { required, minLength8, maxLength120, password } = FormFields.FormValidator;
     return (
       <Block flex={false} style={styles.container}>
         <Loader loading={loading} />
@@ -96,7 +96,7 @@ class ChangePassword extends React.Component<IProps, IStates> {
           autoCorrect={false}
           tintColor={theme.colors.green}
           component={FormFields.TextField}
-          validate={[required, minLength8]}
+          validate={[required, minLength8, maxLength120, password]}
           label={I18n.t('profile.account_settings.new_password')}
         />
         <Field
@@ -107,7 +107,7 @@ class ChangePassword extends React.Component<IProps, IStates> {
           autoCorrect={false}
           tintColor={theme.colors.green}
           component={FormFields.TextField}
-          validate={[required, minLength8, this._compareValue]}
+          validate={[this._compareValue]}
           label={I18n.t('profile.account_settings.confirm_new_password')}
           onSubmitEditing={handleSubmit(this._handleSubmit)}
         />

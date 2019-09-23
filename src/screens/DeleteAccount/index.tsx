@@ -53,6 +53,7 @@ class DeleteAccount extends React.Component<IProps, IStates> {
       );
     } catch (err) {
       // TODO
+      this.setState({ loading: false });
       const msg = get(err.response, 'data.error.message');
       if (!isEmpty(msg) && isEqual(msg, 'Current password mismatch.')) {
         Toast.error(I18n.t('profile.delete_account.current_password_mismatch'));
