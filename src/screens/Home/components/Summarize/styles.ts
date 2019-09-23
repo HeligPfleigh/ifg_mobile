@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     marginTop: 1,
   },
   textScore: {
-    fontSize: theme.sizes.base + 5,
+    fontSize: theme.sizes.base + 3,
     fontWeight: '700',
   },
 });
