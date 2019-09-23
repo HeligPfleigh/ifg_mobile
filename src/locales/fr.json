@@ -383,7 +383,7 @@
     "title": "Réinitialiser le mot de passe",
     "password": "Nouveau mot de passe",
     "confirmPwd": "Confirmer le mot de passe",
-    "success": "Your password is resetted. Now you can sign in with your new password."
+    "success": "Ton mot de passe a été réinitialisé avec succès, tu peux accéder maintenant à ton compte avec le nouveau mot de passe"
   },
   "errors": {
     "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
