@@ -18,19 +18,25 @@ import {
   showModal,
   loadActions,
   postAction,
-  deleteAction,
+  // deleteAction,
   markAsArchievedAction,
   deleteActions,
   editAction,
   getReasons,
 } from '../../store/actions';
-import { Edit, Delete, Delete2, Save, Archived } from '../../assets/images';
+import {
+  Edit,
+  // Delete,
+  Delete2,
+  Save,
+  Archived,
+} from '../../assets/images';
 
 interface ActionListProps extends NavigationScreenProps {}
 
 const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
   const [selected, setSelected] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   useEffect(() => {
     onCheckboxPress(action.id, selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,13 +44,13 @@ const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
 
   const swipeEl = useRef<any>(null);
 
-  const handleDeleteAction = () => {
-    if (swipeEl && swipeEl.current) {
-      swipeEl.current.closeRowWithoutAnimation();
-    }
+  // const handleDeleteAction = () => {
+  //   if (swipeEl && swipeEl.current) {
+  //     swipeEl.current.closeRowWithoutAnimation();
+  //   }
 
-    dispatch(deleteAction(action.id));
-  };
+  //   dispatch(deleteAction(action.id));
+  // };
 
   const handleEditAction = () => {
     if (swipeEl && swipeEl.current) {
@@ -54,16 +60,16 @@ const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
   };
 
   return (
-    <SwipeRow ref={swipeEl} disableRightSwipe rightOpenValue={-100}>
+    <SwipeRow ref={swipeEl} disableRightSwipe rightOpenValue={-50}>
       <Block flex={false} style={styles.standaloneRowBack}>
         <Block flex={false} />
         <Block flex={false} row style={{ height: '100%' }}>
           <TouchableOpacity style={[styles.btn, styles.indigo]} onPress={handleEditAction}>
             <Edit width={theme.sizes.icon} height={theme.sizes.icon} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btn} onPress={handleDeleteAction}>
+          {/* <TouchableOpacity style={styles.btn} onPress={handleDeleteAction}>
             <Delete width={theme.sizes.icon} height={theme.sizes.icon} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </Block>
       </Block>
       <Block flex={false} row style={styles.standaloneRowFront}>
