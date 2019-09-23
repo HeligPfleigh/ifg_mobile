@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-
+import uniq from 'lodash/uniq';
 import Autocomplete from 'react-native-autocomplete-input';
 import { useSelector, useDispatch } from 'react-redux';
 import { Block, Button } from '../../components';
@@ -42,7 +42,7 @@ export const Step1: React.FC<Step1Props> = ({
 
   if (name) {
     suggestList = reasons.filter((reason: string) => reason.toLowerCase().includes(name));
-    suggestList = [...suggestList, ''];
+    suggestList = [...uniq(suggestList), ''];
   }
 
   const handlePressSuggestion = (suggestion: string) => {
