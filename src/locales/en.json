@@ -159,7 +159,7 @@
     "paragraph": "Enter email to reset password!",
     "email": "E-mail",
     "submit": "SEND",
-    "message": "Your reset password is sent to your email!"
+    "message": "The link to reset your password has just been sent to your mailbox !"
   },
   "home": {
     "relationships": "RELATIONSHIPS",

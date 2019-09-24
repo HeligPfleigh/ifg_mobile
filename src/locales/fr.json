@@ -90,7 +90,7 @@
       "header": "Pardon, cette fonctionnalité n'est pas disponible pour le moment!"
     },
     "network_not_available": {
-      "header": "Votre appareil ne dispose pas d'une connexion Internet, veuillez noter que certaines fonctionnalités ne fonctionneront pas correctement"
+      "header": "Ton appareil n'a plus de connexion Internet, ainsi certaines fonctionnalités ne marcheront pas correctement."
     },
     "license": {
       "title": "Terms and conditions",
@@ -159,7 +159,7 @@
     "paragraph": "Renseigner ici l'adresse E-mail!",
     "email": "E-mail",
     "submit": "Envoyer",
-    "message": "Votre mot de passe de réinitialisation est envoyé à votre adresse email!"
+    "message": "Le lien pour réinitialiser ton mot de passe vient d'être envoyé à ta boîte mail !"
   },
   "home": {
     "relationships": "RELATIONS",
