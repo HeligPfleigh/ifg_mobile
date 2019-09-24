@@ -219,16 +219,16 @@
     },
     "step2": {
       "relationships": {
-        "feelling": "Quel est l'impact de cette relation\n sur toi ?"
+        "feelling": "Quel est l'impact de cette relation sur toi ?"
       },
       "activities": {
-        "feelling": "Quel est l'impact de cette activité\n sur toi ?"
+        "feelling": "Quel est l'impact de cette activité sur toi ?"
       },
       "intakes": {
-        "feelling": "Quel est l'impact de cette absorption\n sur toi ?"
+        "feelling": "Quel est l'impact de cette absorption sur toi ?"
       },
       "other": {
-        "feelling": "Quel est l'impact de cet élément\n sur toi ?"
+        "feelling": "Quel est l'impact de cet élément sur toi ?"
       },
       "and": "Et",
       "feel": "Je me sens",

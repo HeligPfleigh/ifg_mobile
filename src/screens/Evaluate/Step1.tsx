@@ -41,8 +41,12 @@ export const Step1: React.FC<Step1Props> = ({
   let suggestList: string[] = [];
 
   if (name) {
-    suggestList = reasons.filter((reason: string) => reason.toLowerCase().includes(name));
-    suggestList = [...uniq(suggestList), ''];
+    suggestList = uniq(reasons.filter((reason: string) => reason.toLowerCase().includes(name)));
+  }
+
+  // add blank field in suggest list as required from PO
+  if (suggestList.length) {
+    suggestList = [...suggestList, ''];
   }
 
   const handlePressSuggestion = (suggestion: string) => {
