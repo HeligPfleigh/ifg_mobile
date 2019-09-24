@@ -141,10 +141,12 @@ const ActionList: React.FC<ActionListProps> = ({ navigation }: ActionListProps) 
   };
 
   const markAsArchieved = () => {
+    setSelectedActions([]); // reset selected actions
     dispatch(markAsArchievedAction(selectedActions));
   };
 
   const deleteAll = () => {
+    setSelectedActions([]); // reset selected actions
     dispatch(deleteActions(selectedActions));
   };
 

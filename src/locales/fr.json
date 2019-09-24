@@ -131,8 +131,8 @@
   "welcome": {
     "header": "I Feel Good",
     "paragraph": "Tu es le GPS de ton style de vie",
-    "signup": "Créer un compte",
-    "signin": "J'ai déjà un compte"
+    "signup": "CRÉER UN COMPTE",
+    "signin": "J'AI DÉJÀ UN COMPTE"
   },
   "signin": {
     "title": "Heureux de te voir !",
