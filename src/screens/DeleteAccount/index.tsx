@@ -69,7 +69,7 @@ class DeleteAccount extends React.Component<IProps, IStates> {
   render() {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
-    const { required, minLength8, maxLength500 } = FormFields.FormValidator;
+    const { required, minLength8, maxLength120, maxLength500, password } = FormFields.FormValidator;
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -112,7 +112,7 @@ class DeleteAccount extends React.Component<IProps, IStates> {
                   autoCorrect={false}
                   style={styles.password}
                   component={FormFields.TextField}
-                  validate={[required, minLength8]}
+                  validate={[required, minLength8, maxLength120, password]}
                 />
               </Block>
             </Block>

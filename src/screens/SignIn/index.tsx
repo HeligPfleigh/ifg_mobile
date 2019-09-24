@@ -16,7 +16,7 @@ import { AppState } from '../../store/types';
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
 const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
-  const { required, minLength8, maxLength120, email } = validator;
+  const { required, minLength8, maxLength120, email, password } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
@@ -81,7 +81,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
                 secureTextEntry
                 component={TextField}
                 autoCorrect={false}
-                validate={[required, minLength8, maxLength120]}
+                validate={[required, minLength8, maxLength120, password]}
                 tintColor={theme.colors.green}
               />
             </Block>

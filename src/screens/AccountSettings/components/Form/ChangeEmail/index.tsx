@@ -72,7 +72,7 @@ class ChangeEmail extends React.Component<IProps, IStates> {
   render() {
     const { loading } = this.state;
     const { handleSubmit } = this.props;
-    const { required, minLength8, email } = FormFields.FormValidator;
+    const { required, minLength8, maxLength120, password, email } = FormFields.FormValidator;
     return (
       <Block flex={false} style={styles.container}>
         <Loader loading={loading} />
@@ -99,7 +99,7 @@ class ChangeEmail extends React.Component<IProps, IStates> {
           enablesReturnKeyAutomatically
           tintColor={theme.colors.green}
           component={FormFields.TextField}
-          validate={[required, minLength8]}
+          validate={[required, minLength8, maxLength120, password]}
           label={I18n.t('profile.account_settings.confirm_with_password')}
           onSubmitEditing={handleSubmit(this._handleSubmit)}
         />
