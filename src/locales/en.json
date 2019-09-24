@@ -215,6 +215,9 @@
         "input_placeholder": "Type name here...",
         "desc": "Add description"
       },
+      "description": {
+        "input_placeholder": "Physical manifestations or feeling..."
+      },
       "optional": " (optional)"
     },
     "step2": {

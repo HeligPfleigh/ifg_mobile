@@ -67,7 +67,7 @@ class Home extends Component<HomeProps> {
             <Image source={!isEmpty(avatar) ? { uri: avatar } : DefaultAvatar} style={styles.avatar} />
           </Block>
           <Block flex={0.5} middle center>
-            <Text>{name}</Text>
+            <Text style={styles.name}>{name}</Text>
           </Block>
           <Block flex={0.7} middle center>
             <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />

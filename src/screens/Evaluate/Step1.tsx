@@ -116,7 +116,12 @@ export const Step1: React.FC<Step1Props> = ({
             </Text>
           </Block>
           <Block flex={1} center>
-            <TextInput style={step1Styles.input} onChangeText={onDescChange} value={desc} />
+            <TextInput
+              style={step1Styles.input}
+              onChangeText={onDescChange}
+              value={desc}
+              placeholder={I18n.t('evaluate.step1.description.input_placeholder')}
+            />
           </Block>
         </Block>
       </Block>

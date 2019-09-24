@@ -215,6 +215,9 @@
         "input_placeholder": "Entrer le texte ici...",
         "desc": "Ajouter une description"
       },
+      "description": {
+        "input_placeholder": "Manifestations physiques ou sentiment..."
+      },
       "optional": " (optionnel)"
     },
     "step2": {

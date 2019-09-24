@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: theme.colors.white,
   },
+  name: {
+    textAlign: 'center',
+  },
   content: {
     backgroundColor: theme.colors.white2,
   },
