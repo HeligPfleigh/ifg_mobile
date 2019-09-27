@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -50,10 +50,24 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Allow application access to your Media Library</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Allow application access to your Bluetooth</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow application access to your Calendar</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your camera to change your profile picture</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow application access to your Location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow application access to your Micro</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow application access to feature your phone</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Allow application access to feature your phone</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

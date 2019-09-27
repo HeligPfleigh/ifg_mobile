@@ -252,13 +252,13 @@ const mapStateToProps = (state: AppState) => {
     locale: get(state, 'language.locale', 'en'),
     avatar: get(state, 'me.data.user.avatar'),
     initialValues: {
-      username: get(state, 'me.data.user.username'),
-      firstName: get(state, 'me.data.user.firstName'),
-      lastName: get(state, 'me.data.user.lastName'),
+      username: get(state, 'me.data.user.username', ''),
+      firstName: get(state, 'me.data.user.firstName', ''),
+      lastName: get(state, 'me.data.user.lastName', ''),
       gender: get(state, 'me.data.user.gender', 'MALE'),
       height: `${get(state, 'me.data.user.height', 0)}`,
       weight: `${get(state, 'me.data.user.weight', 0)}`,
-      DOB: isUndefined(_dob) ? dateDefault.toDate() : moment(_dob).toDate(),
+      DOB: isEmpty(_dob) ? dateDefault.toDate() : moment(_dob).toDate(),
     },
   };
 };

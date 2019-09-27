@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -9,14 +9,16 @@ const middlewares = [thunk];
 const middleWareEnhancer = applyMiddleware(...middlewares);
 
 const persistConfig = {
-  key: 'root',
+  key: 'i-feel-good',
   storage: AsyncStorage,
   whitelist: ['drafts', 'auth', 'notification', 'language'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, composeWithDevTools(middleWareEnhancer));
+const composeEnhancers = __DEV__ ? composeWithDevTools(middleWareEnhancer) : compose(middleWareEnhancer);
+
+const store = createStore(persistedReducer, composeEnhancers);
 
 const persistor = persistStore(store);
 

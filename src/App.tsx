@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
+import firebase from 'react-native-firebase';
+import NetInfo from '@react-native-community/netinfo';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { PersistGate } from 'redux-persist/integration/react';
-import NetInfo from '@react-native-community/netinfo';
-
+import { Enum } from './constants';
 import { store, persistor } from './store';
 import { ModalContainer } from './components';
 import AppNavigator from './navigations/AppNavigator';
 import { showModal } from './store/actions';
-import { Enum } from './constants';
 
 // console.disableYellowBox = true;
 
@@ -20,13 +20,45 @@ export default () => {
   MaterialCommunityIcons.loadFont();
   MaterialIcons.loadFont();
 
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
+  const checkNetworkStatus = () => {
+    NetInfo.addEventListener(state => {
       if (!state.isConnected) {
         store.dispatch(showModal({ onModalPress: () => {}, modalType: Enum.ModalType.NETWORK_NOT_AVAILABLE }));
       }
     });
-    return unsubscribe;
+  };
+
+  const checkPermissionNotification = async () => {
+    if (!(await firebase.messaging().hasPermission())) {
+      try {
+        await firebase.messaging().requestPermission();
+      } catch (error) {
+        // TODO
+      }
+    }
+  };
+
+  const createNotificationChannel = () => {
+    const channel = new firebase.notifications.Android.Channel(
+      'insider',
+      'insider channel',
+      firebase.notifications.Android.Importance.Max,
+    );
+    firebase.notifications().android.createChannel(channel);
+  };
+
+  const createNotificationListeners = async () => {
+    firebase.notifications().onNotification(notification => {
+      notification.android.setChannelId('insider').setSound('default');
+      firebase.notifications().displayNotification(notification);
+    });
+  };
+
+  useEffect(() => {
+    checkNetworkStatus();
+    checkPermissionNotification();
+    createNotificationChannel();
+    createNotificationListeners();
   });
 
   return (
@@ -38,13 +70,3 @@ export default () => {
     </Provider>
   );
 };
-
-// XMLHttpRequest = global.originalXMLHttpRequest ? global.originalXMLHttpRequest : global.XMLHttpRequest;
-
-// global._fetch = fetch;
-// global.fetch = function(uri, options, ...args) {
-//   return global._fetch(uri, options, ...args).then(response => {
-//     console.log('Fetch', { request: { uri, options, ...args }, response });
-//     return response;
-//   });
-// };
