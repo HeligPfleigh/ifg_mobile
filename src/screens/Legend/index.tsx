@@ -22,7 +22,7 @@ const Legend: React.FC = () => {
         </Block>
         <Block flex={3} padding={theme.sizes.base} row>
           <Block flex={false}>
-            {[3, 1, -1, -3, -5].map(item => (
+            {[5, 4, 3, 2, 1, -1, -3, -4, -4, -5].map(item => (
               <Block flex={1} center middle key={`${item}`}>
                 {summaryIcon(item, 20)}
               </Block>

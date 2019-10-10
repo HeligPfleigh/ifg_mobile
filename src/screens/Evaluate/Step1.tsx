@@ -74,7 +74,7 @@ export const Step1: React.FC<Step1Props> = ({
               data={suggestList}
               defaultValue={name}
               onChangeText={handleChangeText}
-              placeholder={I18n.t('evaluate.step1.header.input_placeholder')}
+              placeholder={I18n.t(`evaluate.step1.header.input_placeholder.${type}`)}
               listStyle={step1Styles.autocompleteList}
               keyExtractor={item => `auto-complete-${item}`}
               renderItem={({ item }: { item: string }) => {

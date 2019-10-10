@@ -7,7 +7,7 @@ import { theme } from '../constants';
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.colors.gray4,
+    color: theme.colors.gray5,
     fontSize: 15,
   },
 });

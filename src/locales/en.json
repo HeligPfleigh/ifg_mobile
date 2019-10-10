@@ -192,7 +192,7 @@
     },
     "subtitle": {
       "good": "Factors that are on good track, you can set actions in 'Feel Good Tools' to secure them.",
-      "normal": "You can perform priority 2 actions to minimize the negative sides of these elements",
+      "normal": "You can perform priority 2 actions to minimize the possible negative sides of these elements",
       "bad": "You can try to analyze 'WHY ?' and set actions as priority 1 to change. You may need help from professionnals to get out of the situation"
     }
   },
@@ -200,19 +200,24 @@
     "step1": {
       "header": {
         "relationships": {
-          "name": "Who has brought joy to you, who gave you, who gave you negative waves ?"
+          "name": "Is there anyone who gives you joy or negative waves ?"
         },
         "activities": {
-          "name": "In 2 years, which activity would you continue with joy, which one you would like to get rid of?"
+          "name": "Is there an activity you would like to continue or to get rid of ?"
         },
         "intakes": {
-          "name": "Do you remember the time when an intake made you feel good or instead, made you feel uncomfortable?"
+          "name": "Is there an intake that made you feel good or feel uncomfortable ?"
         },
         "other": {
-          "name": "What else in your universe contributes to increase or decrease you energy and moods?"
+          "name": "Is there any other element that contributes to modifty your energy or moods ?"
         },
         "label": "Select a sub-category",
-        "input_placeholder": "Type name here...",
+        "input_placeholder": {
+          "relationships": "Enter name or confidential nickname here...",
+          "activities": "Enter the activity here...",
+          "intakes": "Enter intake here...",
+          "other": "Enter element name here..."
+        },
         "desc": "Add description"
       },
       "description": {
@@ -276,7 +281,7 @@
     }
   },
   "feel_good_tools": {
-    "header": "Tools to manage me life to be \nhealthier and happier.",
+    "header": "Tools to manage my life to be \nhealthier and happier.",
     "tip": "FEEL GOOD TIPS",
     "draft": "FINISH MY DRAFTS",
     "action_list": "MY ACTION LIST"
