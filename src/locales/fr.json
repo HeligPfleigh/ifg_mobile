@@ -192,7 +192,7 @@
     },
     "subtitle": {
       "good": "Eléments qui sont en bonne voie, tu peux établir des actions dans 'Outils Feel Good' pour les consolider.",
-      "normal": "Tu peux effectuer des actions en priorité 2 afin de minimiser les aspects négatifs de ces éléments.",
+      "normal": "Tu peux effectuer des actions en priorité 2 afin de minimiser les éventuels aspects négatifs de ces éléments.",
       "bad": "Tu pourrais analyser 'POURQUOI?' et établir des actions en priorité 1 pour changer. Il se pourrait que tu aies besoin d'aide des professionnels pour t'en sortir."
     }
   },
@@ -200,19 +200,24 @@
     "step1": {
       "header": {
         "relationships": {
-          "name": "Qui t'a apporté de la joie, \nqui t'a donné des ondes négatives ?"
+          "name": "Est-ce qu'il y a une personne qui t'apporte de la joie ou des ondes négatives ?"
         },
         "activities": {
-          "name": "Dans 2 ans, quelle activité tu continuerais avec joie, laquelle tu voudrais t'en débarrasser ?"
+          "name": "Est-ce qu'il y a une activité dont tu souhaites continuer ou t'en débarrasser ?"
         },
         "intakes": {
-          "name": "Te souviens-tu de la fois où tu as pris quelque chose qui t'a fait du bien, ou au contraire, t'a rendu inconfortable ?"
+          "name": "Est-ce qu'il y a un aliment qui te fait du bien ou te rend inconfortable ?"
         },
         "other": {
-          "name": "Quel autre élément dans ton univers contribue à augmenter ou réduire ton énergie et ton humeur ?"
+          "name": "Est-ce qu'il y a un autre élément qui contribues à modifier ton énergie ou ton humeur ?"
         },
         "label": "Sélectionner une sous-catégorie",
-        "input_placeholder": "Entrer le texte ici...",
+        "input_placeholder": {
+          "relationships": "Entrer le nom ou un surnom confidentiel ici...",
+          "activities": "Entrer l'activité ici...",
+          "intakes": "Taper ce que tu as pris ici...",
+          "other": "Taper le nom de l'élément ici..."
+        },
         "desc": "Ajouter une description"
       },
       "description": {
