@@ -74,7 +74,7 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
   };
 
   render() {
-    const { required, minLength8, maxLength120, password, email } = validator;
+    const { required, minLength4, minLength8, maxLength120, password, email } = validator;
     const { isChecked, loading } = this.state;
     const { handleSubmit } = this.props;
     return (
@@ -91,7 +91,7 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
                   name="username"
                   label={I18n.t('signup.username')}
                   component={TextField}
-                  validate={[required, minLength8, maxLength120]}
+                  validate={[required, minLength4, maxLength120]}
                   tintColor={theme.colors.green}
                 />
               </Block>
