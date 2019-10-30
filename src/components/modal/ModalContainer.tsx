@@ -59,11 +59,11 @@ class ModalContainer extends Component<ModalContainerProps, ModalContainerState>
     return defaultState;
   }
 
-  static defaultProps: ModalContainerProps;
+  preModalPress = noop;
 
   state = defaultState;
 
-  preModalPress = noop;
+  static defaultProps: ModalContainerProps;
 
   hide = () => this.props.dispatch(hideModal());
 

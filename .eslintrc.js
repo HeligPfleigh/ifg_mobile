@@ -22,6 +22,8 @@ module.exports = {
     'react-native/no-inline-styles': 'off',
     'react/no-array-index-key': 'off',
     'react/no-access-state-in-setstate': 'off',
-    'react/forbid-prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': 'off',
   },
 };
