@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import noop from 'lodash/noop';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import { Dropdown } from 'react-native-material-dropdown';
-import { NavigationScreenProps } from 'react-navigation';
 import { TextField } from 'react-native-material-textfield';
 import Modal from 'react-native-modal';
 import get from 'lodash/get';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { AppState } from '../../store/types';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import { Block, Button, Checkbox, Loader } from '../../components';
@@ -32,7 +32,7 @@ import {
   Archived,
 } from '../../assets/images';
 
-interface ActionListProps extends NavigationScreenProps {}
+interface ActionListProps extends NavigationStackScreenProps {}
 
 const OngoingAction = ({ action, onCheckboxPress, onEdit }: any) => {
   const [selected, setSelected] = useState(false);

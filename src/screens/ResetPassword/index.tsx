@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Field, reduxForm, InjectedFormProps, formValueSelector } from 'redux-form';
-import { NavigationScreenProps } from 'react-navigation';
 import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { login } from '../../store/actions';
 import api from '../../core/api';
 import NavigatorMap from '../../navigations/NavigatorMap';
@@ -14,7 +14,7 @@ import { theme, Enum } from '../../constants';
 import { styles } from './styles';
 import { AppState } from '../../store/types';
 
-interface ResetPasswordProps extends InjectedFormProps, NavigationScreenProps {
+interface ResetPasswordProps extends InjectedFormProps, NavigationStackScreenProps {
   password: string;
   dispatch: any;
 }
@@ -56,7 +56,7 @@ class ResetPassword extends Component<ResetPasswordProps> {
     const { handleSubmit } = this.props;
     const { loading } = this.state;
     return (
-      <React.Fragment>
+      <>
         <Loader loading={loading} />
         <Block margin={[0, theme.sizes.padding]}>
           <Block flex={false} style={{ aspectRatio: 4.5 }} middle>
@@ -97,7 +97,7 @@ class ResetPassword extends Component<ResetPasswordProps> {
           </Block>
           <ContactMail />
         </Block>
-      </React.Fragment>
+      </>
     );
   }
 }

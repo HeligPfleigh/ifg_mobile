@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, BackHandler } from 'react-native';
-import { HeaderBackButton, NavigationScreenProps, NavigationEventSubscription } from 'react-navigation';
+import { NavigationEventSubscription } from 'react-navigation';
+import { HeaderBackButton, NavigationStackScreenProps } from 'react-navigation-stack';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -16,7 +17,7 @@ import { Enum, theme } from '../../constants';
 import { showModal, saveDraft, removeDraft } from '../../store/actions';
 import api from '../../core/api';
 
-interface EvaluateProps extends NavigationScreenProps {
+interface EvaluateProps extends NavigationStackScreenProps {
   dispatch: Dispatch<any>;
   email: string;
 }

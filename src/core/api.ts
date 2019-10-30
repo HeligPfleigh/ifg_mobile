@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import RNFetchBlob from 'rn-fetch-blob';
 import { Enum } from '../constants';
 
-const API_SERVER = 'https://api.ifeelgood.mttjsc.com/api/';
+const API_SERVER = 'http://localhost:8001/api';
 
 const instance = axios.create({
   baseURL: API_SERVER,

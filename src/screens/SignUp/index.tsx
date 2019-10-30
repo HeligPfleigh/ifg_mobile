@@ -5,7 +5,7 @@ import { Field, reduxForm, formValueSelector, InjectedFormProps } from 'redux-fo
 import { ScrollView } from 'react-native-gesture-handler';
 import { noop } from 'lodash';
 import get from 'lodash/get';
-import { NavigationScreenProps } from 'react-navigation';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import NavigatorMap from '../../navigations/NavigatorMap';
 import I18n from '../../core/i18n';
 import { showModal, login } from '../../store/actions';
@@ -16,7 +16,7 @@ import api from '../../core/api';
 import { styles } from './styles';
 import { ReduxFormName } from '../../constants/enum';
 
-interface SignUpProps extends InjectedFormProps, NavigationScreenProps {
+interface SignUpProps extends InjectedFormProps, NavigationStackScreenProps {
   dispatch: any;
   password: any;
   authToken: any;
@@ -78,7 +78,7 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
     const { isChecked, loading } = this.state;
     const { handleSubmit } = this.props;
     return (
-      <React.Fragment>
+      <>
         <Loader loading={loading} />
         <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
           <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -151,7 +151,7 @@ class SignUp extends React.Component<SignUpProps, SignUpStates> {
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
-      </React.Fragment>
+      </>
     );
   }
 }

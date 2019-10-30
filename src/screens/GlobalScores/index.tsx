@@ -1,10 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { NavigationScreenProps } from 'react-navigation';
 import get from 'lodash/get';
 import { useSelector, useDispatch } from 'react-redux';
 import noop from 'lodash/noop';
-
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { EvaluationItem, ScoreText, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -13,7 +12,7 @@ import { showWeatherIcon } from '../../core/utils';
 import { AppState } from '../../store/types';
 import { showModal } from '../../store/actions';
 
-const GlobalScores: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+const GlobalScores: React.FC<NavigationStackScreenProps> = ({ navigation }: NavigationStackScreenProps) => {
   const dispatch = useDispatch();
 
   const navigateToSummaryScreen = (evaluationType: Enum.EvaluationType) =>

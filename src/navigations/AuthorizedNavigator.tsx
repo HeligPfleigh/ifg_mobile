@@ -1,4 +1,6 @@
-import { createStackNavigator, createMaterialTopTabNavigator, TabBarIconProps, StackActions } from 'react-navigation';
+import { StackActions } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -173,7 +175,7 @@ export default createMaterialTopTabNavigator(
       screen: HomeStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.home')}</Text>,
-        tabBarIcon: ({ tintColor }: TabBarIconProps) => (
+        tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons size={theme.sizes.icon} name="home" color={tintColor || theme.colors.black} />
         ),
       },
@@ -182,7 +184,7 @@ export default createMaterialTopTabNavigator(
       screen: FeelGoodToolsStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.feel_good_tools')}</Text>,
-        tabBarIcon: ({ tintColor }: TabBarIconProps) => (
+        tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons
             size={theme.sizes.icon}
             name="lightbulb-on-outline"
@@ -195,7 +197,7 @@ export default createMaterialTopTabNavigator(
       screen: ProfileStack,
       navigationOptions: {
         tabBarLabel: () => <Text>{I18n.t('navigation.profile')}</Text>,
-        tabBarIcon: ({ tintColor }: TabBarIconProps) => (
+        tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons size={theme.sizes.icon} name="account" color={tintColor || theme.colors.black} />
         ),
       },

@@ -30,8 +30,6 @@ interface IProps {
 class DatePickerField extends React.Component<IProps> {
   bottomSheetRef: any;
 
-  static defaultProps = {};
-
   onDateChanged = (data: any) => {
     const { input } = this.props;
     if (isFunction(input.onChange)) {
@@ -55,7 +53,7 @@ class DatePickerField extends React.Component<IProps> {
     const heightPicker = isEqual(Platform.OS, 'ios') ? 260 : 220;
 
     return (
-      <React.Fragment>
+      <>
         <TouchableWithoutFeedback onPress={this.openBottomSheet}>
           <Block flex={false} style={styles.container}>
             <Text style={styles.label}>{label}</Text>
@@ -69,7 +67,7 @@ class DatePickerField extends React.Component<IProps> {
             <DatePicker {...datePickerProps} date={moment(value).toDate()} onDateChange={this.onDateChanged} />
           </View>
         </BottomSheet>
-      </React.Fragment>
+      </>
     );
   }
 }

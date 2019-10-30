@@ -1,8 +1,9 @@
 import React from 'react';
 import { ScrollView, Text, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { NavigationScreenProps, NavigationInjectedProps, withNavigation } from 'react-navigation';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { useSelector } from 'react-redux';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { Block } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -84,7 +85,7 @@ const DraftsGroup: React.FC<DraftGroupProps> = ({ type, colors, drafts, navigati
 
 const DraftGroupWithNavigation = withNavigation(DraftsGroup);
 
-const Drafts: React.FC<NavigationScreenProps> = () => {
+const Drafts: React.FC<NavigationStackScreenProps> = () => {
   const draftList = useSelector((state: AppState) => state.drafts.data);
   const email = useSelector((state: AppState) => state.me.data.user.email);
   const myDraftList = draftList.filter((draft: DraftState) => draft.email === email);

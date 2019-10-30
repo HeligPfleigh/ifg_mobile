@@ -6,7 +6,8 @@ import noop from 'lodash/noop';
 import isEmpty from 'lodash/isEmpty';
 import SplashScreen from 'react-native-splash-screen';
 import { Text, ScrollView, Image } from 'react-native';
-import { NavigationScreenProps, NavigationEvents, SafeAreaView } from 'react-navigation';
+import { NavigationEvents, SafeAreaView } from 'react-navigation';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -18,7 +19,7 @@ import NavigatorMap from '../../navigations/NavigatorMap';
 import { AppState, MeState } from '../../store/types';
 import { me, showModal } from '../../store/actions';
 
-interface HomeProps extends NavigationScreenProps {
+interface HomeProps extends NavigationStackScreenProps {
   dispatch: Dispatch<any>;
   me: MeState;
 }
