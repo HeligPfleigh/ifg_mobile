@@ -4,10 +4,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import I18n from '../core/i18n';
 import { theme } from '../constants';
-import { I18nTitle } from '../components';
+import { I18nTitle, YoutubeLink } from '../components';
 import NavigatorMap from './NavigatorMap';
 import HomeScreen from '../screens/Home';
 import GlobalScoresScreen from '../screens/GlobalScores';
@@ -84,6 +83,7 @@ const FeelGoodToolsStack = createStackNavigator(
             style={{ marginLeft: Platform.OS === 'android' ? theme.sizes.padding : 0 }}
           />
         ),
+        headerRight: <YoutubeLink />,
       },
     },
     [NavigatorMap.Drafts]: {
