@@ -1,7 +1,7 @@
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity, GestureResponderEvent } from 'react-native';
-import { Block } from '.';
+import Block from './Block';
 import { theme } from '../constants';
 
 interface CheckboxProps {

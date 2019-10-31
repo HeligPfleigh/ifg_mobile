@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Linking } from 'react-native';
 import { get } from 'lodash';
-import { WithTranslations } from '.';
+import WithTranslations from './WithTranslations';
 import { theme } from '../constants';
 import { Youtube } from '../assets/images';
 

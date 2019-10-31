@@ -2,9 +2,9 @@ import React, { Component, ReactNode, ReactElement } from 'react';
 import { Text, GestureResponderEvent, View, StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import { theme } from '../constants';
-import { Block, Button } from '.';
+import Block from './Block';
+import Button from './Button';
 
 interface EvaluationItemProps {
   colors: string[];
