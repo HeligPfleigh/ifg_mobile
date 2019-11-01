@@ -71,6 +71,7 @@ interface BlockProps {
   space?: any;
   wrap?: any;
   style?: ViewStyle | ViewStyle[];
+  collapsable?: boolean;
   children?: ReactNode;
 }
 

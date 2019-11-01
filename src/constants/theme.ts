@@ -99,4 +99,9 @@ const scoreSpectrum = [
   '#056404',
 ];
 
-export { colors, sizes, fonts, gradients, scoreSpectrum };
+const defaultApptourTheme = {
+  outerCircleColor: '#3f52ae',
+  cancelable: false,
+};
+
+export { colors, sizes, fonts, gradients, scoreSpectrum, defaultApptourTheme };

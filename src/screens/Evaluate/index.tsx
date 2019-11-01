@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, BackHandler } from 'react-native';
+import { Text, BackHandler, DeviceEventEmitter } from 'react-native';
 import { NavigationEventSubscription } from 'react-navigation';
 import { HeaderBackButton, NavigationStackScreenProps } from 'react-navigation-stack';
 import noop from 'lodash/noop';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { AppTour, AppTourSequence } from 'react-native-app-tour';
 
 import { AppState } from '../../store/types';
 import { Block, Button, WithTranslations } from '../../components';
@@ -51,6 +52,12 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   _willBlurSubscription: NavigationEventSubscription;
 
+  appTourTargets: any;
+
+  sequenceStepListener: any;
+
+  finishSequenceListener: any;
+
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
@@ -71,6 +78,9 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     this._willBlurSubscription = props.navigation.addListener('willBlur', () =>
       BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid),
     );
+    this.appTourTargets = [];
+    this.registerSequenceStepEvent();
+    this.registerFinishSequenceEvent();
   }
 
   componentDidMount() {
@@ -97,6 +107,17 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
       this.setState({ ...draftData });
     }
+
+    if (true) {
+      setTimeout(() => {
+        const appTourSequence = new AppTourSequence();
+        this.appTourTargets.forEach((appTourTarget: any) => {
+          appTourSequence.add(appTourTarget);
+        });
+
+        AppTour.ShowSequence(appTourSequence);
+      }, 1000);
+    }
   }
 
   componentWillUnmount() {
@@ -104,7 +125,25 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     this._didFocusSubscription && this._didFocusSubscription.remove();
     // eslint-disable-next-line no-unused-expressions
     this._willBlurSubscription && this._willBlurSubscription.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.sequenceStepListener && this.sequenceStepListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.finishSequenceListener && this.finishSequenceListener.remove();
   }
+
+  registerSequenceStepEvent = () => {
+    if (this.sequenceStepListener) {
+      this.sequenceStepListener.remove();
+    }
+    this.sequenceStepListener = DeviceEventEmitter.addListener('onShowSequenceStepEvent', noop);
+  };
+
+  registerFinishSequenceEvent = () => {
+    if (this.finishSequenceListener) {
+      this.finishSequenceListener.remove();
+    }
+    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', noop);
+  };
 
   onBackButtonPressAndroid = () => {
     this._handleBack();
@@ -204,6 +243,9 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
               onChipPress={this._handleChipPress}
               onNameChange={this._handleNameChange}
               onDescChange={this._handleDescChange}
+              addAppTourTarget={(appTourTarget: any) => {
+                this.appTourTargets.push(appTourTarget);
+              }}
             />
           )}
           {step === 2 && (

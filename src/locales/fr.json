@@ -400,5 +400,29 @@
     },
     "reset_pwd": "Fail to reset password!",
     "unexpected": "Une erreur inattendue est apparue"
+  },
+  "apptour": {
+    "summarize": {
+      "title": "Summarize",
+      "description": "Click here to view your summarize"
+    },
+    "evaluationItem": {
+      "title": "Evaluation",
+      "description": "Give a measurement for activity which affected to you"
+    },
+    "step1": {
+      "name": {
+        "title": "Factor",
+        "description": "Enter a name or a factor which impact to you"
+      },
+      "category": {
+        "title": "Category",
+        "description": "Select a category"
+      },
+      "desc": {
+        "title": "Description",
+        "description": "Write a something to help you remember about that"
+      }
+    }
   }
 }

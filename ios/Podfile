@@ -41,6 +41,12 @@ target 'ifg_mobile' do
   end
 
   use_native_modules!
+
+  pod 'RNAppTour', :path => '../node_modules/react-native-app-tour/ios'
+
+  use_frameworks!
+
+  pod 'MaterialShowcase', :git => 'https://github.com/prscX/material-showcase-ios', :branch => 'swift-version-fix'
 end
 
 target 'ifg_mobile-tvOS' do

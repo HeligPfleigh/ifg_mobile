@@ -5,9 +5,11 @@ import get from 'lodash/get';
 import noop from 'lodash/noop';
 import isEmpty from 'lodash/isEmpty';
 import SplashScreen from 'react-native-splash-screen';
-import { Text, ScrollView, Image } from 'react-native';
+import { Text, ScrollView, Image, DeviceEventEmitter } from 'react-native';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { AppTour, AppTourSequence, AppTourView } from 'react-native-app-tour';
+
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -25,10 +27,56 @@ interface HomeProps extends NavigationStackScreenProps {
 }
 
 class Home extends Component<HomeProps> {
+  appTourTargets: any;
+
+  sequenceStepListener: any;
+
+  finishSequenceListener: any;
+
+  constructor(props: HomeProps) {
+    super(props);
+    this.appTourTargets = [];
+    this.registerSequenceStepEvent();
+    this.registerFinishSequenceEvent();
+  }
+
   componentDidMount() {
     this._loadData();
     SplashScreen.hide();
+    if (true) {
+      setTimeout(() => {
+        const appTourSequence = new AppTourSequence();
+        this.appTourTargets.forEach((appTourTarget: any) => {
+          appTourSequence.add(appTourTarget);
+        });
+
+        AppTour.ShowSequence(appTourSequence);
+      }, 1000);
+    }
   }
+
+  componentWillUnmount() {
+    // eslint-disable-next-line no-unused-expressions
+    this.sequenceStepListener && this.sequenceStepListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.finishSequenceListener && this.finishSequenceListener.remove();
+  }
+
+  registerSequenceStepEvent = () => {
+    if (this.sequenceStepListener) {
+      this.sequenceStepListener.remove();
+    }
+    this.sequenceStepListener = DeviceEventEmitter.addListener('onShowSequenceStepEvent', noop);
+  };
+
+  registerFinishSequenceEvent = () => {
+    if (this.finishSequenceListener) {
+      this.finishSequenceListener.remove();
+    }
+    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', (e: Event) => {
+      console.log(e);
+    });
+  };
 
   _loadData = () => this.props.dispatch(me());
 
@@ -71,12 +119,31 @@ class Home extends Component<HomeProps> {
             <Text style={styles.name}>{name}</Text>
           </Block>
           <Block flex={0.7} middle center>
-            <Summarize score={get(score, Enum.EvaluationType.OVERALL)} onPress={this._navigateToGlobalScoresScreen} />
+            <Summarize
+              score={get(score, Enum.EvaluationType.OVERALL)}
+              onPress={this._navigateToGlobalScoresScreen}
+              addAppTourTarget={(appTourTarget: any) => {
+                this.appTourTargets.push(appTourTarget);
+              }}
+            />
           </Block>
         </SafeAreaView>
         <Block flex={2} style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: theme.sizes.padding }}>
             <EvaluationItem
+              key="evaluation-item"
+              ref={ref => {
+                if (!ref) return;
+
+                const props = {
+                  ...theme.defaultApptourTheme,
+                  order: 12,
+                  title: I18n.t('apptour.evaluationItem.title'),
+                  description: I18n.t('apptour.evaluationItem.description'),
+                };
+
+                this.appTourTargets.push(AppTourView.for(ref, { ...props }));
+              }}
               colors={theme.gradients.pink}
               header={I18n.t('home.relationships')}
               headerColor={theme.colors.pink}
