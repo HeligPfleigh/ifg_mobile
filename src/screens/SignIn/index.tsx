@@ -57,7 +57,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
   const { handleSubmit } = props;
 
   return (
-    <React.Fragment>
+    <>
       <Loader loading={isRequesting} />
       <Block margin={[0, theme.sizes.padding]}>
         <Block flex={false} style={{ aspectRatio: 4 }} middle>
@@ -103,7 +103,7 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
         </Block>
         <ContactMail />
       </Block>
-    </React.Fragment>
+    </>
   );
 };
 

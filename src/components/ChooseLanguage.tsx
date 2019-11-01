@@ -19,7 +19,7 @@ const ChooseLanguage: React.FC = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <TouchableOpacity
         onPress={() => {
           handleChange(SupportedLanguage.en);
@@ -34,7 +34,7 @@ const ChooseLanguage: React.FC = () => {
       >
         <Text style={styles.text}> Français</Text>
       </TouchableOpacity>
-    </React.Fragment>
+    </>
   );
 };
 

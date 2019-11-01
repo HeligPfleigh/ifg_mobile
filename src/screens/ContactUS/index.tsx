@@ -3,8 +3,8 @@ import get from 'lodash/get';
 import { Text, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
-import { NavigationScreenProps } from 'react-navigation';
 
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { ScrollView } from 'react-native-gesture-handler';
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
@@ -13,7 +13,7 @@ import { styles } from './styles';
 import api from '../../core/api';
 import NavigatorMap from '../../navigations/NavigatorMap';
 
-const ContactUs: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+const ContactUs: React.FC<NavigationStackScreenProps> = ({ navigation }: NavigationStackScreenProps) => {
   const subjects = [
     { label: I18n.t('profile.account_contact_us.feedback'), value: 'FEEDBACK' },
     { label: I18n.t('profile.account_contact_us.suggest'), value: 'SUGGESTIONS' },

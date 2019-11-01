@@ -32,7 +32,7 @@ export function me() {
     try {
       const { data } = await api.me();
       // clone response data
-      const result = Object.assign({}, data);
+      const result = { ...data };
       // get user avatar
       const avatar = get(data, 'user.avatar');
       if (!isEmpty(avatar)) {

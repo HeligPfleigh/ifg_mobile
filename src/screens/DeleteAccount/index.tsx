@@ -6,8 +6,9 @@ import isEqual from 'lodash/isEqual';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { NavigationScreenProps, ScrollView } from 'react-navigation';
+import { ScrollView } from 'react-navigation';
 import { Text, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import I18n from '../../core/i18n';
 import { Enum } from '../../constants';
 import { showModal, logout } from '../../store/actions';
@@ -20,7 +21,7 @@ interface IStates {
   loading?: boolean;
 }
 
-interface IProps extends InjectedFormProps, NavigationScreenProps {
+interface IProps extends InjectedFormProps, NavigationStackScreenProps {
   dispatch: Dispatch<any>;
 }
 

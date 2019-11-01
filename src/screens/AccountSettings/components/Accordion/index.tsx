@@ -50,10 +50,10 @@ class Accordion extends Component<IProps, IStates> {
       onPress: !isFunction(this.props.onPress) ? this.toggleExpand : this.props.onPress,
     };
     return (
-      <React.Fragment>
+      <>
         <MenuItem {...menuItemProps} isExpanded={isExpanded} />
         {isExpanded && this.renderChildComponent()}
-      </React.Fragment>
+      </>
     );
   }
 }

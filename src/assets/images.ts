@@ -25,8 +25,10 @@ import Save from './images/floppy-disk.svg';
 import Archived from './images/checked.svg';
 
 const DefaultAvatar = require('./images/avatar.png');
+const Youtube = require('./images/utube.png');
 
 export {
+  Youtube,
   WelcomeImg,
   MoonImg,
   StormImg,

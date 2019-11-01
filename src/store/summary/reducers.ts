@@ -22,7 +22,7 @@ const summaryReducer = createReducer(initialState, {
     };
   },
   [LOAD_SUMMARY_SUCCESSFUL]: (state: SummaryState, action: SummarySuccessfulAction) => {
-    let newData = Object.assign({}, state.data);
+    let newData = { ...state.data };
     const type = state.currEvaluationType;
     if (type) {
       newData = { ...newData, [type]: action.response };

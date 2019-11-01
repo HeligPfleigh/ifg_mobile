@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { Rocket, BrainStorm, Folder, Congratulation, Finger, WelcomeImg } from '../../assets/images';
 import I18n from '../../core/i18n';
 import { theme } from '../../constants';
-import { Block } from '..';
+import Block from '../Block';
 
 const styles = StyleSheet.create({
   content: {

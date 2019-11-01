@@ -1,9 +1,9 @@
 import React from 'react';
 import { ScrollView, Text, StyleSheet } from 'react-native';
-import { NavigationScreenProps } from 'react-navigation';
 import { useSelector } from 'react-redux';
 import get from 'lodash/get';
 
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { WithTranslations, EvaluationItem, Block, RoundIconButton } from '../../components';
 import I18n from '../../core/i18n';
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const FeelGoodTools: React.FC<NavigationScreenProps> = ({ navigation }: NavigationScreenProps) => {
+const FeelGoodTools: React.FC<NavigationStackScreenProps> = ({ navigation }: NavigationStackScreenProps) => {
   const score = useSelector((state: AppState) => state.me.data.score);
   const relationshipsScore = get(score, Enum.EvaluationType.RELATIONSHIPS);
   const activitiesScore = get(score, Enum.EvaluationType.ACTIVITIES);

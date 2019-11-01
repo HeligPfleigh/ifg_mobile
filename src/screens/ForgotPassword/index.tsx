@@ -28,7 +28,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Loader loading={loading} />
       <Block margin={[0, theme.sizes.padding]}>
         <Block flex={false} style={{ aspectRatio: 4 }} middle>
@@ -58,7 +58,7 @@ const ForgotPassword: React.FC = (props: InjectedFormProps | any) => {
         </Block>
         <ContactMail />
       </Block>
-    </React.Fragment>
+    </>
   );
 };
 

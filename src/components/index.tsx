@@ -12,6 +12,7 @@ import WithTranslations from './WithTranslations';
 import I18nTitle from './I18nTitle';
 import ContactMail from './ContactMail';
 import ChooseLanguage from './ChooseLanguage';
+import YoutubeLink from './YoutubeLink';
 
 export {
   Block,
@@ -29,4 +30,5 @@ export {
   I18nTitle,
   ContactMail,
   ChooseLanguage,
+  YoutubeLink,
 };

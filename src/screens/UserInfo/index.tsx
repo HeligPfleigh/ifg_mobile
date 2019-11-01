@@ -8,9 +8,8 @@ import { connect } from 'react-redux';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-picker';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { NavigationScreenProps } from 'react-navigation';
 import { View, Image, ScrollView, Text, KeyboardAvoidingView, Keyboard, TouchableOpacity } from 'react-native';
-
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import styles from './styles';
 import I18n from '../../core/i18n';
 import { AppState } from '../../store/types';
@@ -30,7 +29,7 @@ interface IUser {
   weight?: number;
 }
 
-interface IProps extends InjectedFormProps, NavigationScreenProps {
+interface IProps extends InjectedFormProps, NavigationStackScreenProps {
   token: string;
   locale?: string;
   avatar?: string;
@@ -146,7 +145,7 @@ class UserInfo extends React.Component<IProps, IStates> {
     const { maxLength120 } = FormFields.FormValidator;
 
     return (
-      <React.Fragment>
+      <>
         <ActionSheet
           cancelButtonIndex={2}
           options={this.buttons}
@@ -239,7 +238,7 @@ class UserInfo extends React.Component<IProps, IStates> {
             </Block>
           </ScrollView>
         </KeyboardAvoidingView>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { Text, FlatList } from 'react-native';
-import { NavigationScreenProps } from 'react-navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
-
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { Block, Loader } from '../../components';
 import { styles } from './styles';
 import SummaryHeader from './components/SummaryHeader';
@@ -13,7 +12,7 @@ import { loadSummary } from '../../store/actions';
 import { summaryIcon } from '../../core/utils';
 import I18n from '../../core/i18n';
 
-interface TestProps extends NavigationScreenProps {}
+interface TestProps extends NavigationStackScreenProps {}
 
 const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
   const type = navigation.getParam('evaluationType', Enum.EvaluationType.OVERALL);
@@ -57,7 +56,7 @@ const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
   const sortedData = data.sort((item1: any, item2: any) => item2.score - item1.score);
 
   return (
-    <React.Fragment>
+    <>
       <Loader loading={isLoading} />
       <FlatList
         ListHeaderComponent={renderSummaryHeader}
@@ -65,7 +64,7 @@ const Summary: React.FC<TestProps> = ({ navigation }: TestProps) => {
         renderItem={renderSummaryItem}
         keyExtractor={(_, index) => `summary-${index}`}
       />
-    </React.Fragment>
+    </>
   );
 };
 
