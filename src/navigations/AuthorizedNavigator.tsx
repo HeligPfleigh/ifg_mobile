@@ -174,7 +174,7 @@ export default createMaterialTopTabNavigator(
     [NavigatorMap.HomeStack]: {
       screen: HomeStack,
       navigationOptions: {
-        tabBarLabel: () => <Text>{I18n.t('navigation.home')}</Text>,
+        tabBarLabel: () => <Text style={{ fontSize: 12 }}>{I18n.t('navigation.home')}</Text>,
         tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons size={theme.sizes.icon} name="home" color={tintColor || theme.colors.black} />
         ),
@@ -183,7 +183,7 @@ export default createMaterialTopTabNavigator(
     [NavigatorMap.FeelGoodTools]: {
       screen: FeelGoodToolsStack,
       navigationOptions: {
-        tabBarLabel: () => <Text>{I18n.t('navigation.feel_good_tools')}</Text>,
+        tabBarLabel: () => <Text style={{ fontSize: 12 }}>{I18n.t('navigation.feel_good_tools')}</Text>,
         tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons
             size={theme.sizes.icon}
@@ -196,7 +196,7 @@ export default createMaterialTopTabNavigator(
     [NavigatorMap.Profile]: {
       screen: ProfileStack,
       navigationOptions: {
-        tabBarLabel: () => <Text>{I18n.t('navigation.profile')}</Text>,
+        tabBarLabel: () => <Text style={{ fontSize: 12 }}>{I18n.t('navigation.profile')}</Text>,
         tabBarIcon: ({ tintColor }: any) => (
           <MaterialCommunityIcons size={theme.sizes.icon} name="account" color={tintColor || theme.colors.black} />
         ),
