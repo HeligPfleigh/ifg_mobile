@@ -40,6 +40,7 @@ export const step1Styles = StyleSheet.create({
   },
   input: {
     height: 40,
+    backgroundColor: theme.colors.white,
     borderColor: theme.colors.gray,
     borderWidth: StyleSheet.hairlineWidth,
     width: '100%',

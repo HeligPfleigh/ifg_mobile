@@ -137,7 +137,9 @@ class Home extends Component<HomeProps> {
 
                 const props = {
                   ...theme.defaultApptourTheme,
-                  order: 12,
+                  order: 1,
+                  targetRadius: 0,
+                  cancelable: true,
                   title: I18n.t('apptour.evaluationItem.title'),
                   description: I18n.t('apptour.evaluationItem.description'),
                 };

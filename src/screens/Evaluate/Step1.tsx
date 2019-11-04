@@ -77,7 +77,9 @@ export const Step1: React.FC<Step1Props> = ({
 
               const props = {
                 ...theme.defaultApptourTheme,
-                order: 13,
+                order: 3,
+                targetRadius: 0,
+                cancelable: true,
                 title: I18n.t('apptour.step1.name.title'),
                 description: I18n.t('apptour.step1.name.description'),
               };
@@ -85,7 +87,6 @@ export const Step1: React.FC<Step1Props> = ({
               // eslint-disable-next-line no-unused-expressions
               addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
             }}
-            collapsable={false}
           >
             <Autocomplete
               hideResults={hideResults}
@@ -116,7 +117,9 @@ export const Step1: React.FC<Step1Props> = ({
 
             const props = {
               ...theme.defaultApptourTheme,
-              order: 14,
+              order: 4,
+              targetRadius: 0,
+              cancelable: true,
               title: I18n.t('apptour.step1.category.title'),
               description: I18n.t('apptour.step1.category.description'),
             };
@@ -124,7 +127,6 @@ export const Step1: React.FC<Step1Props> = ({
             // eslint-disable-next-line no-unused-expressions
             addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
           }}
-          collapsable={false}
         >
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.label')}</Text>
@@ -146,32 +148,33 @@ export const Step1: React.FC<Step1Props> = ({
             ))}
           </Block>
         </Block>
-        <Block
-          flex={1}
-          style={step1Styles.field}
-          key="step1.desc"
-          ref={ref => {
-            if (!ref) return;
-
-            const props = {
-              ...theme.defaultApptourTheme,
-              order: 15,
-              title: I18n.t('apptour.step1.desc.title'),
-              description: I18n.t('apptour.step1.desc.description'),
-            };
-
-            // eslint-disable-next-line no-unused-expressions
-            addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
-          }}
-          collapsable={false}
-        >
+        <Block flex={1} style={step1Styles.field}>
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>
               {I18n.t('evaluate.step1.header.desc')}
               <Text style={step1Styles.name}>{I18n.t('evaluate.step1.optional')}</Text>
             </Text>
           </Block>
-          <Block flex={1} center>
+          <Block
+            flex={1}
+            center
+            key="step1.desc"
+            ref={ref => {
+              if (!ref) return;
+
+              const props = {
+                ...theme.defaultApptourTheme,
+                order: 5,
+                targetRadius: 0,
+                cancelable: true,
+                title: I18n.t('apptour.step1.desc.title'),
+                description: I18n.t('apptour.step1.desc.description'),
+              };
+
+              // eslint-disable-next-line no-unused-expressions
+              addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
+            }}
+          >
             <TextInput
               style={step1Styles.input}
               onChangeText={onDescChange}
