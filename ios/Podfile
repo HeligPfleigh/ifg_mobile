@@ -31,9 +31,6 @@ target 'ifg_mobile' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Core', '~> 6.3.0'
-  pod 'Firebase/Messaging', '~> 6.3.0'
 
   target 'ifg_mobileTests' do
     inherit! :search_paths
@@ -47,6 +44,9 @@ target 'ifg_mobile' do
   use_frameworks!
 
   pod 'MaterialShowcase', :git => 'https://github.com/prscX/material-showcase-ios', :branch => 'swift-version-fix'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core', '~> 6.3.0'
+  pod 'Firebase/Messaging', '~> 6.3.0'
 end
 
 target 'ifg_mobile-tvOS' do
