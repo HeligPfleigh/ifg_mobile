@@ -394,6 +394,8 @@
     "success": "Your password is resetted. Now you can sign in with your new password."
   },
   "errors": {
+    "default": "Error",
+    "mess_required": "Please enter message",
     "sign_in_fail": "Your E-mail or password is not correct",
     "change_email": {
       "password_not_match": "Your password isn't correct!"
@@ -403,25 +405,25 @@
   },
   "apptour": {
     "summarize": {
-      "title": "",
-      "description": "Next you can see here in a glance your summarized and detailed feel good scores. They are updated right after each new evaluation. The more you make introspection, the more you can be aware of what is truly important for you ! "
+      "title": "Next you can see here in a glance your summarized and detailed feel good scores. They are updated right after each new evaluation. The more you make introspection, the more you can be aware of what is truly important for you !",
+      "description": ""
     },
     "evaluationItem": {
-      "title": "HELLO and WELCOME ! :)",
-      "description": "We suggest you to choose 1 among those 4 categories to start your inner journey. Once familiar with the app, each mini inner journey takes very little of your time !"
+      "title": "HELLO and WELCOME ! :) We suggest you to choose 1 among those 4 categories to start your inner journey. Once familiar with the app, each mini inner journey takes very little of your time !",
+      "description": ""
     },
     "step1": {
       "name": {
-        "title": "",
-        "description": "Type only 1 answer here. If you have several answers in mind you can make other evaluations once this one is finished :)"
+        "title": "Type only 1 answer here. If you have several answers in mind you can make other evaluations once this one is finished :)",
+        "description": ""
       },
       "category": {
-        "title": "",
-        "description": "Assign here one sub-category for your answer."
+        "title": "Assign here one sub-category for your answer.",
+        "description": ""
       },
       "desc": {
-        "title": "",
-        "description": "If you wish you can write here more details related to the answer above. Otherwise you can leave it empty and go to the next step. "
+        "title": "If you wish you can write here more details related to the answer above. Otherwise you can leave it empty and go to the next step.",
+        "description": ""
       }
     }
   }

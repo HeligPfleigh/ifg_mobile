@@ -394,6 +394,8 @@
     "success": "Ton mot de passe a été réinitialisé avec succès, tu peux accéder maintenant à ton compte avec le nouveau mot de passe"
   },
   "errors": {
+    "default": "Erreur",
+    "mess_required": "S'il vous plaît entrer un message",
     "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
     "change_email": {
       "password_not_match": "Votre mot de passe n'est pas correct!"
@@ -403,25 +405,25 @@
   },
   "apptour": {
     "summarize": {
-      "title": "",
-      "description": "Ensuite tu peux voir ici en un clin d'oeil tes scores feel good synthétiques et détaillés. Ces scores sont mis à jour immédiatement après chaque nouvelle évaluation. Plus tu effectues l'introspection, plus tu pourras te rendre compte de ce qui est vraiment important pour toi !"
+      "title": "Ensuite tu peux voir ici en un clin d'oeil tes scores feel good synthétiques et détaillés. Ces scores sont mis à jour immédiatement après chaque nouvelle évaluation. Plus tu effectues l'introspection, plus tu pourras te rendre compte de ce qui est vraiment important pour toi !",
+      "description": ""
     },
     "evaluationItem": {
-      "title": "BONJOUR et BIENVENUE ! :)",
-      "description": "On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !"
+      "title": "BONJOUR et BIENVENUE ! :) On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !",
+      "description": ""
     },
     "step1": {
       "name": {
-        "title": "",
-        "description": "Entrer 1 seule réponse ici. Si tu as plusieurs réponses en tête, tu peux effectuer d'autres évaluations une fois celle-ci terminée :)"
+        "title": "Entrer 1 seule réponse ici. Si tu as plusieurs réponses en tête, tu peux effectuer d'autres évaluations une fois celle-ci terminée :)",
+        "description": ""
       },
       "category": {
-        "title": "",
-        "description": "Attribuer ici une sous-catégorie pour ta réponse."
+        "title": "Attribuer ici une sous-catégorie pour ta réponse.",
+        "description": ""
       },
       "desc": {
-        "title": "",
-        "description": "Si tu le souhaites, tu peux écrire ici plus de détails à propos de la réponse ci-dessus. Sinon tu peux le laisser vide et passer à l'étape suivante."
+        "title": "Si tu le souhaites, tu peux écrire ici plus de détails à propos de la réponse ci-dessus. Sinon tu peux le laisser vide et passer à l'étape suivante.",
+        "description": ""
       }
     }
   }
