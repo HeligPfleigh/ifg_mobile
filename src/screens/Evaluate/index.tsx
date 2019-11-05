@@ -59,6 +59,8 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   finishSequenceListener: any;
 
+  appTourTimeout: NodeJS.Timeout | undefined;
+
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
@@ -130,6 +132,8 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     this.sequenceStepListener && this.sequenceStepListener.remove();
     // eslint-disable-next-line no-unused-expressions
     this.finishSequenceListener && this.finishSequenceListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.appTourTimeout && clearTimeout(this.appTourTimeout);
   }
 
   registerSequenceStepEvent = () => {

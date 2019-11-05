@@ -28,6 +28,8 @@ interface HomeProps extends NavigationStackScreenProps {
 }
 
 class Home extends Component<HomeProps> {
+  appTourTimeout: NodeJS.Timeout | undefined;
+
   appTourTargets: any;
 
   sequenceStepListener: any;
@@ -46,7 +48,7 @@ class Home extends Component<HomeProps> {
     this._loadData();
     SplashScreen.hide();
     if (!tour.isHomeFinished) {
-      setTimeout(() => {
+      this.appTourTimeout = setTimeout(() => {
         const appTourSequence = new AppTourSequence();
         this.appTourTargets.forEach((appTourTarget: any) => {
           appTourSequence.add(appTourTarget);
@@ -62,6 +64,8 @@ class Home extends Component<HomeProps> {
     this.sequenceStepListener && this.sequenceStepListener.remove();
     // eslint-disable-next-line no-unused-expressions
     this.finishSequenceListener && this.finishSequenceListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.appTourTimeout && clearTimeout(this.appTourTimeout);
   }
 
   registerSequenceStepEvent = () => {
@@ -182,6 +186,28 @@ class Home extends Component<HomeProps> {
             />
           </ScrollView>
         </Block>
+        {!this.props.tour.isHomeFinished && (
+          <Block
+            flex={false}
+            style={styles.tour}
+            key="feel-good-tools"
+            ref={ref => {
+              if (!ref) return;
+
+              const props = {
+                ...theme.defaultApptourTheme,
+                order: 3,
+                targetRadius: 60,
+                cancelable: true,
+                title: I18n.t('apptour.feelGoodTools.title'),
+                description: I18n.t('apptour.feelGoodTools.description'),
+              };
+
+              this.appTourTargets.push(AppTourView.for(ref, { ...props }));
+            }}
+            collapsable={false}
+          />
+        )}
       </Block>
     );
   }
