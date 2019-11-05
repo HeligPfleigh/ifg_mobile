@@ -87,6 +87,7 @@ export const Step1: React.FC<Step1Props> = ({
               // eslint-disable-next-line no-unused-expressions
               addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
             }}
+            collapsable={false}
           >
             <Autocomplete
               hideResults={hideResults}
@@ -127,6 +128,7 @@ export const Step1: React.FC<Step1Props> = ({
             // eslint-disable-next-line no-unused-expressions
             addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
           }}
+          collapsable={false}
         >
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.label')}</Text>
@@ -174,6 +176,7 @@ export const Step1: React.FC<Step1Props> = ({
               // eslint-disable-next-line no-unused-expressions
               addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
             }}
+            collapsable={false}
           >
             <TextInput
               style={step1Styles.input}
