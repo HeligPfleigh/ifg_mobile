@@ -27,4 +27,14 @@ export const styles = StyleSheet.create({
     fontSize: theme.sizes.font,
     color: theme.colors.gray,
   },
+  tour: {
+    position: 'absolute',
+    bottom: -80,
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
 });

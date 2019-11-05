@@ -172,8 +172,8 @@
     "description": {
       "relationships": "Evaluate people who influence my energy and moods.",
       "activities": "Evaluate occupations that change my physical and mental states.",
-      "intakes": "Absorptions that impact my body and mind.",
-      "other": "Any other aspect that modifies my vitality and spirit."
+      "intakes": "Evaluate absorptions that impact my body and mind.",
+      "other": "Evaluate any other aspect that modifies my vitality and spirit."
     }
   },
   "summary": {
@@ -203,7 +203,7 @@
           "name": "Is there anyone who gives you joy or negative waves ?"
         },
         "activities": {
-          "name": "Is there an activity you would like to continue or to get rid of ?"
+          "name": "Is there an activity that you would like to continue or to get rid of ?"
         },
         "intakes": {
           "name": "Is there an intake that made you feel good or feel uncomfortable ?"
@@ -394,6 +394,8 @@
     "success": "Your password is resetted. Now you can sign in with your new password."
   },
   "errors": {
+    "default": "Error",
+    "mess_required": "Please enter message",
     "sign_in_fail": "Your E-mail or password is not correct",
     "change_email": {
       "password_not_match": "Your password isn't correct!"
@@ -403,25 +405,29 @@
   },
   "apptour": {
     "summarize": {
-      "title": "Summarize",
-      "description": "Click here to view your summarize"
+      "title": "Next you can see here in a glance your summarized and detailed feel good scores. They are updated right after each new evaluation. The more you make introspection, the more you can be aware of what is truly important for you !",
+      "description": ""
     },
     "evaluationItem": {
-      "title": "Evaluation",
-      "description": "Give a measurement for activity which affected to you"
+      "title": "HELLO and WELCOME ! :) We suggest you to choose 1 among those 4 categories to start your inner journey. Once familiar with the app, each mini inner journey takes very little of your time !",
+      "description": ""
+    },
+    "feelGoodTools": {
+      "title": "Here you will find the app's YouTube page for guide videos, initiate actions to increase your feel good level or finish your drafts.",
+      "description": ""
     },
     "step1": {
       "name": {
-        "title": "Factor",
-        "description": "Enter a name or a factor which impact to you"
+        "title": "Type only 1 answer here. If you have several answers in mind you can make other evaluations once this one is finished :)",
+        "description": ""
       },
       "category": {
-        "title": "Category",
-        "description": "Select a category"
+        "title": "Assign here one sub-category for your answer.",
+        "description": ""
       },
       "desc": {
-        "title": "Description",
-        "description": "Write a something to help you remember about that"
+        "title": "If you wish you can write here more details related to the answer above. Otherwise you can leave it empty and go to the next step.",
+        "description": ""
       }
     }
   }

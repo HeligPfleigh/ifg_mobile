@@ -33,8 +33,8 @@ const ContactUs: React.FC<NavigationStackScreenProps> = ({ navigation }: Navigat
       Toast.success(I18n.t('profile.account_contact_us.feedback_success'));
       navigation.navigate(NavigatorMap.Home);
     } catch (err) {
-      // TODO
-      Toast.error(err.message);
+      // TODO Translate
+      Toast.error(I18n.t(get(err, 'response.data.error.message', 'errors.default')));
     } finally {
       setLoading(false);
     }

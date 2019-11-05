@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { AppTour, AppTourSequence } from 'react-native-app-tour';
 
-import { AppState } from '../../store/types';
+import { AppState, TourState } from '../../store/types';
 import { Block, Button, WithTranslations } from '../../components';
 import I18n from '../../core/i18n';
 import { styles } from './styles';
@@ -15,12 +15,13 @@ import { Step1 } from './Step1';
 import { Step2 } from './Step2';
 import { Step3 } from './Step3';
 import { Enum, theme } from '../../constants';
-import { showModal, saveDraft, removeDraft } from '../../store/actions';
+import { showModal, saveDraft, removeDraft, finishStepTour } from '../../store/actions';
 import api from '../../core/api';
 
 interface EvaluateProps extends NavigationStackScreenProps {
   dispatch: Dispatch<any>;
   email: string;
+  tour: TourState;
 }
 
 interface EvaluateState {
@@ -58,6 +59,8 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
 
   finishSequenceListener: any;
 
+  appTourTimeout: NodeJS.Timeout | undefined;
+
   constructor(props: EvaluateProps) {
     super(props);
     this.state = {
@@ -84,7 +87,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   }
 
   componentDidMount() {
-    const { navigation } = this.props;
+    const { navigation, tour } = this.props;
     const type = navigation.getParam(Enum.NavigationParamsName.EVALUATION_TYPE, null);
     const draftData = navigation.getParam(Enum.NavigationParamsName.EVALUATION_DATA, null);
     navigation.setParams({ handleBack: this._handleBack });
@@ -108,7 +111,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
       this.setState({ ...draftData });
     }
 
-    if (true) {
+    if (!tour.isStepFinished) {
       setTimeout(() => {
         const appTourSequence = new AppTourSequence();
         this.appTourTargets.forEach((appTourTarget: any) => {
@@ -129,6 +132,8 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     this.sequenceStepListener && this.sequenceStepListener.remove();
     // eslint-disable-next-line no-unused-expressions
     this.finishSequenceListener && this.finishSequenceListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.appTourTimeout && clearTimeout(this.appTourTimeout);
   }
 
   registerSequenceStepEvent = () => {
@@ -139,10 +144,13 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   };
 
   registerFinishSequenceEvent = () => {
+    const { dispatch } = this.props;
     if (this.finishSequenceListener) {
       this.finishSequenceListener.remove();
     }
-    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', noop);
+    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', () => {
+      dispatch(finishStepTour());
+    });
   };
 
   onBackButtonPressAndroid = () => {
@@ -296,4 +304,6 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   }
 }
 
-export default connect((state: AppState) => ({ email: state.me.data.user.email }))(WithTranslations(Evaluate));
+export default connect((state: AppState) => ({ email: state.me.data.user.email, tour: state.tour }))(
+  WithTranslations(Evaluate),
+);

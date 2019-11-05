@@ -100,7 +100,7 @@ const scoreSpectrum = [
 ];
 
 const defaultApptourTheme = {
-  outerCircleColor: '#3f52ae',
+  outerCircleColor: '#4da6ff',
   cancelable: false,
 };
 

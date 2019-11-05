@@ -209,7 +209,7 @@
           "name": "Est-ce qu'il y a un aliment qui te fait du bien ou te rend inconfortable ?"
         },
         "other": {
-          "name": "Est-ce qu'il y a un autre élément qui contribues à modifier ton énergie ou ton humeur ?"
+          "name": "Est-ce qu'il y a un autre élément qui contribue à modifier ton énergie ou ton humeur ?"
         },
         "label": "Sélectionner une sous-catégorie",
         "input_placeholder": {
@@ -394,6 +394,8 @@
     "success": "Ton mot de passe a été réinitialisé avec succès, tu peux accéder maintenant à ton compte avec le nouveau mot de passe"
   },
   "errors": {
+    "default": "Erreur",
+    "mess_required": "S'il vous plaît entrer un message",
     "sign_in_fail": "Ton E-mail ou ton mot de passe n'est pas le bon",
     "change_email": {
       "password_not_match": "Votre mot de passe n'est pas correct!"
@@ -403,25 +405,29 @@
   },
   "apptour": {
     "summarize": {
-      "title": "Summarize",
-      "description": "Click here to view your summarize"
+      "title": "Ensuite tu peux voir ici en un clin d'oeil tes scores feel good synthétiques et détaillés. Ces scores sont mis à jour immédiatement après chaque nouvelle évaluation. Plus tu effectues l'introspection, plus tu pourras te rendre compte de ce qui est vraiment important pour toi !",
+      "description": ""
     },
     "evaluationItem": {
-      "title": "Evaluation",
-      "description": "Give a measurement for activity which affected to you"
+      "title": "BONJOUR et BIENVENUE ! :) On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !",
+      "description": ""
+    },
+    "feelGoodTools": {
+      "title": "Ici tu trouveras la page YouTube de l'appli pour des guides en vidéo, initier des actions pour augmenter ton niveau de feel good ou terminer tes brouillons.",
+      "description": ""
     },
     "step1": {
       "name": {
-        "title": "Factor",
-        "description": "Enter a name or a factor which impact to you"
+        "title": "Entrer 1 seule réponse ici. Si tu as plusieurs réponses en tête, tu peux effectuer d'autres évaluations une fois celle-ci terminée :)",
+        "description": ""
       },
       "category": {
-        "title": "Category",
-        "description": "Select a category"
+        "title": "Attribuer ici une sous-catégorie pour ta réponse.",
+        "description": ""
       },
       "desc": {
-        "title": "Description",
-        "description": "Write a something to help you remember about that"
+        "title": "Si tu le souhaites, tu peux écrire ici plus de détails à propos de la réponse ci-dessus. Sinon tu peux le laisser vide et passer à l'étape suivante.",
+        "description": ""
       }
     }
   }

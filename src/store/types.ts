@@ -7,6 +7,7 @@ export * from './drafts/types';
 export * from './auth/types';
 export * from './myaction/types';
 export * from './notification/types';
+export * from './tour/types';
 export const LOGOUT = 'LOGOUT';
 
 export interface CustomError {

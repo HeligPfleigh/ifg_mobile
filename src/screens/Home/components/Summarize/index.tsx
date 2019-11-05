@@ -42,7 +42,9 @@ export default class Summarize extends Component<SummarizeProps> {
 
             const props = {
               ...theme.defaultApptourTheme,
-              order: 11,
+              order: 2,
+              targetRadius: 0,
+              cancelable: true,
               title: I18n.t('apptour.summarize.title'),
               description: I18n.t('apptour.summarize.description'),
             };

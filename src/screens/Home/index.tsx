@@ -9,7 +9,7 @@ import { Text, ScrollView, Image, DeviceEventEmitter } from 'react-native';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { AppTour, AppTourSequence, AppTourView } from 'react-native-app-tour';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -18,15 +18,18 @@ import { DefaultAvatar } from '../../assets/images';
 import Summarize from './components/Summarize';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, MeState } from '../../store/types';
-import { me, showModal } from '../../store/actions';
+import { AppState, MeState, TourState } from '../../store/types';
+import { me, showModal, finishHomeTour } from '../../store/actions';
 
 interface HomeProps extends NavigationStackScreenProps {
   dispatch: Dispatch<any>;
   me: MeState;
+  tour: TourState;
 }
 
 class Home extends Component<HomeProps> {
+  appTourTimeout: NodeJS.Timeout | undefined;
+
   appTourTargets: any;
 
   sequenceStepListener: any;
@@ -41,10 +44,11 @@ class Home extends Component<HomeProps> {
   }
 
   componentDidMount() {
+    const { tour } = this.props;
     this._loadData();
     SplashScreen.hide();
-    if (true) {
-      setTimeout(() => {
+    if (!tour.isHomeFinished) {
+      this.appTourTimeout = setTimeout(() => {
         const appTourSequence = new AppTourSequence();
         this.appTourTargets.forEach((appTourTarget: any) => {
           appTourSequence.add(appTourTarget);
@@ -60,6 +64,8 @@ class Home extends Component<HomeProps> {
     this.sequenceStepListener && this.sequenceStepListener.remove();
     // eslint-disable-next-line no-unused-expressions
     this.finishSequenceListener && this.finishSequenceListener.remove();
+    // eslint-disable-next-line no-unused-expressions
+    this.appTourTimeout && clearTimeout(this.appTourTimeout);
   }
 
   registerSequenceStepEvent = () => {
@@ -70,11 +76,12 @@ class Home extends Component<HomeProps> {
   };
 
   registerFinishSequenceEvent = () => {
+    const { dispatch } = this.props;
     if (this.finishSequenceListener) {
       this.finishSequenceListener.remove();
     }
-    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', (e: Event) => {
-      console.log(e);
+    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', () => {
+      dispatch(finishHomeTour());
     });
   };
 
@@ -137,7 +144,9 @@ class Home extends Component<HomeProps> {
 
                 const props = {
                   ...theme.defaultApptourTheme,
-                  order: 12,
+                  order: 1,
+                  targetRadius: 0,
+                  cancelable: true,
                   title: I18n.t('apptour.evaluationItem.title'),
                   description: I18n.t('apptour.evaluationItem.description'),
                 };
@@ -177,6 +186,31 @@ class Home extends Component<HomeProps> {
             />
           </ScrollView>
         </Block>
+        {!this.props.tour.isHomeFinished && (
+          <Block
+            flex={false}
+            style={styles.tour}
+            key="feel-good-tools"
+            ref={ref => {
+              if (!ref) return;
+
+              const props = {
+                ...theme.defaultApptourTheme,
+                order: 3,
+                targetRadius: 60,
+                cancelable: true,
+                title: I18n.t('apptour.feelGoodTools.title'),
+                description: I18n.t('apptour.feelGoodTools.description'),
+              };
+
+              this.appTourTargets.push(AppTourView.for(ref, { ...props }));
+            }}
+            collapsable={false}
+          >
+            <MaterialCommunityIcons size={theme.sizes.icon} name="lightbulb-on-outline" color={theme.colors.black} />
+            <Text style={{ fontSize: 12 }}>{I18n.t('navigation.feel_good_tools')}</Text>
+          </Block>
+        )}
       </Block>
     );
   }
@@ -184,6 +218,7 @@ class Home extends Component<HomeProps> {
 
 const mapStateToProps = (state: AppState) => ({
   me: state.me,
+  tour: state.tour,
 });
 
 export default WithTranslations(connect(mapStateToProps)(Home));

@@ -8,7 +8,7 @@ const API_SERVER = 'https://api.ifeelgood.mttjsc.com/api/';
 
 const instance = axios.create({
   baseURL: API_SERVER,
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export const authorizeApi = (token: string): void => {
