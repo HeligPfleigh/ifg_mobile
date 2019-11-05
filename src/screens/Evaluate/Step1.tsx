@@ -77,7 +77,7 @@ export const Step1: React.FC<Step1Props> = ({
 
               const props = {
                 ...theme.defaultApptourTheme,
-                order: 3,
+                order: 1,
                 targetRadius: 0,
                 cancelable: true,
                 title: I18n.t('apptour.step1.name.title'),
@@ -118,7 +118,7 @@ export const Step1: React.FC<Step1Props> = ({
 
             const props = {
               ...theme.defaultApptourTheme,
-              order: 4,
+              order: 2,
               targetRadius: 0,
               cancelable: true,
               title: I18n.t('apptour.step1.category.title'),
@@ -166,7 +166,7 @@ export const Step1: React.FC<Step1Props> = ({
 
               const props = {
                 ...theme.defaultApptourTheme,
-                order: 5,
+                order: 3,
                 targetRadius: 0,
                 cancelable: true,
                 title: I18n.t('apptour.step1.desc.title'),
