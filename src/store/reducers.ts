@@ -37,6 +37,7 @@ export const rootReducer: any = (state: AppState, action: any) => {
       auth: initialAuth,
       myaction: initialMyAction,
       notification: state.notification,
+      tour: state.tour,
     };
   }
   return appReducer(state, action);
