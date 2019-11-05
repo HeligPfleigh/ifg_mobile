@@ -412,6 +412,10 @@
       "title": "BONJOUR et BIENVENUE ! :) On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !",
       "description": ""
     },
+    "feelGoodTools": {
+      "title": "Ici tu trouveras la page YouTube de l'appli pour des guides en vidéo, initier des actions pour augmenter ton niveau de feel good ou terminer tes brouillons.",
+      "description": ""
+    },
     "step1": {
       "name": {
         "title": "Entrer 1 seule réponse ici. Si tu as plusieurs réponses en tête, tu peux effectuer d'autres évaluations une fois celle-ci terminée :)",
