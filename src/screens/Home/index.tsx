@@ -9,7 +9,7 @@ import { Text, ScrollView, Image, DeviceEventEmitter } from 'react-native';
 import { NavigationEvents, SafeAreaView } from 'react-navigation';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { AppTour, AppTourSequence, AppTourView } from 'react-native-app-tour';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Block, EvaluationItem, Loader, WithTranslations } from '../../components';
 import { theme, Enum } from '../../constants';
 import I18n from '../../core/i18n';
@@ -76,12 +76,12 @@ class Home extends Component<HomeProps> {
   };
 
   registerFinishSequenceEvent = () => {
-    const { tour, dispatch } = this.props;
+    const { dispatch } = this.props;
     if (this.finishSequenceListener) {
       this.finishSequenceListener.remove();
     }
     this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', () => {
-      dispatch(finishHomeTour(tour));
+      dispatch(finishHomeTour());
     });
   };
 
@@ -206,7 +206,10 @@ class Home extends Component<HomeProps> {
               this.appTourTargets.push(AppTourView.for(ref, { ...props }));
             }}
             collapsable={false}
-          />
+          >
+            <MaterialCommunityIcons size={theme.sizes.icon} name="lightbulb-on-outline" color={theme.colors.black} />
+            <Text style={{ fontSize: 12 }}>{I18n.t('navigation.feel_good_tools')}</Text>
+          </Block>
         )}
       </Block>
     );

@@ -144,12 +144,12 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
   };
 
   registerFinishSequenceEvent = () => {
-    const { tour, dispatch } = this.props;
+    const { dispatch } = this.props;
     if (this.finishSequenceListener) {
       this.finishSequenceListener.remove();
     }
     this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', () => {
-      dispatch(finishStepTour(tour));
+      dispatch(finishStepTour());
     });
   };
 

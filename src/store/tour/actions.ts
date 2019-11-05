@@ -1,15 +1,13 @@
-import { TourState, FINISH_HOME_TOUR, FINISH_STEP_TOUR } from './types';
+import { FINISH_HOME_TOUR, FINISH_STEP_TOUR } from './types';
 
-export function finishHomeTour(tour: TourState) {
+export function finishHomeTour() {
   return {
     type: FINISH_HOME_TOUR,
-    payload: tour,
   };
 }
 
-export function finishStepTour(tour: TourState) {
+export function finishStepTour() {
   return {
     type: FINISH_STEP_TOUR,
-    payload: tour,
   };
 }
