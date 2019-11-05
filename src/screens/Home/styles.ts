@@ -29,9 +29,12 @@ export const styles = StyleSheet.create({
   },
   tour: {
     position: 'absolute',
-    bottom: -50,
+    bottom: -80,
     width: 100,
-    height: 50,
+    height: 100,
     alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   },
 });
