@@ -11,7 +11,7 @@ const middleWareEnhancer = applyMiddleware(...middlewares);
 const persistConfig = {
   key: 'i-feel-good',
   storage: AsyncStorage,
-  whitelist: ['drafts', 'auth', 'notification', 'language'],
+  whitelist: ['drafts', 'auth', 'notification', 'language', 'tour'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

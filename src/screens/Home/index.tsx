@@ -18,12 +18,13 @@ import { DefaultAvatar } from '../../assets/images';
 import Summarize from './components/Summarize';
 import { styles } from './styles';
 import NavigatorMap from '../../navigations/NavigatorMap';
-import { AppState, MeState } from '../../store/types';
-import { me, showModal } from '../../store/actions';
+import { AppState, MeState, TourState } from '../../store/types';
+import { me, showModal, finishHomeTour } from '../../store/actions';
 
 interface HomeProps extends NavigationStackScreenProps {
   dispatch: Dispatch<any>;
   me: MeState;
+  tour: TourState;
 }
 
 class Home extends Component<HomeProps> {
@@ -41,9 +42,10 @@ class Home extends Component<HomeProps> {
   }
 
   componentDidMount() {
+    const { tour } = this.props;
     this._loadData();
     SplashScreen.hide();
-    if (true) {
+    if (!tour.isHomeFinished) {
       setTimeout(() => {
         const appTourSequence = new AppTourSequence();
         this.appTourTargets.forEach((appTourTarget: any) => {
@@ -70,11 +72,12 @@ class Home extends Component<HomeProps> {
   };
 
   registerFinishSequenceEvent = () => {
+    const { tour, dispatch } = this.props;
     if (this.finishSequenceListener) {
       this.finishSequenceListener.remove();
     }
-    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', (e: Event) => {
-      console.log(e);
+    this.finishSequenceListener = DeviceEventEmitter.addListener('onFinishSequenceEvent', () => {
+      dispatch(finishHomeTour(tour));
     });
   };
 
@@ -186,6 +189,7 @@ class Home extends Component<HomeProps> {
 
 const mapStateToProps = (state: AppState) => ({
   me: state.me,
+  tour: state.tour,
 });
 
 export default WithTranslations(connect(mapStateToProps)(Home));

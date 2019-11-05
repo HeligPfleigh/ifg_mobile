@@ -9,6 +9,7 @@ import { authReducer, initialState as initialAuth } from './auth/reducers';
 import { myActionReducer, initialState as initialMyAction } from './myaction/reducers';
 import { notificationReducer } from './notification/reducers';
 import { AppState, LOGOUT } from './types';
+import { tourReducer } from './tour/reducers';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -20,6 +21,7 @@ const appReducer = combineReducers({
   auth: authReducer,
   myaction: myActionReducer,
   notification: notificationReducer,
+  tour: tourReducer,
 });
 
 export const rootReducer: any = (state: AppState, action: any) => {
