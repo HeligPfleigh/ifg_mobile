@@ -15,17 +15,12 @@ import { AppState } from '../../store/types';
 
 interface SignInProps extends InjectedFormProps, NavigationInjectedProps {}
 
-const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
+const SignIn: React.FC<SignInProps> = ({ navigation, handleSubmit }: SignInProps) => {
   const { required, minLength8, maxLength120, email, password } = validator;
   const dispatch = useDispatch();
   const authToken = useSelector((state: AppState) => state.auth.token);
   const isRequesting = useSelector((state: AppState) => state.auth.isRequesting);
   const signInErr = useSelector((state: AppState) => state.auth.error);
-
-  // navigate to Home after login
-  if (authToken) {
-    props.navigation.navigate(NavigatorMap.Home);
-  }
 
   // toast error
   if (signInErr) {
@@ -44,8 +39,15 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    // navigate to Home after login
+    if (authToken) {
+      navigation.navigate(NavigatorMap.Home);
+    }
+  }, [navigation, authToken]);
+
   const _navigateToForgotPasswordScreen = () => {
-    props.navigation.navigate(NavigatorMap.ForgotPassword);
+    navigation.navigate(NavigatorMap.ForgotPassword);
   };
 
   const submit = (values: any) => {
@@ -53,8 +55,6 @@ const SignIn: React.FC<SignInProps> = (props: SignInProps) => {
     Keyboard.dismiss();
     dispatch(login(_email, pwd));
   };
-
-  const { handleSubmit } = props;
 
   return (
     <>

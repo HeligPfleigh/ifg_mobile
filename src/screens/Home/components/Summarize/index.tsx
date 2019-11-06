@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, GestureResponderEvent, View } from 'react-native';
+import { Text, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AppTourView } from 'react-native-app-tour';
 
@@ -31,36 +31,35 @@ export default class Summarize extends Component<SummarizeProps> {
         ) : (
           <Block />
         )}
-        <Block
-          collapsable={false}
-          flex={1}
-          key="summarize"
-          right
-          row
-          ref={ref => {
-            if (!ref) return;
+        <Block flex={1} right row>
+          <Block
+            flex={false}
+            key="summarize"
+            collapsable={false}
+            style={styles.roundContainer}
+            ref={ref => {
+              if (!ref) return;
 
-            const props = {
-              ...theme.defaultApptourTheme,
-              order: 2,
-              targetRadius: 0,
-              cancelable: true,
-              title: I18n.t('apptour.summarize.title'),
-              description: I18n.t('apptour.summarize.description'),
-            };
+              const props = {
+                ...theme.defaultApptourTheme,
+                order: 2,
+                targetRadius: 0,
+                cancelable: true,
+                title: I18n.t('apptour.summarize.title'),
+                description: I18n.t('apptour.summarize.description'),
+              };
 
-            // eslint-disable-next-line no-unused-expressions
-            addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
-          }}
-        >
-          <View style={styles.roundContainer}>
+              // eslint-disable-next-line no-unused-expressions
+              addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
+            }}
+          >
             <MaterialCommunityIcons
               name="chevron-right"
               color={theme.colors.white}
               size={theme.sizes.base}
               style={styles.icon}
             />
-          </View>
+          </Block>
         </Block>
       </TouchableOpacity>
     );

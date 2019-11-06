@@ -197,7 +197,7 @@ class Home extends Component<HomeProps> {
               const props = {
                 ...theme.defaultApptourTheme,
                 order: 3,
-                targetRadius: 60,
+                targetRadius: 80,
                 cancelable: true,
                 title: I18n.t('apptour.feelGoodTools.title'),
                 description: I18n.t('apptour.feelGoodTools.description'),
