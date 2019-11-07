@@ -109,31 +109,33 @@ export const Step1: React.FC<Step1Props> = ({
             />
           </Block>
         </Block>
-        <Block
-          flex={2}
-          style={step1Styles.field}
-          key="step1.category"
-          ref={ref => {
-            if (!ref) return;
-
-            const props = {
-              ...theme.defaultApptourTheme,
-              order: 2,
-              targetRadius: 0,
-              cancelable: true,
-              title: I18n.t('apptour.step1.category.title'),
-              description: I18n.t('apptour.step1.category.description'),
-            };
-
-            // eslint-disable-next-line no-unused-expressions
-            addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
-          }}
-          collapsable={false}
-        >
+        <Block flex={2} style={step1Styles.field}>
           <Block flex={1} center middle>
             <Text style={step1Styles.header}>{I18n.t('evaluate.step1.header.label')}</Text>
           </Block>
-          <Block flex={3} row middle style={{ flexWrap: 'wrap' }}>
+          <Block
+            flex={3}
+            row
+            middle
+            style={{ flexWrap: 'wrap' }}
+            key="step1.category"
+            ref={ref => {
+              if (!ref) return;
+
+              const props = {
+                ...theme.defaultApptourTheme,
+                order: 2,
+                targetRadius: 0,
+                cancelable: true,
+                title: I18n.t('apptour.step1.category.title'),
+                description: I18n.t('apptour.step1.category.description'),
+              };
+
+              // eslint-disable-next-line no-unused-expressions
+              addAppTourTarget && addAppTourTarget(AppTourView.for(ref, { ...props }));
+            }}
+            collapsable={false}
+          >
             {listTags.map((tag: any) => (
               <Button key={`${tag}`} onPress={() => onChipPress(tag)}>
                 <Block

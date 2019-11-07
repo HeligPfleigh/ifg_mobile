@@ -112,7 +112,7 @@ class Evaluate extends Component<EvaluateProps, EvaluateState> {
     }
 
     if (!tour.isStepFinished) {
-      setTimeout(() => {
+      this.appTourTimeout = setTimeout(() => {
         const appTourSequence = new AppTourSequence();
         this.appTourTargets.forEach((appTourTarget: any) => {
           appTourSequence.add(appTourTarget);

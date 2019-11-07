@@ -409,11 +409,11 @@
       "description": ""
     },
     "evaluationItem": {
-      "title": "BONJOUR et BIENVENUE ! :) On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !",
+      "title": "BONJOUR et BIENVENUE ! :) On te suggère de choisir 1 parmi ces 4 catégories pour commencer ton voyage intérieur. Une fois habitué-e à l'appli, chaque mini voyage prend très peu de ton temps !\n\n",
       "description": ""
     },
     "feelGoodTools": {
-      "title": "Ici tu trouveras la page YouTube de l'appli pour des guides en vidéo, initier des actions pour augmenter ton niveau de feel good ou terminer tes brouillons.",
+      "title": "Ici tu trouveras la page YouTube de l'appli pour des guides en vidéo, initier des actions pour augmenter ton niveau de feel good ou terminer tes brouillons.\n",
       "description": ""
     },
     "step1": {
@@ -422,7 +422,7 @@
         "description": ""
       },
       "category": {
-        "title": "Attribuer ici une sous-catégorie pour ta réponse.",
+        "title": "Attribuer ici une sous-catégorie pour ta réponse.\n",
         "description": ""
       },
       "desc": {
